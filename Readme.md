@@ -6,7 +6,8 @@ features are auto-completion of functions and variables, a formula book, and qui
 insertion of constants from various fields of knowledge. It is available for Windows, macOS,
 and Linux in a number of languages.
 
-![BitLoupe main window](gfx/screenshot/main-window.png)
+![SoC Regs panel matching a register's bitfields against the calculator value](gfx/screenshot/socregs-panel.png)
+<!--# [BitLoupe main window](gfx/screenshot/main-window.png) -->
 ![capture.png](https://bitbucket.org/repo/dR7BnG/images/3654665019-capture.png)
 
 ## Features
@@ -60,7 +61,6 @@ running CMake, in the form `cmake ../src -Dvariable=value`.
 
 ## SoC register catalog
 
-![SoC Regs panel matching a register's bitfields against the calculator value](gfx/screenshot/socregs-panel.png)
 
 The **View > SoC Regs** panel reads `socregs.conf` from the directory containing
 the BitLoupe executable. Set `BITLOUPE_SOC_CONFIG` to use another catalog file.

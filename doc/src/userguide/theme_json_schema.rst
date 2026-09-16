@@ -1,7 +1,7 @@
 Theme JSON Schema
 =================
 
-SpeedCrunch theme files are JSON objects with supported color-role keys.
+BitLoupe theme files are JSON objects with supported color-role keys.
 Each color-role value is a color string in ``#RRGGBB`` format.
 Theme files also include required schema metadata and may include optional
 descriptive and format metadata.
@@ -13,9 +13,9 @@ Schema
 
    {
      "$schema": "https://json-schema.org/draft/2020-12/schema",
-     "$id": "https://speedcrunch.org/schemas/theme-v1.schema.json",
-     "title": "SpeedCrunch Theme",
-     "description": "Defines the colors used by a SpeedCrunch theme.",
+     "$id": "https://bitloupe.org/schemas/theme-v1.schema.json",
+     "title": "BitLoupe Theme",
+     "description": "Defines the colors used by a BitLoupe theme.",
      "type": "object",
      "additionalProperties": false,
      "required": [
@@ -39,7 +39,7 @@ Schema
          "description": "JSON Schema draft identifier"
        },
        "$id": {
-         "const": "https://speedcrunch.org/schemas/theme-v1.schema.json",
+         "const": "https://bitloupe.org/schemas/theme-v1.schema.json",
          "description": "Theme schema identifier"
        },
        "name": {
@@ -98,7 +98,7 @@ Notes
 * ``primary`` is optional. When present, it overrides the generated
   primary/accent color used for active selections, focused editor outlines,
   cursor accents, pane splitters, and primary-hue keypad fills. When omitted,
-  SpeedCrunch generates the primary/accent color from ``background``.
+  BitLoupe generates the primary/accent color from ``background``.
 * ``name``, ``author``, ``homepage``, and ``version`` are optional metadata
   fields. ``version`` is a string that belongs to the theme author and is not
   used as the schema or format version. A non-empty ``name`` is used as the
@@ -113,7 +113,7 @@ The following example is fictitious and provided only as a usage example:
 
    {
      "$schema": "https://json-schema.org/draft/2020-12/schema",
-     "$id": "https://speedcrunch.org/schemas/theme-v1.schema.json",
+     "$id": "https://bitloupe.org/schemas/theme-v1.schema.json",
      "name": "Example Theme",
      "author": "Example Author",
      "homepage": "https://example.com",

@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
 """
-A lexer extension that reads and highlights the SpeedCrunch expression syntax.
-To use, enable the extension and use the 'sc' or 'speedcrunch' syntax.
+A lexer extension that reads and highlights the BitLoupe expression syntax.
+To use, enable the extension and use the 'sc' or 'bitloupe' syntax.
 """
 
 from __future__ import print_function, unicode_literals
@@ -53,8 +53,8 @@ CONSTANTS = ['pi', '\u03c0', 'e', '\u212f', 'j', 'ans']
 FUNCTIONS = []
 
 
-class SpeedCrunchLexer(RegexLexer):
-    name = 'SpeedCrunch'
+class BitLoupeLexer(RegexLexer):
+    name = 'BitLoupe'
     flags = re.MULTILINE | re.UNICODE
 
     tokens = {
@@ -100,9 +100,9 @@ class SpeedCrunchLexer(RegexLexer):
     }
 
 
-class SpeedCrunchSessionLexer(SpeedCrunchLexer):
-    name = 'SpeedCrunch Session'
-    aliases = ['speedcrunch', 'sc']
+class BitLoupeSessionLexer(BitLoupeLexer):
+    name = 'BitLoupe Session'
+    aliases = ['bitloupe', 'sc']
 
     tokens = {
         str('root'): [
@@ -121,13 +121,13 @@ class SpeedCrunchSessionLexer(SpeedCrunchLexer):
         self.add_filter('raiseonerror')
 
 
-__all__ = ['SpeedCrunchLexer', 'SpeedCrunchSessionLexer']
+__all__ = ['BitLoupeLexer', 'BitLoupeSessionLexer']
 
 
 # Sphinx extension interface
 def setup(app):
-    app.add_lexer('sc', SpeedCrunchSessionLexer)
-    app.add_lexer('speedcrunch', SpeedCrunchSessionLexer)
+    app.add_lexer('sc', BitLoupeSessionLexer)
+    app.add_lexer('bitloupe', BitLoupeSessionLexer)
     return {
         'version': '0.1',
         'parallel_read_safe': True,

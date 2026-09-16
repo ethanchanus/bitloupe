@@ -1,10 +1,10 @@
 Session JSON Schema
 ===================
 
-SpeedCrunch session files are JSON objects with stored calculation history,
+BitLoupe session files are JSON objects with stored calculation history,
 session-local variables, user functions, user units, and global user-definition
 startup lines. Session files include a schema identifier so JSON editors and
-SpeedCrunch can associate them with the current SpeedCrunch session format.
+BitLoupe can associate them with the current BitLoupe session format.
 
 Schema
 ------
@@ -13,8 +13,8 @@ Schema
 
    {
      "$schema": "https://json-schema.org/draft/2020-12/schema",
-     "$id": "https://speedcrunch.org/schemas/session-v1.schema.json",
-     "title": "SpeedCrunch Session",
+     "$id": "https://bitloupe.org/schemas/session-v1.schema.json",
+     "title": "BitLoupe Session",
      "type": "object",
      "required": [
        "$schema",
@@ -34,7 +34,7 @@ Schema
          "description": "JSON Schema dialect identifier"
        },
        "$id": {
-         "const": "https://speedcrunch.org/schemas/session-v1.schema.json",
+         "const": "https://bitloupe.org/schemas/session-v1.schema.json",
          "description": "Session schema identifier"
        },
        "session": {
@@ -353,12 +353,12 @@ Notes
 -----
 
 * ``$schema`` identifies the JSON Schema draft used by the session metadata.
-  SpeedCrunch session files use
+  BitLoupe session files use
   ``https://json-schema.org/draft/2020-12/schema``.
-* ``$id`` identifies the SpeedCrunch JSON Schema for the session format:
-  ``https://speedcrunch.org/schemas/session-v1.schema.json``.
+* ``$id`` identifies the BitLoupe JSON Schema for the session format:
+  ``https://bitloupe.org/schemas/session-v1.schema.json``.
 * ``session`` stores the session name. Empty names are normalized to ``main``
-  by SpeedCrunch.
+  by BitLoupe.
 * ``limit`` stores the calculation history limit for the session. A value of
   ``0`` means unlimited history.
 * ``history`` stores saved calculations. The compact field names preserve the

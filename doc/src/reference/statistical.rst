@@ -242,13 +242,13 @@ The binomial distribution is described by the parameters ``N`` and ``p``. It giv
 
     Computes the binomial coefficient, equal to the number of possibilities of how to select ``k`` elements from a set of size ``N``. The order of the ``k`` elements is of no importance, i.e. permutations of a subset are not counted as an additional choice.
 
-    In SpeedCrunch the domain of :func:`ncr` is extended to all real numbers. The result is *1/((\ N + 1) \* B(\ k + 1, N - k + 1))*, where *B(a, b)* is the complete Beta function.
+    In BitLoupe the domain of :func:`ncr` is extended to all real numbers. The result is *1/((\ N + 1) \* B(\ k + 1, N - k + 1))*, where *B(a, b)* is the complete Beta function.
 
 .. function:: npr(N; k)
 
     Computes the binomial coefficient, equal to the number of possibilities of how to select ``k`` elements from a set of size ``N``. The order of the ``k`` elements **is** important, i.e. permutations of a subset are counted as an additional choice.
 
-    In SpeedCrunch, the domain of :func:`npr` is extended to all real numbers. The result is *Γ(\ N + 1)/Γ(\ k)*, where *Γ* is the gamma function; see :func:`gamma`.
+    In BitLoupe, the domain of :func:`npr` is extended to all real numbers. The result is *Γ(\ N + 1)/Γ(\ k)*, where *Γ* is the gamma function; see :func:`gamma`.
 
 
 .. _hypergeometric-distribution:

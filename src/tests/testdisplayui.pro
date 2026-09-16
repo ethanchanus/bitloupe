@@ -51,6 +51,6 @@ HEADERS += ../core/userdefinitions.h \
            ../gui/userunitlistwidget.h \
            ../gui/versioncheck.h
 
-RESOURCES += ../resources/speedcrunch.qrc
+RESOURCES += ../resources/bitloupe.qrc
 
 TARGET = testdisplayui

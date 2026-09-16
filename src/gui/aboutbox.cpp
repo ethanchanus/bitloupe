@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2006, 2008-2010, 2013-2019, 2026 SpeedCrunch developers
+// SPDX-FileCopyrightText: 2006, 2008-2010, 2013-2019, 2026 BitLoupe developers
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 
@@ -16,12 +16,12 @@ AboutBox::AboutBox(QWidget* parent, Qt::WindowFlags f)
     : QDialog(parent, f)
 {
     setObjectName("AboutBox");
-    setWindowTitle(tr("About SpeedCrunch"));
+    setWindowTitle(tr("About BitLoupe"));
 
     QString msg = "<center>";
-    msg += "<img src=\":/speedcrunch.png\"><br>";
-    msg += "<b>SpeedCrunch " SPEEDCRUNCH_VERSION;
-#ifdef SPEEDCRUNCH_PORTABLE
+    msg += "<img src=\":/bitloupe.png\"><br>";
+    msg += "<b>BitLoupe " BITLOUPE_VERSION;
+#ifdef BITLOUPE_PORTABLE
     msg += " (Portable Edition)";
 #endif
     msg += "</b><br>(Qt " + QLatin1String(QT_VERSION_STR) + ")<br>";
@@ -107,7 +107,7 @@ AboutBox::AboutBox(QWidget* parent, Qt::WindowFlags f)
     msg += "</p><p>";
 
     msg += "<p><b>";
-    msg += tr("Copyright (C) 2004-2026 The SpeedCrunch developers");
+    msg += tr("Copyright (C) 2004-2026 The BitLoupe developers");
     msg += "</b></p>";
 
     msg += "<p>";
@@ -138,5 +138,5 @@ AboutBox::AboutBox(QWidget* parent, Qt::WindowFlags f)
     mainLayout->addWidget(closeButton, 1, 1, 1, 1);
     mainLayout->setColumnStretch(0, 1);
 
-    setWindowTitle(tr("About SpeedCrunch"));
+    setWindowTitle(tr("About BitLoupe"));
 }

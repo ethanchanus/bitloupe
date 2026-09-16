@@ -1,12 +1,12 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) 2016, The SpeedCrunch Developers
-# This file is distributed under the same license as the SpeedCrunch package.
+# Copyright (C) 2016, The BitLoupe Developers
+# This file is distributed under the same license as the BitLoupe package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: SpeedCrunch master\n"
+"Project-Id-Version: BitLoupe master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-12-23 20:56+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
@@ -85,7 +85,7 @@ msgid "Compute the natural logarithm. In *real mode*, the argument must be real,
 msgstr ""
 
 #: ../../reference/basic.rst:51
-msgid "In *complex mode*, any non-zero number may be given. The result will be the principal value. The branch cut runs across the negative real axis. Nevertheless, in SpeedCrunch :func:`ln` is defined for negative real numbers as *ln(-x) = ln(\\|x\\|)) + πj*, extending the branch from the *upper* half-plane."
+msgid "In *complex mode*, any non-zero number may be given. The result will be the principal value. The branch cut runs across the negative real axis. Nevertheless, in BitLoupe :func:`ln` is defined for negative real numbers as *ln(-x) = ln(\\|x\\|)) + πj*, extending the branch from the *upper* half-plane."
 msgstr ""
 
 #: ../../reference/basic.rst:55
@@ -120,7 +120,7 @@ msgstr ""
 #: ../../reference/basic.rst:99
 #: ../../reference/basic.rst:153
 #: ../../reference/basic.rst:165
-msgid "For real arguments beyond approx. \\|x\\|>10\\ :sup:`77`, SpeedCrunch no longer recognizes the periodicity of the function and issues an error."
+msgid "For real arguments beyond approx. \\|x\\|>10\\ :sup:`77`, BitLoupe no longer recognizes the periodicity of the function and issues an error."
 msgstr ""
 
 #: ../../reference/basic.rst:81
@@ -402,7 +402,7 @@ msgid "Evaluates the gamma function (frequently denoted by the Greek letter Γ).
 msgstr ""
 
 #: ../../reference/basic.rst:296
-msgid "The computation of the factorial operation is in fact implemented via :func:`gamma`. This means that in SpeedCrunch, factorials of non-integer numbers are allowed."
+msgid "The computation of the factorial operation is in fact implemented via :func:`gamma`. This means that in BitLoupe, factorials of non-integer numbers are allowed."
 msgstr ""
 
 #: ../../reference/basic.rst:300
@@ -487,11 +487,11 @@ msgid "Constants"
 msgstr ""
 
 #: ../../reference/constants.rst:10
-msgid "The mathematical constant π. Since π is an irrational number, the value is an approximation with as much precision as SpeedCrunch allows. This constant may be referred to either as ``pi`` or as ``π`` (Unicode U+03C0 GREEK SMALL LETTER PI)."
+msgid "The mathematical constant π. Since π is an irrational number, the value is an approximation with as much precision as BitLoupe allows. This constant may be referred to either as ``pi`` or as ``π`` (Unicode U+03C0 GREEK SMALL LETTER PI)."
 msgstr ""
 
 #: ../../reference/constants.rst:18
-msgid "The mathematical constant *e*. The value is an approximation with as much precision as SpeedCrunch supports. This constant may be referred to either as ``e`` or as ``ℯ`` (Unicode U+212F SCRIPT SMALL E)."
+msgid "The mathematical constant *e*. The value is an approximation with as much precision as BitLoupe supports. This constant may be referred to either as ``e`` or as ``ℯ`` (Unicode U+212F SCRIPT SMALL E)."
 msgstr ""
 
 #: ../../reference/constants.rst:25
@@ -672,7 +672,7 @@ msgid "Reference"
 msgstr ""
 
 #: ../../reference/index.rst:4
-msgid "SpeedCrunch includes a large number of built-in math functions and constants. They are documented in this reference, organized by categories. There is also an :ref:`alphabetical list of all functions <sc:functionindex>`."
+msgid "BitLoupe includes a large number of built-in math functions and constants. They are documented in this reference, organized by categories. There is also an :ref:`alphabetical list of all functions <sc:functionindex>`."
 msgstr ""
 
 #: ../../reference/index.rst:10
@@ -849,7 +849,7 @@ msgid "Returns the greatest common divisor of the arguments (at least two must b
 msgstr ""
 
 #: ../../reference/integer.rst:164
-msgid "A closely related function is ``lcm()`` (*least common multiple*). While ``lcm()`` is not defined by default in SpeedCrunch, you can define it yourself as::"
+msgid "A closely related function is ``lcm()`` (*least common multiple*). While ``lcm()`` is not defined by default in BitLoupe, you can define it yourself as::"
 msgstr ""
 
 #: ../../reference/integer.rst:169
@@ -901,7 +901,7 @@ msgid "The arguments must share the same dimension."
 msgstr ""
 
 #: ../../reference/statistical.rst:45
-msgid "This function computes the *population variance*, which assumes that all possible realizations are all given as arguments. A function to estimate the variance from a sample (*sample variance*) is not included with SpeedCrunch."
+msgid "This function computes the *population variance*, which assumes that all possible realizations are all given as arguments. A function to estimate the variance from a sample (*sample variance*) is not included with BitLoupe."
 msgstr ""
 
 #: ../../reference/statistical.rst:49
@@ -976,7 +976,7 @@ msgid "Computes the binomial coefficient, equal to the number of possibilities o
 msgstr ""
 
 #: ../../reference/statistical.rst:116
-msgid "In SpeedCrunch the domain of :func:`ncr` is extended to all real numbers. The result is *1/((\\ N + 1) \\* B(\\ k + 1, N - k + 1))*, where *B(a, b)* is the complete Beta function."
+msgid "In BitLoupe the domain of :func:`ncr` is extended to all real numbers. The result is *1/((\\ N + 1) \\* B(\\ k + 1, N - k + 1))*, where *B(a, b)* is the complete Beta function."
 msgstr ""
 
 #: ../../reference/statistical.rst:120
@@ -984,7 +984,7 @@ msgid "Computes the binomial coefficient, equal to the number of possibilities o
 msgstr ""
 
 #: ../../reference/statistical.rst:122
-msgid "In SpeedCrunch, the domain of :func:`npr` is extended to all real numbers. The result is *Γ(\\ N + 1)/Γ(\\ k)*, where *Γ* is the gamma function; see :func:`gamma`."
+msgid "In BitLoupe, the domain of :func:`npr` is extended to all real numbers. The result is *Γ(\\ N + 1)/Γ(\\ k)*, where *Γ* is the gamma function; see :func:`gamma`."
 msgstr ""
 
 #: ../../reference/statistical.rst:128

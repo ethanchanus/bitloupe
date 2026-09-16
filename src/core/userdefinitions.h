@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2026 SpeedCrunch developers
+// SPDX-FileCopyrightText: 2026 BitLoupe developers
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 
@@ -8,8 +8,8 @@
 /*
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://speedcrunch.org/schemas/user-definitions.json",
-  "title": "SpeedCrunch User Definitions",
+  "$id": "https://bitloupe.org/schemas/user-definitions.json",
+  "title": "BitLoupe User Definitions",
   "type": "object",
   "required": ["startupDefinitions"],
   "additionalProperties": false,

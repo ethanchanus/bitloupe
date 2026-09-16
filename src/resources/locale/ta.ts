@@ -6,8 +6,8 @@
     <message>
         <location filename="../../gui/aboutbox.cpp" line="19"/>
         <location filename="../../gui/aboutbox.cpp" line="141"/>
-        <source>About SpeedCrunch</source>
-        <translation>SpeedCrunch பற்றி</translation>
+        <source>About BitLoupe</source>
+        <translation>BitLoupe பற்றி</translation>
     </message>
     <message>
         <location filename="../../gui/aboutbox.cpp" line="32"/>
@@ -41,8 +41,8 @@
     </message>
     <message>
         <location filename="../../gui/aboutbox.cpp" line="110"/>
-        <source>Copyright (C) 2004-2026 The SpeedCrunch developers</source>
-        <translation>பதிப்புரிமை (C) 2004-2026 SpeedCrunch உருவாக்குநர்கள்</translation>
+        <source>Copyright (C) 2004-2026 The BitLoupe developers</source>
+        <translation>பதிப்புரிமை (C) 2004-2026 BitLoupe உருவாக்குநர்கள்</translation>
     </message>
     <message>
         <location filename="../../gui/aboutbox.cpp" line="114"/>
@@ -3331,13 +3331,13 @@
     <message>
         <location filename="../../core/evaluator.cpp" line="742"/>
         <location filename="../../core/evaluator.cpp" line="813"/>
-        <source>underflow - tiny result is out of SpeedCrunch&apos;s number range</source>
+        <source>underflow - tiny result is out of BitLoupe&apos;s number range</source>
         <translation>கீழிறக்கம் - சிறிய முடிவு வேகநொறுக்கின் எண் வரம்பிற்கு வெளியே உள்ளது</translation>
     </message>
     <message>
         <location filename="../../core/evaluator.cpp" line="746"/>
         <location filename="../../core/evaluator.cpp" line="809"/>
-        <source>overflow - huge result is out of SpeedCrunch&apos;s number range</source>
+        <source>overflow - huge result is out of BitLoupe&apos;s number range</source>
         <translation>வழிந்தோடும் - பெரிய முடிவு வேகநொறுக்கின் எண் வரம்பிற்கு வெளியே உள்ளது</translation>
     </message>
     <message>
@@ -4927,8 +4927,8 @@
     </message>
     <message>
         <location filename="../../gui/mainwindow.cpp" line="3640"/>
-        <source>About &amp;SpeedCrunch</source>
-        <translation>&amp;SpeedCrunch பற்றி</translation>
+        <source>About &amp;BitLoupe</source>
+        <translation>&amp;BitLoupe பற்றி</translation>
     </message>
     <message>
         <location filename="../../gui/mainwindow.cpp" line="3966"/>
@@ -5103,8 +5103,8 @@
     <message>
         <location filename="../../gui/mainwindow.cpp" line="3554"/>
         <location filename="../../gui/mainwindow.cpp" line="3555"/>
-        <source>If a new expression starts with +, -, *, or /, SpeedCrunch inserts &quot;ans&quot; first.</source>
-        <translation>புதிய கூற்று +, -, *, அல்லது / கொண்டு தொடங்கினால், SpeedCrunch முதலில் &quot;ans&quot;-ஐ செருகும்.</translation>
+        <source>If a new expression starts with +, -, *, or /, BitLoupe inserts &quot;ans&quot; first.</source>
+        <translation>புதிய கூற்று +, -, *, அல்லது / கொண்டு தொடங்கினால், BitLoupe முதலில் &quot;ans&quot;-ஐ செருகும்.</translation>
     </message>
     <message>
         <location filename="../../gui/mainwindow.cpp" line="3557"/>
@@ -5421,13 +5421,13 @@
     </message>
     <message>
         <location filename="../../gui/mainwindow.cpp" line="9389"/>
-        <source>The selected file is not a SpeedCrunch session JSON file.</source>
-        <translation>தேர்ந்தெடுக்கப்பட்ட கோப்பு SpeedCrunch அமர்வு JSON கோப்பு அல்ல.</translation>
+        <source>The selected file is not a BitLoupe session JSON file.</source>
+        <translation>தேர்ந்தெடுக்கப்பட்ட கோப்பு BitLoupe அமர்வு JSON கோப்பு அல்ல.</translation>
     </message>
     <message>
         <location filename="../../gui/mainwindow.cpp" line="9397"/>
-        <source>This file uses an obsolete SpeedCrunch session format and cannot be imported.</source>
-        <translation>இந்த கோப்பு காலாவதியான SpeedCrunch அமர்வு வடிவத்தைப் பயன்படுத்துகிறது, இறக்குமதி செய்ய முடியாது.</translation>
+        <source>This file uses an obsolete BitLoupe session format and cannot be imported.</source>
+        <translation>இந்த கோப்பு காலாவதியான BitLoupe அமர்வு வடிவத்தைப் பயன்படுத்துகிறது, இறக்குமதி செய்ய முடியாது.</translation>
     </message>
     <message>
         <location filename="../../gui/mainwindow.cpp" line="9405"/>
@@ -5441,13 +5441,13 @@
     </message>
     <message>
         <location filename="../../gui/mainwindow.cpp" line="9419"/>
-        <source>The selected JSON file is missing the SpeedCrunch session schema identifier ($id).</source>
-        <translation>தேர்ந்தெடுக்கப்பட்ட JSON கோப்பில் SpeedCrunch அமர்வு திட்ட அடையாளங்காட்டி ($id) இல்லை.</translation>
+        <source>The selected JSON file is missing the BitLoupe session schema identifier ($id).</source>
+        <translation>தேர்ந்தெடுக்கப்பட்ட JSON கோப்பில் BitLoupe அமர்வு திட்ட அடையாளங்காட்டி ($id) இல்லை.</translation>
     </message>
     <message>
         <location filename="../../gui/mainwindow.cpp" line="9425"/>
-        <source>The selected JSON file uses an unsupported SpeedCrunch session format: %1</source>
-        <translation>தேர்ந்தெடுக்கப்பட்ட JSON கோப்பு ஆதரிக்கப்படாத SpeedCrunch அமர்வு வடிவத்தைப் பயன்படுத்துகிறது: %1</translation>
+        <source>The selected JSON file uses an unsupported BitLoupe session format: %1</source>
+        <translation>தேர்ந்தெடுக்கப்பட்ட JSON கோப்பு ஆதரிக்கப்படாத BitLoupe அமர்வு வடிவத்தைப் பயன்படுத்துகிறது: %1</translation>
     </message>
     <message>
         <location filename="../../gui/mainwindow.cpp" line="9433"/>
@@ -5461,8 +5461,8 @@
     </message>
     <message>
         <location filename="../../gui/mainwindow.cpp" line="9447"/>
-        <source>The selected JSON file has invalid or incomplete SpeedCrunch session data.</source>
-        <translation>தேர்ந்தெடுக்கப்பட்ட JSON கோப்பில் செல்லுபடியாகாத அல்லது முழுமையற்ற SpeedCrunch அமர்வு தரவு உள்ளது.</translation>
+        <source>The selected JSON file has invalid or incomplete BitLoupe session data.</source>
+        <translation>தேர்ந்தெடுக்கப்பட்ட JSON கோப்பில் செல்லுபடியாகாத அல்லது முழுமையற்ற BitLoupe அமர்வு தரவு உள்ளது.</translation>
     </message>
     <message>
         <location filename="../../gui/mainwindow.cpp" line="9458"/>
@@ -5844,13 +5844,13 @@
     <name>ManualWindow</name>
     <message>
         <location filename="../../gui/manualwindow.cpp" line="49"/>
-        <source>SpeedCrunch Manual</source>
-        <translation>SpeedCrunch கையேடு</translation>
+        <source>BitLoupe Manual</source>
+        <translation>BitLoupe கையேடு</translation>
     </message>
     <message>
         <location filename="../../gui/manualwindow.cpp" line="51"/>
-        <source>%1 - SpeedCrunch Manual</source>
-        <translation>%1 - SpeedCrunch கையேடு</translation>
+        <source>%1 - BitLoupe Manual</source>
+        <translation>%1 - BitLoupe கையேடு</translation>
     </message>
 </context>
 <context>
@@ -5967,8 +5967,8 @@
     </message>
     <message>
         <location filename="../../gui/versioncheck.cpp" line="227"/>
-        <source>SpeedCrunch %1 is up to date.</source>
-        <translation>SpeedCrunch %1 புதுப்பித்த நிலையில் உள்ளது.</translation>
+        <source>BitLoupe %1 is up to date.</source>
+        <translation>BitLoupe %1 புதுப்பித்த நிலையில் உள்ளது.</translation>
     </message>
     <message>
         <location filename="../../gui/versioncheck.cpp" line="246"/>

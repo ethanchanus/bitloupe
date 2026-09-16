@@ -1,12 +1,12 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) 2016, The SpeedCrunch Developers
-# This file is distributed under the same license as the SpeedCrunch package.
+# Copyright (C) 2016, The BitLoupe Developers
+# This file is distributed under the same license as the BitLoupe package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: SpeedCrunch master\n"
+"Project-Id-Version: BitLoupe master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-12-23 20:56+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"

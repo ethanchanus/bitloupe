@@ -17,33 +17,33 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. TRANSLATORS: Name of the application, usually shouldn't be translated.
-#: tmp/org.speedcrunch.SpeedCrunch.desktop.in.h:1
-#: tmp/org.speedcrunch.SpeedCrunch.metainfo.xml.in.h:2
-msgid "SpeedCrunch"
-msgstr "SpeedCrunch"
+#: tmp/org.bitloupe.BitLoupe.desktop.in.h:1
+#: tmp/org.bitloupe.BitLoupe.metainfo.xml.in.h:2
+msgid "BitLoupe"
+msgstr "BitLoupe"
 
 #. TRANSLATORS: Short one-line description.
-#: tmp/org.speedcrunch.SpeedCrunch.desktop.in.h:2
-#: tmp/org.speedcrunch.SpeedCrunch.metainfo.xml.in.h:4
+#: tmp/org.bitloupe.BitLoupe.desktop.in.h:2
+#: tmp/org.bitloupe.BitLoupe.metainfo.xml.in.h:4
 msgid "A high-precision scientific calculator"
 msgstr "Kikokotoo cha kisayansi chenye usahihi wa juu"
 
 #. TRANSLATORS: Extra keywords for finding the application in the desktop environment. The trailing ';' is important!
-#: tmp/org.speedcrunch.SpeedCrunch.desktop.in.h:4
+#: tmp/org.bitloupe.BitLoupe.desktop.in.h:4
 msgid "arithmetic;calculation;math;scientific;"
 msgstr "hesabu;ukokotozi;hisabati;kisayansi;"
 
-#: tmp/org.speedcrunch.SpeedCrunch.metainfo.xml.in.h:5
+#: tmp/org.bitloupe.BitLoupe.metainfo.xml.in.h:5
 msgid ""
-"SpeedCrunch is a fast, high-precision scientific calculator. It features a "
+"BitLoupe is a fast, high-precision scientific calculator. It features a "
 "syntax-highlighted scrollable display and is designed to be fully used via "
 "keyboard."
 msgstr ""
-"SpeedCrunch ni kikokotoo cha kisayansi cha haraka chenye usahihi wa juu. "
+"BitLoupe ni kikokotoo cha kisayansi cha haraka chenye usahihi wa juu. "
 "Kina onyesho linaloweza kusogezwa lenye uangaziaji wa sintaksia na "
 "kimeundwa kutumiwa kikamilifu kwa kibodi."
 
-#: tmp/org.speedcrunch.SpeedCrunch.metainfo.xml.in.h:6
+#: tmp/org.bitloupe.BitLoupe.metainfo.xml.in.h:6
 msgid ""
 "It includes many built-in maths functions and supports advanced features "
 "like user-defined functions, complex numbers, and unit conversions. This is "
@@ -57,23 +57,23 @@ msgstr ""
 "chenye hakikisho la matokeo papo hapo, uangaziaji wa sintaksia na ukamilishaji "
 "wa kiotomatiki."
 
-#: tmp/org.speedcrunch.SpeedCrunch.metainfo.xml.in.h:7
+#: tmp/org.bitloupe.BitLoupe.metainfo.xml.in.h:7
 msgid ""
-"SpeedCrunch is available for several platforms in a number of languages."
-msgstr "SpeedCrunch inapatikana kwa majukwaa kadhaa na katika lugha mbalimbali."
+"BitLoupe is available for several platforms in a number of languages."
+msgstr "BitLoupe inapatikana kwa majukwaa kadhaa na katika lugha mbalimbali."
 
-#: tmp/org.speedcrunch.SpeedCrunch.metainfo.xml.in.h:8
+#: tmp/org.bitloupe.BitLoupe.metainfo.xml.in.h:8
 msgid "Main window with optional keypad"
 msgstr "Dirisha kuu lenye kibodi cha namba cha hiari"
 
-#: tmp/org.speedcrunch.SpeedCrunch.metainfo.xml.in.h:9
+#: tmp/org.bitloupe.BitLoupe.metainfo.xml.in.h:9
 msgid "The constants list and formula book"
 msgstr "Orodha ya thamani thabiti na kitabu cha fomula"
 
-#: tmp/org.speedcrunch.SpeedCrunch.metainfo.xml.in.h:10
+#: tmp/org.bitloupe.BitLoupe.metainfo.xml.in.h:10
 msgid "Customizable user interface"
 msgstr "Kiolesura cha mtumiaji kinachoweza kubadilishwa"
 
-#: tmp/org.speedcrunch.SpeedCrunch.metainfo.xml.in.h:11
+#: tmp/org.bitloupe.BitLoupe.metainfo.xml.in.h:11
 msgid "The built-in user manual"
 msgstr "Mwongozo wa mtumiaji uliojengewa ndani"

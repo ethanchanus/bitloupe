@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2026 SpeedCrunch developers
+// SPDX-FileCopyrightText: 2026 BitLoupe developers
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 
@@ -545,13 +545,13 @@ struct MainWindowStateGuard {
     QString oldSocRegistersDockSubBitfieldName = settings->socRegistersDockSubBitfieldName;
     QByteArray oldSocRegistersDockSplitterState = settings->socRegistersDockSplitterState;
     bool oldHasNumberFormatStyleSetting = settings->hasNumberFormatStyleSetting;
-    QByteArray oldSkipUpdateCheck = qgetenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK");
-    bool hadSkipUpdateCheck = qEnvironmentVariableIsSet("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK");
+    QByteArray oldSkipUpdateCheck = qgetenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK");
+    bool hadSkipUpdateCheck = qEnvironmentVariableIsSet("BITLOUPE_TEST_SKIP_UPDATE_CHECK");
 
     MainWindowStateGuard()
     {
         settings->windowPositionSave = false;
-        qputenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK", "1");
+        qputenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK", "1");
     }
 
     ~MainWindowStateGuard()
@@ -592,9 +592,9 @@ struct MainWindowStateGuard {
         settings->socRegistersDockSplitterState = oldSocRegistersDockSplitterState;
         settings->hasNumberFormatStyleSetting = oldHasNumberFormatStyleSetting;
         if (hadSkipUpdateCheck)
-            qputenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK", oldSkipUpdateCheck);
+            qputenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK", oldSkipUpdateCheck);
         else
-            qunsetenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK");
+            qunsetenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK");
     }
 };
 
@@ -812,7 +812,7 @@ void TestDisplayUi::color_scheme_validates_schema_metadata()
     QJsonObject futureSchemaId = baseScheme;
     futureSchemaId.insert(QStringLiteral("$schema"), QString::fromLatin1(ColorScheme::SchemaDraft));
     futureSchemaId.insert(QStringLiteral("$id"),
-                          QStringLiteral("https://speedcrunch.org/schemas/theme-v2.schema.json"));
+                          QStringLiteral("https://bitloupe.org/schemas/theme-v2.schema.json"));
     futureSchemaId.insert(QStringLiteral("version"), QStringLiteral("1"));
     QVERIFY(!ColorScheme::fromJsonObject(futureSchemaId).isValid());
 
@@ -1521,9 +1521,9 @@ void TestDisplayUi::custom_keypad_action_stays_checked_after_dialog_accepts()
             settings->customKeypad = oldCustomKeypad;
             settings->hasNumberFormatStyleSetting = oldHasNumberFormatStyleSetting;
             if (hadSkipUpdateCheck)
-                qputenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK", oldSkipUpdateCheck);
+                qputenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK", oldSkipUpdateCheck);
             else
-                qunsetenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK");
+                qunsetenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK");
         }
     } guard {
         settings,
@@ -1531,11 +1531,11 @@ void TestDisplayUi::custom_keypad_action_stays_checked_after_dialog_accepts()
         settings->keypadVisible,
         settings->customKeypad,
         settings->hasNumberFormatStyleSetting,
-        qgetenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK"),
-        qEnvironmentVariableIsSet("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK")
+        qgetenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK"),
+        qEnvironmentVariableIsSet("BITLOUPE_TEST_SKIP_UPDATE_CHECK")
     };
 
-    qputenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK", "1");
+    qputenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK", "1");
     settings->keypadMode = Settings::KeypadModeBasicWide;
     settings->keypadVisible = true;
     settings->hasNumberFormatStyleSetting = true;
@@ -1658,9 +1658,9 @@ void TestDisplayUi::main_window_applies_primary_role_to_active_editor_and_dock_s
             settings->constantsDockVisible = oldConstantsDockVisible;
             settings->hasNumberFormatStyleSetting = oldHasNumberFormatStyleSetting;
             if (hadSkipUpdateCheck)
-                qputenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK", oldSkipUpdateCheck);
+                qputenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK", oldSkipUpdateCheck);
             else
-                qunsetenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK");
+                qunsetenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK");
         }
     } guard {
         settings,
@@ -1668,8 +1668,8 @@ void TestDisplayUi::main_window_applies_primary_role_to_active_editor_and_dock_s
         settings->customColorSchemeJson,
         settings->constantsDockVisible,
         settings->hasNumberFormatStyleSetting,
-        qgetenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK"),
-        qEnvironmentVariableIsSet("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK")
+        qgetenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK"),
+        qEnvironmentVariableIsSet("BITLOUPE_TEST_SKIP_UPDATE_CHECK")
     };
 
     const QColor base(QStringLiteral("#1f3229"));
@@ -1681,7 +1681,7 @@ void TestDisplayUi::main_window_applies_primary_role_to_active_editor_and_dock_s
     QVERIFY(configuredPrimary.isValid());
     QVERIFY(generatedPrimary.name() != configuredPrimary.name());
 
-    qputenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK", "1");
+    qputenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK", "1");
     settings->colorScheme = QStringLiteral("Custom");
     settings->customColorSchemeJson = themeJsonString(QJsonObject{
         {QStringLiteral("background"), base.name()},
@@ -1953,13 +1953,13 @@ void TestDisplayUi::soc_registers_dock_loads_catalog_and_filters_rows()
         "Registers Information": "registers.json"
     })json").toUtf8());
 
-    const QByteArray oldCatalogPath = qgetenv("SPEEDCRUNCH_SOC_CONFIG");
-    const bool hadCatalogPath = qEnvironmentVariableIsSet("SPEEDCRUNCH_SOC_CONFIG");
-    const QByteArray oldCachePath = qgetenv("SPEEDCRUNCH_SOC_CACHE");
-    const bool hadCachePath = qEnvironmentVariableIsSet("SPEEDCRUNCH_SOC_CACHE");
+    const QByteArray oldCatalogPath = qgetenv("BITLOUPE_SOC_CONFIG");
+    const bool hadCatalogPath = qEnvironmentVariableIsSet("BITLOUPE_SOC_CONFIG");
+    const QByteArray oldCachePath = qgetenv("BITLOUPE_SOC_CACHE");
+    const bool hadCachePath = qEnvironmentVariableIsSet("BITLOUPE_SOC_CACHE");
     const QString cachePath = directory.filePath(QStringLiteral("socregs.db"));
-    qputenv("SPEEDCRUNCH_SOC_CONFIG", catalogPath.toUtf8());
-    qputenv("SPEEDCRUNCH_SOC_CACHE", cachePath.toUtf8());
+    qputenv("BITLOUPE_SOC_CONFIG", catalogPath.toUtf8());
+    qputenv("BITLOUPE_SOC_CACHE", cachePath.toUtf8());
     guard.settings->sessionLayoutJson.clear();
     guard.settings->socRegistersDockVisible = false;
     guard.settings->autoCalc = true;
@@ -2333,13 +2333,13 @@ void TestDisplayUi::soc_registers_dock_loads_catalog_and_filters_rows()
     }
 
     if (hadCatalogPath)
-        qputenv("SPEEDCRUNCH_SOC_CONFIG", oldCatalogPath);
+        qputenv("BITLOUPE_SOC_CONFIG", oldCatalogPath);
     else
-        qunsetenv("SPEEDCRUNCH_SOC_CONFIG");
+        qunsetenv("BITLOUPE_SOC_CONFIG");
     if (hadCachePath)
-        qputenv("SPEEDCRUNCH_SOC_CACHE", oldCachePath);
+        qputenv("BITLOUPE_SOC_CACHE", oldCachePath);
     else
-        qunsetenv("SPEEDCRUNCH_SOC_CACHE");
+        qunsetenv("BITLOUPE_SOC_CACHE");
 }
 
 void TestDisplayUi::soc_registers_silicon_combo_survives_double_click()
@@ -2360,13 +2360,13 @@ void TestDisplayUi::soc_registers_silicon_combo_survives_double_click()
         ]
     })json");
 
-    const QByteArray oldCatalogPath = qgetenv("SPEEDCRUNCH_SOC_CONFIG");
-    const bool hadCatalogPath = qEnvironmentVariableIsSet("SPEEDCRUNCH_SOC_CONFIG");
-    const QByteArray oldCachePath = qgetenv("SPEEDCRUNCH_SOC_CACHE");
-    const bool hadCachePath = qEnvironmentVariableIsSet("SPEEDCRUNCH_SOC_CACHE");
+    const QByteArray oldCatalogPath = qgetenv("BITLOUPE_SOC_CONFIG");
+    const bool hadCatalogPath = qEnvironmentVariableIsSet("BITLOUPE_SOC_CONFIG");
+    const QByteArray oldCachePath = qgetenv("BITLOUPE_SOC_CACHE");
+    const bool hadCachePath = qEnvironmentVariableIsSet("BITLOUPE_SOC_CACHE");
     const QString cachePath = directory.filePath(QStringLiteral("socregs.db"));
-    qputenv("SPEEDCRUNCH_SOC_CONFIG", catalogPath.toUtf8());
-    qputenv("SPEEDCRUNCH_SOC_CACHE", cachePath.toUtf8());
+    qputenv("BITLOUPE_SOC_CONFIG", catalogPath.toUtf8());
+    qputenv("BITLOUPE_SOC_CACHE", cachePath.toUtf8());
     guard.settings->sessionLayoutJson.clear();
     guard.settings->socRegistersDockVisible = false;
 
@@ -2481,13 +2481,13 @@ void TestDisplayUi::soc_registers_silicon_combo_survives_double_click()
     }
 
     if (hadCatalogPath)
-        qputenv("SPEEDCRUNCH_SOC_CONFIG", oldCatalogPath);
+        qputenv("BITLOUPE_SOC_CONFIG", oldCatalogPath);
     else
-        qunsetenv("SPEEDCRUNCH_SOC_CONFIG");
+        qunsetenv("BITLOUPE_SOC_CONFIG");
     if (hadCachePath)
-        qputenv("SPEEDCRUNCH_SOC_CACHE", oldCachePath);
+        qputenv("BITLOUPE_SOC_CACHE", oldCachePath);
     else
-        qunsetenv("SPEEDCRUNCH_SOC_CACHE");
+        qunsetenv("BITLOUPE_SOC_CACHE");
 }
 
 void TestDisplayUi::main_window_uses_generated_theme_surface_for_chrome_and_editor()
@@ -2515,9 +2515,9 @@ void TestDisplayUi::main_window_uses_generated_theme_surface_for_chrome_and_edit
             settings->bitfieldVisible = oldBitfieldVisible;
             settings->hasNumberFormatStyleSetting = oldHasNumberFormatStyleSetting;
             if (hadSkipUpdateCheck)
-                qputenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK", oldSkipUpdateCheck);
+                qputenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK", oldSkipUpdateCheck);
             else
-                qunsetenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK");
+                qunsetenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK");
         }
     } guard {
         settings,
@@ -2528,11 +2528,11 @@ void TestDisplayUi::main_window_uses_generated_theme_surface_for_chrome_and_edit
         settings->statusBarVisible,
         settings->bitfieldVisible,
         settings->hasNumberFormatStyleSetting,
-        qgetenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK"),
-        qEnvironmentVariableIsSet("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK")
+        qgetenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK"),
+        qEnvironmentVariableIsSet("BITLOUPE_TEST_SKIP_UPDATE_CHECK")
     };
 
-    qputenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK", "1");
+    qputenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK", "1");
     settings->colorScheme = QStringLiteral("Custom");
     settings->keypadMode = Settings::KeypadModeBasicWide;
     settings->statusBarVisible = true;
@@ -3005,7 +3005,7 @@ void TestDisplayUi::main_window_uses_generated_theme_surface_for_chrome_and_edit
         return;
 
     QFile report(QDir(QDir::tempPath()).absoluteFilePath(
-        QStringLiteral("speedcrunch-oklch-theme-report.html")));
+        QStringLiteral("bitloupe-oklch-theme-report.html")));
     QVERIFY(report.open(QIODevice::ReadOnly | QIODevice::Text));
     const QString reportHtml = QString::fromUtf8(report.readAll());
     QVERIFY(reportHtml.contains(QStringLiteral("Runtime widget samples")));
@@ -3057,14 +3057,14 @@ void TestDisplayUi::restored_session_layout_reapplies_generated_theme_surfaces()
             settings->windowPositionSave = oldWindowPositionSave;
             settings->hasNumberFormatStyleSetting = oldHasNumberFormatStyleSetting;
             if (hadSkipUpdateCheck)
-                qputenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK", oldSkipUpdateCheck);
+                qputenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK", oldSkipUpdateCheck);
             else
-                qunsetenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK");
+                qunsetenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK");
         }
     } guard {
         settings,
-        qgetenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK"),
-        qEnvironmentVariableIsSet("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK"),
+        qgetenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK"),
+        qEnvironmentVariableIsSet("BITLOUPE_TEST_SKIP_UPDATE_CHECK"),
         settings->colorScheme,
         settings->customColorSchemeJson,
         settings->sessionLayoutJson,
@@ -3083,7 +3083,7 @@ void TestDisplayUi::restored_session_layout_reapplies_generated_theme_surfaces()
         settings->hasNumberFormatStyleSetting
     };
 
-    qputenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK", "1");
+    qputenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK", "1");
     settings->colorScheme = QStringLiteral("Custom");
     settings->customColorSchemeJson = themeJsonString(QJsonObject{{QStringLiteral("background"), QStringLiteral("#300a24")}});
     settings->sessionLayoutJson.clear();
@@ -3426,9 +3426,9 @@ void TestDisplayUi::dock_surfaces_use_successive_generated_shades()
             settings->constantsDockVisible = oldConstantsDockVisible;
             settings->hasNumberFormatStyleSetting = oldHasNumberFormatStyleSetting;
             if (hadSkipUpdateCheck)
-                qputenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK", oldSkipUpdateCheck);
+                qputenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK", oldSkipUpdateCheck);
             else
-                qunsetenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK");
+                qunsetenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK");
         }
     } guard {
         settings,
@@ -3437,11 +3437,11 @@ void TestDisplayUi::dock_surfaces_use_successive_generated_shades()
         settings->windowState,
         settings->constantsDockVisible,
         settings->hasNumberFormatStyleSetting,
-        qgetenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK"),
-        qEnvironmentVariableIsSet("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK")
+        qgetenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK"),
+        qEnvironmentVariableIsSet("BITLOUPE_TEST_SKIP_UPDATE_CHECK")
     };
 
-    qputenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK", "1");
+    qputenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK", "1");
     settings->colorScheme = QStringLiteral("Custom");
     settings->customColorSchemeJson = themeJsonString(QJsonObject{{QStringLiteral("background"), QStringLiteral("#1f3229")}});
     settings->windowState.clear();
@@ -3510,8 +3510,8 @@ void TestDisplayUi::dock_surfaces_use_successive_generated_shades()
         QVERIFY(splitterHandle->styleSheet().contains(QStringLiteral("QSplitterHandle:hover")));
         QVERIFY(splitterHandle->styleSheet().contains(QStringLiteral("QSplitterHandle:pressed")));
     }
-    QCOMPARE(window.property("speedcrunchDockSeparatorNormalColor").value<QColor>(), splitterFill);
-    QCOMPARE(window.property("speedcrunchDockSeparatorActiveColor").value<QColor>(), primary);
+    QCOMPARE(window.property("bitloupeDockSeparatorNormalColor").value<QColor>(), splitterFill);
+    QCOMPARE(window.property("bitloupeDockSeparatorActiveColor").value<QColor>(), primary);
     const QString resultScrollBarStyle = display->verticalScrollBar()->styleSheet();
     QVERIFY(resultScrollBarStyle.contains(shades.at(1).name()));
     QVERIFY(resultScrollBarStyle.contains(contentFill.name()));
@@ -3694,7 +3694,7 @@ void TestDisplayUi::dock_surfaces_use_successive_generated_shades()
                                                  .arg(UiConfig::OutlineStrokeWidth)
                                                  .arg(primary.name())));
     QVERIFY(searchBox->styleSheet().contains(primary.name()));
-    QVERIFY(searchBox->property("speedcrunchDockTextInput").toBool());
+    QVERIFY(searchBox->property("bitloupeDockTextInput").toBool());
     QTRY_VERIFY(editorHasPrimaryOutline(editor, primary));
     Editor inactiveEditor;
     inactiveEditor.setThemePrimaryColor(primary, true);
@@ -3993,7 +3993,7 @@ void TestDisplayUi::dock_surfaces_use_successive_generated_shades()
             QVERIFY(tabBar->styleSheet().contains(titleText.name()));
             QVERIFY(tabBar->styleSheet().contains(QStringLiteral("padding: 5px 14px")));
             QVERIFY(tabBar->styleSheet().contains(QStringLiteral("margin: 2px 1px")));
-            QVERIFY(tabBar->property("speedcrunchDockSystemTabBar").toBool());
+            QVERIFY(tabBar->property("bitloupeDockSystemTabBar").toBool());
             QVERIFY(tabBar->hasMouseTracking());
             QVERIFY(!tabBar->drawBase());
             int hoveredTab = -1;
@@ -4135,7 +4135,7 @@ void TestDisplayUi::dock_scroll_corner_uses_scrollbar_track_fill()
     MainWindowStateGuard guard;
     Settings* settings = guard.settings;
 
-    qputenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK", "1");
+    qputenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK", "1");
     settings->colorScheme = QStringLiteral("Custom");
     settings->customColorSchemeJson = themeJsonString(QJsonObject{{QStringLiteral("background"), QStringLiteral("#1f3229")}});
     settings->sessionLayoutJson.clear();
@@ -4222,8 +4222,8 @@ void TestDisplayUi::dock_separator_style_uses_primary_while_hovered_or_dragged()
     const QColor primary(QStringLiteral("#abcdef"));
 
     QWidget propertyOwner;
-    propertyOwner.setProperty("speedcrunchDockSeparatorNormalColor", normal);
-    propertyOwner.setProperty("speedcrunchDockSeparatorActiveColor", primary);
+    propertyOwner.setProperty("bitloupeDockSeparatorNormalColor", normal);
+    propertyOwner.setProperty("bitloupeDockSeparatorActiveColor", primary);
     propertyOwner.resize(96, 64);
     QWidget styleHost(&propertyOwner);
     styleHost.resize(64, 32);
@@ -4333,9 +4333,9 @@ void TestDisplayUi::constants_dock_uses_configured_narrow_minimum_width()
             settings->keypadVisible = oldKeypadVisible;
             settings->hasNumberFormatStyleSetting = oldHasNumberFormatStyleSetting;
             if (hadSkipUpdateCheck)
-                qputenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK", oldSkipUpdateCheck);
+                qputenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK", oldSkipUpdateCheck);
             else
-                qunsetenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK");
+                qunsetenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK");
         }
     } guard {
         settings,
@@ -4350,11 +4350,11 @@ void TestDisplayUi::constants_dock_uses_configured_narrow_minimum_width()
         settings->keypadMode,
         settings->keypadVisible,
         settings->hasNumberFormatStyleSetting,
-        qgetenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK"),
-        qEnvironmentVariableIsSet("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK")
+        qgetenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK"),
+        qEnvironmentVariableIsSet("BITLOUPE_TEST_SKIP_UPDATE_CHECK")
     };
 
-    qputenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK", "1");
+    qputenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK", "1");
     settings->constantsDockVisible = true;
     settings->functionsDockVisible = false;
     settings->historyDockVisible = false;
@@ -4414,9 +4414,9 @@ void TestDisplayUi::f6_cycles_focus_between_editor_and_visible_dock_controls()
             settings->keypadVisible = oldKeypadVisible;
             settings->hasNumberFormatStyleSetting = oldHasNumberFormatStyleSetting;
             if (hadSkipUpdateCheck)
-                qputenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK", oldSkipUpdateCheck);
+                qputenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK", oldSkipUpdateCheck);
             else
-                qunsetenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK");
+                qunsetenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK");
         }
     } guard {
         settings,
@@ -4431,11 +4431,11 @@ void TestDisplayUi::f6_cycles_focus_between_editor_and_visible_dock_controls()
         settings->keypadMode,
         settings->keypadVisible,
         settings->hasNumberFormatStyleSetting,
-        qgetenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK"),
-        qEnvironmentVariableIsSet("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK")
+        qgetenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK"),
+        qEnvironmentVariableIsSet("BITLOUPE_TEST_SKIP_UPDATE_CHECK")
     };
 
-    qputenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK", "1");
+    qputenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK", "1");
     settings->constantsDockVisible = false;
     settings->functionsDockVisible = false;
     settings->historyDockVisible = false;
@@ -4544,9 +4544,9 @@ void TestDisplayUi::dock_search_focus_suppresses_editor_primary_outline_across_p
             settings->windowPositionSave = oldWindowPositionSave;
             settings->hasNumberFormatStyleSetting = oldHasNumberFormatStyleSetting;
             if (hadSkipUpdateCheck)
-                qputenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK", oldSkipUpdateCheck);
+                qputenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK", oldSkipUpdateCheck);
             else
-                qunsetenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK");
+                qunsetenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK");
         }
     } guard {
         settings,
@@ -4564,11 +4564,11 @@ void TestDisplayUi::dock_search_focus_suppresses_editor_primary_outline_across_p
         settings->bitfieldVisible,
         settings->windowPositionSave,
         settings->hasNumberFormatStyleSetting,
-        qgetenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK"),
-        qEnvironmentVariableIsSet("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK")
+        qgetenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK"),
+        qEnvironmentVariableIsSet("BITLOUPE_TEST_SKIP_UPDATE_CHECK")
     };
 
-    qputenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK", "1");
+    qputenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK", "1");
     settings->colorScheme = QStringLiteral("Custom");
     settings->customColorSchemeJson = themeJsonString(QJsonObject{{QStringLiteral("background"), QStringLiteral("#1f3229")}});
     settings->sessionLayoutJson.clear();
@@ -4674,9 +4674,9 @@ void TestDisplayUi::dock_selection_inserts_into_active_session_pane_after_focus_
             settings->windowPositionSave = oldWindowPositionSave;
             settings->hasNumberFormatStyleSetting = oldHasNumberFormatStyleSetting;
             if (hadSkipUpdateCheck)
-                qputenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK", oldSkipUpdateCheck);
+                qputenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK", oldSkipUpdateCheck);
             else
-                qunsetenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK");
+                qunsetenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK");
         }
     } guard {
         settings,
@@ -4692,11 +4692,11 @@ void TestDisplayUi::dock_selection_inserts_into_active_session_pane_after_focus_
         settings->bitfieldVisible,
         settings->windowPositionSave,
         settings->hasNumberFormatStyleSetting,
-        qgetenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK"),
-        qEnvironmentVariableIsSet("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK")
+        qgetenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK"),
+        qEnvironmentVariableIsSet("BITLOUPE_TEST_SKIP_UPDATE_CHECK")
     };
 
-    qputenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK", "1");
+    qputenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK", "1");
     settings->sessionLayoutJson.clear();
     settings->constantsDockVisible = true;
     settings->functionsDockVisible = false;
@@ -4802,9 +4802,9 @@ void TestDisplayUi::clicking_tab_activates_own_pane_in_nested_split_layout()
             settings->windowPositionSave = oldWindowPositionSave;
             settings->hasNumberFormatStyleSetting = oldHasNumberFormatStyleSetting;
             if (hadSkipUpdateCheck)
-                qputenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK", oldSkipUpdateCheck);
+                qputenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK", oldSkipUpdateCheck);
             else
-                qunsetenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK");
+                qunsetenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK");
         }
     } guard {
         settings,
@@ -4822,11 +4822,11 @@ void TestDisplayUi::clicking_tab_activates_own_pane_in_nested_split_layout()
         settings->bitfieldVisible,
         settings->windowPositionSave,
         settings->hasNumberFormatStyleSetting,
-        qgetenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK"),
-        qEnvironmentVariableIsSet("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK")
+        qgetenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK"),
+        qEnvironmentVariableIsSet("BITLOUPE_TEST_SKIP_UPDATE_CHECK")
     };
 
-    qputenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK", "1");
+    qputenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK", "1");
     settings->colorScheme = QStringLiteral("Custom");
     settings->customColorSchemeJson = themeJsonString(QJsonObject{{QStringLiteral("background"), QStringLiteral("#1f3229")}});
     settings->sessionLayoutJson.clear();
@@ -5161,14 +5161,14 @@ void TestDisplayUi::focusing_loaded_pane_preserves_its_current_scroll_position()
             settings->windowPositionSave = oldWindowPositionSave;
             settings->hasNumberFormatStyleSetting = oldHasNumberFormatStyleSetting;
             if (hadSkipUpdateCheck)
-                qputenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK", oldSkipUpdateCheck);
+                qputenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK", oldSkipUpdateCheck);
             else
-                qunsetenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK");
+                qunsetenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK");
         }
     } guard {
         appSettings,
-        qgetenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK"),
-        qEnvironmentVariableIsSet("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK"),
+        qgetenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK"),
+        qEnvironmentVariableIsSet("BITLOUPE_TEST_SKIP_UPDATE_CHECK"),
         appSettings->sessionLayoutJson,
         appSettings->constantsDockVisible,
         appSettings->functionsDockVisible,
@@ -5183,7 +5183,7 @@ void TestDisplayUi::focusing_loaded_pane_preserves_its_current_scroll_position()
         appSettings->hasNumberFormatStyleSetting
     };
 
-    qputenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK", "1");
+    qputenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK", "1");
 
     appSettings->sessionLayoutJson.clear();
     appSettings->constantsDockVisible = false;
@@ -5289,14 +5289,14 @@ void TestDisplayUi::persisting_layout_captures_visible_scroll_positions_for_all_
             settings->windowPositionSave = oldWindowPositionSave;
             settings->hasNumberFormatStyleSetting = oldHasNumberFormatStyleSetting;
             if (hadSkipUpdateCheck)
-                qputenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK", oldSkipUpdateCheck);
+                qputenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK", oldSkipUpdateCheck);
             else
-                qunsetenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK");
+                qunsetenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK");
         }
     } guard {
         appSettings,
-        qgetenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK"),
-        qEnvironmentVariableIsSet("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK"),
+        qgetenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK"),
+        qEnvironmentVariableIsSet("BITLOUPE_TEST_SKIP_UPDATE_CHECK"),
         appSettings->sessionLayoutJson,
         appSettings->constantsDockVisible,
         appSettings->functionsDockVisible,
@@ -5311,7 +5311,7 @@ void TestDisplayUi::persisting_layout_captures_visible_scroll_positions_for_all_
         appSettings->hasNumberFormatStyleSetting
     };
 
-    qputenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK", "1");
+    qputenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK", "1");
 
     appSettings->sessionLayoutJson.clear();
     appSettings->constantsDockVisible = false;
@@ -5418,9 +5418,9 @@ void TestDisplayUi::switching_session_tabs_preserves_each_editor_text()
         ~SettingsGuard()
         {
             if (hadSkipUpdateCheck)
-                qputenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK", oldSkipUpdateCheck);
+                qputenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK", oldSkipUpdateCheck);
             else
-                qunsetenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK");
+                qunsetenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK");
             settings->sessionLayoutJson = oldSessionLayoutJson;
             settings->constantsDockVisible = oldConstantsDockVisible;
             settings->functionsDockVisible = oldFunctionsDockVisible;
@@ -5436,8 +5436,8 @@ void TestDisplayUi::switching_session_tabs_preserves_each_editor_text()
         }
     } guard {
         appSettings,
-        qgetenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK"),
-        qEnvironmentVariableIsSet("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK"),
+        qgetenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK"),
+        qEnvironmentVariableIsSet("BITLOUPE_TEST_SKIP_UPDATE_CHECK"),
         appSettings->sessionLayoutJson,
         appSettings->constantsDockVisible,
         appSettings->functionsDockVisible,
@@ -5452,7 +5452,7 @@ void TestDisplayUi::switching_session_tabs_preserves_each_editor_text()
         appSettings->hasNumberFormatStyleSetting
     };
 
-    qputenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK", "1");
+    qputenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK", "1");
     appSettings->sessionLayoutJson.clear();
     appSettings->constantsDockVisible = false;
     appSettings->functionsDockVisible = false;
@@ -5641,9 +5641,9 @@ void TestDisplayUi::new_tab_menu_action_and_shortcut_create_session_in_active_pa
         ~SettingsGuard()
         {
             if (hadSkipUpdateCheck)
-                qputenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK", oldSkipUpdateCheck);
+                qputenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK", oldSkipUpdateCheck);
             else
-                qunsetenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK");
+                qunsetenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK");
             settings->sessionLayoutJson = oldSessionLayoutJson;
             settings->constantsDockVisible = oldConstantsDockVisible;
             settings->functionsDockVisible = oldFunctionsDockVisible;
@@ -5659,8 +5659,8 @@ void TestDisplayUi::new_tab_menu_action_and_shortcut_create_session_in_active_pa
         }
     } guard {
         appSettings,
-        qgetenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK"),
-        qEnvironmentVariableIsSet("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK"),
+        qgetenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK"),
+        qEnvironmentVariableIsSet("BITLOUPE_TEST_SKIP_UPDATE_CHECK"),
         appSettings->sessionLayoutJson,
         appSettings->constantsDockVisible,
         appSettings->functionsDockVisible,
@@ -5675,7 +5675,7 @@ void TestDisplayUi::new_tab_menu_action_and_shortcut_create_session_in_active_pa
         appSettings->hasNumberFormatStyleSetting
     };
 
-    qputenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK", "1");
+    qputenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK", "1");
     appSettings->sessionLayoutJson.clear();
     appSettings->constantsDockVisible = false;
     appSettings->functionsDockVisible = false;
@@ -7064,9 +7064,9 @@ void TestDisplayUi::restore_closed_tab_shortcut_restores_last_closed_session_tab
         ~SettingsGuard()
         {
             if (hadSkipUpdateCheck)
-                qputenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK", oldSkipUpdateCheck);
+                qputenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK", oldSkipUpdateCheck);
             else
-                qunsetenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK");
+                qunsetenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK");
             settings->sessionLayoutJson = oldSessionLayoutJson;
             settings->constantsDockVisible = oldConstantsDockVisible;
             settings->functionsDockVisible = oldFunctionsDockVisible;
@@ -7082,8 +7082,8 @@ void TestDisplayUi::restore_closed_tab_shortcut_restores_last_closed_session_tab
         }
     } guard {
         appSettings,
-        qgetenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK"),
-        qEnvironmentVariableIsSet("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK"),
+        qgetenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK"),
+        qEnvironmentVariableIsSet("BITLOUPE_TEST_SKIP_UPDATE_CHECK"),
         appSettings->sessionLayoutJson,
         appSettings->constantsDockVisible,
         appSettings->functionsDockVisible,
@@ -7098,7 +7098,7 @@ void TestDisplayUi::restore_closed_tab_shortcut_restores_last_closed_session_tab
         appSettings->hasNumberFormatStyleSetting
     };
 
-    qputenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK", "1");
+    qputenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK", "1");
     appSettings->sessionLayoutJson.clear();
     appSettings->constantsDockVisible = false;
     appSettings->functionsDockVisible = false;
@@ -7196,14 +7196,14 @@ void TestDisplayUi::session_tabs_reorder_with_horizontal_drag()
             settings->windowPositionSave = oldWindowPositionSave;
             settings->hasNumberFormatStyleSetting = oldHasNumberFormatStyleSetting;
             if (hadSkipUpdateCheck)
-                qputenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK", oldSkipUpdateCheck);
+                qputenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK", oldSkipUpdateCheck);
             else
-                qunsetenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK");
+                qunsetenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK");
         }
     } guard {
         appSettings,
-        qgetenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK"),
-        qEnvironmentVariableIsSet("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK"),
+        qgetenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK"),
+        qEnvironmentVariableIsSet("BITLOUPE_TEST_SKIP_UPDATE_CHECK"),
         appSettings->sessionLayoutJson,
         appSettings->constantsDockVisible,
         appSettings->functionsDockVisible,
@@ -7218,7 +7218,7 @@ void TestDisplayUi::session_tabs_reorder_with_horizontal_drag()
         appSettings->hasNumberFormatStyleSetting
     };
 
-    qputenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK", "1");
+    qputenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK", "1");
 
     appSettings->sessionLayoutJson.clear();
     appSettings->constantsDockVisible = false;
@@ -7315,14 +7315,14 @@ void TestDisplayUi::closing_and_reopening_docks_keeps_attached_widgets()
             settings->bitfieldVisible = oldBitfieldVisible;
             settings->hasNumberFormatStyleSetting = oldHasNumberFormatStyleSetting;
             if (hadSkipUpdateCheck)
-                qputenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK", oldSkipUpdateCheck);
+                qputenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK", oldSkipUpdateCheck);
             else
-                qunsetenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK");
+                qunsetenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK");
         }
     } guard {
         appSettings,
-        qgetenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK"),
-        qEnvironmentVariableIsSet("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK"),
+        qgetenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK"),
+        qEnvironmentVariableIsSet("BITLOUPE_TEST_SKIP_UPDATE_CHECK"),
         appSettings->sessionLayoutJson,
         appSettings->windowState,
         appSettings->constantsDockVisible,
@@ -7337,7 +7337,7 @@ void TestDisplayUi::closing_and_reopening_docks_keeps_attached_widgets()
         appSettings->hasNumberFormatStyleSetting
     };
 
-    qputenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK", "1");
+    qputenv("BITLOUPE_TEST_SKIP_UPDATE_CHECK", "1");
     appSettings->sessionLayoutJson.clear();
     appSettings->windowState.clear();
     appSettings->constantsDockVisible = false;

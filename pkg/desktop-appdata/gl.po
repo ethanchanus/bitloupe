@@ -17,33 +17,33 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. TRANSLATORS: Name of the application, usually shouldn't be translated.
-#: tmp/org.speedcrunch.SpeedCrunch.desktop.in.h:1
-#: tmp/org.speedcrunch.SpeedCrunch.metainfo.xml.in.h:2
-msgid "SpeedCrunch"
-msgstr "SpeedCrunch"
+#: tmp/org.bitloupe.BitLoupe.desktop.in.h:1
+#: tmp/org.bitloupe.BitLoupe.metainfo.xml.in.h:2
+msgid "BitLoupe"
+msgstr "BitLoupe"
 
 #. TRANSLATORS: Short one-line description.
-#: tmp/org.speedcrunch.SpeedCrunch.desktop.in.h:2
-#: tmp/org.speedcrunch.SpeedCrunch.metainfo.xml.in.h:4
+#: tmp/org.bitloupe.BitLoupe.desktop.in.h:2
+#: tmp/org.bitloupe.BitLoupe.metainfo.xml.in.h:4
 msgid "A high-precision scientific calculator"
 msgstr "Unha calculadora científica de alta precisión"
 
 #. TRANSLATORS: Extra keywords for finding the application in the desktop environment. The trailing ';' is important!
-#: tmp/org.speedcrunch.SpeedCrunch.desktop.in.h:4
+#: tmp/org.bitloupe.BitLoupe.desktop.in.h:4
 msgid "arithmetic;calculation;math;scientific;"
 msgstr "aritmética;cálculo;matemáticas;científica;"
 
-#: tmp/org.speedcrunch.SpeedCrunch.metainfo.xml.in.h:5
+#: tmp/org.bitloupe.BitLoupe.metainfo.xml.in.h:5
 msgid ""
-"SpeedCrunch is a fast, high-precision scientific calculator. It features a "
+"BitLoupe is a fast, high-precision scientific calculator. It features a "
 "syntax-highlighted scrollable display and is designed to be fully used via "
 "keyboard."
 msgstr ""
-"SpeedCrunch é unha calculadora científica rápida e de alta precisión. Conta "
+"BitLoupe é unha calculadora científica rápida e de alta precisión. Conta "
 "cun visor desprazable con realce de sintaxe e está deseñada para usarse "
 "completamente co teclado."
 
-#: tmp/org.speedcrunch.SpeedCrunch.metainfo.xml.in.h:6
+#: tmp/org.bitloupe.BitLoupe.metainfo.xml.in.h:6
 msgid ""
 "It includes many built-in maths functions and supports advanced features "
 "like user-defined functions, complex numbers, and unit conversions. This is "
@@ -56,23 +56,23 @@ msgstr ""
 "sinxela pero potente que ofrece previsualización inmediata dos resultados, "
 "realce de sintaxe e autocompletado."
 
-#: tmp/org.speedcrunch.SpeedCrunch.metainfo.xml.in.h:7
+#: tmp/org.bitloupe.BitLoupe.metainfo.xml.in.h:7
 msgid ""
-"SpeedCrunch is available for several platforms in a number of languages."
-msgstr "SpeedCrunch está dispoñible para varias plataformas e en varios idiomas."
+"BitLoupe is available for several platforms in a number of languages."
+msgstr "BitLoupe está dispoñible para varias plataformas e en varios idiomas."
 
-#: tmp/org.speedcrunch.SpeedCrunch.metainfo.xml.in.h:8
+#: tmp/org.bitloupe.BitLoupe.metainfo.xml.in.h:8
 msgid "Main window with optional keypad"
 msgstr "Xanela principal con teclado numérico opcional"
 
-#: tmp/org.speedcrunch.SpeedCrunch.metainfo.xml.in.h:9
+#: tmp/org.bitloupe.BitLoupe.metainfo.xml.in.h:9
 msgid "The constants list and formula book"
 msgstr "A lista de constantes e o libro de fórmulas"
 
-#: tmp/org.speedcrunch.SpeedCrunch.metainfo.xml.in.h:10
+#: tmp/org.bitloupe.BitLoupe.metainfo.xml.in.h:10
 msgid "Customizable user interface"
 msgstr "Interface de usuario personalizable"
 
-#: tmp/org.speedcrunch.SpeedCrunch.metainfo.xml.in.h:11
+#: tmp/org.bitloupe.BitLoupe.metainfo.xml.in.h:11
 msgid "The built-in user manual"
 msgstr "O manual de usuario integrado"

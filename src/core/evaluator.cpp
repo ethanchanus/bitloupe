@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2007-2011, 2013-2018, 2020, 2022, 2024, 2026 SpeedCrunch developers
+// SPDX-FileCopyrightText: 2007-2011, 2013-2018, 2020, 2022, 2024, 2026 BitLoupe developers
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 
@@ -740,11 +740,11 @@ const Quantity& Evaluator::checkOperatorResult(const Quantity& n)
         break;
     case Underflow:
         m_error = Evaluator::tr("underflow - tiny result is out "
-                                "of SpeedCrunch's number range");
+                                "of BitLoupe's number range");
         break;
     case Overflow:
         m_error = Evaluator::tr("overflow - huge result is out of "
-                                "SpeedCrunch's number range");
+                                "BitLoupe's number range");
         break;
     case ZeroDivide:
         m_error = Evaluator::tr("division by zero");
@@ -807,11 +807,11 @@ QString Evaluator::stringFromFunctionError(Function* function)
         break;
     case Overflow:
         result += Evaluator::tr("overflow - huge result is out of "
-                                "SpeedCrunch's number range");
+                                "BitLoupe's number range");
         break;
     case Underflow:
         result += Evaluator::tr("underflow - tiny result is out of "
-                                "SpeedCrunch's number range");
+                                "BitLoupe's number range");
         break;
     case OutOfLogicRange:
         result += Evaluator::tr("overflow - logic result exceeds "

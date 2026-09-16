@@ -1,12 +1,12 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) 2016, The SpeedCrunch Developers
-# This file is distributed under the same license as the SpeedCrunch package.
+# Copyright (C) 2016, The BitLoupe Developers
+# This file is distributed under the same license as the BitLoupe package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: SpeedCrunch master\n"
+"Project-Id-Version: BitLoupe master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-12-23 20:56+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
@@ -34,7 +34,7 @@ msgid "Thank you for helping"
 msgstr ""
 
 #: ../../_templates_standalone/donate.html:14
-msgid "SpeedCrunch is and will always be available to you at no cost."
+msgid "BitLoupe is and will always be available to you at no cost."
 msgstr ""
 
 #: ../../_templates_standalone/donate.html:15
@@ -58,7 +58,7 @@ msgid "Please send us your contribution via one of the methods below."
 msgstr ""
 
 #: ../../_templates_standalone/donate.html:23
-msgid "If it is not working for you or think we should support other payment methods, please <a href=\"https://groups.google.com/forum/#!forum/speedcrunch\">get in touch</a>."
+msgid "If it is not working for you or think we should support other payment methods, please <a href=\"https://groups.google.com/forum/#!forum/bitloupe\">get in touch</a>."
 msgstr ""
 
 #: ../../_templates_standalone/donate.html:29
@@ -88,7 +88,7 @@ msgid "Download"
 msgstr ""
 
 #: ../../_templates_standalone/download.html:77
-msgid "If available, we recommend installing SpeedCrunch directly via your distribution's package manager."
+msgid "If available, we recommend installing BitLoupe directly via your distribution's package manager."
 msgstr ""
 
 #: ../../_templates_standalone/download.html:78
@@ -154,7 +154,7 @@ msgid "64-bit Generic"
 msgstr ""
 
 #: ../../_templates_standalone/entrance.html:27
-msgid "SpeedCrunch is a high-precision scientific calculator featuring a fast, keyboard-driven user interface. It is free and open-source software, licensed under the GPL."
+msgid "BitLoupe is a high-precision scientific calculator featuring a fast, keyboard-driven user interface. It is free and open-source software, licensed under the GPL."
 msgstr ""
 
 #: ../../_templates_standalone/entrance.html:30
@@ -168,7 +168,7 @@ msgid "Efficient &amp; easy-to-use interface."
 msgstr ""
 
 #: ../../_templates_standalone/entrance.html:49
-msgid "SpeedCrunch displays results as you type. Select a partial expression to evaluate only that part."
+msgid "BitLoupe displays results as you type. Select a partial expression to evaluate only that part."
 msgstr ""
 
 #: ../../_templates_standalone/entrance.html:50
@@ -184,7 +184,7 @@ msgid "Powerful."
 msgstr ""
 
 #: ../../_templates_standalone/entrance.html:64
-msgid "SpeedCrunch comes with over 80 built-in mathematical functions. You can also define your own functions."
+msgid "BitLoupe comes with over 80 built-in mathematical functions. You can also define your own functions."
 msgstr ""
 
 #: ../../_templates_standalone/entrance.html:65
@@ -216,7 +216,7 @@ msgid "And multi-language."
 msgstr ""
 
 #: ../../_templates_standalone/entrance.html:93
-msgid "SpeedCrunch is available for Windows, MacOS, and Linux, and comes in <a href=\"https://www.transifex.com/heldercorreia/speedcrunch/languages/\">a number of languages</a>."
+msgid "BitLoupe is available for Windows, MacOS, and Linux, and comes in <a href=\"https://www.transifex.com/heldercorreia/bitloupe/languages/\">a number of languages</a>."
 msgstr ""
 
 #: ../../_templates_standalone/entrance_navbar.html:7

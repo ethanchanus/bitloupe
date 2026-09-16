@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2014, 2016, 2022, 2026 SpeedCrunch developers
+// SPDX-FileCopyrightText: 2014, 2016, 2022, 2026 BitLoupe developers
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 
@@ -17,7 +17,7 @@ ManualWindow::ManualWindow(QWidget* parent)
     : QTextBrowser(parent), m_scrollUpdated(false)
 {
     setWindowFlags(Qt::Window);
-    setWindowIcon(QPixmap(":/speedcrunch.png"));
+    setWindowIcon(QPixmap(":/bitloupe.png"));
     setStyleSheet(QStringLiteral("QTextBrowser { background-color: #FFFFFF; }"));
     QFont f("Helvetica");
     f.setStyleHint(QFont::SansSerif);
@@ -46,9 +46,9 @@ void ManualWindow::retranslateText()
 {
     QString docTitle = documentTitle();
     if (docTitle.isEmpty())
-        setWindowTitle(tr("SpeedCrunch Manual"));
+        setWindowTitle(tr("BitLoupe Manual"));
     else
-        setWindowTitle(tr("%1 - SpeedCrunch Manual").arg(docTitle));
+        setWindowTitle(tr("%1 - BitLoupe Manual").arg(docTitle));
 }
 
 

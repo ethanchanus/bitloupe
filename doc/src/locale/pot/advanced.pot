@@ -1,12 +1,12 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) 2016, The SpeedCrunch Developers
-# This file is distributed under the same license as the SpeedCrunch package.
+# Copyright (C) 2016, The BitLoupe Developers
+# This file is distributed under the same license as the BitLoupe package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: SpeedCrunch master\n"
+"Project-Id-Version: BitLoupe master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-12-23 20:56+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
@@ -21,11 +21,11 @@ msgid "Color Scheme File Format"
 msgstr ""
 
 #: ../../advanced/colorschemeformat.rst:6
-msgid "Support for custom color schemes using this format was introduced in SpeedCrunch 0.12."
+msgid "Support for custom color schemes using this format was introduced in BitLoupe 0.12."
 msgstr ""
 
 #: ../../advanced/colorschemeformat.rst:9
-msgid "SpeedCrunch uses a simple :abbr:`JSON (JavaScript Object Notation)`-based file format for color scheme definitions. New color schemes may easily be created, used and shared without having to recompile SpeedCrunch."
+msgid "BitLoupe uses a simple :abbr:`JSON (JavaScript Object Notation)`-based file format for color scheme definitions. New color schemes may easily be created, used and shared without having to recompile BitLoupe."
 msgstr ""
 
 #: ../../advanced/colorschemeformat.rst:13
@@ -33,39 +33,39 @@ msgid "In addition to the color schemes integrated into the application, color s
 msgstr ""
 
 #: ../../advanced/colorschemeformat.rst:16
-msgid "Windows: :file:`C:/Users/<USERNAME>/AppData/Roaming/SpeedCrunch/color-schemes/`"
+msgid "Windows: :file:`C:/Users/<USERNAME>/AppData/Roaming/BitLoupe/color-schemes/`"
 msgstr ""
 
 #: ../../advanced/colorschemeformat.rst:17
-msgid "Linux/Unix: :file:`~/.local/share/SpeedCrunch/color-schemes/`"
+msgid "Linux/Unix: :file:`~/.local/share/BitLoupe/color-schemes/`"
 msgstr ""
 
 #: ../../advanced/colorschemeformat.rst:18
-msgid "Linux (Flatpak): :file:`~/.var/app/org.speedcrunch.SpeedCrunch/data/SpeedCrunch/color-schemes/`"
+msgid "Linux (Flatpak): :file:`~/.var/app/org.bitloupe.BitLoupe/data/BitLoupe/color-schemes/`"
 msgstr ""
 
 #: ../../advanced/colorschemeformat.rst:19
-msgid "OS X: :file:`~/Library/Application Support/SpeedCrunch/color-schemes/`"
+msgid "OS X: :file:`~/Library/Application Support/BitLoupe/color-schemes/`"
 msgstr ""
 
 #: ../../advanced/colorschemeformat.rst:20
-msgid "When using a portable version of SpeedCrunch on any operating system, additional color schemes are loaded from the :file:`color-schemes` subdirectory in the portable application directory."
+msgid "When using a portable version of BitLoupe on any operating system, additional color schemes are loaded from the :file:`color-schemes` subdirectory in the portable application directory."
 msgstr ""
 
 #: ../../advanced/colorschemeformat.rst:25
-msgid "All color scheme files must have the extension ``.json``. The file name without the extension will be displayed in the color scheme menu (:menuselection:`Settings --> Display --> Color Scheme`). The contents of the color scheme directory are retrieved when SpeedCrunch is launched, so to have it pick up a newly-added color scheme file, it is necessary to restart the application. However, color scheme files are always reloaded when a color scheme is selected in the menu; that means after making changes to a color scheme file, re-selecting it in SpeedCrunch will reload the color scheme and show the changes. This allows for quick feedback when editing color schemes."
+msgid "All color scheme files must have the extension ``.json``. The file name without the extension will be displayed in the color scheme menu (:menuselection:`Settings --> Display --> Color Scheme`). The contents of the color scheme directory are retrieved when BitLoupe is launched, so to have it pick up a newly-added color scheme file, it is necessary to restart the application. However, color scheme files are always reloaded when a color scheme is selected in the menu; that means after making changes to a color scheme file, re-selecting it in BitLoupe will reload the color scheme and show the changes. This allows for quick feedback when editing color schemes."
 msgstr ""
 
 #: ../../advanced/colorschemeformat.rst:33
-msgid "The files themselves are simple `JSON <json_>`_ files containing a single JSON object mapping role names to color values. By way of example, this is the color scheme definition for the \"Terminal\" scheme that ships with SpeedCrunch:"
+msgid "The files themselves are simple `JSON <json_>`_ files containing a single JSON object mapping role names to color values. By way of example, this is the color scheme definition for the \"Terminal\" scheme that ships with BitLoupe:"
 msgstr ""
 
 #: ../../advanced/colorschemeformat.rst:55
-msgid "Here, the keys are *roles*, each referring to elements in the SpeedCrunch history view and expression editor that can be colored. The values specify the colors for these roles. Color values may be any valid argument to the method |setNamedColor|_; the recommended form are simple HTML-style ``#RRGGBB`` definitions, using two hexadecimal digits per color component as in the example."
+msgid "Here, the keys are *roles*, each referring to elements in the BitLoupe history view and expression editor that can be colored. The values specify the colors for these roles. Color values may be any valid argument to the method |setNamedColor|_; the recommended form are simple HTML-style ``#RRGGBB`` definitions, using two hexadecimal digits per color component as in the example."
 msgstr ""
 
 #: ../../advanced/colorschemeformat.rst:65
-msgid "Any unknown roles will be ignored. If a role is not defined in the color scheme, corresponding elements will be using the application's default text color (or, for background roles, the default background color). However, if the file is not valid JSON or otherwise does not follow the format described above, the color scheme will not load and SpeedCrunch will use the fallback colors for every element."
+msgid "Any unknown roles will be ignored. If a role is not defined in the color scheme, corresponding elements will be using the application's default text color (or, for background roles, the default background color). However, if the file is not valid JSON or otherwise does not follow the format described above, the color scheme will not load and BitLoupe will use the fallback colors for every element."
 msgstr ""
 
 #: ../../advanced/colorschemeformat.rst:73
@@ -73,7 +73,7 @@ msgid "Supported Color Roles"
 msgstr ""
 
 #: ../../advanced/colorschemeformat.rst:75
-msgid "The following role names are supported by SpeedCrunch:"
+msgid "The following role names are supported by BitLoupe:"
 msgstr ""
 
 #: ../../advanced/colorschemeformat.rst:79

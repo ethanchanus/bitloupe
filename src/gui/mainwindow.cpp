@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2007-2020, 2022, 2024, 2026 SpeedCrunch developers
+// SPDX-FileCopyrightText: 2007-2020, 2022, 2024, 2026 BitLoupe developers
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 
@@ -168,7 +168,7 @@ struct ShortcutConfiguration {
 
 QString shortcutConfigurationPath()
 {
-    const QString overridePath = qEnvironmentVariable("SPEEDCRUNCH_SHORTCUT_CONFIG").trimmed();
+    const QString overridePath = qEnvironmentVariable("BITLOUPE_SHORTCUT_CONFIG").trimmed();
     if (!overridePath.isEmpty())
         return QFileInfo(overridePath).absoluteFilePath();
 
@@ -283,12 +283,12 @@ void applyConfiguredShortcuts(QAction* action, const QString& path)
     if (action != nullptr)
         action->setShortcuts(configuredShortcuts(path));
 }
-constexpr const char* kFeedbackUrl = "https://www.speedcrunch.org/issues.html";
-constexpr const char* kCommunityUrl = "https://groups.google.com/group/speedcrunch/";
+constexpr const char* kFeedbackUrl = "https://www.bitloupe.org/issues.html";
+constexpr const char* kCommunityUrl = "https://groups.google.com/group/bitloupe/";
 constexpr const char* kFacebookGroupUrl = "https://www.facebook.com/groups/1783793218546797";
-constexpr const char* kNewsUrl = "http://speedcrunch.blogspot.com/";
-constexpr const char* kSourceUrl = "https://www.speedcrunch.org/source.html";
-constexpr const char* kDonateUrl = "https://www.speedcrunch.org/donate.html";
+constexpr const char* kNewsUrl = "http://bitloupe.blogspot.com/";
+constexpr const char* kSourceUrl = "https://www.bitloupe.org/source.html";
+constexpr const char* kDonateUrl = "https://www.bitloupe.org/donate.html";
 
 QString sessionsPath()
 {
@@ -961,7 +961,7 @@ struct GeneratedThemeSurfaces
     // 100: outer window chrome, including tab-row empty space and dock padding.
     ThemeSurfaceColors window;
     // 200: result display and active session surface. This is the background
-    // role from the selected SpeedCrunch theme.
+    // role from the selected BitLoupe theme.
     ThemeSurfaceColors result;
     // 300: expression editor, dock list/table content, bitfield bit cells,
     // hovered dock header buttons, and normal keypad buttons. The editor no
@@ -1100,9 +1100,9 @@ ThemeScrollBarColors scrollBarColorsForSurfaceIndex(const GeneratedThemeSurfaces
     };
 }
 
-constexpr auto DockSeparatorNormalColorProperty = "speedcrunchDockSeparatorNormalColor";
-constexpr auto DockSeparatorActiveColorProperty = "speedcrunchDockSeparatorActiveColor";
-constexpr auto DockSeparatorStyleInstalledProperty = "speedcrunchDockSeparatorStyleInstalled";
+constexpr auto DockSeparatorNormalColorProperty = "bitloupeDockSeparatorNormalColor";
+constexpr auto DockSeparatorActiveColorProperty = "bitloupeDockSeparatorActiveColor";
+constexpr auto DockSeparatorStyleInstalledProperty = "bitloupeDockSeparatorStyleInstalled";
 
 QColor dockSeparatorColorForWidget(const QWidget* widget, const char* propertyName)
 {
@@ -1424,15 +1424,15 @@ void applyDockTitleButtonIcon(QAbstractButton* button, bool hovered)
         return;
 
     const bool closeButton =
-        button->property("speedcrunchDockHeaderCloseButton").toBool();
+        button->property("bitloupeDockHeaderCloseButton").toBool();
     const QColor fill =
         button->property(hovered
-                             ? "speedcrunchDockHeaderButtonHoverFill"
-                             : "speedcrunchDockHeaderButtonFill").value<QColor>();
+                             ? "bitloupeDockHeaderButtonHoverFill"
+                             : "bitloupeDockHeaderButtonFill").value<QColor>();
     const QColor foreground =
         button->property(hovered
-                             ? "speedcrunchDockHeaderButtonHoverForeground"
-                             : "speedcrunchDockHeaderButtonForeground").value<QColor>();
+                             ? "bitloupeDockHeaderButtonHoverForeground"
+                             : "bitloupeDockHeaderButtonForeground").value<QColor>();
     button->setIcon(dockTitleButtonIcon(closeButton, fill, foreground));
 }
 
@@ -1647,12 +1647,12 @@ void applyGeneratedDockChromeSurfaces(MainWindow* owner,
         const bool floatButton = button->objectName() == QLatin1String("qt_dockwidget_floatbutton");
         if (!closeButton && !floatButton)
             continue;
-        button->setProperty("speedcrunchDockHeaderButton", true);
-        button->setProperty("speedcrunchDockHeaderCloseButton", closeButton);
-        button->setProperty("speedcrunchDockHeaderButtonFill", titleButton.background);
-        button->setProperty("speedcrunchDockHeaderButtonForeground", titleButton.foreground);
-        button->setProperty("speedcrunchDockHeaderButtonHoverFill", titleButtonHover.background);
-        button->setProperty("speedcrunchDockHeaderButtonHoverForeground",
+        button->setProperty("bitloupeDockHeaderButton", true);
+        button->setProperty("bitloupeDockHeaderCloseButton", closeButton);
+        button->setProperty("bitloupeDockHeaderButtonFill", titleButton.background);
+        button->setProperty("bitloupeDockHeaderButtonForeground", titleButton.foreground);
+        button->setProperty("bitloupeDockHeaderButtonHoverFill", titleButtonHover.background);
+        button->setProperty("bitloupeDockHeaderButtonHoverForeground",
                             titleButtonHover.foreground);
         if (owner != nullptr)
             button->installEventFilter(owner);
@@ -1838,7 +1838,7 @@ void applyGeneratedDockContentSurfaces(MainWindow* owner, QDockWidget* dock, con
 
     for (QLineEdit* searchBox : dockContent->findChildren<QLineEdit*>()) {
         applySurfaceToContainingRow(dockContent, searchBox, dockSurface);
-        searchBox->setProperty("speedcrunchDockTextInput", true);
+        searchBox->setProperty("bitloupeDockTextInput", true);
         if (owner != nullptr)
             searchBox->installEventFilter(owner);
         searchBox->setPalette(paletteForThemeSurface(searchBox->palette(), dockTextInput));
@@ -1943,12 +1943,12 @@ void applyDockTabBarBackgroundToWidget(QWidget* widget, const ThemeSurfaceColors
     if (widget == nullptr)
         return;
 
-    widget->setProperty("speedcrunchDockTabBackground", true);
+    widget->setProperty("bitloupeDockTabBackground", true);
     widget->setPalette(paletteForThemeSurface(widget->palette(), surface));
     widget->setAutoFillBackground(true);
     widget->setAttribute(Qt::WA_StyledBackground, true);
     widget->setStyleSheet(QStringLiteral(
-        "QWidget[speedcrunchDockTabBackground=\"true\"] {"
+        "QWidget[bitloupeDockTabBackground=\"true\"] {"
         " background-color: %1; border: 0;"
         "}")
                               .arg(surface.background.name()));
@@ -1957,7 +1957,7 @@ void applyDockTabBarBackgroundToWidget(QWidget* widget, const ThemeSurfaceColors
 QString oklchThemeReportPath()
 {
     return QDir(QDir::tempPath()).absoluteFilePath(
-        QStringLiteral("speedcrunch-oklch-theme-report.html"));
+        QStringLiteral("bitloupe-oklch-theme-report.html"));
 }
 
 // Theme application can run multiple times while startup restores widgets, but
@@ -2268,7 +2268,7 @@ bool applicationShutdownInProgress()
     // property so child windows can tell a real app shutdown from an ordinary
     // child-window close.
     return appShutdownInProgress()
-        || (qApp && qApp->property("speedcrunchShutdownInProgress").toBool());
+        || (qApp && qApp->property("bitloupeShutdownInProgress").toBool());
 }
 
 
@@ -2620,7 +2620,7 @@ protected:
             if (MainWindow* window = sourceMainWindow())
                 payload.insert(QStringLiteral("windowId"), window->objectName());
         }
-        mime->setData(QStringLiteral("application/x-speedcrunch-session-tab"),
+        mime->setData(QStringLiteral("application/x-bitloupe-session-tab"),
                       QJsonDocument(payload).toJson(QJsonDocument::Compact));
 
         QDrag* drag = new QDrag(this);
@@ -2669,7 +2669,7 @@ protected:
 
     void dragEnterEvent(QDragEnterEvent* event) override
     {
-        if (event->mimeData()->hasFormat(QStringLiteral("application/x-speedcrunch-session-tab"))) {
+        if (event->mimeData()->hasFormat(QStringLiteral("application/x-bitloupe-session-tab"))) {
             updateDropIndicator(event->position().toPoint());
             event->acceptProposedAction();
         }
@@ -2677,7 +2677,7 @@ protected:
 
     void dragMoveEvent(QDragMoveEvent* event) override
     {
-        if (event->mimeData()->hasFormat(QStringLiteral("application/x-speedcrunch-session-tab"))) {
+        if (event->mimeData()->hasFormat(QStringLiteral("application/x-bitloupe-session-tab"))) {
             updateDropIndicator(event->position().toPoint());
             event->acceptProposedAction();
         }
@@ -2693,11 +2693,11 @@ protected:
     void dropEvent(QDropEvent* event) override
     {
         const QMimeData* mime = event->mimeData();
-        if (!mime->hasFormat(QStringLiteral("application/x-speedcrunch-session-tab")))
+        if (!mime->hasFormat(QStringLiteral("application/x-bitloupe-session-tab")))
             return;
 
         QString sessionName;
-        const QByteArray payload = mime->data(QStringLiteral("application/x-speedcrunch-session-tab"));
+        const QByteArray payload = mime->data(QStringLiteral("application/x-bitloupe-session-tab"));
         const QJsonDocument payloadDoc = QJsonDocument::fromJson(payload);
         if (payloadDoc.isObject())
             sessionName = payloadDoc.object().value(QStringLiteral("session")).toString();
@@ -3195,7 +3195,7 @@ protected:
 private:
     bool acceptSessionTabDrag(QDragMoveEvent* event, const QPoint& panePos = QPoint())
     {
-        if (!event->mimeData()->hasFormat(QStringLiteral("application/x-speedcrunch-session-tab")))
+        if (!event->mimeData()->hasFormat(QStringLiteral("application/x-bitloupe-session-tab")))
             return false;
         SessionTabBar* sourceTabBar = dynamic_cast<SessionTabBar*>(event->source());
         if (shouldShowOverlayForDrag && !shouldShowOverlayForDrag(sourceTabBar)) {
@@ -3211,11 +3211,11 @@ private:
     bool handleSessionTabDrop(QDropEvent* event, const QPoint& panePos)
     {
         const QMimeData* mime = event->mimeData();
-        if (!mime->hasFormat(QStringLiteral("application/x-speedcrunch-session-tab")))
+        if (!mime->hasFormat(QStringLiteral("application/x-bitloupe-session-tab")))
             return false;
 
         QString sessionName;
-        const QByteArray payload = mime->data(QStringLiteral("application/x-speedcrunch-session-tab"));
+        const QByteArray payload = mime->data(QStringLiteral("application/x-bitloupe-session-tab"));
         const QJsonDocument payloadDoc = QJsonDocument::fromJson(payload);
         if (payloadDoc.isObject())
             sessionName = payloadDoc.object().value(QStringLiteral("session")).toString();
@@ -3480,8 +3480,8 @@ void MainWindow::createUi()
     createFixedWidgets();
     createFixedConnections();
 
-    setWindowTitle("SpeedCrunch");
-    setWindowIcon(QPixmap(":/speedcrunch.png"));
+    setWindowTitle("BitLoupe");
+    setWindowIcon(QPixmap(":/bitloupe.png"));
 
     m_copyWidget = m_widgets.editor;
 }
@@ -3911,8 +3911,8 @@ void MainWindow::setActionsText()
     m_actions.settingsAngleUnitRevolution->setText(MainWindow::tr("&Revolution"));
     m_actions.settingsBehaviorAlwaysOnTop->setText(MainWindow::tr("Always on &Top"));
     m_actions.settingsBehaviorAutoAns->setText(MainWindow::tr("Auto-Insert \"ans\" When Starting with an Operator"));
-    m_actions.settingsBehaviorAutoAns->setToolTip(MainWindow::tr("If a new expression starts with +, -, *, or /, SpeedCrunch inserts \"ans\" first."));
-    m_actions.settingsBehaviorAutoAns->setStatusTip(MainWindow::tr("If a new expression starts with +, -, *, or /, SpeedCrunch inserts \"ans\" first."));
+    m_actions.settingsBehaviorAutoAns->setToolTip(MainWindow::tr("If a new expression starts with +, -, *, or /, BitLoupe inserts \"ans\" first."));
+    m_actions.settingsBehaviorAutoAns->setStatusTip(MainWindow::tr("If a new expression starts with +, -, *, or /, BitLoupe inserts \"ans\" first."));
     m_actions.settingsBehaviorAutoCompletion->setText(MainWindow::tr("Automatic &Completion"));
     m_actions.settingsBehaviorAutoCompletionBuiltInFunctions->setText(MainWindow::tr("Built-in &functions"));
     m_actions.settingsBehaviorAutoCompletionBuiltInVariables->setText(MainWindow::tr("Built-in &variables"));
@@ -3997,7 +3997,7 @@ void MainWindow::setActionsText()
     m_actions.helpNews->setText(MainWindow::tr("&Blogspot"));
     m_actions.helpSource->setText(MainWindow::tr("Source Code"));
     m_actions.helpDonate->setText(MainWindow::tr("&Donate"));
-    m_actions.helpAbout->setText(MainWindow::tr("About &SpeedCrunch"));
+    m_actions.helpAbout->setText(MainWindow::tr("About &BitLoupe"));
 }
 
 void MainWindow::createActionGroups()
@@ -4892,7 +4892,7 @@ bool MainWindow::isDockTextInput(QWidget* widget) const
     QLineEdit* lineEdit = qobject_cast<QLineEdit*>(widget);
     if (lineEdit == nullptr)
         return false;
-    if (lineEdit->property("speedcrunchDockTextInput").toBool())
+    if (lineEdit->property("bitloupeDockTextInput").toBool())
         return true;
 
     for (QObject* ancestor = widget; ancestor != nullptr; ancestor = ancestor->parent()) {
@@ -6370,12 +6370,12 @@ void MainWindow::updateSessionWindowTitle()
     if (displays.size() == 1) {
         const QStringList names = paneSessionNames(displays.first());
         if (names.size() == 1) {
-            setWindowTitle(QStringLiteral("SpeedCrunch - %1").arg(names.first()));
+            setWindowTitle(QStringLiteral("BitLoupe - %1").arg(names.first()));
             return;
         }
     }
 
-    setWindowTitle(QStringLiteral("SpeedCrunch"));
+    setWindowTitle(QStringLiteral("BitLoupe"));
 }
 
 void MainWindow::normalizeSplitContainerTree()
@@ -6484,8 +6484,8 @@ void MainWindow::applyThemeSurfacePalette()
             }
             const QPalette tabBarPalette =
                 paletteForThemeSurface(tabBar->palette(), tabSurfaces.headersAndBorders);
-            if (!tabBar->property("speedcrunchDockSystemTabBar").toBool()) {
-                tabBar->setProperty("speedcrunchDockSystemTabBar", true);
+            if (!tabBar->property("bitloupeDockSystemTabBar").toBool()) {
+                tabBar->setProperty("bitloupeDockSystemTabBar", true);
                 tabBar->setMouseTracking(true);
                 tabBar->setAttribute(Qt::WA_Hover, true);
                 tabBar->installEventFilter(this);
@@ -6681,7 +6681,7 @@ void MainWindow::writeThemeRuntimeDiagnosticsReport()
     const GeneratedThemeSurfaces surfaces = generatedSurfaceColors(m_settings);
     QString section;
     QTextStream out(&section);
-    out << "\n<!-- speedcrunch-oklch-runtime-start -->\n"
+    out << "\n<!-- bitloupe-oklch-runtime-start -->\n"
         << "<section class=\"runtime-diagnostics\" "
         << "style=\"margin-top:2rem;padding:1rem;border:1px solid #c6d0c4;"
         << "border-radius:14px;background:#fcfdfb;\">\n"
@@ -6817,10 +6817,10 @@ void MainWindow::writeThemeRuntimeDiagnosticsReport()
 
     out << "</tbody></table></div>\n"
         << "</section>\n"
-        << "<!-- speedcrunch-oklch-runtime-end -->\n";
+        << "<!-- bitloupe-oklch-runtime-end -->\n";
 
-    const QString startMarker = QStringLiteral("<!-- speedcrunch-oklch-runtime-start -->");
-    const QString endMarker = QStringLiteral("<!-- speedcrunch-oklch-runtime-end -->");
+    const QString startMarker = QStringLiteral("<!-- bitloupe-oklch-runtime-start -->");
+    const QString endMarker = QStringLiteral("<!-- bitloupe-oklch-runtime-end -->");
     const int start = html.indexOf(startMarker);
     const int end = start >= 0 ? html.indexOf(endMarker, start) : -1;
     if (start >= 0 && end >= 0)
@@ -9965,7 +9965,7 @@ void MainWindow::showSessionImportDialog()
     if (!doc.isObject()) {
         QMessageBox::critical(this,
                               tr("Import Session"),
-                              tr("The selected file is not a SpeedCrunch session JSON file."));
+                              tr("The selected file is not a BitLoupe session JSON file."));
         return;
     }
 
@@ -9973,7 +9973,7 @@ void MainWindow::showSessionImportDialog()
     if (json.contains(QLatin1String("scheme"))) {
         QMessageBox::critical(this,
                               tr("Import Session"),
-                              tr("This file uses an obsolete SpeedCrunch session format and cannot be imported."));
+                              tr("This file uses an obsolete BitLoupe session format and cannot be imported."));
         return;
     }
 
@@ -9995,13 +9995,13 @@ void MainWindow::showSessionImportDialog()
     if (!schemaId.isString()) {
         QMessageBox::critical(this,
                               tr("Import Session"),
-                              tr("The selected JSON file is missing the SpeedCrunch session schema identifier ($id)."));
+                              tr("The selected JSON file is missing the BitLoupe session schema identifier ($id)."));
         return;
     }
     if (schemaId.toString() != QLatin1String(SessionJsonKeys::SchemaId)) {
         QMessageBox::critical(this,
                               tr("Import Session"),
-                              tr("The selected JSON file uses an unsupported SpeedCrunch session format: %1").arg(schemaId.toString()));
+                              tr("The selected JSON file uses an unsupported BitLoupe session format: %1").arg(schemaId.toString()));
         return;
     }
 
@@ -10023,7 +10023,7 @@ void MainWindow::showSessionImportDialog()
     if (!importedSession->deSerialize(json, false)) {
         QMessageBox::critical(this,
                               tr("Import Session"),
-                              tr("The selected JSON file has invalid or incomplete SpeedCrunch session data."));
+                              tr("The selected JSON file has invalid or incomplete BitLoupe session data."));
         return;
     }
 
@@ -11120,7 +11120,7 @@ bool MainWindow::eventFilter(QObject* o, QEvent* e)
     }
 
     if (QAbstractButton* button = qobject_cast<QAbstractButton*>(o);
-        button != nullptr && button->property("speedcrunchDockHeaderButton").toBool()) {
+        button != nullptr && button->property("bitloupeDockHeaderButton").toBool()) {
         if (e->type() == QEvent::Enter
             || e->type() == QEvent::HoverEnter
             || e->type() == QEvent::MouseMove) {
@@ -11132,7 +11132,7 @@ bool MainWindow::eventFilter(QObject* o, QEvent* e)
     }
 
     if (QTabBar* tabBar = qobject_cast<QTabBar*>(o);
-        tabBar != nullptr && tabBar->property("speedcrunchDockSystemTabBar").toBool()) {
+        tabBar != nullptr && tabBar->property("bitloupeDockSystemTabBar").toBool()) {
         if (e->type() == QEvent::Enter) {
             QEnterEvent* enterEvent = static_cast<QEnterEvent*>(e);
             updateDockSystemTabCursor(tabBar, enterEvent->position().toPoint());
@@ -13313,7 +13313,7 @@ void MainWindow::closeEvent(QCloseEvent* e)
             // Mark shutdown before saving/restoring layouts so child close events
             // caused by QApplication::quit() do not rewrite the multi-window layout
             // as if each child had been closed manually.
-            qApp->setProperty("speedcrunchShutdownInProgress", true);
+            qApp->setProperty("bitloupeShutdownInProgress", true);
             appShutdownInProgress() = true;
         }
         persistSessionAndSettingsForShutdown();

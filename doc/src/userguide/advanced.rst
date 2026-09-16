@@ -9,7 +9,7 @@ Variables
 
 When working on more sophisticated problems, you will likely find that you frequently need to access
 results from previous computations. As we have already seen, you can simply recall results from the
-result window. However, SpeedCrunch also offers another more powerful way: Variables. Variables allow
+result window. However, BitLoupe also offers another more powerful way: Variables. Variables allow
 you to store and recall any value, by assigning it a name. Variables are defined using the :samp:`{variable}={value}` syntax::
 
     a = 5.123
@@ -45,7 +45,7 @@ User Functions
 --------------
 .. versionadded:: 0.12
 
-Just as you can define your own variables, it is also possible to define your own functions. While SpeedCrunch comes with an extensive collection of built-in functions (:ref:`sc:functionindex`), defining
+Just as you can define your own variables, it is also possible to define your own functions. While BitLoupe comes with an extensive collection of built-in functions (:ref:`sc:functionindex`), defining
 your own functions can be very useful when you find yourself repeating a similar computation over and over again.
 
 Defining a custom function is similar to defining a variable::
@@ -78,7 +78,7 @@ Units
 -----
 .. versionadded:: 0.12
 
-SpeedCrunch includes a powerful system for units and unit conversions. It provides an extensive list of built-in units and easily allows you to define your own.
+BitLoupe includes a powerful system for units and unit conversions. It provides an extensive list of built-in units and easily allows you to define your own.
 
 Units are attached to the term on their left using square brackets::
 
@@ -90,7 +90,7 @@ If the left-hand side is parenthesized, the bracket applies to the whole parenth
     (5+6)[ly]
     = 11 [ly]
 
-By default SpeedCrunch converts the quantity into SI units::
+By default BitLoupe converts the quantity into SI units::
 
     60[mi/h]
     = 26.8224 [m⋅s⁻¹]
@@ -113,10 +113,10 @@ In the result display, final value-with-unit result lines are shown without
 unit brackets (for example ``1.23 m``) to improve readability. Interpreted
 and simplified expression lines keep bracketed units (for example ``→ [m]``)
 so conversion targets remain explicit. When a result is inserted back into the
-editor (for example by double-clicking), SpeedCrunch uses canonical bracketed
+editor (for example by double-clicking), BitLoupe uses canonical bracketed
 unit syntax again.
 
-Note that all built-in unit names are singular and use American English spelling. This is independent of the language selected for SpeedCrunch's interface.
+Note that all built-in unit names are singular and use American English spelling. This is independent of the language selected for BitLoupe's interface.
 
 As seen in the example above, you can use any SI prefixes such as ``k`` or ``c``.
 They are treated like any other unit, so separate them with a space from the base unit they refer to inside brackets.
@@ -127,7 +127,7 @@ Since units are now explicit in brackets, short identifiers such as ``a``, ``mg`
 Information units (bit/byte)
 ----------------------------
 
-For the information dimension, SpeedCrunch supports both ``bit`` (short form ``b``)
+For the information dimension, BitLoupe supports both ``bit`` (short form ``b``)
 and ``byte`` (short form ``B``).
 
 Prefixes
@@ -139,7 +139,7 @@ Positive SI prefixes are accepted for both families (for example ``kB``, ``MB``,
 Family mixing rules
 ^^^^^^^^^^^^^^^^^^^
 
-When adding/subtracting information quantities, SpeedCrunch does not implicitly mix
+When adding/subtracting information quantities, BitLoupe does not implicitly mix
 bit-family and byte-family values. Use an explicit conversion if you want to switch
 family::
 
@@ -163,7 +163,7 @@ in the expression::
    Prefixes cannot be used on their own. Always attach them to a unit symbol.
    For instance, if you intend to express the unit 'newtons per centimeter', do not type ``[N / c m]``. Make the order explicit with ``[N / (cm)]``.
 
-An important feature of SpeedCrunch's unit system is *dimensional checking*. Simply put, it prevents comparing apples and pears: if you try to convert ``[s]`` to ``[m]``, SpeedCrunch will complain, stating that the dimensions do not match. Indeed, the dimension of ``s`` is *time*, while ``m`` denotes a *length*, thus they cannot be compared, added, etc. When adding, multiplying, or otherwise manipulating units, SpeedCrunch will track the dimension and raise an error if it detects an invalid operation. For instance, if you type ``[m^2]``, the result will be a quantity with the dimension *length*\ :sup:`2` which can only be compared to other quantities with the same dimension. Currently, the available dimensions and their associated primitive units are:
+An important feature of BitLoupe's unit system is *dimensional checking*. Simply put, it prevents comparing apples and pears: if you try to convert ``[s]`` to ``[m]``, BitLoupe will complain, stating that the dimensions do not match. Indeed, the dimension of ``s`` is *time*, while ``m`` denotes a *length*, thus they cannot be compared, added, etc. When adding, multiplying, or otherwise manipulating units, BitLoupe will track the dimension and raise an error if it detects an invalid operation. For instance, if you type ``[m^2]``, the result will be a quantity with the dimension *length*\ :sup:`2` which can only be compared to other quantities with the same dimension. Currently, the available dimensions and their associated primitive units are:
 
 * *Length*: ``m``
 * *Mass*: ``kg``

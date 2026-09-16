@@ -1,12 +1,12 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) 2016, The SpeedCrunch Developers
-# This file is distributed under the same license as the SpeedCrunch package.
+# Copyright (C) 2016, The BitLoupe Developers
+# This file is distributed under the same license as the BitLoupe package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: SpeedCrunch master\n"
+"Project-Id-Version: BitLoupe master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-12-23 20:56+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
@@ -26,7 +26,7 @@ msgid "Variables"
 msgstr ""
 
 #: ../../userguide/advanced.rst:10
-msgid "When working on more sophisticated problems, you will likely find that you frequently need to access results from previous computations. As we have already seen, you can simply recall results from the result window. However, SpeedCrunch also offers another more powerful way: Variables. Variables allow you to store and recall any value, by assigning it a name. Variables are defined using the :samp:`{variable}={value}` syntax::"
+msgid "When working on more sophisticated problems, you will likely find that you frequently need to access results from previous computations. As we have already seen, you can simply recall results from the result window. However, BitLoupe also offers another more powerful way: Variables. Variables allow you to store and recall any value, by assigning it a name. Variables are defined using the :samp:`{variable}={value}` syntax::"
 msgstr ""
 
 #: ../../userguide/advanced.rst:17
@@ -46,7 +46,7 @@ msgid "User Functions"
 msgstr ""
 
 #: ../../userguide/advanced.rst:42
-msgid "Just as you can define your own variables, it is also possible to define your own functions. While SpeedCrunch comes with an extensive collection of built-in functions (:ref:`sc:functionindex`), defining your own functions can be very useful when you find yourself repeating a similar computation over and over again."
+msgid "Just as you can define your own variables, it is also possible to define your own functions. While BitLoupe comes with an extensive collection of built-in functions (:ref:`sc:functionindex`), defining your own functions can be very useful when you find yourself repeating a similar computation over and over again."
 msgstr ""
 
 #: ../../userguide/advanced.rst:45
@@ -66,7 +66,7 @@ msgid "Complex numbers"
 msgstr ""
 
 #: ../../userguide/advanced.rst:68
-msgid "SpeedCrunch supports calculations involving complex numbers. To use them, select :menuselection:`Settings --> Results --> Complex Numbers --> Cartesian` or :menuselection:`Polar`. The imaginary unit is now available under the name :const:`j`::"
+msgid "BitLoupe supports calculations involving complex numbers. To use them, select :menuselection:`Settings --> Results --> Complex Numbers --> Cartesian` or :menuselection:`Polar`. The imaginary unit is now available under the name :const:`j`::"
 msgstr ""
 
 #: ../../userguide/advanced.rst:76
@@ -74,11 +74,11 @@ msgid "A note on the syntax of complex numbers: ``5j`` denotes the number ``5*j`
 msgstr ""
 
 #: ../../userguide/advanced.rst:78
-msgid "Some users (especially mathematicians or physicists) may prefer to use the letter ``i`` for the imaginary unit. Although SpeedCrunch does not support this notation by default, it is added easily enough. Simply defining ``i=j`` allows you to use ``i`` as an alias for :const:`j`."
+msgid "Some users (especially mathematicians or physicists) may prefer to use the letter ``i`` for the imaginary unit. Although BitLoupe does not support this notation by default, it is added easily enough. Simply defining ``i=j`` allows you to use ``i`` as an alias for :const:`j`."
 msgstr ""
 
 #: ../../userguide/advanced.rst:81
-msgid "Not every function in SpeedCrunch supports complex arguments. Refer to a function's documentation for more information."
+msgid "Not every function in BitLoupe supports complex arguments. Refer to a function's documentation for more information."
 msgstr ""
 
 #: ../../userguide/advanced.rst:83
@@ -94,7 +94,7 @@ msgid "Units"
 msgstr ""
 
 #: ../../userguide/advanced.rst:97
-msgid "SpeedCrunch includes a powerful system for units and unit conversions. It provides an extensive list of built-in units and easily allows you to define your own."
+msgid "BitLoupe includes a powerful system for units and unit conversions. It provides an extensive list of built-in units and easily allows you to define your own."
 msgstr ""
 
 #: ../../userguide/advanced.rst:99
@@ -102,7 +102,7 @@ msgid "Just as in common textbook notation, you specify a value's unit by multip
 msgstr ""
 
 #: ../../userguide/advanced.rst:104
-msgid "Note that this is an actual multiplication internally. However, the ``*`` operator can often be omitted (using implicit multiplication), as shown by the previous example. By default SpeedCrunch converts the quantity into SI units::"
+msgid "Note that this is an actual multiplication internally. However, the ``*`` operator can often be omitted (using implicit multiplication), as shown by the previous example. By default BitLoupe converts the quantity into SI units::"
 msgstr ""
 
 #: ../../userguide/advanced.rst:111
@@ -110,7 +110,7 @@ msgid "This alone would not be terribly useful. However, it is possible to conve
 msgstr ""
 
 #: ../../userguide/advanced.rst:120
-msgid "Note that all built-in unit names are singular and use American English spelling. This is independent of the language selected for SpeedCrunch's interface."
+msgid "Note that all built-in unit names are singular and use American English spelling. This is independent of the language selected for BitLoupe's interface."
 msgstr ""
 
 #: ../../userguide/advanced.rst:122
@@ -118,7 +118,7 @@ msgid "As seen in the example above, you can use any SI prefix like ``kilo`` or 
 msgstr ""
 
 #: ../../userguide/advanced.rst:127
-msgid "In SpeedCrunch (unlike in textbook notation), prefixes can be used on their own. This limitation (or feature, depending on your point of view) means that their use follows the same rules of precedence as any other mathematical operation. For instance, if you intend to express the unit 'newtons per centimeter', don't simply type ``newton / centi meter`` -- this will be interpreted as ``(newton / centi) meter``! Instead, make the order explicit by using ``newton / (centi meter)``."
+msgid "In BitLoupe (unlike in textbook notation), prefixes can be used on their own. This limitation (or feature, depending on your point of view) means that their use follows the same rules of precedence as any other mathematical operation. For instance, if you intend to express the unit 'newtons per centimeter', don't simply type ``newton / centi meter`` -- this will be interpreted as ``(newton / centi) meter``! Instead, make the order explicit by using ``newton / (centi meter)``."
 msgstr ""
 
 #: ../../userguide/advanced.rst:132
@@ -126,7 +126,7 @@ msgid "For the same reasons, expressions like ``500 gram / 20 gram`` and ``(500 
 msgstr ""
 
 #: ../../userguide/advanced.rst:134
-msgid "An important feature of SpeedCrunch's unit system is *dimensional checking*. Simply put, it prevents comparing apples and pears: If you try to convert seconds to meters, SpeedCrunch will complain, stating that the dimensions of ``second`` and ``meter`` do not match. Indeed, the dimension of ``second`` is *time*, while ``meter`` denotes a *length*, thus they cannot be compared, added, etc. When adding, multiplying, or otherwise manipulating units, SpeedCrunch will track the dimension and raise an error if it detects an invalid operation. For instance if you type ``meter^2``, the result will be a quantity with the dimension *length*\\ :sup:`2` which can only be compared to other quantities with the same dimension. Currently, the available dimensions and their associated primitive units are:"
+msgid "An important feature of BitLoupe's unit system is *dimensional checking*. Simply put, it prevents comparing apples and pears: If you try to convert seconds to meters, BitLoupe will complain, stating that the dimensions of ``second`` and ``meter`` do not match. Indeed, the dimension of ``second`` is *time*, while ``meter`` denotes a *length*, thus they cannot be compared, added, etc. When adding, multiplying, or otherwise manipulating units, BitLoupe will track the dimension and raise an error if it detects an invalid operation. For instance if you type ``meter^2``, the result will be a quantity with the dimension *length*\\ :sup:`2` which can only be compared to other quantities with the same dimension. Currently, the available dimensions and their associated primitive units are:"
 msgstr ""
 
 #: ../../userguide/advanced.rst:136
@@ -162,7 +162,7 @@ msgid "*Information*: ``bit``"
 msgstr ""
 
 #: ../../userguide/advanced.rst:145
-msgid "Since the current unit system does not support non-linear units like °C or °F, the only available unit for temperature quantities is ``kelvin``. This might change in a future version of SpeedCrunch."
+msgid "Since the current unit system does not support non-linear units like °C or °F, the only available unit for temperature quantities is ``kelvin``. This might change in a future version of BitLoupe."
 msgstr ""
 
 #: ../../userguide/advanced.rst:148
@@ -186,15 +186,15 @@ msgid "First Steps"
 msgstr ""
 
 #: ../../userguide/first_steps.rst:4
-msgid "SpeedCrunch is designed to be used via the keyboard. While an :ref:`on-screen keypad <keypad>` is available, it is disabled by default. The powerful keyboard interface is the recommended way to use SpeedCrunch to get the most out of it. However, the keypad can be enabled from: :menuselection:`View --> Keypad`."
+msgid "BitLoupe is designed to be used via the keyboard. While an :ref:`on-screen keypad <keypad>` is available, it is disabled by default. The powerful keyboard interface is the recommended way to use BitLoupe to get the most out of it. However, the keypad can be enabled from: :menuselection:`View --> Keypad`."
 msgstr ""
 
 #: ../../userguide/first_steps.rst:14
-msgid "All examples in this manual use a period (``.``) as the decimal separator. By default, SpeedCrunch will use your system's default decimal separator for output and will accept both a period and a comma (``,``) for input (:ref:`more details <radix_character>`). Depending on your settings, it may be necessary to replace the periods with the appropriate decimal separator when entering these examples into SpeedCrunch."
+msgid "All examples in this manual use a period (``.``) as the decimal separator. By default, BitLoupe will use your system's default decimal separator for output and will accept both a period and a comma (``,``) for input (:ref:`more details <radix_character>`). Depending on your settings, it may be necessary to replace the periods with the appropriate decimal separator when entering these examples into BitLoupe."
 msgstr ""
 
 #: ../../userguide/first_steps.rst:20
-msgid "When starting SpeedCrunch for the first time, the interface may thus seem a little plain. Don't be fooled, it can easily be customized. At the bottom edge of the window, you see the the **input bar**, also called the **editor**, with a blinking cursor showing that it is ready to accept keystrokes. To try out SpeedCrunch, type::"
+msgid "When starting BitLoupe for the first time, the interface may thus seem a little plain. Don't be fooled, it can easily be customized. At the bottom edge of the window, you see the the **input bar**, also called the **editor**, with a blinking cursor showing that it is ready to accept keystrokes. To try out BitLoupe, type::"
 msgstr ""
 
 #: ../../userguide/first_steps.rst:24
@@ -218,15 +218,15 @@ msgid "To continue the computation directly from the previous result, you can us
 msgstr ""
 
 #: ../../userguide/first_steps.rst:52
-msgid "As you can see, ``ans`` provides a quick and easy way to access the previous result. Sometimes, SpeedCrunch can even insert ``ans`` for you: When you start a new expression with an operator (e.g. ``+``, ``-``, ``*``, ``/``, ``^``), ``ans`` will be prepended automatically. [#f1]_ To try it out, type ``7`` :kbd:`Enter` ``+3`` :kbd:`Enter`. SpeedCrunch expands this as follows::"
+msgid "As you can see, ``ans`` provides a quick and easy way to access the previous result. Sometimes, BitLoupe can even insert ``ans`` for you: When you start a new expression with an operator (e.g. ``+``, ``-``, ``*``, ``/``, ``^``), ``ans`` will be prepended automatically. [#f1]_ To try it out, type ``7`` :kbd:`Enter` ``+3`` :kbd:`Enter`. BitLoupe expands this as follows::"
 msgstr ""
 
 #: ../../userguide/first_steps.rst:62
-msgid "SpeedCrunch comes with a number of :ref:`mathematical constants <constants>` like π that are available by typing their name::"
+msgid "BitLoupe comes with a number of :ref:`mathematical constants <constants>` like π that are available by typing their name::"
 msgstr ""
 
 #: ../../userguide/first_steps.rst:70
-msgid "Let us finish this short introduction with a word about functions. SpeedCrunch comes with an extensive list of built-in mathematical functions which can be accessed by simply typing their name in the editor followed by any parameters (also called arguments) in parentheses::"
+msgid "Let us finish this short introduction with a word about functions. BitLoupe comes with an extensive list of built-in mathematical functions which can be accessed by simply typing their name in the editor followed by any parameters (also called arguments) in parentheses::"
 msgstr ""
 
 #: ../../userguide/first_steps.rst:75
@@ -234,7 +234,7 @@ msgid "The function :func:`sqrt` calculates the square root of its argument. Som
 msgstr ""
 
 #: ../../userguide/first_steps.rst:79
-msgid "To repeat: In contrast to many programming languages, parameters in SpeedCrunch are separated by a **semicolon**!"
+msgid "To repeat: In contrast to many programming languages, parameters in BitLoupe are separated by a **semicolon**!"
 msgstr ""
 
 #: ../../userguide/first_steps.rst:81
@@ -242,7 +242,7 @@ msgid "An example is the :func:`average` function::"
 msgstr ""
 
 #: ../../userguide/first_steps.rst:86
-msgid "This is already enough to use SpeedCrunch effectively. Try it out for yourself! Alternatively, read on to learn about its more advanced features."
+msgid "This is already enough to use BitLoupe effectively. Try it out for yourself! Alternatively, read on to learn about its more advanced features."
 msgstr ""
 
 #: ../../userguide/first_steps.rst:91
@@ -259,7 +259,7 @@ msgid "User Guide"
 msgstr ""
 
 #: ../../userguide/index.rst:4
-msgid "This part of the manual explains how to use SpeedCrunch, starting from the installation and continuing to in-depth descriptions of particular topics and features. It can be read in order or simply used to look up the details of a feature."
+msgid "This part of the manual explains how to use BitLoupe, starting from the installation and continuing to in-depth descriptions of particular topics and features. It can be read in order or simply used to look up the details of a feature."
 msgstr ""
 
 #: ../../userguide/installation.rst:4
@@ -271,15 +271,15 @@ msgid "Microsoft Windows"
 msgstr ""
 
 #: ../../userguide/installation.rst:9
-msgid "SpeedCrunch for Windows requires Windows Vista or newer (32-bit and 64-bit versions). You can use choose to use either the installer or the portable version of SpeedCrunch. Both of these are available from `the SpeedCrunch website <sc_>`_."
+msgid "BitLoupe for Windows requires Windows Vista or newer (32-bit and 64-bit versions). You can use choose to use either the installer or the portable version of BitLoupe. Both of these are available from `the BitLoupe website <sc_>`_."
 msgstr ""
 
 #: ../../userguide/installation.rst:15
-msgid "The installer installs SpeedCrunch on your system and creates an entry in the menu to launch it. This process requires administrator rights."
+msgid "The installer installs BitLoupe on your system and creates an entry in the menu to launch it. This process requires administrator rights."
 msgstr ""
 
 #: ../../userguide/installation.rst:18
-msgid "Alternatively, you may use the portable version of SpeedCrunch, which is distributed as a ``.zip`` archive. This version requires no installation, simply extract it to a folder of your choice and run :program:`speedcrunch.exe`. In addition, this version of the software is fully portable: It stores all its settings and user data next to the executable so the entire directory can be copied to another computer and run there."
+msgid "Alternatively, you may use the portable version of BitLoupe, which is distributed as a ``.zip`` archive. This version requires no installation, simply extract it to a folder of your choice and run :program:`bitloupe.exe`. In addition, this version of the software is fully portable: It stores all its settings and user data next to the executable so the entire directory can be copied to another computer and run there."
 msgstr ""
 
 #: ../../userguide/installation.rst:33
@@ -287,7 +287,7 @@ msgid "Linux"
 msgstr ""
 
 #: ../../userguide/installation.rst:35
-msgid "On Linux, SpeedCrunch can be installed either from packages provided by your distribution or from official Flatpak packages."
+msgid "On Linux, BitLoupe can be installed either from packages provided by your distribution or from official Flatpak packages."
 msgstr ""
 
 #: ../../userguide/installation.rst:39
@@ -295,15 +295,15 @@ msgid "Distribution Packages"
 msgstr ""
 
 #: ../../userguide/installation.rst:41
-msgid "Many Linux distributions already include packages for SpeedCrunch in their repositories. The exact steps to install these depend on the distribution. For example, on Debian and Ubuntu, the included SpeedCrunch package can be installed by running this command::"
+msgid "Many Linux distributions already include packages for BitLoupe in their repositories. The exact steps to install these depend on the distribution. For example, on Debian and Ubuntu, the included BitLoupe package can be installed by running this command::"
 msgstr ""
 
 #: ../../userguide/installation.rst:47
-msgid "On Fedora, this command will install SpeedCrunch::"
+msgid "On Fedora, this command will install BitLoupe::"
 msgstr ""
 
 #: ../../userguide/installation.rst:51
-msgid "Check your system's documentation to find out how to install additional packages. Many desktop distributions also include graphical package management software that can be used to install SpeedCrunch."
+msgid "Check your system's documentation to find out how to install additional packages. Many desktop distributions also include graphical package management software that can be used to install BitLoupe."
 msgstr ""
 
 #: ../../userguide/installation.rst:57
@@ -311,11 +311,11 @@ msgid "Flatpak"
 msgstr ""
 
 #: ../../userguide/installation.rst:59
-msgid "`Flatpak <flatpak_>`_ is a distribution-independent packaging format for Linux desktop applications. The latest stable release of SpeedCrunch is available as a Flatpak package from `Flathub <flathub_>`_."
+msgid "`Flatpak <flatpak_>`_ is a distribution-independent packaging format for Linux desktop applications. The latest stable release of BitLoupe is available as a Flatpak package from `Flathub <flathub_>`_."
 msgstr ""
 
 #: ../../userguide/installation.rst:62
-msgid "First, visit Flathub's `setup page <flathub-setup_>`_ and follow the instructions for your distribution to set up Flatpak and Flathub. Then install SpeedCrunch from its `store page <flathub-sc_>`_ on Flathub."
+msgid "First, visit Flathub's `setup page <flathub-setup_>`_ and follow the instructions for your distribution to set up Flatpak and Flathub. Then install BitLoupe from its `store page <flathub-sc_>`_ on Flathub."
 msgstr ""
 
 #: ../../userguide/installation.rst:72
@@ -323,11 +323,11 @@ msgid "Development Builds"
 msgstr ""
 
 #: ../../userguide/installation.rst:76
-msgid "Development builds of SpeedCrunch may not be as stable or well-tested as released versions and may contain changes that break your session history. Use them at your own risk."
+msgid "Development builds of BitLoupe may not be as stable or well-tested as released versions and may contain changes that break your session history. Use them at your own risk."
 msgstr ""
 
 #: ../../userguide/installation.rst:79
-msgid "Pre-built development versions of SpeedCrunch allow you to use newer features and bug-fixes before they become available in a release, without having to compile SpeedCrunch yourself. Currently, automatically updated development builds of SpeedCrunch are available for the following platforms:"
+msgid "Pre-built development versions of BitLoupe allow you to use newer features and bug-fixes before they become available in a release, without having to compile BitLoupe yourself. Currently, automatically updated development builds of BitLoupe are available for the following platforms:"
 msgstr ""
 
 #: ../../userguide/installation.rst:84
@@ -343,11 +343,11 @@ msgid "Building from Source"
 msgstr ""
 
 #: ../../userguide/installation.rst:94
-msgid "The SpeedCrunch source code is maintained on `Bitbucket`_ in a Git repository. Clone the repository onto your machine by running the following command::"
+msgid "The BitLoupe source code is maintained on `Bitbucket`_ in a Git repository. Clone the repository onto your machine by running the following command::"
 msgstr ""
 
 #: ../../userguide/installation.rst:101
-msgid "The main readme file (:file:`README.md` at the root of the repository) contains instructions on how to compile SpeedCrunch."
+msgid "The main readme file (:file:`README.md` at the root of the repository) contains instructions on how to compile BitLoupe."
 msgstr ""
 
 #: ../../userguide/interface.rst:2
@@ -359,7 +359,7 @@ msgid "Widgets"
 msgstr ""
 
 #: ../../userguide/interface.rst:7
-msgid "Apart from the main display, SpeedCrunch offers a number of extra panels, referred to as *widgets* here. They can be enabled and disabled via the :menuselection:`View` menu."
+msgid "Apart from the main display, BitLoupe offers a number of extra panels, referred to as *widgets* here. They can be enabled and disabled via the :menuselection:`View` menu."
 msgstr ""
 
 #: ../../userguide/interface.rst:14
@@ -411,11 +411,11 @@ msgid "Keypad"
 msgstr ""
 
 #: ../../userguide/interface.rst:39
-msgid "The on-screen keypad allows inputting numbers without using the keyboard. However, it is very limited and doesn't provide access to many of SpeedCrunch's more advanced features. For that reason, using SpeedCrunch's keyboard interface is recommended in place of using the keypad."
+msgid "The on-screen keypad allows inputting numbers without using the keyboard. However, it is very limited and doesn't provide access to many of BitLoupe's more advanced features. For that reason, using BitLoupe's keyboard interface is recommended in place of using the keypad."
 msgstr ""
 
 #: ../../userguide/interface.rst:43
-msgid "The keypad was removed in SpeedCrunch 0.11; however, it was added back in 0.12."
+msgid "The keypad was removed in BitLoupe 0.11; however, it was added back in 0.12."
 msgstr ""
 
 #: ../../userguide/interface.rst:47
@@ -471,11 +471,11 @@ msgid "Import/Export"
 msgstr ""
 
 #: ../../userguide/interface.rst:79
-msgid "SpeedCrunch can save/export your session in a number of ways. The :menuselection:`Session --> Save` and :menuselection:`Session --> Load` menu entries allow you to easily save and restore your entire SpeedCrunch session. The data is stored in a SpeedCrunch-specific file format. [#f1]_ While the session files are human-readable, they are designed for use by SpeedCrunch. If you want to export your calculations to work on them in another program or hand them to a colleague, the other export options are preferable."
+msgid "BitLoupe can save/export your session in a number of ways. The :menuselection:`Session --> Save` and :menuselection:`Session --> Load` menu entries allow you to easily save and restore your entire BitLoupe session. The data is stored in a BitLoupe-specific file format. [#f1]_ While the session files are human-readable, they are designed for use by BitLoupe. If you want to export your calculations to work on them in another program or hand them to a colleague, the other export options are preferable."
 msgstr ""
 
 #: ../../userguide/interface.rst:84
-msgid "You can save the session as HTML (:menuselection:`Session --> Export --> HTML`). The resulting file will consist of the contents of the result display and can be viewed in any web browser. This feature can also be used to print a SpeedCrunch session by printing the exported HTML document. Since the syntax highlighting and color scheme are maintained in the HTML output, it is recommended to select a color scheme with a white background (e.g. *Standard*) prior to exporting if you intend to print the document."
+msgid "You can save the session as HTML (:menuselection:`Session --> Export --> HTML`). The resulting file will consist of the contents of the result display and can be viewed in any web browser. This feature can also be used to print a BitLoupe session by printing the exported HTML document. Since the syntax highlighting and color scheme are maintained in the HTML output, it is recommended to select a color scheme with a white background (e.g. *Standard*) prior to exporting if you intend to print the document."
 msgstr ""
 
 #: ../../userguide/interface.rst:89
@@ -483,7 +483,7 @@ msgid "The final, most basic option is to export your session as a plain text fi
 msgstr ""
 
 #: ../../userguide/interface.rst:92
-msgid "SpeedCrunch also offers capabilities to *import* a session from a text file (:menuselection:`Session --> Import`). Select any plain text file and SpeedCrunch will try to evaluate each line of the file as if the user entered it directly."
+msgid "BitLoupe also offers capabilities to *import* a session from a text file (:menuselection:`Session --> Import`). Select any plain text file and BitLoupe will try to evaluate each line of the file as if the user entered it directly."
 msgstr ""
 
 #: ../../userguide/interface.rst:97
@@ -491,7 +491,7 @@ msgid "Settings"
 msgstr ""
 
 #: ../../userguide/interface.rst:99
-msgid "SpeedCrunch's behavior can be customized to a large degree using the configuration options in the :menuselection:`Settings` menu. This section explains the settings that are available."
+msgid "BitLoupe's behavior can be customized to a large degree using the configuration options in the :menuselection:`Settings` menu. This section explains the settings that are available."
 msgstr ""
 
 #: ../../userguide/interface.rst:105
@@ -631,7 +631,7 @@ msgid "Behavior"
 msgstr ""
 
 #: ../../userguide/interface.rst:176
-msgid "This section contains several settings that allow you to further configure SpeedCrunch's behavior."
+msgid "This section contains several settings that allow you to further configure BitLoupe's behavior."
 msgstr ""
 
 #: ../../userguide/interface.rst:179
@@ -639,7 +639,7 @@ msgid ":menuselection:`Save History on Exit`"
 msgstr ""
 
 #: ../../userguide/interface.rst:179
-msgid "Controls if the calculation history is automatically saved when SpeedCrunch exits and restored when it is launched again."
+msgid "Controls if the calculation history is automatically saved when BitLoupe exits and restored when it is launched again."
 msgstr ""
 
 #: ../../userguide/interface.rst:181
@@ -655,7 +655,7 @@ msgid ":menuselection:`Partial Results`"
 msgstr ""
 
 #: ../../userguide/interface.rst:184
-msgid "If set, SpeedCrunch will display partial results as you type your expression as well as results when selecting a partial expression in the editor."
+msgid "If set, BitLoupe will display partial results as you type your expression as well as results when selecting a partial expression in the editor."
 msgstr ""
 
 #: ../../userguide/interface.rst:189
@@ -711,7 +711,7 @@ msgid ":menuselection:`Always on Top`"
 msgstr ""
 
 #: ../../userguide/interface.rst:204
-msgid "Keep the SpeedCrunch window on top of other windows."
+msgid "Keep the BitLoupe window on top of other windows."
 msgstr ""
 
 #: ../../userguide/interface.rst:207
@@ -779,7 +779,7 @@ msgid ":kbd:`Control+Q`"
 msgstr ""
 
 #: ../../userguide/interface.rst:231
-msgid "Quit SpeedCrunch."
+msgid "Quit BitLoupe."
 msgstr ""
 
 #: ../../userguide/interface.rst:232
@@ -1063,7 +1063,7 @@ msgid "Change the window opacity."
 msgstr ""
 
 #: ../../userguide/interface.rst:329
-msgid "Starting with SpeedCrunch 0.12, the session format is based on `JSON <json_>`_. Previous versions used a simple custom text format."
+msgid "Starting with BitLoupe 0.12, the session format is based on `JSON <json_>`_. Previous versions used a simple custom text format."
 msgstr ""
 
 #: ../../userguide/syntax.rst:2
@@ -1071,7 +1071,7 @@ msgid "Syntax"
 msgstr ""
 
 #: ../../userguide/syntax.rst:4
-msgid "This part of the documentation explains the syntax of valid SpeedCrunch input. As you will see, SpeedCrunch honors most conventions for mathematical expressions. You will find using SpeedCrunch to be very natural and intuitive, especially so if you are already familiar with a programming language."
+msgid "This part of the documentation explains the syntax of valid BitLoupe input. As you will see, BitLoupe honors most conventions for mathematical expressions. You will find using BitLoupe to be very natural and intuitive, especially so if you are already familiar with a programming language."
 msgstr ""
 
 #: ../../userguide/syntax.rst:8
@@ -1099,11 +1099,11 @@ msgid "When dealing with very small or very large numbers (think the size of an 
 msgstr ""
 
 #: ../../userguide/syntax.rst:28
-msgid "Naturally, in SpeedCrunch this could be written as ``1.234*10^-9``, but there's also a shorthand notation: ``1.234e-9``. Here, the ``e`` represents ``*10^``, but it is considered a part of the number literal and treated with higher precedence. For example, ``1e2^3`` is equivalent to ``(1e2)^3 = 100^3``. The scale of a number (sometimes called its exponent) always begins with the scale character ``E`` or ``e`` followed by a signed integer. So ``e+10``, ``e-4``, ``E-0`` are all valid scale expressions. If the sign is '+', you may simply omit it: ``e0``, ``E10``. The significand (i.e. the part preceding the exponent) is required; exactly one exponent must be specified."
+msgid "Naturally, in BitLoupe this could be written as ``1.234*10^-9``, but there's also a shorthand notation: ``1.234e-9``. Here, the ``e`` represents ``*10^``, but it is considered a part of the number literal and treated with higher precedence. For example, ``1e2^3`` is equivalent to ``(1e2)^3 = 100^3``. The scale of a number (sometimes called its exponent) always begins with the scale character ``E`` or ``e`` followed by a signed integer. So ``e+10``, ``e-4``, ``E-0`` are all valid scale expressions. If the sign is '+', you may simply omit it: ``e0``, ``E10``. The significand (i.e. the part preceding the exponent) is required; exactly one exponent must be specified."
 msgstr ""
 
 #: ../../userguide/syntax.rst:30
-msgid "Compared to most calculators, SpeedCrunch can accept very large numbers without overflowing (e.g. both ``1e+536870911`` and ``1e-536870911`` are still valid). However, only about 78 significant digits are stored at any point. Any digits beyond that are lost."
+msgid "Compared to most calculators, BitLoupe can accept very large numbers without overflowing (e.g. both ``1e+536870911`` and ``1e-536870911`` are still valid). However, only about 78 significant digits are stored at any point. Any digits beyond that are lost."
 msgstr ""
 
 #: ../../userguide/syntax.rst:33
@@ -1111,7 +1111,7 @@ msgid "Non-Decimal Bases"
 msgstr ""
 
 #: ../../userguide/syntax.rst:35
-msgid "In addition to decimal (base-10) numbers, SpeedCrunch provides support for binary (base-2), octal (base-8) and hexadecimal (base-16) numbers. You can enter a number in any of these bases by marking it with the corresponding prefix:"
+msgid "In addition to decimal (base-10) numbers, BitLoupe provides support for binary (base-2), octal (base-8) and hexadecimal (base-16) numbers. You can enter a number in any of these bases by marking it with the corresponding prefix:"
 msgstr ""
 
 #: ../../userguide/syntax.rst:38
@@ -1135,7 +1135,7 @@ msgid "You may even enter fractional values in any of these bases. Note that sci
 msgstr ""
 
 #: ../../userguide/syntax.rst:52
-msgid "To have SpeedCrunch output its results in a base other than decimal, you may use one of the functions :func:`bin`, :func:`oct`, :func:`dec`, or :func:`hex`::"
+msgid "To have BitLoupe output its results in a base other than decimal, you may use one of the functions :func:`bin`, :func:`oct`, :func:`dec`, or :func:`hex`::"
 msgstr ""
 
 #: ../../userguide/syntax.rst:57
@@ -1147,7 +1147,7 @@ msgid "To change the base that is used for displaying results, select one of the
 msgstr ""
 
 #: ../../userguide/syntax.rst:65
-msgid "SpeedCrunch stores integers with a precision of up to 256 bits. Since this would be unwieldy, the binary representation of a negative number in SpeedCrunch is *not* its two's complement. Instead, like with other bases, the value and the sign are represented separately::"
+msgid "BitLoupe stores integers with a precision of up to 256 bits. Since this would be unwieldy, the binary representation of a negative number in BitLoupe is *not* its two's complement. Instead, like with other bases, the value and the sign are represented separately::"
 msgstr ""
 
 #: ../../userguide/syntax.rst:72
@@ -1163,7 +1163,7 @@ msgid "Sexagesimal Values"
 msgstr ""
 
 #: ../../userguide/syntax.rst:86
-msgid "Sexagesimal values in SpeedCrunch are angle degrees or time values represented with minutes and seconds."
+msgid "Sexagesimal values in BitLoupe are angle degrees or time values represented with minutes and seconds."
 msgstr ""
 
 #: ../../userguide/syntax.rst:88
@@ -1460,7 +1460,7 @@ msgid "When writing an expression like ``10+5*4``, which operation will be execu
 msgstr ""
 
 #: ../../userguide/syntax.rst:148
-msgid "SpeedCrunch supports the following operators, listed in order of decreasing precedence:"
+msgid "BitLoupe supports the following operators, listed in order of decreasing precedence:"
 msgstr ""
 
 #: ../../userguide/syntax.rst:156
@@ -1567,7 +1567,7 @@ msgid "In many situations, *implicit multiplication* allows writing multiplicati
 msgstr ""
 
 #: ../../userguide/syntax.rst:184
-msgid "Implicit multiplication was added SpeedCrunch 0.12."
+msgid "Implicit multiplication was added BitLoupe 0.12."
 msgstr ""
 
 #: ../../userguide/syntax.rst:178
@@ -1659,7 +1659,7 @@ msgid "Deprecated Operators"
 msgstr ""
 
 #: ../../userguide/syntax.rst:220
-msgid "The following operators used to be supported, but were either removed from recent SpeedCrunch versions or are considered deprecated. Generally, these features were removed because of significant problems so you may want to avoid them even if they're still supported in your version of SpeedCrunch."
+msgid "The following operators used to be supported, but were either removed from recent BitLoupe versions or are considered deprecated. Generally, these features were removed because of significant problems so you may want to avoid them even if they're still supported in your version of BitLoupe."
 msgstr ""
 
 #: ../../userguide/syntax.rst:229
@@ -1675,7 +1675,7 @@ msgid "Equivalent to multiplication with 0.01."
 msgstr ""
 
 #: ../../userguide/syntax.rst:233
-msgid "This operator was **removed** in SpeedCrunch 0.12 as it was confusing and not very useful. The reasons for its removal are discussed in more detail in `issue #239 <issue239_>`_."
+msgid "This operator was **removed** in BitLoupe 0.12 as it was confusing and not very useful. The reasons for its removal are discussed in more detail in `issue #239 <issue239_>`_."
 msgstr ""
 
 #: ../../userguide/syntax.rst:229

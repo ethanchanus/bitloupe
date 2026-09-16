@@ -8,7 +8,7 @@ they differ from this convention.
 Widgets
 -------
 
-Apart from the main display, SpeedCrunch offers a number of extra panels, referred to as *widgets* here.
+Apart from the main display, BitLoupe offers a number of extra panels, referred to as *widgets* here.
 Most of them are dockable panels that can be moved around the main window and enabled or disabled via the
 :menuselection:`View` menu.
 
@@ -56,7 +56,7 @@ Most of them are dockable panels that can be moved around the main window and en
 * Keypad
     The on-screen keypad provides clickable input for common operations and symbols. It supports multiple presets
     and a custom layout, so you can adapt it to your workflow. You can also adjust the keypad zoom level for better
-    readability or touch area on touchscreens. For fast and full-featured input, SpeedCrunch's keyboard interface is still recommended.
+    readability or touch area on touchscreens. For fast and full-featured input, BitLoupe's keyboard interface is still recommended.
 
     Available entries in :menuselection:`View --> Keypad` are:
 
@@ -95,7 +95,7 @@ Most of them are dockable panels that can be moved around the main window and en
     .. versionadded:: 1.0
 
     .. versionchanged:: 0.11
-       The keypad was removed in SpeedCrunch 0.11; however, it was added back in 0.12.
+       The keypad was removed in BitLoupe 0.11; however, it was added back in 0.12.
 
 * History
     The history widget lists all previous inputs. Double-click a line to recall it. Note that the main result display also provides this functionality.
@@ -103,28 +103,28 @@ Most of them are dockable panels that can be moved around the main window and en
 * Main Menu
     Toggle the main menu bar visibility via :menuselection:`View --> Main Menu`.
     This option is available on Windows and Linux.
-    On macOS, this option is not available because the application menu is managed by the system menu bar (outside the window), so SpeedCrunch cannot hide it like on Windows and Linux.
+    On macOS, this option is not available because the application menu is managed by the system menu bar (outside the window), so BitLoupe cannot hide it like on Windows and Linux.
     On Windows and Linux, when the top main menu is hidden, a navigable Main Menu
     (mirroring the top menu structure) is available from the right-click context
     menu on the result-display.
 
     .. versionadded:: 1.0
 
-.. _tracker: https://bitbucket.org/heldercorreia/speedcrunch/issues
+.. _tracker: https://bitbucket.org/heldercorreia/bitloupe/issues
 
 
 Session Tabs and Panes
 ----------------------
 
-When a pane contains more than one session, SpeedCrunch shows a tab bar above
+When a pane contains more than one session, BitLoupe shows a tab bar above
 the result display. Click a tab to switch sessions, drag tabs horizontally to
 reorder them within the pane, or drag a tab away from the tab bar to move it to
 another pane. Dropping a dragged tab outside the current window creates a new
-window for that session; dropping it on a pane in another SpeedCrunch window
+window for that session; dropping it on a pane in another BitLoupe window
 moves it there.
 Use :menuselection:`Session --> New Window` to open a blank
 session in a new window that copies the current window and dock layout.
-When SpeedCrunch restores multiple windows after a restart, each window keeps
+When BitLoupe restores multiple windows after a restart, each window keeps
 its own dock layout, dock visibility, keypad visibility, layout and zoom,
 and—when window position saving is enabled—its own size and position.
 
@@ -161,19 +161,19 @@ The expression editor provides some advanced features:
 Import/Export
 -------------
 
-SpeedCrunch automatically stores your sessions and lets you restore them with :menuselection:`Session --> Open`.
-Use :menuselection:`Session --> Open Sessions Folder` to open the folder where SpeedCrunch stores these session files
+BitLoupe automatically stores your sessions and lets you restore them with :menuselection:`Session --> Open`.
+Use :menuselection:`Session --> Open Sessions Folder` to open the folder where BitLoupe stores these session files
 when you want to back them up or clean them up manually.
 You can also export the current session as JSON (:menuselection:`Session --> Export --> JSON`) and later import it
-with :menuselection:`Session --> Import`. The data is stored in a SpeedCrunch-specific file format. [#f1]_ While the
-session files are human-readable, they are designed for use by SpeedCrunch. If you want to export your calculations
+with :menuselection:`Session --> Import`. The data is stored in a BitLoupe-specific file format. [#f1]_ While the
+session files are human-readable, they are designed for use by BitLoupe. If you want to export your calculations
 to work on them in another program or hand them to a colleague, the other export options are preferable.
 
-Import validates the selected JSON file as a SpeedCrunch session and opens it as a new tab. If the file is not valid
-SpeedCrunch session JSON, SpeedCrunch shows an error and leaves the current session unchanged.
+Import validates the selected JSON file as a BitLoupe session and opens it as a new tab. If the file is not valid
+BitLoupe session JSON, BitLoupe shows an error and leaves the current session unchanged.
 
 You can export the session as HTML (:menuselection:`Session --> Export --> HTML`). The resulting file will consist of the contents of the result
-display and can be viewed in any web browser. This feature can also be used to print a SpeedCrunch session by printing the exported
+display and can be viewed in any web browser. This feature can also be used to print a BitLoupe session by printing the exported
 HTML document. Since the syntax highlighting and color scheme are maintained in the HTML output, it is recommended to select a color scheme
 with a white background (e.g. *Standard*) prior to exporting if you intend to print the document.
 
@@ -195,7 +195,7 @@ This dialog provides:
 * :guilabel:`Apply` to apply definitions immediately.
 * :guilabel:`Validate` to validate and preview results without applying.
 
-When applying or testing, SpeedCrunch reports:
+When applying or testing, BitLoupe reports:
 
 * Imported variable count
 * Imported function count
@@ -208,7 +208,7 @@ Invalid definitions are ignored. Variable definitions that evaluate to ``NaN`` a
 Settings
 --------
 
-SpeedCrunch's behavior can be customized to a large degree using the configuration options in the
+BitLoupe's behavior can be customized to a large degree using the configuration options in the
 :menuselection:`Settings` menu. This section explains the settings that are available.
 
 Result Display Interactions
@@ -232,7 +232,7 @@ The result display supports mouse-driven interactions for navigation and editing
 
 * History rewriting from highlighted blocks
     From the hovered/highlighted calculation block, you can re-edit an earlier expression and apply it
-    as a history rewrite. SpeedCrunch then recalculates all expressions below that edited entry.
+    as a history rewrite. BitLoupe then recalculates all expressions below that edited entry.
 
     .. versionadded:: 1.0
 
@@ -240,7 +240,7 @@ The result display supports mouse-driven interactions for navigation and editing
     The calculation settings action opens a tabular layout with one mandatory
     ``Main Line`` row and four optional extra result-line rows. The table
     shows line enablement, notation, and decimal places together so the stored
-    calculation context can be adjusted before SpeedCrunch
+    calculation context can be adjusted before BitLoupe
     recalculates the affected history.
 
 .. _result_format:
@@ -266,7 +266,7 @@ On first launch, the default is :menuselection:`Automatic decimal`.
     Display results in :ref:`normalized scientific notation <scientific_notation>`.
 * :menuselection:`Rational`
     Try to display real results as fractions (for example, ``1/3``) using continued-fraction approximation with bounded denominator. If no close match is found, results are displayed in decimal form.
-    For common trigonometric and inverse-trigonometric results, SpeedCrunch prefers
+    For common trigonometric and inverse-trigonometric results, BitLoupe prefers
     symbolic exact forms such as ``pi/2``, ``7⋅pi/6``, ``1/2``, ``sqrt(2)/2``,
     and ``sqrt(3)/3``.
     Example::
@@ -373,9 +373,9 @@ choices.
 The apostrophe (``'``), commonly used as a thousands separator in some
 locales and contexts (for example Switzerland, Liechtenstein, and some
 technical writing in Austria/Germany), is intentionally not offered because
-SpeedCrunch reserves it for :ref:`sexagesimal notation <sexagesimal_values>`.
+BitLoupe reserves it for :ref:`sexagesimal notation <sexagesimal_values>`.
 
-For input, SpeedCrunch remains permissive across styles to support
+For input, BitLoupe remains permissive across styles to support
 copy/paste from other applications. In clear mixed-separator cases, it
 accepts the number and normalizes it by ignoring non-digit grouping
 characters as needed.
@@ -390,9 +390,9 @@ Calculation history is saved automatically when a session changes and restored
 on the next launch.
 
 The history size limit sets the maximum number of stored history entries for
-that session. By default, SpeedCrunch keeps up to 1000 entries per session and
+that session. By default, BitLoupe keeps up to 1000 entries per session and
 automatically removes the oldest ones when this limit is exceeded. When a
-calculation fills the last available history slot, SpeedCrunch warns that future
+calculation fills the last available history slot, BitLoupe warns that future
 calculations will remove the oldest calculation from that session. Set the value
 to ``0`` to disable the limit for the active session.
 
@@ -407,7 +407,7 @@ This section contains settings that control the main window behavior.
 * :menuselection:`Save Window Position on Exit`
     Controls if the window position is saved and restored.
 * :menuselection:`Always on Top`
-    Keep the SpeedCrunch window on top of other windows. This option is hidden on
+    Keep the BitLoupe window on top of other windows. This option is hidden on
     Wayland (non-X11 Linux desktop sessions), because many Wayland compositors do
     not honor it reliably. It remains available on Windows, macOS, and Linux X11
     sessions.
@@ -419,7 +419,7 @@ Results
 This section contains settings that control result output and post-evaluation behavior.
 
 * :menuselection:`Show Live Result Preview`
-    If set, SpeedCrunch will display partial results as you type your expression as well
+    If set, BitLoupe will display partial results as you type your expression as well
     as results when selecting a partial expression in the editor.
 
 * :menuselection:`Number Format...`
@@ -486,7 +486,7 @@ This section contains settings that control result output and post-evaluation be
 * :menuselection:`Automatically Copy New Results to Clipboard`
     Automatically copy each newly evaluated result to the clipboard.
 * :menuselection:`Simplify Displayed Expressions`
-    When enabled (default), SpeedCrunch adds an extra symbolic line before
+    When enabled (default), BitLoupe adds an extra symbolic line before
     numeric results, simplifying the interpreted expression for readability
     (for example, combining repeated factors into powers and folding simple
     constant terms). This interpreted line also makes implicit-multiplication
@@ -525,7 +525,7 @@ Editing
 .. _automatic_result_reuse:
 
 * :menuselection:`Auto-Insert "ans" When Starting with an Operator`
-    If a new expression starts with ``+``, ``-``, ``*``, or ``/``, SpeedCrunch inserts ``ans`` first.
+    If a new expression starts with ``+``, ``-``, ``*``, or ``/``, BitLoupe inserts ``ans`` first.
 * :menuselection:`Show Empty History Hint`
     Show or hide the ``Type an expression here`` hint when there are no calculations in history.
 * :menuselection:`Keep Entered Expression After Evaluate`
@@ -563,7 +563,7 @@ User Interface Settings
 
     The dialog also includes:
 
-    * :guilabel:`Import...` to copy a theme JSON file into SpeedCrunch's
+    * :guilabel:`Import...` to copy a theme JSON file into BitLoupe's
       user theme directory and refresh the theme lists;
     * :guilabel:`Export...` to save the current theme as JSON in the same user
       theme directory.
@@ -571,13 +571,13 @@ User Interface Settings
     Import and export refuse theme names that collide with built-in themes.
     Import asks for confirmation before overwriting an existing custom theme.
 
-    SpeedCrunch also supports loading additional theme files from the following
+    BitLoupe also supports loading additional theme files from the following
     directory:
 
-    * Windows: :file:`C:/Users/<USERNAME>/AppData/Roaming/SpeedCrunch/color-schemes/`
-    * Linux/Unix: :file:`~/.local/share/SpeedCrunch/color-schemes/`
-    * Linux (Flatpak): :file:`~/.var/app/org.speedcrunch.SpeedCrunch/data/SpeedCrunch/color-schemes/`
-    * OS X: :file:`~/Library/Application Support/SpeedCrunch/color-schemes/`
+    * Windows: :file:`C:/Users/<USERNAME>/AppData/Roaming/BitLoupe/color-schemes/`
+    * Linux/Unix: :file:`~/.local/share/BitLoupe/color-schemes/`
+    * Linux (Flatpak): :file:`~/.var/app/org.bitloupe.BitLoupe/data/BitLoupe/color-schemes/`
+    * OS X: :file:`~/Library/Application Support/BitLoupe/color-schemes/`
     * Portable version (any OS): :file:`color-schemes` subdirectory in the
       application directory.
 
@@ -613,7 +613,7 @@ Editing
 * :kbd:`Ctrl+O`
     Open session.
 * :kbd:`Ctrl+Q`
-    Quit SpeedCrunch.
+    Quit BitLoupe.
 * :kbd:`Ctrl+N`
     Create a new session in the current session pane.
 * :kbd:`Ctrl+T` (:kbd:`Cmd+T` on macOS)
@@ -727,7 +727,7 @@ Various
 
 .. rubric:: Footnotes
 
-.. [#f1] Starting with SpeedCrunch 0.12, the session format is based on `JSON <json_>`_. Previous
+.. [#f1] Starting with BitLoupe 0.12, the session format is based on `JSON <json_>`_. Previous
          versions used a simple custom text format.
 
 .. _json: http://json.org/

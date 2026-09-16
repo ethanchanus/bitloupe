@@ -6,8 +6,8 @@
     <message>
         <location filename="../../gui/aboutbox.cpp" line="19"/>
         <location filename="../../gui/aboutbox.cpp" line="141"/>
-        <source>About SpeedCrunch</source>
-        <translation>SpeedCrunch Hakkında</translation>
+        <source>About BitLoupe</source>
+        <translation>BitLoupe Hakkında</translation>
     </message>
     <message>
         <location filename="../../gui/aboutbox.cpp" line="32"/>
@@ -41,8 +41,8 @@
     </message>
     <message>
         <location filename="../../gui/aboutbox.cpp" line="110"/>
-        <source>Copyright (C) 2004-2026 The SpeedCrunch developers</source>
-        <translation>Telif hakkı (C) 2004-2026 SpeedCrunch geliştiricileri</translation>
+        <source>Copyright (C) 2004-2026 The BitLoupe developers</source>
+        <translation>Telif hakkı (C) 2004-2026 BitLoupe geliştiricileri</translation>
     </message>
     <message>
         <location filename="../../gui/aboutbox.cpp" line="114"/>
@@ -3331,14 +3331,14 @@
     <message>
         <location filename="../../core/evaluator.cpp" line="742"/>
         <location filename="../../core/evaluator.cpp" line="813"/>
-        <source>underflow - tiny result is out of SpeedCrunch&apos;s number range</source>
-        <translation>alt taşma - sonuç SpeedCrunch sayı aralığının altında kaldı</translation>
+        <source>underflow - tiny result is out of BitLoupe&apos;s number range</source>
+        <translation>alt taşma - sonuç BitLoupe sayı aralığının altında kaldı</translation>
     </message>
     <message>
         <location filename="../../core/evaluator.cpp" line="746"/>
         <location filename="../../core/evaluator.cpp" line="809"/>
-        <source>overflow - huge result is out of SpeedCrunch&apos;s number range</source>
-        <translation>taşma - sonuç SpeedCrunch sayı aralığının dışına çıktı</translation>
+        <source>overflow - huge result is out of BitLoupe&apos;s number range</source>
+        <translation>taşma - sonuç BitLoupe sayı aralığının dışına çıktı</translation>
     </message>
     <message>
         <location filename="../../core/evaluator.cpp" line="754"/>
@@ -4927,8 +4927,8 @@
     </message>
     <message>
         <location filename="../../gui/mainwindow.cpp" line="3640"/>
-        <source>About &amp;SpeedCrunch</source>
-        <translation>&amp;SpeedCrunch Hakkında</translation>
+        <source>About &amp;BitLoupe</source>
+        <translation>&amp;BitLoupe Hakkında</translation>
     </message>
     <message>
         <location filename="../../gui/mainwindow.cpp" line="3966"/>
@@ -5103,8 +5103,8 @@
     <message>
         <location filename="../../gui/mainwindow.cpp" line="3554"/>
         <location filename="../../gui/mainwindow.cpp" line="3555"/>
-        <source>If a new expression starts with +, -, *, or /, SpeedCrunch inserts &quot;ans&quot; first.</source>
-        <translation>Yeni bir ifade +, -, * veya / ile başlarsa SpeedCrunch önce &quot;ans&quot; ekler.</translation>
+        <source>If a new expression starts with +, -, *, or /, BitLoupe inserts &quot;ans&quot; first.</source>
+        <translation>Yeni bir ifade +, -, * veya / ile başlarsa BitLoupe önce &quot;ans&quot; ekler.</translation>
     </message>
     <message>
         <location filename="../../gui/mainwindow.cpp" line="3557"/>
@@ -5421,13 +5421,13 @@
     </message>
     <message>
         <location filename="../../gui/mainwindow.cpp" line="9389"/>
-        <source>The selected file is not a SpeedCrunch session JSON file.</source>
-        <translation>Seçilen dosya bir SpeedCrunch oturumu JSON dosyası değil.</translation>
+        <source>The selected file is not a BitLoupe session JSON file.</source>
+        <translation>Seçilen dosya bir BitLoupe oturumu JSON dosyası değil.</translation>
     </message>
     <message>
         <location filename="../../gui/mainwindow.cpp" line="9397"/>
-        <source>This file uses an obsolete SpeedCrunch session format and cannot be imported.</source>
-        <translation>Bu dosya eski bir SpeedCrunch oturum biçimi kullanıyor ve içe aktarılamaz.</translation>
+        <source>This file uses an obsolete BitLoupe session format and cannot be imported.</source>
+        <translation>Bu dosya eski bir BitLoupe oturum biçimi kullanıyor ve içe aktarılamaz.</translation>
     </message>
     <message>
         <location filename="../../gui/mainwindow.cpp" line="9405"/>
@@ -5441,13 +5441,13 @@
     </message>
     <message>
         <location filename="../../gui/mainwindow.cpp" line="9419"/>
-        <source>The selected JSON file is missing the SpeedCrunch session schema identifier ($id).</source>
-        <translation>Seçilen JSON dosyasında SpeedCrunch oturum şeması tanımlayıcısı ($id) eksik.</translation>
+        <source>The selected JSON file is missing the BitLoupe session schema identifier ($id).</source>
+        <translation>Seçilen JSON dosyasında BitLoupe oturum şeması tanımlayıcısı ($id) eksik.</translation>
     </message>
     <message>
         <location filename="../../gui/mainwindow.cpp" line="9425"/>
-        <source>The selected JSON file uses an unsupported SpeedCrunch session format: %1</source>
-        <translation>Seçilen JSON dosyası desteklenmeyen bir SpeedCrunch oturum biçimi kullanıyor: %1</translation>
+        <source>The selected JSON file uses an unsupported BitLoupe session format: %1</source>
+        <translation>Seçilen JSON dosyası desteklenmeyen bir BitLoupe oturum biçimi kullanıyor: %1</translation>
     </message>
     <message>
         <location filename="../../gui/mainwindow.cpp" line="9433"/>
@@ -5461,8 +5461,8 @@
     </message>
     <message>
         <location filename="../../gui/mainwindow.cpp" line="9447"/>
-        <source>The selected JSON file has invalid or incomplete SpeedCrunch session data.</source>
-        <translation>Seçilen JSON dosyasında geçersiz veya eksik SpeedCrunch oturum verileri var.</translation>
+        <source>The selected JSON file has invalid or incomplete BitLoupe session data.</source>
+        <translation>Seçilen JSON dosyasında geçersiz veya eksik BitLoupe oturum verileri var.</translation>
     </message>
     <message>
         <location filename="../../gui/mainwindow.cpp" line="9458"/>
@@ -5844,13 +5844,13 @@
     <name>ManualWindow</name>
     <message>
         <location filename="../../gui/manualwindow.cpp" line="49"/>
-        <source>SpeedCrunch Manual</source>
-        <translation>SpeedCrunch kılavuzu</translation>
+        <source>BitLoupe Manual</source>
+        <translation>BitLoupe kılavuzu</translation>
     </message>
     <message>
         <location filename="../../gui/manualwindow.cpp" line="51"/>
-        <source>%1 - SpeedCrunch Manual</source>
-        <translation>%1 - SpeedCrunch kılavuzu</translation>
+        <source>%1 - BitLoupe Manual</source>
+        <translation>%1 - BitLoupe kılavuzu</translation>
     </message>
 </context>
 <context>
@@ -5967,8 +5967,8 @@
     </message>
     <message>
         <location filename="../../gui/versioncheck.cpp" line="227"/>
-        <source>SpeedCrunch %1 is up to date.</source>
-        <translation>SpeedCrunch %1 güncel.</translation>
+        <source>BitLoupe %1 is up to date.</source>
+        <translation>BitLoupe %1 güncel.</translation>
     </message>
     <message>
         <location filename="../../gui/versioncheck.cpp" line="246"/>

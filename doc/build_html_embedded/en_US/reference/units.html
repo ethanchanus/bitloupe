@@ -19,7 +19,7 @@
   <tr>
     <td width="50%">
       <a class="nav-item nav-item-0"
-         href="../contents.html">SpeedCrunch 1.0 documentation</a> &#187; <a class="nav-item nav-item-1"
+         href="../contents.html">BitLoupe 1.0 documentation</a> &#187; <a class="nav-item nav-item-1"
              href="index.html">Reference</a>
           
     </td>
@@ -54,7 +54,7 @@
             
   <section id="units-and-canonicalization">
 <h1>Units and Canonicalization</h1>
-<p>SpeedCrunch supports unit-aware arithmetic and conversions. Results are
+<p>BitLoupe supports unit-aware arithmetic and conversions. Results are
 dimensionally consistent and then formatted with readability-oriented
 canonicalization rules.</p>
 <section id="display-policy">
@@ -72,12 +72,12 @@ that improves readability. For example:</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">2[J]</span> <span class="pre">+</span> <span class="pre">3[J]</span></code> displays as <code class="docutils literal notranslate"><span class="pre">5[J]</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">2[W*h]</span></code> stays in <code class="docutils literal notranslate"><span class="pre">W⋅h</span></code> context instead of being expanded unnecessarily</p></li>
 </ul>
-<p>SpeedCrunch also avoids forcing a semantic choice when dimensions are
+<p>BitLoupe also avoids forcing a semantic choice when dimensions are
 equivalent but context differs. A common example is <code class="docutils literal notranslate"><span class="pre">N⋅m</span></code>: it can represent
 torque, while <code class="docutils literal notranslate"><span class="pre">J</span></code> typically represents energy. Without an explicit conversion
-request, SpeedCrunch preserves authored intent rather than silently replacing one
+request, BitLoupe preserves authored intent rather than silently replacing one
 with the other.</p>
-<p>When negative exponents appear together with positive ones, SpeedCrunch may
+<p>When negative exponents appear together with positive ones, BitLoupe may
 render denominator form for readability:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">C⁴⋅m⁴⋅J⁻³</span></code> may display as <code class="docutils literal notranslate"><span class="pre">C⁴⋅m⁴</span> <span class="pre">/</span> <span class="pre">J³</span></code></p></li>
@@ -85,7 +85,7 @@ render denominator form for readability:</p>
 </section>
 <section id="unit-exponent-style">
 <h2>Unit Exponent Style</h2>
-<p>In <span class="menuselection">Settings ‣ Results</span>, SpeedCrunch provides a
+<p>In <span class="menuselection">Settings ‣ Results</span>, BitLoupe provides a
 <code class="docutils literal notranslate"><span class="pre">Unit</span> <span class="pre">Exponent</span> <span class="pre">Style</span></code> submenu with two display styles:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">Superscript</span> <span class="pre">Exponents</span></code> (default): keeps products with signed exponents,
@@ -97,7 +97,7 @@ at least one positive exponent, such as <code class="docutils literal notranslat
 </section>
 <section id="composed-units">
 <h2>Composed Units</h2>
-<p>For products and quotients, SpeedCrunch keeps authored composite structure where
+<p>For products and quotients, BitLoupe keeps authored composite structure where
 possible, unless a clear canonical derived target is recognized.</p>
 <p>Examples that canonicalize:</p>
 <ul class="simple">
@@ -129,9 +129,9 @@ usage; preserving <code class="docutils literal notranslate"><span class="pre">h
 <li><p><code class="docutils literal notranslate"><span class="pre">10[m]</span> <span class="pre">in</span> <span class="pre">[cm]</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">10[m]</span> <span class="pre">--</span> <span class="pre">[cm]</span></code></p></li>
 </ul>
-<p>SpeedCrunch supports three equivalent conversion operators:
+<p>BitLoupe supports three equivalent conversion operators:
 <code class="docutils literal notranslate"><span class="pre">-&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">in</span></code> (keyword alias), and <code class="docutils literal notranslate"><span class="pre">--</span></code> (shortcut alias).</p>
-<p>If no explicit conversion target is requested, SpeedCrunch applies the
+<p>If no explicit conversion target is requested, BitLoupe applies the
 canonicalization/display policy above.</p>
 </section>
 <section id="built-in-units-table">
@@ -1185,7 +1185,7 @@ canonicalization/display policy above.</p>
   <tr>
     <td width="50%">
       <a class="nav-item nav-item-0"
-         href="../contents.html">SpeedCrunch 1.0 documentation</a> &#187; <a class="nav-item nav-item-1"
+         href="../contents.html">BitLoupe 1.0 documentation</a> &#187; <a class="nav-item nav-item-1"
              href="index.html">Reference</a>
           
     </td>
@@ -1215,7 +1215,7 @@ canonicalization/display policy above.</p>
       <td colspan="2" align="center">
         
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2026, The SpeedCrunch Developers.
+        &#169; Copyright 2026, The BitLoupe Developers.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.1.
     </div>
       </td>

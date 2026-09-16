@@ -3,7 +3,7 @@
 Quark is a Sphinx theme specifically designed to look and work well within the
 limitations of the Qt toolkit's [QTextBrowser](https://doc.qt.io/qt-5/qtextbrowser.html).
 
-This theme was originally designed for the bundled manual of [SpeedCrunch](http://speedcrunch.org).
+This theme was originally designed for the bundled manual of [BitLoupe](http://bitloupe.org).
 
 
 ## Installation

@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright 2016-2020 The SpeedCrunch Developers -->
+<!-- Copyright 2016-2020 The BitLoupe Developers -->
 <component type="desktop-application">
-  <id>org.speedcrunch.SpeedCrunch</id>
+  <id>org.bitloupe.BitLoupe</id>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-2.0+</project_license>
-  <update_contact>speedcrunch@googlegroups.com</update_contact>
+  <update_contact>bitloupe@googlegroups.com</update_contact>
   <content_rating type="oars-1.0" />
 
   <!-- TRANSLATORS: Name of the application, usually shouldn't be translated. -->
-  <_name>SpeedCrunch</_name>
+  <_name>BitLoupe</_name>
   <!-- TRANSLATORS: Short one-line description. -->
   <_summary>A high-precision scientific calculator</_summary>
   <description>
     <_p>
-      SpeedCrunch is a fast, high-precision scientific calculator. It features a syntax-highlighted
+      BitLoupe is a fast, high-precision scientific calculator. It features a syntax-highlighted
       scrollable display and is designed to be fully used via keyboard.
     </_p>
 
@@ -25,14 +25,14 @@
     </_p>
 
     <_p>
-      SpeedCrunch is available for several platforms in a number of languages.
+      BitLoupe is available for several platforms in a number of languages.
     </_p>
   </description>
 
-  <launchable type="desktop-id">org.speedcrunch.SpeedCrunch.desktop</launchable>
+  <launchable type="desktop-id">org.bitloupe.BitLoupe.desktop</launchable>
   <provides>
-    <binary>speedcrunch</binary>
-    <id>speedcrunch.desktop</id>
+    <binary>bitloupe</binary>
+    <id>bitloupe.desktop</id>
   </provides>
 
   <kudos>
@@ -42,29 +42,29 @@
 
   <screenshots>
     <screenshot type="default">
-      <image>https://heldercorreia.bitbucket.io/speedcrunch/_static/appdata-screenshots/0.12/advanced-features.png</image>
+      <image>https://heldercorreia.bitbucket.io/bitloupe/_static/appdata-screenshots/0.12/advanced-features.png</image>
     </screenshot>
     <screenshot>
       <_caption>Main window with optional keypad</_caption>
-      <image>https://heldercorreia.bitbucket.io/speedcrunch/_static/appdata-screenshots/0.12/keypad.png</image>
+      <image>https://heldercorreia.bitbucket.io/bitloupe/_static/appdata-screenshots/0.12/keypad.png</image>
     </screenshot>
     <screenshot>
       <_caption>The constants list and formula book</_caption>
-      <image>https://heldercorreia.bitbucket.io/speedcrunch/_static/appdata-screenshots/0.12/constants+book.png</image>
+      <image>https://heldercorreia.bitbucket.io/bitloupe/_static/appdata-screenshots/0.12/constants+book.png</image>
     </screenshot>
     <screenshot>
       <_caption>Customizable user interface</_caption>
-      <image>https://heldercorreia.bitbucket.io/speedcrunch/_static/appdata-screenshots/0.12/ui-customization.png</image>
+      <image>https://heldercorreia.bitbucket.io/bitloupe/_static/appdata-screenshots/0.12/ui-customization.png</image>
     </screenshot>
     <screenshot>
       <_caption>The built-in user manual</_caption>
-      <image>https://heldercorreia.bitbucket.io/speedcrunch/_static/appdata-screenshots/0.12/manual.png</image>
+      <image>https://heldercorreia.bitbucket.io/bitloupe/_static/appdata-screenshots/0.12/manual.png</image>
     </screenshot>
   </screenshots>
 
-  <url type="homepage">https://heldercorreia.bitbucket.io/speedcrunch</url>
-  <url type="bugtracker">https://bitbucket.org/heldercorreia/speedcrunch/issues</url>
-  <url type="help">https://heldercorreia.bitbucket.io/speedcrunch/introduction.html</url>
+  <url type="homepage">https://heldercorreia.bitbucket.io/bitloupe</url>
+  <url type="bugtracker">https://bitbucket.org/heldercorreia/bitloupe/issues</url>
+  <url type="help">https://heldercorreia.bitbucket.io/bitloupe/introduction.html</url>
 
   <releases>
     <release version="1.0" date="2026-03-08"/>

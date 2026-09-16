@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
-project(speedcrunch)
+project(bitloupe)
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
 
@@ -35,7 +35,7 @@ if(APPLE)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -stdlib=libc++")
 endif()
 
-set(speedcrunch_VERSION "1.0")
+set(bitloupe_VERSION "1.0")
 
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
@@ -45,7 +45,7 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 set(CMAKE_MACOSX_RPATH ON)
 
-ADD_DEFINITIONS("-DSPEEDCRUNCH_VERSION=\"${speedcrunch_VERSION}\"")
+ADD_DEFINITIONS("-DBITLOUPE_VERSION=\"${bitloupe_VERSION}\"")
 ADD_DEFINITIONS(-DQT_USE_QSTRINGBUILDER)
 
 include(SourceFiles.cmake)
@@ -70,29 +70,29 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "Clang|GNU")
 endif()
 
 if(APPLE)
-    set(APP_ICON_FILE speedcrunch.icns)
+    set(APP_ICON_FILE bitloupe.icns)
     set(APP_ICON "${CMAKE_CURRENT_SOURCE_DIR}/resources/${APP_ICON_FILE}")
-    set(APPLICATION_NAME SpeedCrunch)
+    set(APPLICATION_NAME BitLoupe)
     set(MACOSX_BUNDLE_INFO_PLIST "${CMAKE_CURRENT_SOURCE_DIR}/../pkg/Info.plist")
     set(MACOSX_BUNDLE_ICON_FILE ${APP_ICON_FILE})
-    set(MACOSX_BUNDLE_SHORT_VERSION_STRING ${speedcrunch_VERSION})
-    set(MACOSX_BUNDLE_VERSION ${speedcrunch_VERSION})
-    set(MACOSX_BUNDLE_LONG_VERSION_STRING Version ${speedcrunch_VERSION})
+    set(MACOSX_BUNDLE_SHORT_VERSION_STRING ${bitloupe_VERSION})
+    set(MACOSX_BUNDLE_VERSION ${bitloupe_VERSION})
+    set(MACOSX_BUNDLE_LONG_VERSION_STRING Version ${bitloupe_VERSION})
     set_source_files_properties(${APP_ICON} PROPERTIES MACOSX_PACKAGE_LOCATION "Resources")
 elseif(HAIKU)
-    set(APPLICATION_NAME SpeedCrunch)
+    set(APPLICATION_NAME BitLoupe)
 else()
-    set(APPLICATION_NAME speedcrunch)
+    set(APPLICATION_NAME bitloupe)
 endif()
 
 if(WIN32)
-    set(WIN32_RES_FILE ${CMAKE_CURRENT_BINARY_DIR}/speedcrunch.rc.obj)
+    set(WIN32_RES_FILE ${CMAKE_CURRENT_BINARY_DIR}/bitloupe.rc.obj)
     if(MINGW)
         add_custom_command(OUTPUT ${WIN32_RES_FILE}
-                           COMMAND windres.exe ${CMAKE_CURRENT_SOURCE_DIR}/resources/speedcrunch.rc ${WIN32_RES_FILE})
+                           COMMAND windres.exe ${CMAKE_CURRENT_SOURCE_DIR}/resources/bitloupe.rc ${WIN32_RES_FILE})
     else()
         add_custom_command(OUTPUT ${WIN32_RES_FILE}
-                           COMMAND rc.exe /fo ${WIN32_RES_FILE} ${CMAKE_CURRENT_SOURCE_DIR}/resources/speedcrunch.rc)
+                           COMMAND rc.exe /fo ${WIN32_RES_FILE} ${CMAKE_CURRENT_SOURCE_DIR}/resources/bitloupe.rc)
     endif()
 endif()
 
@@ -101,15 +101,15 @@ set(HTML_DOCS_DIR
     "${CMAKE_CURRENT_SOURCE_DIR}/../doc/build_html_embedded"
     CACHE PATH
     "Path to the HTML manual. Defaults to the bundled prebuilt copy.")
-set(speedcrunch_RESOURCES ${speedcrunch_RESOURCES} ${HTML_DOCS_DIR}/manual.qrc)
+set(bitloupe_RESOURCES ${bitloupe_RESOURCES} ${HTML_DOCS_DIR}/manual.qrc)
 
 if(WIN32)
-    add_executable(${APPLICATION_NAME} WIN32 ${speedcrunch_SOURCES} ${speedcrunch_RESOURCES} ${WIN32_RES_FILE})
+    add_executable(${APPLICATION_NAME} WIN32 ${bitloupe_SOURCES} ${bitloupe_RESOURCES} ${WIN32_RES_FILE})
 elseif(APPLE)
-    add_executable(${APPLICATION_NAME} MACOSX_BUNDLE ${speedcrunch_SOURCES} ${speedcrunch_RESOURCES} ${APP_ICON})
+    add_executable(${APPLICATION_NAME} MACOSX_BUNDLE ${bitloupe_SOURCES} ${bitloupe_RESOURCES} ${APP_ICON})
     set_target_properties(${APPLICATION_NAME} PROPERTIES MACOSX_BUNDLE_INFO_PLIST ${CMAKE_CURRENT_SOURCE_DIR}/../pkg/Info.plist)
 else()
-    add_executable(${APPLICATION_NAME} ${speedcrunch_SOURCES} ${speedcrunch_RESOURCES})
+    add_executable(${APPLICATION_NAME} ${bitloupe_SOURCES} ${bitloupe_RESOURCES})
 endif()
 
 add_custom_command(TARGET ${APPLICATION_NAME} POST_BUILD
@@ -145,14 +145,14 @@ set_property(TARGET ${APPLICATION_NAME} PROPERTY CXX_STANDARD 11)
 
 # Temporary SoC Regs crash-investigation logging (file-based qWarning/qDebug
 # sink) and crash-dump/call-stack capture. Off by default -- re-enable with
-# -DSPEEDCRUNCH_SOCREGS_DIAGNOSTICS=ON if the issue needs to be chased again.
-option(SPEEDCRUNCH_SOCREGS_DIAGNOSTICS "Enable SoC Regs debug log + crash dump/call stack capture" OFF)
-if(SPEEDCRUNCH_SOCREGS_DIAGNOSTICS)
-    target_compile_definitions(${APPLICATION_NAME} PRIVATE SPEEDCRUNCH_SOCREGS_DIAGNOSTICS)
+# -DBITLOUPE_SOCREGS_DIAGNOSTICS=ON if the issue needs to be chased again.
+option(BITLOUPE_SOCREGS_DIAGNOSTICS "Enable SoC Regs debug log + crash dump/call stack capture" OFF)
+if(BITLOUPE_SOCREGS_DIAGNOSTICS)
+    target_compile_definitions(${APPLICATION_NAME} PRIVATE BITLOUPE_SOCREGS_DIAGNOSTICS)
     if(MSVC)
         # A stack trace would otherwise show raw addresses only: /Zi keeps
         # matching debug info in the object files; /DEBUG tells the linker to
-        # still emit a full speedcrunch.pdb next to the .exe in Release too.
+        # still emit a full bitloupe.pdb next to the .exe in Release too.
         target_compile_options(${APPLICATION_NAME} PRIVATE $<$<CONFIG:Release>:/Zi>)
         target_link_options(${APPLICATION_NAME} PRIVATE
             $<$<CONFIG:Release>:/DEBUG> $<$<CONFIG:Release>:/OPT:REF> $<$<CONFIG:Release>:/OPT:ICF>)
@@ -232,25 +232,25 @@ elseif(APPLE)
     set(DOC_INSTALL_DIR ${APPLICATION_NAME}.app/Contents/Resources)
 elseif(HAIKU)
     set(BIN_INSTALL_DIR "apps")
-    set(DOC_INSTALL_DIR "documentation/SpeedCrunch")
+    set(DOC_INSTALL_DIR "documentation/BitLoupe")
 else()
     set(BIN_INSTALL_DIR ".")
     set(DOC_INSTALL_DIR ".")
 endif()
 
-option(PORTABLE_SPEEDCRUNCH "Enable to build in portable mode" OFF)
-if(PORTABLE_SPEEDCRUNCH)
-    add_definitions(-DSPEEDCRUNCH_PORTABLE)
-endif(PORTABLE_SPEEDCRUNCH)
+option(PORTABLE_BITLOUPE "Enable to build in portable mode" OFF)
+if(PORTABLE_BITLOUPE)
+    add_definitions(-DBITLOUPE_PORTABLE)
+endif(PORTABLE_BITLOUPE)
 
 install(TARGETS ${APPLICATION_NAME} DESTINATION ${BIN_INSTALL_DIR})
 install(DIRECTORY conf/ DESTINATION ${BIN_INSTALL_DIR}/conf)
 install(DIRECTORY data/ DESTINATION ${BIN_INSTALL_DIR}/data)
 
 if(UNIX AND NOT APPLE AND NOT HAIKU)
-    install(FILES ../pkg/org.speedcrunch.SpeedCrunch.desktop DESTINATION ${MENU_DIR})
-    install(FILES resources/speedcrunch.png DESTINATION ${ICON_DIR} RENAME org.speedcrunch.SpeedCrunch.png)
-    install(FILES ../pkg/org.speedcrunch.SpeedCrunch.metainfo.xml DESTINATION ${APP_DATA_DIR})
+    install(FILES ../pkg/org.bitloupe.BitLoupe.desktop DESTINATION ${MENU_DIR})
+    install(FILES resources/bitloupe.png DESTINATION ${ICON_DIR} RENAME org.bitloupe.BitLoupe.png)
+    install(FILES ../pkg/org.bitloupe.BitLoupe.metainfo.xml DESTINATION ${APP_DATA_DIR})
 elseif(WIN32)
     install(FILES ../pkg/COPYING.rtf DESTINATION ${DOC_INSTALL_DIR})
 endif()
@@ -277,7 +277,7 @@ set(CMAKE_INSTALL_SYSTEM_RUNTIME_DESTINATION ${BIN_INSTALL_DIR})
 include(InstallRequiredSystemLibraries)
 set(CMAKE_INSTALL_UCRT_LIBRARIES TRUE)
 
-include(SpeedCrunchCPack.cmake)
+include(BitLoupeCPack.cmake)
 
 ################################ UNINSTALL #####################################
 

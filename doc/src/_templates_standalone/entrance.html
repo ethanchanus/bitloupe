@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {%- block htmltitle %}
-<title>SpeedCrunch</title>
+<title>BitLoupe</title>
 {%- endblock %}
 
 {% macro entranceNavBar() %}
@@ -23,8 +23,8 @@
     <div class="jumbotron">
       <div class="container">
         <div class="{{ txt_classes(0) }}">
-          <h1>SpeedCrunch</h1>
-          <p>{% trans %}SpeedCrunch is a high-precision scientific calculator featuring a fast, keyboard-driven user interface. It is free and open-source software, licensed under the GPL.{% endtrans %}</p>
+          <h1>BitLoupe</h1>
+          <p>{% trans %}BitLoupe is a high-precision scientific calculator featuring a fast, keyboard-driven user interface. It is free and open-source software, licensed under the GPL.{% endtrans %}</p>
           <p>
             <a class="btn btn-success btn-lg" href="{{ pathto('download') }}" role="button"><i class="fa fa-download fa-lg" style="vertical-align:middle;"></i>&nbsp;{{ _('Download') }}</a>
             <a class="btn btn-info btn-lg" href="{{ pathto('introduction') }}" role="button"> <i class="fa fa-book fa-lg" style="vertical-align:middle;"></i>&nbsp;{{ _('Documentation') }}</a>
@@ -46,7 +46,7 @@
   <div class="row featurette">
     <div class="{{ txt_classes(idx) }}">
       <h2 class="featurette-heading">{% trans %}Efficient &amp; easy-to-use interface.{% endtrans %}</h2>
-      <p class="lead">{% trans %}SpeedCrunch displays results as you type. Select a partial expression to evaluate only that part.{% endtrans %}</p>
+      <p class="lead">{% trans %}BitLoupe displays results as you type. Select a partial expression to evaluate only that part.{% endtrans %}</p>
       <p class="lead">{% trans %}Previous inputs and results are shown in a scrollable history and can be easily recalled. Customizable syntax highlighting allows you to spot mistakes easily.{% endtrans %}</p>
       <p class="lead">{% trans %}If you prefer the old-school way, an optional on-screen keypad is available as well.{% endtrans %}</p>
     </div>
@@ -61,7 +61,7 @@
   <div class="row featurette">
     <div class="{{ txt_classes(idx) }}">
       <h2 class="featurette-heading">{{ _('Powerful.') }}</h2>
-      <p class="lead">{{ _('SpeedCrunch comes with over 80 built-in mathematical functions. You can also define your own functions.') }}</p>
+      <p class="lead">{{ _('BitLoupe comes with over 80 built-in mathematical functions. You can also define your own functions.') }}</p>
       <p class="lead">{{ _('Variables allow you to store your results. Perform calculations with up to 50 digits of precision, using complex numbers, numeral bases, unit conversions, and more.') }}</p>
       <p class="lead">{{ _('Auto-completion allows you to speed up your task.') }}</p>
     </div>
@@ -90,7 +90,7 @@
   <div class="row featurette">
     <div class="{{ txt_classes(idx) }}">
       <h2 class="featurette-heading">{{ _('Cross-platform.') }} <span class="text-muted">{{ _('And multi-language.') }}</span></h2>
-      <p class="lead">{% trans %}SpeedCrunch is available for Windows, MacOS, and Linux, and comes in <a href="https://www.transifex.com/heldercorreia/speedcrunch/languages/">a number of languages</a>.{% endtrans %}</p>
+      <p class="lead">{% trans %}BitLoupe is available for Windows, MacOS, and Linux, and comes in <a href="https://www.transifex.com/heldercorreia/bitloupe/languages/">a number of languages</a>.{% endtrans %}</p>
     </div>
     <div class="{{ img_classes(idx) }}">
       <div class="row" style="margin-top:20px">

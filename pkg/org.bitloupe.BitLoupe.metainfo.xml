@@ -1,63 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
-  <id>org.speedcrunch.SpeedCrunch</id>
+  <id>org.bitloupe.BitLoupe</id>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-2.0+</project_license>
-  <update_contact>speedcrunch@googlegroups.com</update_contact>
+  <update_contact>bitloupe@googlegroups.com</update_contact>
   <content_rating type="oars-1.1"/>
-  <developer id="org.speedcrunch">
-    <name>The SpeedCrunch Developers</name>
+  <developer id="org.bitloupe">
+    <name>The BitLoupe Developers</name>
   </developer>
   
-  <name>SpeedCrunch</name>
-  <name xml:lang="ar">SpeedCrunch</name>
-  <name xml:lang="bg">SpeedCrunch</name>
-  <name xml:lang="bn">SpeedCrunch</name>
-  <name xml:lang="ca">SpeedCrunch</name>
-  <name xml:lang="cs">SpeedCrunch</name>
-  <name xml:lang="da">SpeedCrunch</name>
-  <name xml:lang="de">SpeedCrunch</name>
-  <name xml:lang="el">SpeedCrunch</name>
-  <name xml:lang="en_GB">SpeedCrunch</name>
-  <name xml:lang="en_US">SpeedCrunch</name>
-  <name xml:lang="es">SpeedCrunch</name>
-  <name xml:lang="es_ES">SpeedCrunch</name>
-  <name xml:lang="et">SpeedCrunch</name>
-  <name xml:lang="eu">SpeedCrunch</name>
-  <name xml:lang="fa">SpeedCrunch</name>
-  <name xml:lang="fi">SpeedCrunch</name>
-  <name xml:lang="fr">SpeedCrunch</name>
-  <name xml:lang="gl">SpeedCrunch</name>
-  <name xml:lang="he">SpeedCrunch</name>
-  <name xml:lang="hi">SpeedCrunch</name>
-  <name xml:lang="hu">SpeedCrunch</name>
-  <name xml:lang="id">SpeedCrunch</name>
-  <name xml:lang="it">SpeedCrunch</name>
-  <name xml:lang="ja">SpeedCrunch</name>
-  <name xml:lang="ko">SpeedCrunch</name>
-  <name xml:lang="lt">SpeedCrunch</name>
-  <name xml:lang="lv">SpeedCrunch</name>
-  <name xml:lang="ms">SpeedCrunch</name>
-  <name xml:lang="nb">SpeedCrunch</name>
-  <name xml:lang="nl">SpeedCrunch</name>
-  <name xml:lang="pl">SpeedCrunch</name>
-  <name xml:lang="pt_BR">SpeedCrunch</name>
-  <name xml:lang="pt_PT">SpeedCrunch</name>
-  <name xml:lang="ro">SpeedCrunch</name>
-  <name xml:lang="ru">SpeedCrunch</name>
-  <name xml:lang="sk">SpeedCrunch</name>
-  <name xml:lang="sl">SpeedCrunch</name>
-  <name xml:lang="sv">SpeedCrunch</name>
-  <name xml:lang="sw">SpeedCrunch</name>
-  <name xml:lang="ta">SpeedCrunch</name>
-  <name xml:lang="te">SpeedCrunch</name>
-  <name xml:lang="th">SpeedCrunch</name>
-  <name xml:lang="tr">SpeedCrunch</name>
-  <name xml:lang="uk">SpeedCrunch</name>
-  <name xml:lang="uz_Latn">SpeedCrunch</name>
-  <name xml:lang="vi">SpeedCrunch</name>
-  <name xml:lang="zh_CN">SpeedCrunch</name>
-  <name xml:lang="zh_TW">SpeedCrunch</name>
+  <name>BitLoupe</name>
+  <name xml:lang="ar">BitLoupe</name>
+  <name xml:lang="bg">BitLoupe</name>
+  <name xml:lang="bn">BitLoupe</name>
+  <name xml:lang="ca">BitLoupe</name>
+  <name xml:lang="cs">BitLoupe</name>
+  <name xml:lang="da">BitLoupe</name>
+  <name xml:lang="de">BitLoupe</name>
+  <name xml:lang="el">BitLoupe</name>
+  <name xml:lang="en_GB">BitLoupe</name>
+  <name xml:lang="en_US">BitLoupe</name>
+  <name xml:lang="es">BitLoupe</name>
+  <name xml:lang="es_ES">BitLoupe</name>
+  <name xml:lang="et">BitLoupe</name>
+  <name xml:lang="eu">BitLoupe</name>
+  <name xml:lang="fa">BitLoupe</name>
+  <name xml:lang="fi">BitLoupe</name>
+  <name xml:lang="fr">BitLoupe</name>
+  <name xml:lang="gl">BitLoupe</name>
+  <name xml:lang="he">BitLoupe</name>
+  <name xml:lang="hi">BitLoupe</name>
+  <name xml:lang="hu">BitLoupe</name>
+  <name xml:lang="id">BitLoupe</name>
+  <name xml:lang="it">BitLoupe</name>
+  <name xml:lang="ja">BitLoupe</name>
+  <name xml:lang="ko">BitLoupe</name>
+  <name xml:lang="lt">BitLoupe</name>
+  <name xml:lang="lv">BitLoupe</name>
+  <name xml:lang="ms">BitLoupe</name>
+  <name xml:lang="nb">BitLoupe</name>
+  <name xml:lang="nl">BitLoupe</name>
+  <name xml:lang="pl">BitLoupe</name>
+  <name xml:lang="pt_BR">BitLoupe</name>
+  <name xml:lang="pt_PT">BitLoupe</name>
+  <name xml:lang="ro">BitLoupe</name>
+  <name xml:lang="ru">BitLoupe</name>
+  <name xml:lang="sk">BitLoupe</name>
+  <name xml:lang="sl">BitLoupe</name>
+  <name xml:lang="sv">BitLoupe</name>
+  <name xml:lang="sw">BitLoupe</name>
+  <name xml:lang="ta">BitLoupe</name>
+  <name xml:lang="te">BitLoupe</name>
+  <name xml:lang="th">BitLoupe</name>
+  <name xml:lang="tr">BitLoupe</name>
+  <name xml:lang="uk">BitLoupe</name>
+  <name xml:lang="uz_Latn">BitLoupe</name>
+  <name xml:lang="vi">BitLoupe</name>
+  <name xml:lang="zh_CN">BitLoupe</name>
+  <name xml:lang="zh_TW">BitLoupe</name>
   
   <summary>A high-precision scientific calculator</summary>
   <summary xml:lang="ar">آلة حاسبة علمية عالية الدقة</summary>
@@ -109,55 +109,55 @@
   <summary xml:lang="zh_CN">高精度科学计算器</summary>
   <summary xml:lang="zh_TW">高精度科學計算器</summary>
   <description>
-    <p>SpeedCrunch is a fast, high-precision scientific calculator. It features a syntax-highlighted scrollable display and is designed to be fully used via keyboard.</p>
-    <p xml:lang="ar">SpeedCrunch آلة حاسبة علمية سريعة وعالية الدقة. تتميز بعرض قابل للتمرير مع إبراز بناء الجملة، وهي مصممة ليُستخدم البرنامج بالكامل عبر لوحة المفاتيح.</p>
-    <p xml:lang="bg">SpeedCrunch е бърз научен калкулатор с висока точност. Той предлага превъртащ се дисплей с открояване на синтаксиса и е проектиран да се използва изцяло с клавиатура.</p>
-    <p xml:lang="bn">SpeedCrunch একটি দ্রুত, উচ্চ-নির্ভুল বৈজ্ঞানিক ক্যালকুলেটর। এতে সিনট্যাক্স-হাইলাইট করা স্ক্রলযোগ্য প্রদর্শন আছে এবং এটি সম্পূর্ণভাবে কীবোর্ড দিয়ে ব্যবহার করার জন্য নকশা করা হয়েছে।</p>
-    <p xml:lang="ca">SpeedCrunch és una calculadora científica ràpida i d'alta precisió. Inclou una pantalla desplaçable amb ressaltat de sintaxi i està dissenyada per ser utilitzada completament amb el teclat.</p>
-    <p xml:lang="cs">SpeedCrunch je rychlá, vysoce přesná vědecká kalkulačka. Nabízí rolovatelný displej se zvýrazněním syntaxe a je navržena pro plné ovládání z klávesnice.</p>
-    <p xml:lang="da">SpeedCrunch er en hurtig, videnskabelig lommeregner med høj præcision. Den har et rullebart display med syntaksfremhævning og er designet til at kunne bruges fuldt ud via tastaturet.</p>
-    <p xml:lang="de">SpeedCrunch ist ein schneller, hochpräziser, wissenschaftlicher Taschenrechner. Es bietet eine scrollbare Anzeige mit Syntaxhervorhebung und ist auf vollständige Tastaturbedienung ausgelegt.</p>
-    <p xml:lang="el">Το SpeedCrunch είναι μια γρήγορη επιστημονική αριθμομηχανή υψηλής ακρίβειας. Διαθέτει κυλιόμενη οθόνη με επισήμανση σύνταξης και έχει σχεδιαστεί ώστε να χρησιμοποιείται πλήρως από το πληκτρολόγιο.</p>
-    <p xml:lang="en_GB">SpeedCrunch is a fast, high-precision scientific calculator. It features a syntax-highlighted scrollable display and is designed to be fully used via keyboard.SpeedCrunch is a fast, high-precision scientific calculator. It features a syntax-highlighted scrollable display and is designed to be fully used via keyboard.</p>
-    <p xml:lang="en_US">SpeedCrunch is a fast, high-precision scientific calculator. It features a syntax-highlighted scrollable display and is designed to be fully used via keyboard.</p>
-    <p xml:lang="es">SpeedCrunch es una calculadora científica rápida y de alta precisión. Cuenta con una pantalla desplazable con resaltado de sintaxis y está diseñada para usarse completamente con el teclado.</p>
-    <p xml:lang="es_ES">SpeedCrunch es una calculadora científica rápida y de alta precisión. Cuenta con una pantalla desplazable con resaltado de sintaxis y está diseñada para usarse completamente con el teclado.</p>
-    <p xml:lang="et">SpeedCrunch on kiire ja kõrgtäpne teaduslik kalkulaator. Sellel on süntaksi esiletõstuga keritav kuva ning see on loodud täielikult klaviatuuriga kasutamiseks.</p>
-    <p xml:lang="eu">SpeedCrunch zehaztasun handiko kalkulagailu zientifiko azkarra da. Sintaxia nabarmenduta duen bistaratze korritzailea dauka, eta teklatu bidez erabat erabiltzeko diseinatuta dago.</p>
-    <p xml:lang="fa">SpeedCrunch یک ماشین‌حساب علمی سریع و با دقت بالاست. این برنامه دارای نمایشگر قابل‌پیمایش با برجسته‌سازی نحو است و برای استفادهٔ کامل از طریق صفحه‌کلید طراحی شده است.</p>
-    <p xml:lang="fi">SpeedCrunch on nopea ja erittäin tarkka tieteellinen laskin. Siinä on syntaksikorostettu vieritettävä näyttö, ja se on suunniteltu käytettäväksi kokonaan näppäimistöllä.</p>
-    <p xml:lang="fr">SpeedCrunch est une calculatrice scientifique rapide et de haute précision. Elle propose un affichage défilant avec coloration syntaxique et est conçue pour être utilisée entièrement au clavier.</p>
-    <p xml:lang="gl">SpeedCrunch é unha calculadora científica rápida e de alta precisión. Conta cun visor desprazable con realce de sintaxe e está deseñada para usarse completamente co teclado.</p>
-    <p xml:lang="he">SpeedCrunch הוא מחשבון מדעי מהיר ובדיוק גבוה. הוא כולל תצוגה נגללת עם הדגשת תחביר, ונועד לשימוש מלא באמצעות המקלדת.</p>
-    <p xml:lang="hi">SpeedCrunch एक तेज, उच्च-सटीकता वाला वैज्ञानिक कैलकुलेटर है। इसमें सिंटैक्स-हाइलाइटेड स्क्रॉल करने योग्य डिस्प्ले है और इसे पूरी तरह कीबोर्ड से उपयोग करने के लिए बनाया गया है।</p>
-    <p xml:lang="hu">A SpeedCrunch egy gyors, nagy pontosságú tudományos számológép. Szintaxis kiemeléses, görgethető kijelzővel rendelkezik és úgy tervezték, hogy teljes mértékben használható legyen billentyűzetről.</p>
-    <p xml:lang="id">SpeedCrunch adalah kalkulator ilmiah yang cepat dan berpresisi tinggi. Aplikasi ini memiliki tampilan yang dapat digulir dengan penyorotan sintaks, dan dirancang untuk digunakan sepenuhnya melalui papan ketik.</p>
-    <p xml:lang="it">SpeedCrunch è una calcolatrice scientifica veloce e ad alta precisione. Presenta uno schermo scorrevole con evidenziazione della sintassi ed è progettata per essere completamente usabile tramite tastiera.</p>
-    <p xml:lang="ja">SpeedCrunch は高速で高精度な科学計算機です。構文強調表示付きのスクロール可能な表示を備え、キーボードだけで完全に操作できるよう設計されています。</p>
-    <p xml:lang="ko">SpeedCrunch는 빠르고 고정밀인 공학용 계산기입니다. 구문 강조 표시가 적용된 스크롤 가능한 화면을 제공하며, 키보드만으로 완전히 사용할 수 있도록 설계되었습니다.</p>
-    <p xml:lang="lt">SpeedCrunch yra greitas, labai tikslus mokslinis skaičiuotuvas. Jis pasižymi sintaksę paryškinančiu slenkančiu ekranu ir yra sukurtas, kad būtų pilnai naudojamas su klaviatūra.</p>
-    <p xml:lang="lv">SpeedCrunch ir ātrs, augstas precizitātes zinātniskais kalkulators. Tam ir ritināms displejs ar sintakses izcelšanu, un tas ir paredzēts pilnīgai lietošanai ar tastatūru.</p>
-    <p xml:lang="ms">SpeedCrunch ialah kalkulator saintifik yang pantas dan berketepatan tinggi. Ia menampilkan paparan boleh tatal dengan penyerlahan sintaks dan direka untuk digunakan sepenuhnya melalui papan kekunci.</p>
-    <p xml:lang="nb">SpeedCrunch er en rask vitenskapelig kalkulator med høy presisjon. Den har et rullbart display med syntaksutheving og er utviklet for å kunne brukes fullt ut med tastaturet.</p>
-    <p xml:lang="nl">SpeedCrunch is een snelle wetenschappelijke rekenmachine met hoge precisie. Het beschikt over een scrollbaar scherm met syntaxisaccentuering en is ontworpen om volledig via het toetsenbord te worden gebruikt.</p>
-    <p xml:lang="pl">SpeedCrunch to szybki, wysokoprecyzyjny kalkulator naukowy. Posiada przewijalny ekran z podświetlaniem składni i jest zaprojektowany do pełnej obsługi z klawiatury.</p>
-    <p xml:lang="pt_BR">O SpeedCrunch é uma calculadora científica rápida e de alta precisão. Ele possui um visor rolável com realce de sintaxe e foi projetado para ser usado totalmente pelo teclado.SpeedCrunch é uma calculadora científica rápida e de alta precisão. Ela possui um mostrador rolável, com destaque de sintaxe e é concebida para ser plenamente utilizável através do teclado.</p>
-    <p xml:lang="pt_PT">O SpeedCrunch é uma calculadora científica rápida e de alta precisão. Apresenta um visor rolável com realce de sintaxe e foi concebido para ser utilizado integralmente através do teclado.</p>
-    <p xml:lang="ro">SpeedCrunch este un calculator științific rapid, de înaltă precizie. Oferă un afișaj derulabil cu evidențiere a sintaxei și este conceput pentru a fi folosit în întregime de la tastatură.</p>
-    <p xml:lang="ru">SpeedCrunch — быстрый высокоточный научный калькулятор. Он имеет прокручиваемый дисплей с подсветкой синтаксиса и предназначен для полного управления с клавиатуры.</p>
-    <p xml:lang="sk">SpeedCrunch je rýchla, vysoko presná vedecká kalkulačka. Ponúka rolovateľný displej so zvýraznením syntaxe a je navrhnutá tak, aby sa dala plnohodnotne používať pomocou klávesnice.</p>
-    <p xml:lang="sl">SpeedCrunch je hiter, visokonatančen znanstveni kalkulator. Ima pomično prikazovalno okno s poudarjanjem skladnje in je zasnovan za popolno uporabo s tipkovnico.</p>
-    <p xml:lang="sv">SpeedCrunch är en snabb vetenskaplig miniräknare med hög precision. Den har en rullbar skärm med syntaxmarkering och är utformad för att kunna användas helt via tangentbordet.</p>
-    <p xml:lang="sw">SpeedCrunch ni kikokotoo cha kisayansi cha haraka chenye usahihi wa juu. Kina onyesho linaloweza kusogezwa lenye uangaziaji wa sintaksia na kimeundwa kutumiwa kikamilifu kwa kibodi.</p>
-    <p xml:lang="ta">SpeedCrunch என்பது வேகமான, உயர் துல்லியமான அறிவியல் கணிப்பான். இது தொடரமைப்பு முன்னிறுத்தலுடன் கூடிய சுருட்டக்கூடிய காட்சியைக் கொண்டுள்ளது, மேலும் முழுமையாக விசைப்பலகை மூலம் பயன்படுத்தப்படுமாறு வடிவமைக்கப்பட்டுள்ளது.</p>
-    <p xml:lang="te">SpeedCrunch ఒక వేగవంతమైన, అధిక ఖచ్చితత్వం గల శాస్త్రీయ కాలిక్యులేటర్. ఇది సింటాక్స్ హైలైట్ చేసిన స్క్రోల్ చేయగల ప్రదర్శనను కలిగి ఉంది మరియు పూర్తిగా కీబోర్డ్ ద్వారా ఉపయోగించేందుకు రూపకల్పన చేయబడింది.</p>
-    <p xml:lang="th">SpeedCrunch เป็นเครื่องคิดเลขวิทยาศาสตร์ที่รวดเร็วและมีความแม่นยำสูง มาพร้อมหน้าจอเลื่อนได้ที่เน้นไวยากรณ์ และออกแบบมาให้ใช้งานผ่านแป้นพิมพ์ได้อย่างเต็มรูปแบบ</p>
-    <p xml:lang="tr">SpeedCrunch hızlı ve yüksek hassasiyetli bir bilimsel hesap makinesidir. Sözdizimi vurgulamalı kaydırılabilir bir ekrana sahiptir ve tamamen klavye ile kullanılacak şekilde tasarlanmıştır.</p>
-    <p xml:lang="uk">SpeedCrunch — швидкий високоточний науковий калькулятор. Він має прокручуваний дисплей із підсвічуванням синтаксису та призначений для повного використання з клавіатури.</p>
-    <p xml:lang="uz_Latn">SpeedCrunch tezkor va yuqori aniqlikdagi ilmiy kalkulyator. Unda sintaksis yoritilgan, aylantiriladigan displey mavjud va u to'liq klaviatura orqali foydalanish uchun mo'ljallangan.</p>
-    <p xml:lang="vi">SpeedCrunch là một máy tính khoa học nhanh và có độ chính xác cao. Ứng dụng có màn hình cuộn với tô sáng cú pháp và được thiết kế để có thể sử dụng hoàn toàn bằng bàn phím.</p>
-    <p xml:lang="zh_CN">SpeedCrunch 是一个快速、高精度的科学计算器。它具有语法高亮和可滚动的显示，并且可以全程使用键盘操作。</p>
-    <p xml:lang="zh_TW">SpeedCrunch 是一款快速且高精度的科學計算器。它具備語法醒目提示的可捲動顯示，並且設計為可完全透過鍵盤操作。</p>
+    <p>BitLoupe is a fast, high-precision scientific calculator. It features a syntax-highlighted scrollable display and is designed to be fully used via keyboard.</p>
+    <p xml:lang="ar">BitLoupe آلة حاسبة علمية سريعة وعالية الدقة. تتميز بعرض قابل للتمرير مع إبراز بناء الجملة، وهي مصممة ليُستخدم البرنامج بالكامل عبر لوحة المفاتيح.</p>
+    <p xml:lang="bg">BitLoupe е бърз научен калкулатор с висока точност. Той предлага превъртащ се дисплей с открояване на синтаксиса и е проектиран да се използва изцяло с клавиатура.</p>
+    <p xml:lang="bn">BitLoupe একটি দ্রুত, উচ্চ-নির্ভুল বৈজ্ঞানিক ক্যালকুলেটর। এতে সিনট্যাক্স-হাইলাইট করা স্ক্রলযোগ্য প্রদর্শন আছে এবং এটি সম্পূর্ণভাবে কীবোর্ড দিয়ে ব্যবহার করার জন্য নকশা করা হয়েছে।</p>
+    <p xml:lang="ca">BitLoupe és una calculadora científica ràpida i d'alta precisió. Inclou una pantalla desplaçable amb ressaltat de sintaxi i està dissenyada per ser utilitzada completament amb el teclat.</p>
+    <p xml:lang="cs">BitLoupe je rychlá, vysoce přesná vědecká kalkulačka. Nabízí rolovatelný displej se zvýrazněním syntaxe a je navržena pro plné ovládání z klávesnice.</p>
+    <p xml:lang="da">BitLoupe er en hurtig, videnskabelig lommeregner med høj præcision. Den har et rullebart display med syntaksfremhævning og er designet til at kunne bruges fuldt ud via tastaturet.</p>
+    <p xml:lang="de">BitLoupe ist ein schneller, hochpräziser, wissenschaftlicher Taschenrechner. Es bietet eine scrollbare Anzeige mit Syntaxhervorhebung und ist auf vollständige Tastaturbedienung ausgelegt.</p>
+    <p xml:lang="el">Το BitLoupe είναι μια γρήγορη επιστημονική αριθμομηχανή υψηλής ακρίβειας. Διαθέτει κυλιόμενη οθόνη με επισήμανση σύνταξης και έχει σχεδιαστεί ώστε να χρησιμοποιείται πλήρως από το πληκτρολόγιο.</p>
+    <p xml:lang="en_GB">BitLoupe is a fast, high-precision scientific calculator. It features a syntax-highlighted scrollable display and is designed to be fully used via keyboard.BitLoupe is a fast, high-precision scientific calculator. It features a syntax-highlighted scrollable display and is designed to be fully used via keyboard.</p>
+    <p xml:lang="en_US">BitLoupe is a fast, high-precision scientific calculator. It features a syntax-highlighted scrollable display and is designed to be fully used via keyboard.</p>
+    <p xml:lang="es">BitLoupe es una calculadora científica rápida y de alta precisión. Cuenta con una pantalla desplazable con resaltado de sintaxis y está diseñada para usarse completamente con el teclado.</p>
+    <p xml:lang="es_ES">BitLoupe es una calculadora científica rápida y de alta precisión. Cuenta con una pantalla desplazable con resaltado de sintaxis y está diseñada para usarse completamente con el teclado.</p>
+    <p xml:lang="et">BitLoupe on kiire ja kõrgtäpne teaduslik kalkulaator. Sellel on süntaksi esiletõstuga keritav kuva ning see on loodud täielikult klaviatuuriga kasutamiseks.</p>
+    <p xml:lang="eu">BitLoupe zehaztasun handiko kalkulagailu zientifiko azkarra da. Sintaxia nabarmenduta duen bistaratze korritzailea dauka, eta teklatu bidez erabat erabiltzeko diseinatuta dago.</p>
+    <p xml:lang="fa">BitLoupe یک ماشین‌حساب علمی سریع و با دقت بالاست. این برنامه دارای نمایشگر قابل‌پیمایش با برجسته‌سازی نحو است و برای استفادهٔ کامل از طریق صفحه‌کلید طراحی شده است.</p>
+    <p xml:lang="fi">BitLoupe on nopea ja erittäin tarkka tieteellinen laskin. Siinä on syntaksikorostettu vieritettävä näyttö, ja se on suunniteltu käytettäväksi kokonaan näppäimistöllä.</p>
+    <p xml:lang="fr">BitLoupe est une calculatrice scientifique rapide et de haute précision. Elle propose un affichage défilant avec coloration syntaxique et est conçue pour être utilisée entièrement au clavier.</p>
+    <p xml:lang="gl">BitLoupe é unha calculadora científica rápida e de alta precisión. Conta cun visor desprazable con realce de sintaxe e está deseñada para usarse completamente co teclado.</p>
+    <p xml:lang="he">BitLoupe הוא מחשבון מדעי מהיר ובדיוק גבוה. הוא כולל תצוגה נגללת עם הדגשת תחביר, ונועד לשימוש מלא באמצעות המקלדת.</p>
+    <p xml:lang="hi">BitLoupe एक तेज, उच्च-सटीकता वाला वैज्ञानिक कैलकुलेटर है। इसमें सिंटैक्स-हाइलाइटेड स्क्रॉल करने योग्य डिस्प्ले है और इसे पूरी तरह कीबोर्ड से उपयोग करने के लिए बनाया गया है।</p>
+    <p xml:lang="hu">A BitLoupe egy gyors, nagy pontosságú tudományos számológép. Szintaxis kiemeléses, görgethető kijelzővel rendelkezik és úgy tervezték, hogy teljes mértékben használható legyen billentyűzetről.</p>
+    <p xml:lang="id">BitLoupe adalah kalkulator ilmiah yang cepat dan berpresisi tinggi. Aplikasi ini memiliki tampilan yang dapat digulir dengan penyorotan sintaks, dan dirancang untuk digunakan sepenuhnya melalui papan ketik.</p>
+    <p xml:lang="it">BitLoupe è una calcolatrice scientifica veloce e ad alta precisione. Presenta uno schermo scorrevole con evidenziazione della sintassi ed è progettata per essere completamente usabile tramite tastiera.</p>
+    <p xml:lang="ja">BitLoupe は高速で高精度な科学計算機です。構文強調表示付きのスクロール可能な表示を備え、キーボードだけで完全に操作できるよう設計されています。</p>
+    <p xml:lang="ko">BitLoupe는 빠르고 고정밀인 공학용 계산기입니다. 구문 강조 표시가 적용된 스크롤 가능한 화면을 제공하며, 키보드만으로 완전히 사용할 수 있도록 설계되었습니다.</p>
+    <p xml:lang="lt">BitLoupe yra greitas, labai tikslus mokslinis skaičiuotuvas. Jis pasižymi sintaksę paryškinančiu slenkančiu ekranu ir yra sukurtas, kad būtų pilnai naudojamas su klaviatūra.</p>
+    <p xml:lang="lv">BitLoupe ir ātrs, augstas precizitātes zinātniskais kalkulators. Tam ir ritināms displejs ar sintakses izcelšanu, un tas ir paredzēts pilnīgai lietošanai ar tastatūru.</p>
+    <p xml:lang="ms">BitLoupe ialah kalkulator saintifik yang pantas dan berketepatan tinggi. Ia menampilkan paparan boleh tatal dengan penyerlahan sintaks dan direka untuk digunakan sepenuhnya melalui papan kekunci.</p>
+    <p xml:lang="nb">BitLoupe er en rask vitenskapelig kalkulator med høy presisjon. Den har et rullbart display med syntaksutheving og er utviklet for å kunne brukes fullt ut med tastaturet.</p>
+    <p xml:lang="nl">BitLoupe is een snelle wetenschappelijke rekenmachine met hoge precisie. Het beschikt over een scrollbaar scherm met syntaxisaccentuering en is ontworpen om volledig via het toetsenbord te worden gebruikt.</p>
+    <p xml:lang="pl">BitLoupe to szybki, wysokoprecyzyjny kalkulator naukowy. Posiada przewijalny ekran z podświetlaniem składni i jest zaprojektowany do pełnej obsługi z klawiatury.</p>
+    <p xml:lang="pt_BR">O BitLoupe é uma calculadora científica rápida e de alta precisão. Ele possui um visor rolável com realce de sintaxe e foi projetado para ser usado totalmente pelo teclado.BitLoupe é uma calculadora científica rápida e de alta precisão. Ela possui um mostrador rolável, com destaque de sintaxe e é concebida para ser plenamente utilizável através do teclado.</p>
+    <p xml:lang="pt_PT">O BitLoupe é uma calculadora científica rápida e de alta precisão. Apresenta um visor rolável com realce de sintaxe e foi concebido para ser utilizado integralmente através do teclado.</p>
+    <p xml:lang="ro">BitLoupe este un calculator științific rapid, de înaltă precizie. Oferă un afișaj derulabil cu evidențiere a sintaxei și este conceput pentru a fi folosit în întregime de la tastatură.</p>
+    <p xml:lang="ru">BitLoupe — быстрый высокоточный научный калькулятор. Он имеет прокручиваемый дисплей с подсветкой синтаксиса и предназначен для полного управления с клавиатуры.</p>
+    <p xml:lang="sk">BitLoupe je rýchla, vysoko presná vedecká kalkulačka. Ponúka rolovateľný displej so zvýraznením syntaxe a je navrhnutá tak, aby sa dala plnohodnotne používať pomocou klávesnice.</p>
+    <p xml:lang="sl">BitLoupe je hiter, visokonatančen znanstveni kalkulator. Ima pomično prikazovalno okno s poudarjanjem skladnje in je zasnovan za popolno uporabo s tipkovnico.</p>
+    <p xml:lang="sv">BitLoupe är en snabb vetenskaplig miniräknare med hög precision. Den har en rullbar skärm med syntaxmarkering och är utformad för att kunna användas helt via tangentbordet.</p>
+    <p xml:lang="sw">BitLoupe ni kikokotoo cha kisayansi cha haraka chenye usahihi wa juu. Kina onyesho linaloweza kusogezwa lenye uangaziaji wa sintaksia na kimeundwa kutumiwa kikamilifu kwa kibodi.</p>
+    <p xml:lang="ta">BitLoupe என்பது வேகமான, உயர் துல்லியமான அறிவியல் கணிப்பான். இது தொடரமைப்பு முன்னிறுத்தலுடன் கூடிய சுருட்டக்கூடிய காட்சியைக் கொண்டுள்ளது, மேலும் முழுமையாக விசைப்பலகை மூலம் பயன்படுத்தப்படுமாறு வடிவமைக்கப்பட்டுள்ளது.</p>
+    <p xml:lang="te">BitLoupe ఒక వేగవంతమైన, అధిక ఖచ్చితత్వం గల శాస్త్రీయ కాలిక్యులేటర్. ఇది సింటాక్స్ హైలైట్ చేసిన స్క్రోల్ చేయగల ప్రదర్శనను కలిగి ఉంది మరియు పూర్తిగా కీబోర్డ్ ద్వారా ఉపయోగించేందుకు రూపకల్పన చేయబడింది.</p>
+    <p xml:lang="th">BitLoupe เป็นเครื่องคิดเลขวิทยาศาสตร์ที่รวดเร็วและมีความแม่นยำสูง มาพร้อมหน้าจอเลื่อนได้ที่เน้นไวยากรณ์ และออกแบบมาให้ใช้งานผ่านแป้นพิมพ์ได้อย่างเต็มรูปแบบ</p>
+    <p xml:lang="tr">BitLoupe hızlı ve yüksek hassasiyetli bir bilimsel hesap makinesidir. Sözdizimi vurgulamalı kaydırılabilir bir ekrana sahiptir ve tamamen klavye ile kullanılacak şekilde tasarlanmıştır.</p>
+    <p xml:lang="uk">BitLoupe — швидкий високоточний науковий калькулятор. Він має прокручуваний дисплей із підсвічуванням синтаксису та призначений для повного використання з клавіатури.</p>
+    <p xml:lang="uz_Latn">BitLoupe tezkor va yuqori aniqlikdagi ilmiy kalkulyator. Unda sintaksis yoritilgan, aylantiriladigan displey mavjud va u to'liq klaviatura orqali foydalanish uchun mo'ljallangan.</p>
+    <p xml:lang="vi">BitLoupe là một máy tính khoa học nhanh và có độ chính xác cao. Ứng dụng có màn hình cuộn với tô sáng cú pháp và được thiết kế để có thể sử dụng hoàn toàn bằng bàn phím.</p>
+    <p xml:lang="zh_CN">BitLoupe 是一个快速、高精度的科学计算器。它具有语法高亮和可滚动的显示，并且可以全程使用键盘操作。</p>
+    <p xml:lang="zh_TW">BitLoupe 是一款快速且高精度的科學計算器。它具備語法醒目提示的可捲動顯示，並且設計為可完全透過鍵盤操作。</p>
 
     <p>It includes many built-in maths functions and supports advanced features like user-defined functions, complex numbers, and unit conversions. This is combined with a simple yet powerful user interface featuring on-the-fly results preview, syntax highlighting, and autocompletion.</p>
     <p xml:lang="ar">يتضمن العديد من الدوال الرياضية المضمنة ويدعم ميزات متقدمة مثل الدوال المعرّفة من قبل المستخدم، والأعداد المركبة، وتحويل الوحدات. ويتكامل ذلك مع واجهة مستخدم بسيطة لكنها قوية تتضمن معاينة فورية للنتائج، وإبراز بناء الجملة، والإكمال التلقائي.</p>
@@ -209,61 +209,61 @@
     <p xml:lang="zh_CN">它内置许多数学函数并支持一些高级功能，例如用户定义函数、复杂数字和单位转换。这可配合简单又强大的用户界面，包括结果预览、语法高亮和自动完成。</p>
     <p xml:lang="zh_TW">它包含多種內建數學函數，並支援進階功能，例如使用者自訂函數、複數與單位轉換。這些功能搭配簡潔但強大的使用者介面，提供即時結果預覽、語法醒目提示與自動補完。</p>
 
-    <p>SpeedCrunch is available for several platforms in a number of languages.</p>
-    <p xml:lang="ar">يتوفر SpeedCrunch على عدة منصات وبعدد من اللغات.</p>
-    <p xml:lang="bg">SpeedCrunch е наличен за няколко платформи и на различни езици.</p>
-    <p xml:lang="bn">SpeedCrunch একাধিক প্ল্যাটফর্মে এবং বিভিন্ন ভাষায় উপলব্ধ।</p>
-    <p xml:lang="ca">SpeedCrunch està disponible per a diverses plataformes en diverses llengües.</p>
-    <p xml:lang="cs">SpeedCrunch je dostupný pro několik platforem v řadě jazyků.</p>
-    <p xml:lang="da">SpeedCrunch er tilgængelig til flere platforme på en række sprog.</p>
-    <p xml:lang="de">SpeedCrunch ist für verschiedene Plattformen in einer Anzahl von Sprachen verfügbar.</p>
-    <p xml:lang="el">Το SpeedCrunch είναι διαθέσιμο για διάφορες πλατφόρμες σε πολλές γλώσσες.</p>
-    <p xml:lang="en_GB">SpeedCrunch is available for several platforms in a number of languages.SpeedCrunch is available for several platforms in a number of languages.</p>
-    <p xml:lang="en_US">SpeedCrunch is available for several platforms in a number of languages.</p>
-    <p xml:lang="es">SpeedCrunch está disponible para varias plataformas en varios idiomas.</p>
-    <p xml:lang="es_ES">SpeedCrunch está disponible para varias plataformas en varios idiomas.</p>
-    <p xml:lang="et">SpeedCrunch on saadaval mitmele platvormile mitmes keeles.</p>
-    <p xml:lang="eu">SpeedCrunch hainbat plataformatarako eskuragarri dago, hizkuntza ugaritan.</p>
-    <p xml:lang="fa">SpeedCrunch برای چندین سکوی نرم‌افزاری و به چندین زبان در دسترس است.</p>
-    <p xml:lang="fi">SpeedCrunch on saatavilla useille alustoille useilla kielillä.</p>
-    <p xml:lang="fr">SpeedCrunch est disponible sur plusieurs plateformes dans de nombreuses langues.</p>
-    <p xml:lang="gl">SpeedCrunch está dispoñible para varias plataformas e en varios idiomas.</p>
-    <p xml:lang="he">SpeedCrunch זמין למספר פלטפורמות ובמספר שפות.</p>
-    <p xml:lang="hi">SpeedCrunch कई प्लेटफ़ॉर्म और कई भाषाओं में उपलब्ध है।</p>
-    <p xml:lang="hu">A SpeedCrunch számos platformra elérhető különböző nyelveken.</p>
-    <p xml:lang="id">SpeedCrunch tersedia untuk beberapa platform dalam sejumlah bahasa.</p>
-    <p xml:lang="it">SpeedCrunch è disponibile per diverse piattaforme in varie lingue.</p>
-    <p xml:lang="ja">SpeedCrunch は複数のプラットフォームで、多言語に対応しています。</p>
-    <p xml:lang="ko">SpeedCrunch는 여러 플랫폼에서 다양한 언어로 사용할 수 있습니다.</p>
-    <p xml:lang="lt">SpeedCrunch skaičiuotuvas yra prieinamas kelioms platformoms daugeliu kalbų.</p>
-    <p xml:lang="lv">SpeedCrunch ir pieejams vairākām platformām vairākās valodās.</p>
-    <p xml:lang="ms">SpeedCrunch tersedia untuk beberapa platform dalam pelbagai bahasa.</p>
-    <p xml:lang="nb">SpeedCrunch er tilgjengelig for flere plattformer på en rekke språk.</p>
-    <p xml:lang="nl">SpeedCrunch is beschikbaar voor verschillende platforms in een aantal talen.</p>
-    <p xml:lang="pl">SpeedCrunch jest dostępny na kilka platform w wielu językach.</p>
-    <p xml:lang="pt_BR">O SpeedCrunch está disponível para várias plataformas em diversos idiomas.SpeedCrunch está disponível para diversas plataformas e em várias línguas.</p>
-    <p xml:lang="pt_PT">O SpeedCrunch está disponível para várias plataformas em diversas línguas.</p>
-    <p xml:lang="ro">SpeedCrunch este disponibil pentru mai multe platforme în mai multe limbi.</p>
-    <p xml:lang="ru">SpeedCrunch доступен для нескольких платформ в ряде языков.</p>
-    <p xml:lang="sk">SpeedCrunch je dostupný pre viaceré platformy v niekoľkých jazykoch.</p>
-    <p xml:lang="sl">SpeedCrunch je na voljo za več platform v več jezikih.</p>
-    <p xml:lang="sv">SpeedCrunch finns tillgänglig för flera plattformar på ett antal språk.</p>
-    <p xml:lang="sw">SpeedCrunch inapatikana kwa majukwaa kadhaa na katika lugha mbalimbali.</p>
-    <p xml:lang="ta">SpeedCrunch பல தளங்களிலும் பல மொழிகளிலும் கிடைக்கிறது.</p>
-    <p xml:lang="te">SpeedCrunch అనేక వేదికలపై మరియు పలు భాషల్లో అందుబాటులో ఉంది.</p>
-    <p xml:lang="th">SpeedCrunch พร้อมใช้งานบนหลายแพลตฟอร์มและรองรับหลายภาษา</p>
-    <p xml:lang="tr">SpeedCrunch, çeşitli dillerde birden çok platform için kullanılabilir.</p>
-    <p xml:lang="uk">SpeedCrunch доступний для кількох платформ різними мовами.</p>
-    <p xml:lang="uz_Latn">SpeedCrunch bir nechta platformalar uchun ko'plab tillarda mavjud.</p>
-    <p xml:lang="vi">SpeedCrunch có sẵn cho nhiều nền tảng với nhiều ngôn ngữ.</p>
-    <p xml:lang="zh_CN">SpeedCrunch 提供多种语言和平台。</p>
-    <p xml:lang="zh_TW">SpeedCrunch 可在多個平台上使用，並提供多種語言。</p>
+    <p>BitLoupe is available for several platforms in a number of languages.</p>
+    <p xml:lang="ar">يتوفر BitLoupe على عدة منصات وبعدد من اللغات.</p>
+    <p xml:lang="bg">BitLoupe е наличен за няколко платформи и на различни езици.</p>
+    <p xml:lang="bn">BitLoupe একাধিক প্ল্যাটফর্মে এবং বিভিন্ন ভাষায় উপলব্ধ।</p>
+    <p xml:lang="ca">BitLoupe està disponible per a diverses plataformes en diverses llengües.</p>
+    <p xml:lang="cs">BitLoupe je dostupný pro několik platforem v řadě jazyků.</p>
+    <p xml:lang="da">BitLoupe er tilgængelig til flere platforme på en række sprog.</p>
+    <p xml:lang="de">BitLoupe ist für verschiedene Plattformen in einer Anzahl von Sprachen verfügbar.</p>
+    <p xml:lang="el">Το BitLoupe είναι διαθέσιμο για διάφορες πλατφόρμες σε πολλές γλώσσες.</p>
+    <p xml:lang="en_GB">BitLoupe is available for several platforms in a number of languages.BitLoupe is available for several platforms in a number of languages.</p>
+    <p xml:lang="en_US">BitLoupe is available for several platforms in a number of languages.</p>
+    <p xml:lang="es">BitLoupe está disponible para varias plataformas en varios idiomas.</p>
+    <p xml:lang="es_ES">BitLoupe está disponible para varias plataformas en varios idiomas.</p>
+    <p xml:lang="et">BitLoupe on saadaval mitmele platvormile mitmes keeles.</p>
+    <p xml:lang="eu">BitLoupe hainbat plataformatarako eskuragarri dago, hizkuntza ugaritan.</p>
+    <p xml:lang="fa">BitLoupe برای چندین سکوی نرم‌افزاری و به چندین زبان در دسترس است.</p>
+    <p xml:lang="fi">BitLoupe on saatavilla useille alustoille useilla kielillä.</p>
+    <p xml:lang="fr">BitLoupe est disponible sur plusieurs plateformes dans de nombreuses langues.</p>
+    <p xml:lang="gl">BitLoupe está dispoñible para varias plataformas e en varios idiomas.</p>
+    <p xml:lang="he">BitLoupe זמין למספר פלטפורמות ובמספר שפות.</p>
+    <p xml:lang="hi">BitLoupe कई प्लेटफ़ॉर्म और कई भाषाओं में उपलब्ध है।</p>
+    <p xml:lang="hu">A BitLoupe számos platformra elérhető különböző nyelveken.</p>
+    <p xml:lang="id">BitLoupe tersedia untuk beberapa platform dalam sejumlah bahasa.</p>
+    <p xml:lang="it">BitLoupe è disponibile per diverse piattaforme in varie lingue.</p>
+    <p xml:lang="ja">BitLoupe は複数のプラットフォームで、多言語に対応しています。</p>
+    <p xml:lang="ko">BitLoupe는 여러 플랫폼에서 다양한 언어로 사용할 수 있습니다.</p>
+    <p xml:lang="lt">BitLoupe skaičiuotuvas yra prieinamas kelioms platformoms daugeliu kalbų.</p>
+    <p xml:lang="lv">BitLoupe ir pieejams vairākām platformām vairākās valodās.</p>
+    <p xml:lang="ms">BitLoupe tersedia untuk beberapa platform dalam pelbagai bahasa.</p>
+    <p xml:lang="nb">BitLoupe er tilgjengelig for flere plattformer på en rekke språk.</p>
+    <p xml:lang="nl">BitLoupe is beschikbaar voor verschillende platforms in een aantal talen.</p>
+    <p xml:lang="pl">BitLoupe jest dostępny na kilka platform w wielu językach.</p>
+    <p xml:lang="pt_BR">O BitLoupe está disponível para várias plataformas em diversos idiomas.BitLoupe está disponível para diversas plataformas e em várias línguas.</p>
+    <p xml:lang="pt_PT">O BitLoupe está disponível para várias plataformas em diversas línguas.</p>
+    <p xml:lang="ro">BitLoupe este disponibil pentru mai multe platforme în mai multe limbi.</p>
+    <p xml:lang="ru">BitLoupe доступен для нескольких платформ в ряде языков.</p>
+    <p xml:lang="sk">BitLoupe je dostupný pre viaceré platformy v niekoľkých jazykoch.</p>
+    <p xml:lang="sl">BitLoupe je na voljo za več platform v več jezikih.</p>
+    <p xml:lang="sv">BitLoupe finns tillgänglig för flera plattformar på ett antal språk.</p>
+    <p xml:lang="sw">BitLoupe inapatikana kwa majukwaa kadhaa na katika lugha mbalimbali.</p>
+    <p xml:lang="ta">BitLoupe பல தளங்களிலும் பல மொழிகளிலும் கிடைக்கிறது.</p>
+    <p xml:lang="te">BitLoupe అనేక వేదికలపై మరియు పలు భాషల్లో అందుబాటులో ఉంది.</p>
+    <p xml:lang="th">BitLoupe พร้อมใช้งานบนหลายแพลตฟอร์มและรองรับหลายภาษา</p>
+    <p xml:lang="tr">BitLoupe, çeşitli dillerde birden çok platform için kullanılabilir.</p>
+    <p xml:lang="uk">BitLoupe доступний для кількох платформ різними мовами.</p>
+    <p xml:lang="uz_Latn">BitLoupe bir nechta platformalar uchun ko'plab tillarda mavjud.</p>
+    <p xml:lang="vi">BitLoupe có sẵn cho nhiều nền tảng với nhiều ngôn ngữ.</p>
+    <p xml:lang="zh_CN">BitLoupe 提供多种语言和平台。</p>
+    <p xml:lang="zh_TW">BitLoupe 可在多個平台上使用，並提供多種語言。</p>
   </description>
 
-  <launchable type="desktop-id">org.speedcrunch.SpeedCrunch.desktop</launchable>
+  <launchable type="desktop-id">org.bitloupe.BitLoupe.desktop</launchable>
   <provides>
-    <binary>speedcrunch</binary>
-    <id>speedcrunch.desktop</id>
+    <binary>bitloupe</binary>
+    <id>bitloupe.desktop</id>
   </provides>
 
   <kudos>
@@ -273,7 +273,7 @@
 
   <screenshots>
     <screenshot type="default">
-      <image>https://heldercorreia.bitbucket.io/speedcrunch/_static/appdata-screenshots/0.12/advanced-features.png</image>
+      <image>https://heldercorreia.bitbucket.io/bitloupe/_static/appdata-screenshots/0.12/advanced-features.png</image>
     </screenshot>
     <screenshot>
       <caption>Main window with optional keypad</caption>
@@ -325,7 +325,7 @@
       <caption xml:lang="vi">Cửa sổ chính với bàn phím số tùy chọn</caption>
       <caption xml:lang="zh_CN">主窗口（键盘可用）</caption>
       <caption xml:lang="zh_TW">主視窗（含選用數字鍵盤）</caption>
-      <image>https://heldercorreia.bitbucket.io/speedcrunch/_static/appdata-screenshots/0.12/keypad.png</image>
+      <image>https://heldercorreia.bitbucket.io/bitloupe/_static/appdata-screenshots/0.12/keypad.png</image>
     </screenshot>
     <screenshot>
       <caption>The constants list and formula book</caption>
@@ -377,7 +377,7 @@
       <caption xml:lang="vi">Danh sách hằng số và sổ công thức</caption>
       <caption xml:lang="zh_CN">常量列表和公式书</caption>
       <caption xml:lang="zh_TW">常數清單與公式手冊</caption>
-      <image>https://heldercorreia.bitbucket.io/speedcrunch/_static/appdata-screenshots/0.12/constants+book.png</image>
+      <image>https://heldercorreia.bitbucket.io/bitloupe/_static/appdata-screenshots/0.12/constants+book.png</image>
     </screenshot>
     <screenshot>
       <caption>Customizable user interface</caption>
@@ -429,7 +429,7 @@
       <caption xml:lang="vi">Giao diện người dùng có thể tùy biến</caption>
       <caption xml:lang="zh_CN">可定制用户界面</caption>
       <caption xml:lang="zh_TW">可自訂的使用者介面</caption>
-      <image>https://heldercorreia.bitbucket.io/speedcrunch/_static/appdata-screenshots/0.12/ui-customization.png</image>
+      <image>https://heldercorreia.bitbucket.io/bitloupe/_static/appdata-screenshots/0.12/ui-customization.png</image>
     </screenshot>
     <screenshot>
       <caption>The built-in user manual</caption>
@@ -481,13 +481,13 @@
       <caption xml:lang="vi">Hướng dẫn sử dụng tích hợp</caption>
       <caption xml:lang="zh_CN">内置用户手册</caption>
       <caption xml:lang="zh_TW">內建使用者手冊</caption>
-      <image>https://heldercorreia.bitbucket.io/speedcrunch/_static/appdata-screenshots/0.12/manual.png</image>
+      <image>https://heldercorreia.bitbucket.io/bitloupe/_static/appdata-screenshots/0.12/manual.png</image>
     </screenshot>
   </screenshots>
 
-  <url type="homepage">https://heldercorreia.bitbucket.io/speedcrunch</url>
-  <url type="bugtracker">https://bitbucket.org/heldercorreia/speedcrunch/issues</url>
-  <url type="help">https://heldercorreia.bitbucket.io/speedcrunch/introduction.html</url>
+  <url type="homepage">https://heldercorreia.bitbucket.io/bitloupe</url>
+  <url type="bugtracker">https://bitbucket.org/heldercorreia/bitloupe/issues</url>
+  <url type="help">https://heldercorreia.bitbucket.io/bitloupe/introduction.html</url>
 
   <releases>
     <release version="1.0" date="2026-03-08"/>

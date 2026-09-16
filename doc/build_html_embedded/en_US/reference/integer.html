@@ -20,7 +20,7 @@
   <tr>
     <td width="50%">
       <a class="nav-item nav-item-0"
-         href="../contents.html">SpeedCrunch 1.0 documentation</a> &#187; <a class="nav-item nav-item-1"
+         href="../contents.html">BitLoupe 1.0 documentation</a> &#187; <a class="nav-item nav-item-1"
              href="index.html">Reference</a>
           
     </td>
@@ -101,7 +101,7 @@ the bitwise functions. Non-integer arguments are rounded toward zero.</p>
 <p>This function does <em>not</em> simply flip the bits!</p>
 </div>
 </td></tr></tbody></table><p>The unary prefix operator <code class="docutils literal notranslate"><span class="pre">~</span></code> is equivalent to <a class="reference internal" href="#sc.not" title="not"><code class="xref sc sc-func docutils literal notranslate"><span class="pre">not()</span></code></a>:</p>
-<table class="-x-quark-literal-block"><tbody><tr><td width="100%" class="-x-quark-literal-block-td"><div class="highlight-speedcrunch notranslate"><div class="highlight"><pre><span></span><span class="o">~</span><span class="mi">5</span>
+<table class="-x-quark-literal-block"><tbody><tr><td width="100%" class="-x-quark-literal-block-td"><div class="highlight-bitloupe notranslate"><div class="highlight"><pre><span></span><span class="o">~</span><span class="mi">5</span>
 <span class="ge">= -6</span>
 <span class="n">not</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 <span class="ge">= -6</span>
@@ -155,7 +155,7 @@ the bitwise functions. Non-integer arguments are rounded toward zero.</p>
 <dd><p>Returns the lowest <code class="docutils literal notranslate"><span class="pre">n</span></code> bits from <code class="docutils literal notranslate"><span class="pre">x</span></code>. For this, <code class="docutils literal notranslate"><span class="pre">x</span></code> must be in the range -2<sup>255</sup> &lt;= <code class="docutils literal notranslate"><span class="pre">x</span></code> &lt;= +2<sup>256</sup>-1, and <code class="docutils literal notranslate"><span class="pre">n</span></code> must be an integer, 1 &lt;= <code class="docutils literal notranslate"><span class="pre">n</span></code> &lt;= 255. <code class="docutils literal notranslate"><span class="pre">x</span></code> is rounded toward zero.</p>
 <p>The result is always unsigned.</p>
 <p>Example: Getting the two’s complement of -1 in a 16-bit system:</p>
-<table class="-x-quark-literal-block"><tbody><tr><td width="100%" class="-x-quark-literal-block-td"><div class="highlight-speedcrunch notranslate"><div class="highlight"><pre><span></span><span class="n">hex</span><span class="p">(</span><span class="n">mask</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="mi">16</span><span class="p">))</span>
+<table class="-x-quark-literal-block"><tbody><tr><td width="100%" class="-x-quark-literal-block-td"><div class="highlight-bitloupe notranslate"><div class="highlight"><pre><span></span><span class="n">hex</span><span class="p">(</span><span class="n">mask</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="mi">16</span><span class="p">))</span>
 <span class="ge">= 0xFFFF</span>
 </pre></div>
 </div>
@@ -167,7 +167,7 @@ the bitwise functions. Non-integer arguments are rounded toward zero.</p>
 <dd><p>Takes the lower <code class="docutils literal notranslate"><span class="pre">n</span></code> bits from <code class="docutils literal notranslate"><span class="pre">x</span></code> and sign-extends them to full 256 bits. This means that bit at position <em>n-1</em> is copied to all upper bits.</p>
 <p>The value of <code class="docutils literal notranslate"><span class="pre">x</span></code> must be in the range <em>-2</em> <sup>255</sup> <em>&lt;= x &lt;= +2</em> <sup>256</sup> <em>-1</em>, and <code class="docutils literal notranslate"><span class="pre">n</span></code> must be an integer, <em>1 &lt;= n &lt;= 255</em>. <code class="docutils literal notranslate"><span class="pre">x</span></code> is rounded toward zero.</p>
 <p>Example: Converting a number in two’s complement representation to a signed number:</p>
-<table class="-x-quark-literal-block"><tbody><tr><td width="100%" class="-x-quark-literal-block-td"><div class="highlight-speedcrunch notranslate"><div class="highlight"><pre><span></span><span class="n">unmask</span><span class="p">(</span><span class="mh">0xFFFF</span><span class="p">;</span> <span class="mi">16</span><span class="p">)</span>
+<table class="-x-quark-literal-block"><tbody><tr><td width="100%" class="-x-quark-literal-block-td"><div class="highlight-bitloupe notranslate"><div class="highlight"><pre><span></span><span class="n">unmask</span><span class="p">(</span><span class="mh">0xFFFF</span><span class="p">;</span> <span class="mi">16</span><span class="p">)</span>
 <span class="ge">= -1</span>
 <span class="n">unmask</span><span class="p">(</span><span class="mh">0x1FFF</span><span class="p">;</span> <span class="mi">16</span><span class="p">)</span>
 <span class="ge">= 0x1FFF</span>
@@ -292,7 +292,7 @@ If <code class="docutils literal notranslate"><span class="pre">bits</span></cod
 <span class="menuselection">Settings ‣ Results ‣ Rounding Mode</span> option (for
 example <em>Half Even (Banker’s)</em>, <em>Half Away from Zero</em>, or directed modes).</p>
 <p>Example:</p>
-<table class="-x-quark-literal-block"><tbody><tr><td width="100%" class="-x-quark-literal-block-td"><div class="highlight-speedcrunch notranslate"><div class="highlight"><pre><span></span><span class="n">round</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+<table class="-x-quark-literal-block"><tbody><tr><td width="100%" class="-x-quark-literal-block-td"><div class="highlight-bitloupe notranslate"><div class="highlight"><pre><span></span><span class="n">round</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
 <span class="ge">= 0</span>
 
 <span class="n">round</span><span class="p">(</span><span class="mf">1.5</span><span class="p">)</span>
@@ -416,7 +416,7 @@ The result is always non-negative.</p>
   <tr>
     <td width="50%">
       <a class="nav-item nav-item-0"
-         href="../contents.html">SpeedCrunch 1.0 documentation</a> &#187; <a class="nav-item nav-item-1"
+         href="../contents.html">BitLoupe 1.0 documentation</a> &#187; <a class="nav-item nav-item-1"
              href="index.html">Reference</a>
           
     </td>
@@ -451,7 +451,7 @@ The result is always non-negative.</p>
       <td colspan="2" align="center">
         
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2026, The SpeedCrunch Developers.
+        &#169; Copyright 2026, The BitLoupe Developers.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.1.
     </div>
       </td>

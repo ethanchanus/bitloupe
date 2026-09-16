@@ -1,9 +1,9 @@
 [Desktop Entry]
 Type=Application
-_Name=SpeedCrunch
-Exec=speedcrunch
-Icon=org.speedcrunch.SpeedCrunch
-StartupWMClass=speedcrunch
+_Name=BitLoupe
+Exec=bitloupe
+Icon=org.bitloupe.BitLoupe
+StartupWMClass=bitloupe
 _Comment=A high-precision scientific calculator
 Categories=Qt;Utility;Calculator;
 # TRANSLATORS: Extra keywords for finding the application in the desktop environment. The trailing ';' is important!

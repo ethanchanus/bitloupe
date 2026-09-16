@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-# SpeedCrunch documentation build configuration file, created by
+# BitLoupe documentation build configuration file, created by
 # sphinx-quickstart on Mon Feb  8 20:22:01 2016.
 #
 # This file is execfile()d with the current directory set to its
@@ -45,7 +45,7 @@ needs_sphinx = '3.0'
 sys.path.insert(0, VENDORED_QUARK_DIR)
 sys.path.insert(0, EXTENSIONS_DIR)
 
-extensions = ['speedcrunch_domain', 'sc_lexer']
+extensions = ['bitloupe_domain', 'sc_lexer']
 primary_domain = 'sc'
 
 if bundled:
@@ -64,9 +64,9 @@ source_suffix = '.rst'
 master_doc = 'contents'
 
 # General information about the project.
-project = 'SpeedCrunch'
-copyright = '2026, The SpeedCrunch Developers'
-author = 'The SpeedCrunch Developers'
+project = 'BitLoupe'
+copyright = '2026, The BitLoupe Developers'
+author = 'The BitLoupe Developers'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -94,7 +94,7 @@ release = '1.0'
 # directories to ignore when looking for source files.
 exclude_patterns = ['_build', 'extensions/**']
 
-highlight_language = 'speedcrunch'
+highlight_language = 'bitloupe'
 
 # The reST default role (used for this markup: `text`) to use for all
 # documents.
@@ -233,7 +233,7 @@ else:
 #html_search_scorer = 'scorer.js'
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'SpeedCrunchdoc'
+htmlhelp_basename = 'BitLoupedoc'
 
 # -- Options for LaTeX output ---------------------------------------------
 
@@ -257,7 +257,7 @@ latex_elements = {
 # Setting toctree_only doesn't include the text content of the master document
 # in the output, only the TOC.
 latex_documents = [
-    (master_doc, 'SpeedCrunch.tex', 'SpeedCrunch Manual',
+    (master_doc, 'BitLoupe.tex', 'BitLoupe Manual',
      author, 'manual', True),
 ]
 
@@ -287,7 +287,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'speedcrunch', 'SpeedCrunch Documentation',
+    (master_doc, 'bitloupe', 'BitLoupe Documentation',
      [author], 1)
 ]
 
@@ -301,8 +301,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'SpeedCrunch', 'SpeedCrunch Documentation',
-     author, 'SpeedCrunch', 'One line description of project.',
+    (master_doc, 'BitLoupe', 'BitLoupe Documentation',
+     author, 'BitLoupe', 'One line description of project.',
      'Miscellaneous'),
 ]
 

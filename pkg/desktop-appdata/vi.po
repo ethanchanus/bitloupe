@@ -5,13 +5,13 @@
 # Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: SpeedCrunch\n"
+"Project-Id-Version: BitLoupe\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-10 15:46+0000\n"
 "PO-Revision-Date: 2016-07-18 23:45+0000\n"
 "Last-Translator: Felix Krull <f_krull@gmx.de>\n"
 "Language-Team: Vietnamese (http://www.transifex.com/heldercorreia/"
-"speedcrunch/language/vi/)\n"
+"bitloupe/language/vi/)\n"
 "Language: vi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,33 +19,33 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. TRANSLATORS: Name of the application, usually shouldn't be translated.
-#: tmp/org.speedcrunch.SpeedCrunch.desktop.in.h:1
-#: tmp/org.speedcrunch.SpeedCrunch.metainfo.xml.in.h:2
-msgid "SpeedCrunch"
-msgstr "SpeedCrunch"
+#: tmp/org.bitloupe.BitLoupe.desktop.in.h:1
+#: tmp/org.bitloupe.BitLoupe.metainfo.xml.in.h:2
+msgid "BitLoupe"
+msgstr "BitLoupe"
 
 #. TRANSLATORS: Short one-line description.
-#: tmp/org.speedcrunch.SpeedCrunch.desktop.in.h:2
-#: tmp/org.speedcrunch.SpeedCrunch.metainfo.xml.in.h:4
+#: tmp/org.bitloupe.BitLoupe.desktop.in.h:2
+#: tmp/org.bitloupe.BitLoupe.metainfo.xml.in.h:4
 msgid "A high-precision scientific calculator"
 msgstr "Máy tính khoa học có độ chính xác cao"
 
 #. TRANSLATORS: Extra keywords for finding the application in the desktop environment. The trailing ';' is important!
-#: tmp/org.speedcrunch.SpeedCrunch.desktop.in.h:4
+#: tmp/org.bitloupe.BitLoupe.desktop.in.h:4
 msgid "arithmetic;calculation;math;scientific;"
 msgstr "số học;tính toán;toán học;khoa học;"
 
-#: tmp/org.speedcrunch.SpeedCrunch.metainfo.xml.in.h:5
+#: tmp/org.bitloupe.BitLoupe.metainfo.xml.in.h:5
 msgid ""
-"SpeedCrunch is a fast, high-precision scientific calculator. It features a "
+"BitLoupe is a fast, high-precision scientific calculator. It features a "
 "syntax-highlighted scrollable display and is designed to be fully used via "
 "keyboard."
 msgstr ""
-"SpeedCrunch là một máy tính khoa học nhanh và có độ chính xác cao. Ứng dụng "
+"BitLoupe là một máy tính khoa học nhanh và có độ chính xác cao. Ứng dụng "
 "có màn hình cuộn với tô sáng cú pháp và được thiết kế để có thể sử dụng hoàn "
 "toàn bằng bàn phím."
 
-#: tmp/org.speedcrunch.SpeedCrunch.metainfo.xml.in.h:6
+#: tmp/org.bitloupe.BitLoupe.metainfo.xml.in.h:6
 msgid ""
 "It includes many built-in maths functions and supports advanced features "
 "like user-defined functions, complex numbers, and unit conversions. This is "
@@ -57,23 +57,23 @@ msgstr ""
 "kết hợp với giao diện đơn giản nhưng mạnh mẽ, có xem trước kết quả tức thời, "
 "tô sáng cú pháp và tự động hoàn thành."
 
-#: tmp/org.speedcrunch.SpeedCrunch.metainfo.xml.in.h:7
+#: tmp/org.bitloupe.BitLoupe.metainfo.xml.in.h:7
 msgid ""
-"SpeedCrunch is available for several platforms in a number of languages."
-msgstr "SpeedCrunch có sẵn cho nhiều nền tảng với nhiều ngôn ngữ."
+"BitLoupe is available for several platforms in a number of languages."
+msgstr "BitLoupe có sẵn cho nhiều nền tảng với nhiều ngôn ngữ."
 
-#: tmp/org.speedcrunch.SpeedCrunch.metainfo.xml.in.h:8
+#: tmp/org.bitloupe.BitLoupe.metainfo.xml.in.h:8
 msgid "Main window with optional keypad"
 msgstr "Cửa sổ chính với bàn phím số tùy chọn"
 
-#: tmp/org.speedcrunch.SpeedCrunch.metainfo.xml.in.h:9
+#: tmp/org.bitloupe.BitLoupe.metainfo.xml.in.h:9
 msgid "The constants list and formula book"
 msgstr "Danh sách hằng số và sổ công thức"
 
-#: tmp/org.speedcrunch.SpeedCrunch.metainfo.xml.in.h:10
+#: tmp/org.bitloupe.BitLoupe.metainfo.xml.in.h:10
 msgid "Customizable user interface"
 msgstr "Giao diện người dùng có thể tùy biến"
 
-#: tmp/org.speedcrunch.SpeedCrunch.metainfo.xml.in.h:11
+#: tmp/org.bitloupe.BitLoupe.metainfo.xml.in.h:11
 msgid "The built-in user manual"
 msgstr "Hướng dẫn sử dụng tích hợp"

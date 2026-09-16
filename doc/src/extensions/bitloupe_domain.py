@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# This file is part of the SpeedCrunch project
+# This file is part of the BitLoupe project
 # Copyright (c) 2016 Felix Krull <f_krull@gmx.de>
 #
 # This program is free software; you can redistribute it and/or
@@ -18,7 +18,7 @@
 # Boston, MA 02110-1301, USA.
 
 """
-A domain for SpeedCrunch things (functions and constants, mostly). To use,
+A domain for BitLoupe things (functions and constants, mostly). To use,
 enable the extension and use the 'sc' domain like any other domain (e.g.
 'sc:function', 'sc:constant'). To link to the function index, use
 :ref:`sc:functionindex`.
@@ -57,7 +57,7 @@ def sc_parameterlist(*args, **kwargs):
 
 
 def _parse_parameter_list(params):
-    """Parse a SpeedCrunch parameter list into nodes."""
+    """Parse a BitLoupe parameter list into nodes."""
     paramlist = sc_parameterlist()
     stack = deque([paramlist])
     for param in params.split(';'):
@@ -78,8 +78,8 @@ def _parse_parameter_list(params):
     return paramlist
 
 
-class SpeedCrunchObject(ObjectDescription):
-    """Directive to document a SpeedCrunch object."""
+class BitLoupeObject(ObjectDescription):
+    """Directive to document a BitLoupe object."""
 
     doc_field_types = [
         # l10n: Label for parameter lists when documenting functions
@@ -130,7 +130,7 @@ class SpeedCrunchObject(ObjectDescription):
             inv = self.env.domaindata[self.domain]['objects']
             if name in inv:
                 self.state_machine.reporter.warning(
-                    'duplicate SpeedCrunch object description of %s, ' % name +
+                    'duplicate BitLoupe object description of %s, ' % name +
                     'other instance in ' + self.env.doc2path(inv[name][0]),
                     line=self.lineno)
             inv[name] = (self.env.docname, self.objtype)
@@ -139,8 +139,8 @@ class SpeedCrunchObject(ObjectDescription):
         self.add_index_entry('single', indextext, targetname)
 
 
-class SpeedCrunchFunction(SpeedCrunchObject):
-    """Documents a SpeedCrunch function."""
+class BitLoupeFunction(BitLoupeObject):
+    """Documents a BitLoupe function."""
 
     needs_arglist = True
 
@@ -149,8 +149,8 @@ class SpeedCrunchFunction(SpeedCrunchObject):
         return _('%s() (function)') % name
 
 
-class SpeedCrunchConstant(SpeedCrunchObject):
-    """Documents a SpeedCrunch built-in constant."""
+class BitLoupeConstant(BitLoupeObject):
+    """Documents a BitLoupe built-in constant."""
 
     def get_index_text(self, name):
         # l10n: Index display text for built-in constants
@@ -158,7 +158,7 @@ class SpeedCrunchConstant(SpeedCrunchObject):
 
 
 class FunctionIndex(Index):
-    """Generate an index of all SpeedCrunch functions."""
+    """Generate an index of all BitLoupe functions."""
 
     name = 'functionindex'
     # l10n: Function index long name (title and links)
@@ -178,23 +178,23 @@ class FunctionIndex(Index):
         return sorted(content.items()), False
 
 
-class SpeedCrunchDomain(Domain):
-    """Domain for documenting SpeedCrunch functions."""
+class BitLoupeDomain(Domain):
+    """Domain for documenting BitLoupe functions."""
 
     name = 'sc'
-    label = 'SpeedCrunch'
+    label = 'BitLoupe'
     data_version = 1
 
     object_types = {
-        # l10n: Label for built-in SpeedCrunch functions
+        # l10n: Label for built-in BitLoupe functions
         'function': ObjType(_('function'), 'func'),
-        # l10n: Label for built-in SpeedCrunch constants
+        # l10n: Label for built-in BitLoupe constants
         'constant': ObjType(_('constant'), 'const'),
     }
 
     directives = {
-        'function': SpeedCrunchFunction,
-        'constant': SpeedCrunchConstant,
+        'function': BitLoupeFunction,
+        'constant': BitLoupeConstant,
     }
 
     indices = [FunctionIndex]
@@ -209,7 +209,7 @@ class SpeedCrunchDomain(Domain):
     }
 
     def __init__(self, env):
-        super(SpeedCrunchDomain, self).__init__(env)
+        super(BitLoupeDomain, self).__init__(env)
 
     def clear_doc(self, docname):
         for name, (i_docname, objtype) in list(self.data['objects'].items()):
@@ -255,7 +255,7 @@ def add_index_to_standard_domain(app, env, *args):
 
 
 def setup(app):
-    app.add_domain(SpeedCrunchDomain)
+    app.add_domain(BitLoupeDomain)
     app.connect('env-before-read-docs', add_index_to_standard_domain)
     for locale_dir in app.config.locale_dirs:
         app.add_message_catalog(_MESSAGE_CATALOG, os.path.join(app.srcdir, locale_dir))

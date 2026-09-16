@@ -1,7 +1,7 @@
 Syntax
 ======
 
-This part of the documentation explains the syntax of valid SpeedCrunch input. As you will see, SpeedCrunch honors most conventions for mathematical expressions. You will find using SpeedCrunch to be very natural and intuitive, especially so if you are already familiar with a programming language.
+This part of the documentation explains the syntax of valid BitLoupe input. As you will see, BitLoupe honors most conventions for mathematical expressions. You will find using BitLoupe to be very natural and intuitive, especially so if you are already familiar with a programming language.
 
 
 Number Notation
@@ -22,7 +22,7 @@ Trailing zeros after the decimal point (like in ``12.300``) or leading zeros bef
 Digit Grouping Separators
 +++++++++++++++++++++++++
 
-To improve readability, SpeedCrunch accepts grouping separators inside number literals. Grouping separators are optional and ignored during evaluation.
+To improve readability, BitLoupe accepts grouping separators inside number literals. Grouping separators are optional and ignored during evaluation.
 
 Allowed grouping separators are characters that are **not** letters or digits and are **not** number operators. In practice, this includes many punctuation and symbol characters, for example:
 
@@ -60,7 +60,7 @@ Scientific Notation
 
 When dealing with very small or very large numbers (think the size of an atom or of a galaxy) the notation above is inconvenient. These are more commonly expressed in scientific notation; for instance, 1.234*10\ :sup:`-9` is preferable to 0.000000001234.
 
-Naturally, in SpeedCrunch this could be written as ``1.234*10^-9``, but there's also a shorthand notation: ``1.234e-9``. Here, the ``e`` represents ``*10^``, but it is considered a part of the number literal and treated with higher precedence. For example, ``1e2^3`` is equivalent to ``(1e2)^3 = 100^3``. The scale of a number (sometimes called its exponent) always begins with the scale character ``E`` or ``e`` followed by a signed integer. So ``e+10``, ``e-4``, ``E-0`` are all valid scale expressions. If the sign is '+', you may simply omit it: ``e0``, ``E10``. The significand (i.e. the part preceding the exponent) is required; exactly one exponent must be specified.
+Naturally, in BitLoupe this could be written as ``1.234*10^-9``, but there's also a shorthand notation: ``1.234e-9``. Here, the ``e`` represents ``*10^``, but it is considered a part of the number literal and treated with higher precedence. For example, ``1e2^3`` is equivalent to ``(1e2)^3 = 100^3``. The scale of a number (sometimes called its exponent) always begins with the scale character ``E`` or ``e`` followed by a signed integer. So ``e+10``, ``e-4``, ``E-0`` are all valid scale expressions. If the sign is '+', you may simply omit it: ``e0``, ``E10``. The significand (i.e. the part preceding the exponent) is required; exactly one exponent must be specified.
 
 Equivalent examples::
 
@@ -68,12 +68,12 @@ Equivalent examples::
     98*10^3
     98x10³
 
-Compared to most calculators, SpeedCrunch can accept very large numbers without overflowing (e.g. both ``1e+536870911`` and ``1e-536870911`` are still valid). However, only about 78 significant digits are stored at any point. Any digits beyond that are lost.
+Compared to most calculators, BitLoupe can accept very large numbers without overflowing (e.g. both ``1e+536870911`` and ``1e-536870911`` are still valid). However, only about 78 significant digits are stored at any point. Any digits beyond that are lost.
 
 Non-Decimal Bases
 +++++++++++++++++
 
-In addition to decimal (base-10) numbers, SpeedCrunch provides support for binary (base-2), octal (base-8) and hexadecimal (base-16) numbers.
+In addition to decimal (base-10) numbers, BitLoupe provides support for binary (base-2), octal (base-8) and hexadecimal (base-16) numbers.
 You can enter a number in any of these bases by marking it with the corresponding prefix:
 
 * ``0b`` or ``0B`` for **binary**, e.g. ``0b10010``.
@@ -90,7 +90,7 @@ supported for non-decimal bases, however. Examples::
     0xf.a
     = 15.625
 
-To have SpeedCrunch output its results in a base other than decimal, you may use one of the functions :func:`bin`, :func:`oct`, :func:`dec`, or :func:`hex`::
+To have BitLoupe output its results in a base other than decimal, you may use one of the functions :func:`bin`, :func:`oct`, :func:`dec`, or :func:`hex`::
 
     hex(12341)
     = 0x3035
@@ -137,8 +137,8 @@ These functions only accept real, dimensionless integer arguments and also only 
 To change the base that is used for displaying results, select one of the corresponding settings in :menuselection:`Settings --> Results --> Notation`.
 This affects only subsequent calculations/results; existing history entries are not rewritten.
 
-SpeedCrunch stores integers with a precision of up to 256 bits. Since this would be unwieldy,
-the binary representation of a negative number in SpeedCrunch is *not* its two's complement.
+BitLoupe stores integers with a precision of up to 256 bits. Since this would be unwieldy,
+the binary representation of a negative number in BitLoupe is *not* its two's complement.
 Instead, like with other bases, the value and the sign are represented separately::
 
     bin(-1)
@@ -158,7 +158,7 @@ Sexagesimal Values
 
     .. versionadded:: 1.0
 
-Sexagesimal values in SpeedCrunch are angle degrees or time values represented with minutes and seconds.
+Sexagesimal values in BitLoupe are angle degrees or time values represented with minutes and seconds.
 
 When sexagesimal mode is selected in :menuselection:`Settings --> Results --> Notation`, dimensionless and time results are displayed as sexagesimal values. All other results are displayed as fixed-point decimal values. Actual sexagesimal math depends on the result. Dimensionless results are handled as degrees with minutes and seconds generated from the decimal part. With time dimension results, base unit is second and the integer part is divided to minutes and hours.
 
@@ -303,7 +303,7 @@ Operators and Precedence
 
 When writing an expression like ``10+5*4``, which operation will be executed first? The common rules of operator precedence tell us that in this case multipication shall be computed first, hence the result is ``30``. We also distinguish **unary** operators (which act on a single number/operand) and **binary** operators (which link two operands).
 
-SpeedCrunch supports the following operators, listed in order of decreasing precedence:
+BitLoupe supports the following operators, listed in order of decreasing precedence:
 
 .. Note: When making changes to these tables, also check that they look ok with LaTeX; these big
 .. tables can be problematic.
@@ -385,7 +385,7 @@ SpeedCrunch supports the following operators, listed in order of decreasing prec
 |                               |                                                               |                         |
 |                               | .. versionadded:: 0.12                                        |                         |
 |                               |    Implicit multiplication was added                          |                         |
-|                               |    SpeedCrunch 0.12.                                          |                         |
+|                               |    BitLoupe 0.12.                                          |                         |
 |                               |                                                               |                         |
 |                               | .. versionadded:: 1.0                                         |                         |
 |                               |    Multiplication and division symbol aliases.                |                         |
@@ -429,7 +429,7 @@ Complex Numbers
 ---------------
 .. versionadded:: 0.12
 
-SpeedCrunch supports complex-number expressions by default. Enter the imaginary
+BitLoupe supports complex-number expressions by default. Enter the imaginary
 unit as ``i`` or ``j``::
 
     j^2

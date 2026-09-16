@@ -20,7 +20,7 @@
   <tr>
     <td width="50%">
       <a class="nav-item nav-item-0"
-         href="../contents.html">SpeedCrunch 1.0 documentation</a> &#187; <a class="nav-item nav-item-1"
+         href="../contents.html">BitLoupe 1.0 documentation</a> &#187; <a class="nav-item nav-item-1"
              href="index.html">Reference</a>
           
     </td>
@@ -68,7 +68,7 @@
 <dd><p>Return the absolute value of <code class="docutils literal notranslate"><span class="pre">x</span></code>, commonly written as |x|. In real mode, it flips the sign of a negative number, thus forcing it to be positive. When given a complex number as argument, it returns the modulus of the number.</p>
 <p>The argument can have a dimension.</p>
 <p>Example:</p>
-<table class="-x-quark-literal-block"><tbody><tr><td width="100%" class="-x-quark-literal-block-td"><div class="highlight-speedcrunch notranslate"><div class="highlight"><pre><span></span><span class="n">abs</span><span class="p">(</span><span class="o">-</span><span class="mi">3 </span><span class="n">meter</span><span class="p">)</span>
+<table class="-x-quark-literal-block"><tbody><tr><td width="100%" class="-x-quark-literal-block-td"><div class="highlight-bitloupe notranslate"><div class="highlight"><pre><span></span><span class="n">abs</span><span class="p">(</span><span class="o">-</span><span class="mi">3 </span><span class="n">meter</span><span class="p">)</span>
 <span class="ge">= 3 meter</span>
 
 <span class="n">abs</span><span class="p">(</span><span class="mi">4 </span><span class="o">+</span> <span class="mi">3</span><span class="no">j</span><span class="p">)</span>
@@ -92,7 +92,7 @@
 <dt class="sig sig-object sc" id="sc.cbrt">
 <span class="sig-name descname"><span class="pre">cbrt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x</span></em><span class="sig-paren">)</span></dt>
 <dd><p>Compute the third (cubic) root of <code class="docutils literal notranslate"><span class="pre">x</span></code>. In <em>real mode</em>, it accepts any real number. Negative numbers will yield a negative cubic root:</p>
-<table class="-x-quark-literal-block"><tbody><tr><td width="100%" class="-x-quark-literal-block-td"><div class="highlight-speedcrunch notranslate"><div class="highlight"><pre><span></span><span class="n">cbrt</span><span class="p">(</span><span class="o">-</span><span class="mi">27</span><span class="p">)</span>
+<table class="-x-quark-literal-block"><tbody><tr><td width="100%" class="-x-quark-literal-block-td"><div class="highlight-bitloupe notranslate"><div class="highlight"><pre><span></span><span class="n">cbrt</span><span class="p">(</span><span class="o">-</span><span class="mi">27</span><span class="p">)</span>
 <span class="ge">= -3</span>
 </pre></div>
 </div>
@@ -120,7 +120,7 @@
 <dt class="sig sig-object sc" id="sc.ln">
 <span class="sig-name descname"><span class="pre">ln</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x</span></em><span class="sig-paren">)</span></dt>
 <dd><p>Compute the natural logarithm. In <em>real mode</em>, the argument must be real, with <em>x &gt; 0</em>.</p>
-<p>In <em>complex mode</em>, any non-zero number may be given. The result will be the principal value. The branch cut runs across the negative real axis. Nevertheless, in SpeedCrunch <a class="reference internal" href="#sc.ln" title="ln"><code class="xref sc sc-func docutils literal notranslate"><span class="pre">ln()</span></code></a> is defined for negative real numbers as <em>ln(-x) = ln(|x|)) + πj</em>, extending the branch from the <em>upper</em> half-plane.</p>
+<p>In <em>complex mode</em>, any non-zero number may be given. The result will be the principal value. The branch cut runs across the negative real axis. Nevertheless, in BitLoupe <a class="reference internal" href="#sc.ln" title="ln"><code class="xref sc sc-func docutils literal notranslate"><span class="pre">ln()</span></code></a> is defined for negative real numbers as <em>ln(-x) = ln(|x|)) + πj</em>, extending the branch from the <em>upper</em> half-plane.</p>
 </dd></dl>
 
 <dl class="sc function">
@@ -155,7 +155,7 @@ GMT/UTC (fractional offsets are supported), and conversion is performed in
 UTC after applying that offset.</p>
 <p>This function is the inverse of <a class="reference internal" href="#sc.epoch" title="epoch"><code class="xref sc sc-func docutils literal notranslate"><span class="pre">epoch()</span></code></a> when using the same <code class="docutils literal notranslate"><span class="pre">offset</span></code>.</p>
 <p>Example:</p>
-<table class="-x-quark-literal-block"><tbody><tr><td width="100%" class="-x-quark-literal-block-td"><div class="highlight-speedcrunch notranslate"><div class="highlight"><pre><span></span><span class="n">datetime</span><span class="p">(</span><span class="mi">1514761200</span><span class="p">;</span> <span class="mi">1</span><span class="p">)</span>
+<table class="-x-quark-literal-block"><tbody><tr><td width="100%" class="-x-quark-literal-block-td"><div class="highlight-bitloupe notranslate"><div class="highlight"><pre><span></span><span class="n">datetime</span><span class="p">(</span><span class="mi">1514761200</span><span class="p">;</span> <span class="mi">1</span><span class="p">)</span>
 <span class="ge">= 20180101.000000</span>
 
 <span class="n">datetime</span><span class="p">(</span><span class="mi">1551464695</span><span class="p">;</span> <span class="o">-</span><span class="mf">3.5</span><span class="p">)</span>
@@ -177,7 +177,7 @@ timezone. If <code class="docutils literal notranslate"><span class="pre">offset
 GMT/UTC (fractional offsets are supported).</p>
 <p>This function is the inverse of <a class="reference internal" href="#sc.datetime" title="datetime"><code class="xref sc sc-func docutils literal notranslate"><span class="pre">datetime()</span></code></a> when using the same <code class="docutils literal notranslate"><span class="pre">offset</span></code>.</p>
 <p>Example:</p>
-<table class="-x-quark-literal-block"><tbody><tr><td width="100%" class="-x-quark-literal-block-td"><div class="highlight-speedcrunch notranslate"><div class="highlight"><pre><span></span><span class="n">epoch</span><span class="p">(</span><span class="mf">20180101.000000</span><span class="p">;</span> <span class="mi">1</span><span class="p">)</span>
+<table class="-x-quark-literal-block"><tbody><tr><td width="100%" class="-x-quark-literal-block-td"><div class="highlight-bitloupe notranslate"><div class="highlight"><pre><span></span><span class="n">epoch</span><span class="p">(</span><span class="mf">20180101.000000</span><span class="p">;</span> <span class="mi">1</span><span class="p">)</span>
 <span class="ge">= 1514761200</span>
 
 <span class="n">epoch</span><span class="p">(</span><span class="mf">20190301.145455</span><span class="p">;</span> <span class="o">-</span><span class="mf">3.5</span><span class="p">)</span>
@@ -199,7 +199,7 @@ hydrated formulas such as <code class="docutils literal notranslate"><span class
 <p>The element table follows the official IUPAC CIAAW 2021 abridged standard
 atomic weights.</p>
 <p>Example:</p>
-<table class="-x-quark-literal-block"><tbody><tr><td width="100%" class="-x-quark-literal-block-td"><div class="highlight-speedcrunch notranslate"><div class="highlight"><pre><span></span><span class="n">molmass</span><span class="p">(</span><span class="n">C6H12O6</span><span class="p">)</span>
+<table class="-x-quark-literal-block"><tbody><tr><td width="100%" class="-x-quark-literal-block-td"><div class="highlight-bitloupe notranslate"><div class="highlight"><pre><span></span><span class="n">molmass</span><span class="p">(</span><span class="n">C6H12O6</span><span class="p">)</span>
 <span class="ge">= 180.156 g/mol</span>
 </pre></div>
 </div>
@@ -214,7 +214,7 @@ atomic weights.</p>
 <code class="docutils literal notranslate"><span class="pre">mol</span> <span class="pre">*</span> <span class="pre">molmass(formula)</span></code>.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">formula</span></code> argument follows the same parsing rules as <a class="reference internal" href="#sc.molmass" title="molmass"><code class="xref sc sc-func docutils literal notranslate"><span class="pre">molmass()</span></code></a>.</p>
 <p>Example:</p>
-<table class="-x-quark-literal-block"><tbody><tr><td width="100%" class="-x-quark-literal-block-td"><div class="highlight-speedcrunch notranslate"><div class="highlight"><pre><span></span><span class="n">mass</span><span class="p">(</span><span class="mi">1</span><span class="p">;</span> <span class="n">C6H12O6</span><span class="p">)</span>
+<table class="-x-quark-literal-block"><tbody><tr><td width="100%" class="-x-quark-literal-block-td"><div class="highlight-bitloupe notranslate"><div class="highlight"><pre><span></span><span class="n">mass</span><span class="p">(</span><span class="mi">1</span><span class="p">;</span> <span class="n">C6H12O6</span><span class="p">)</span>
 <span class="ge">= 180.156 g</span>
 </pre></div>
 </div>
@@ -226,10 +226,10 @@ atomic weights.</p>
 <dd><p>Compute molarity as amount of substance divided by solution volume and
 return the result with dimension <code class="docutils literal notranslate"><span class="pre">mol/L</span></code>.</p>
 <p>This function is equivalent to: <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">/</span> <span class="pre">V</span></code>.</p>
-<p>If <code class="docutils literal notranslate"><span class="pre">n</span></code> or <code class="docutils literal notranslate"><span class="pre">V</span></code> is dimensionless, SpeedCrunch interprets them as <code class="docutils literal notranslate"><span class="pre">mol</span></code>
+<p>If <code class="docutils literal notranslate"><span class="pre">n</span></code> or <code class="docutils literal notranslate"><span class="pre">V</span></code> is dimensionless, BitLoupe interprets them as <code class="docutils literal notranslate"><span class="pre">mol</span></code>
 and <code class="docutils literal notranslate"><span class="pre">L</span></code>, respectively.</p>
 <p>Example:</p>
-<table class="-x-quark-literal-block"><tbody><tr><td width="100%" class="-x-quark-literal-block-td"><div class="highlight-speedcrunch notranslate"><div class="highlight"><pre><span></span><span class="n">molarity</span><span class="p">(</span><span class="mf">0.50</span><span class="p">;</span> <span class="mf">1.00</span><span class="p">)</span>
+<table class="-x-quark-literal-block"><tbody><tr><td width="100%" class="-x-quark-literal-block-td"><div class="highlight-bitloupe notranslate"><div class="highlight"><pre><span></span><span class="n">molarity</span><span class="p">(</span><span class="mf">0.50</span><span class="p">;</span> <span class="mf">1.00</span><span class="p">)</span>
 <span class="ge">= 0.5 mol/L</span>
 </pre></div>
 </div>
@@ -249,7 +249,7 @@ current angle mode.</p>
 <dd><p>Returns the sine of <code class="docutils literal notranslate"><span class="pre">x</span></code>. The behavior depends on both the angle mode setting and on whether complex numbers are enabled.</p>
 <p>In <em>degrees</em>, <em>gradians</em>, or <em>turns</em> modes, the argument is assumed to be expressed in such that <a class="reference internal" href="#sc.sin" title="sin"><code class="xref sc sc-func docutils literal notranslate"><span class="pre">sin()</span></code></a> is periodic with a period of 360 degrees, 400 gradians, or 1 turn, respectively: <em>sin(x) = sin(x+360)</em>, <em>sin(x) = sin(x+400)</em>, or <em>sin(x) = sin(x+1)</em>. Complex arguments are allowed only in <em>radians</em> mode, regardless of the corresponding setting.</p>
 <p>When <em>radians</em> are set as the angle mode, <a class="reference internal" href="#sc.sin" title="sin"><code class="xref sc sc-func docutils literal notranslate"><span class="pre">sin()</span></code></a> will be 2π-periodic. The argument may be complex.</p>
-<p>For real arguments beyond approx. |x|&gt;10<sup>77</sup>, SpeedCrunch no longer recognizes the periodicity of the function and issues an error.</p>
+<p>For real arguments beyond approx. |x|&gt;10<sup>77</sup>, BitLoupe no longer recognizes the periodicity of the function and issues an error.</p>
 <p>The argument of <a class="reference internal" href="#sc.sin" title="sin"><code class="xref sc sc-func docutils literal notranslate"><span class="pre">sin()</span></code></a> must be dimensionless.</p>
 <p>The inverse function is <a class="reference internal" href="#sc.arcsin" title="arcsin"><code class="xref sc sc-func docutils literal notranslate"><span class="pre">arcsin()</span></code></a>.</p>
 <table class="-x-quark-box -x-quark-admonition -x-quark-seealso"><tbody><tr><td width="100%" class="-x-quark-box-td"><div class="admonition seealso">
@@ -269,7 +269,7 @@ current angle mode.</p>
 <dd><p>Returns the cosine of <code class="docutils literal notranslate"><span class="pre">x</span></code>. The behavior depends on both the angle mode setting and on whether complex numbers are enabled.</p>
 <p>In <em>degrees</em>, <em>gradians</em>, or <em>turns</em> modes, the argument is assumed to be expressed in such that <a class="reference internal" href="#sc.cos" title="cos"><code class="xref sc sc-func docutils literal notranslate"><span class="pre">cos()</span></code></a> is periodic with a period of 360 degrees, 400 gradians, or 1 turn, respectively: <em>cos(x) = cos(x+360)</em>, <em>cos(x) = cos(x+400)</em>, or <em>cos(x) = cos(x+1)</em>. Complex arguments are allowed only in <em>radians</em> mode, regardless of the corresponding setting.</p>
 <p>When <em>radians</em> are set as the angle mode, <a class="reference internal" href="#sc.cos" title="cos"><code class="xref sc sc-func docutils literal notranslate"><span class="pre">cos()</span></code></a> will be 2π-periodic. The argument may be complex.</p>
-<p>For real arguments beyond approx. |x|&gt;10<sup>77</sup>, SpeedCrunch no longer recognizes the periodicity of the function and issues an error.</p>
+<p>For real arguments beyond approx. |x|&gt;10<sup>77</sup>, BitLoupe no longer recognizes the periodicity of the function and issues an error.</p>
 <p>The argument of <a class="reference internal" href="#sc.cos" title="cos"><code class="xref sc sc-func docutils literal notranslate"><span class="pre">cos()</span></code></a> must be dimensionless.</p>
 <p>The inverse function is <a class="reference internal" href="#sc.arccos" title="arccos"><code class="xref sc sc-func docutils literal notranslate"><span class="pre">arccos()</span></code></a>.</p>
 <table class="-x-quark-box -x-quark-admonition -x-quark-seealso"><tbody><tr><td width="100%" class="-x-quark-box-td"><div class="admonition seealso">
@@ -325,7 +325,7 @@ current angle mode.</p>
 <dd><p>Returns the secant of <code class="docutils literal notranslate"><span class="pre">x</span></code>, defined as the reciprocal cosine of <code class="docutils literal notranslate"><span class="pre">x</span></code>: <em>sec(x) = 1/cos(x)</em>. The behavior depends on both the angle mode setting and on whether complex numbers are enabled.</p>
 <p>In <em>degrees</em>, <em>gradians</em>, or <em>turns</em> modes, the argument is assumed to be expressed in such that <a class="reference internal" href="#sc.sec" title="sec"><code class="xref sc sc-func docutils literal notranslate"><span class="pre">sec()</span></code></a> is periodic with a period of 360 degrees, 400 gradians, or 1 turn, respectively: <em>sec(x) = sec(x+360)</em>, <em>sec(x) = sec(x+400)</em>, or <em>sec(x) = sec(x+1)</em>. Complex arguments are allowed only in <em>radians</em> mode, regardless of the corresponding setting.</p>
 <p>When <em>radians</em> are set as the angle mode, <a class="reference internal" href="#sc.sec" title="sec"><code class="xref sc sc-func docutils literal notranslate"><span class="pre">sec()</span></code></a> will be 2π-periodic. The argument may be complex.</p>
-<p>For real arguments beyond approx. |x|&gt;10<sup>77</sup>, SpeedCrunch no longer recognizes the periodicity of the function and issues an error.</p>
+<p>For real arguments beyond approx. |x|&gt;10<sup>77</sup>, BitLoupe no longer recognizes the periodicity of the function and issues an error.</p>
 <p>The argument of <a class="reference internal" href="#sc.sec" title="sec"><code class="xref sc sc-func docutils literal notranslate"><span class="pre">sec()</span></code></a> must be dimensionless.</p>
 </dd></dl>
 
@@ -335,7 +335,7 @@ current angle mode.</p>
 <dd><p>Returns the cosecant of <code class="docutils literal notranslate"><span class="pre">x</span></code>, defined as the reciprocal sine of <code class="docutils literal notranslate"><span class="pre">x</span></code>: <em>csc(x) = 1/sin(x)</em>. The behavior depends on both the angle mode setting and on whether complex numbers are enabled.</p>
 <p>In <em>degrees</em>, <em>gradians</em>, or <em>turns</em> modes, the argument is assumed to be expressed in such that <a class="reference internal" href="#sc.csc" title="csc"><code class="xref sc sc-func docutils literal notranslate"><span class="pre">csc()</span></code></a> is periodic with a period of 360 degrees, 400 gradians, or 1 turn, respectively: <em>csc(x) = csc(x+360)</em>, <em>csc(x) = csc(x+400)</em>, or <em>csc(x) = csc(x+1)</em>. Complex arguments are allowed only in <em>radians</em> mode, regardless of the corresponding setting.</p>
 <p>When <em>radians</em> are set as the angle mode, <a class="reference internal" href="#sc.csc" title="csc"><code class="xref sc sc-func docutils literal notranslate"><span class="pre">csc()</span></code></a> will be 2π-periodic. The argument may be complex.</p>
-<p>For real arguments beyond approx. |x|&gt;10<sup>77</sup>, SpeedCrunch no longer recognizes the periodicity of the function and issues an error.</p>
+<p>For real arguments beyond approx. |x|&gt;10<sup>77</sup>, BitLoupe no longer recognizes the periodicity of the function and issues an error.</p>
 <p>The argument of <a class="reference internal" href="#sc.csc" title="csc"><code class="xref sc sc-func docutils literal notranslate"><span class="pre">csc()</span></code></a> must be dimensionless.</p>
 </dd></dl>
 
@@ -451,7 +451,7 @@ current angle mode.</p>
 <span class="sig-name descname"><span class="pre">gamma</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x</span></em><span class="sig-paren">)</span></dt>
 <dd><p>Evaluates the gamma function (frequently denoted by the Greek letter Γ). The gamma function is an analytic extension to the factorial operation which is defined on real numbers as well. The relation between factorial and the gamma function is given by <em>Γ(n) = (n - 1)!</em>.</p>
 <p>Note that currently only real arguments are allowed. Furthermore, the function only accepts dimensionless arguments.</p>
-<p>The computation of the factorial operation is in fact implemented via <a class="reference internal" href="#sc.gamma" title="gamma"><code class="xref sc sc-func docutils literal notranslate"><span class="pre">gamma()</span></code></a>. This means that in SpeedCrunch, factorials of non-integer numbers are allowed.</p>
+<p>The computation of the factorial operation is in fact implemented via <a class="reference internal" href="#sc.gamma" title="gamma"><code class="xref sc sc-func docutils literal notranslate"><span class="pre">gamma()</span></code></a>. This means that in BitLoupe, factorials of non-integer numbers are allowed.</p>
 </dd></dl>
 
 <dl class="sc function">
@@ -601,7 +601,7 @@ as radians) or explicitly tagged with an angle unit in <code class="docutils lit
   <tr>
     <td width="50%">
       <a class="nav-item nav-item-0"
-         href="../contents.html">SpeedCrunch 1.0 documentation</a> &#187; <a class="nav-item nav-item-1"
+         href="../contents.html">BitLoupe 1.0 documentation</a> &#187; <a class="nav-item nav-item-1"
              href="index.html">Reference</a>
           
     </td>
@@ -636,7 +636,7 @@ as radians) or explicitly tagged with an angle unit in <code class="docutils lit
       <td colspan="2" align="center">
         
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2026, The SpeedCrunch Developers.
+        &#169; Copyright 2026, The BitLoupe Developers.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.1.
     </div>
       </td>

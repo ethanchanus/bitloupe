@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <QHelpCollectionProject version="1.0">
     <assistant>
-        <title>SpeedCrunch 1.0 documentation</title>
+        <title>BitLoupe 1.0 documentation</title>
         <homePage>qthelp://org.sphinx.manual-enus.1.0/doc/contents.html</homePage>
         <startPage>qthelp://org.sphinx.manual-enus.1.0/doc/index.html</startPage>
     </assistant>

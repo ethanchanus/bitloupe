@@ -34,8 +34,8 @@ run_stats() {
 
 extract_strings() {
     require_extract_tools
-    intltool-extract --local --type gettext/xml $SRC_DIR/org.speedcrunch.SpeedCrunch.metainfo.xml.in
-    intltool-extract --local --type gettext/ini $SRC_DIR/org.speedcrunch.SpeedCrunch.desktop.in
+    intltool-extract --local --type gettext/xml $SRC_DIR/org.bitloupe.BitLoupe.metainfo.xml.in
+    intltool-extract --local --type gettext/ini $SRC_DIR/org.bitloupe.BitLoupe.desktop.in
     xgettext tmp/*.h -o desktop-appdata.pot -cTRANSLATORS -a
 }
 
@@ -73,8 +73,8 @@ update-all)
         msgmerge --update --backup=none "$po" desktop-appdata.pot
     done
 
-    intltool-merge --xml-style $SRC_DIR $SRC_DIR/org.speedcrunch.SpeedCrunch.metainfo.xml.in $SRC_DIR/../org.speedcrunch.SpeedCrunch.metainfo.xml
-    intltool-merge --desktop-style $SRC_DIR $SRC_DIR/org.speedcrunch.SpeedCrunch.desktop.in $SRC_DIR/../org.speedcrunch.SpeedCrunch.desktop
+    intltool-merge --xml-style $SRC_DIR $SRC_DIR/org.bitloupe.BitLoupe.metainfo.xml.in $SRC_DIR/../org.bitloupe.BitLoupe.metainfo.xml
+    intltool-merge --desktop-style $SRC_DIR $SRC_DIR/org.bitloupe.BitLoupe.desktop.in $SRC_DIR/../org.bitloupe.BitLoupe.desktop
     ;;
 update-metadata-files)
     require_metadata_merge_tools
@@ -84,8 +84,8 @@ update-metadata-files)
     # - .desktop launcher file
     # This consumes PO files in this directory and writes merged files to
     # the parent pkg/ directory.
-    intltool-merge --xml-style $SRC_DIR $SRC_DIR/org.speedcrunch.SpeedCrunch.metainfo.xml.in $SRC_DIR/../org.speedcrunch.SpeedCrunch.metainfo.xml
-    intltool-merge --desktop-style $SRC_DIR $SRC_DIR/org.speedcrunch.SpeedCrunch.desktop.in $SRC_DIR/../org.speedcrunch.SpeedCrunch.desktop
+    intltool-merge --xml-style $SRC_DIR $SRC_DIR/org.bitloupe.BitLoupe.metainfo.xml.in $SRC_DIR/../org.bitloupe.BitLoupe.metainfo.xml
+    intltool-merge --desktop-style $SRC_DIR $SRC_DIR/org.bitloupe.BitLoupe.desktop.in $SRC_DIR/../org.bitloupe.BitLoupe.desktop
     ;;
 stats)
     run_stats

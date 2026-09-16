@@ -1,7 +1,7 @@
-// SPDX-FileCopyrightText: 2026 SpeedCrunch developers
+// SPDX-FileCopyrightText: 2026 BitLoupe developers
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-// This file is part of the SpeedCrunch project
+// This file is part of the BitLoupe project
 //
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License

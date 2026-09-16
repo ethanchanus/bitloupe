@@ -2,12 +2,12 @@
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.2-Based Variant V1.1//EN" "dtd/kdex.dtd" [
   <!ENTITY % addindex "IGNORE">
   <!ENTITY % English "INCLUDE"> <!-- change language only here -->
-<!ENTITY app "<application>Speedcrunch</application>">
+<!ENTITY app "<application>Bitloupe</application>">
 ]>
 
 <book lang="&language;">
 <bookinfo>
-<title>The SpeedCrunch Handbook</title>
+<title>The BitLoupe Handbook</title>
 
 <authorgroup>
 <author><firstname>Ariya</firstname> <surname>Hidayat</surname></author>
@@ -27,10 +27,10 @@
 <date>2009-03-06</date>
 <releaseinfo>0.11</releaseinfo>
 
-<abstract><para>SpeedCrunch is a multiplatform desktop calculator for power users</para></abstract>
+<abstract><para>BitLoupe is a multiplatform desktop calculator for power users</para></abstract>
 
 <keywordset>
-<keyword>SpeedCrunch</keyword>
+<keyword>BitLoupe</keyword>
 <keyword>calculator</keyword>
 </keywordset>
 
@@ -49,13 +49,13 @@
 
 <sect1 id="installation-windows">
 <title>Installation for &Microsoft; &Windows;</title>
-<para>To install &app; on &Microsoft; &Windows;, download the installer from the <ulink url="http://speedcrunch.org/download.html">&app; website</ulink>.  Once the installer is downloaded, launch the application to install &app;.  By default &app; is found in the Start Menu, under All Programs, &app; and is stored in C:\Program Files\Speedcrunch.
+<para>To install &app; on &Microsoft; &Windows;, download the installer from the <ulink url="http://bitloupe.org/download.html">&app; website</ulink>.  Once the installer is downloaded, launch the application to install &app;.  By default &app; is found in the Start Menu, under All Programs, &app; and is stored in C:\Program Files\Bitloupe.
 </para>
 </sect1>
 
 <sect1 id="installation-macos">
 <title>Installation for &Mac; OS X</title>
-<para>To install &app; on &Mac; OS X (10.3 (Panther), 10.4 (Tiger), and 10.5 (Leopard)), download the installer from the <ulink url="speedcrunch.org/download.htm">&app; Website</ulink>.  Once the file is downloaded, click on the binary file, and then follow the step-by-step instructions.</para>
+<para>To install &app; on &Mac; OS X (10.3 (Panther), 10.4 (Tiger), and 10.5 (Leopard)), download the installer from the <ulink url="bitloupe.org/download.htm">&app; Website</ulink>.  Once the file is downloaded, click on the binary file, and then follow the step-by-step instructions.</para>
 </sect1>
 
 <sect1 id="installation-linux">
@@ -69,13 +69,13 @@
 <sect2 id="installation-kubuntu">
 <title>Installation for &kubuntu;</title>
 
-<para>SpeedCrunch is part of default &kubuntu; installation since &kubuntu; 5.10.
-It is located in the K Menu, Utilities, Calculator (SpeedCrunch).</para>
+<para>BitLoupe is part of default &kubuntu; installation since &kubuntu; 5.10.
+It is located in the K Menu, Utilities, Calculator (BitLoupe).</para>
 
-<para>If it is not available yet, SpeedCrunch can be installed using the following terminal command:</para>
+<para>If it is not available yet, BitLoupe can be installed using the following terminal command:</para>
 
 <screen>
-<command>apt-get install speedcrunch</command>
+<command>apt-get install bitloupe</command>
 </screen>
 
 
@@ -84,10 +84,10 @@ It is located in the K Menu, Utilities, Calculator (SpeedCrunch).</para>
 <sect2 id="installation-ubuntu">
 <title>Installation for &ubuntu;</title>
 
-<para>&app; is installed by default as a part of &kubuntu;, however in &ubuntu;, it is as simple as sudo apt-get install speedcrunch.</para>
+<para>&app; is installed by default as a part of &kubuntu;, however in &ubuntu;, it is as simple as sudo apt-get install bitloupe.</para>
 
 <screen>
-<command>apt-get install speedcrunch</command>
+<command>apt-get install bitloupe</command>
 </screen>
 
 </sect2>
@@ -96,19 +96,19 @@ It is located in the K Menu, Utilities, Calculator (SpeedCrunch).</para>
 <title>Installation for Fedora Core</title>
 
 <para>&app; is part of Fedora Extras and is provided by the
-package <varname>speedcrunch</varname>. This package can be installed
+package <varname>bitloupe</varname>. This package can be installed
 either with the graphical software management program Pirut,
 or with the terminal command:</para>
 
 <screen>
-<command>yum install speedcrunch</command>
+<command>yum install bitloupe</command>
 </screen>
 
-<para>To update SpeedCrunch to the latest version, use the terminal
+<para>To update BitLoupe to the latest version, use the terminal
 command:</para>
 
 <screen>
-<command>yum update speedcrunch</command>
+<command>yum update bitloupe</command>
 </screen>
 
 </sect2>
@@ -116,7 +116,7 @@ command:</para>
 <title>Installation for Debian</title>
 <para>Installation on Debian is as simple as:</para>
 <screen>
-<command>apt-get install speedcrunch</command>
+<command>apt-get install bitloupe</command>
 </screen>
 </sect2>
 </sect1>
@@ -124,7 +124,7 @@ command:</para>
 <sect1 id="compile">
 <title>Compilation from source code</title>
 
-<para>To compile SpeedCrunch from source code, the following tools are
+<para>To compile BitLoupe from source code, the following tools are
 required:</para>
 
 <itemizedlist>
@@ -144,12 +144,12 @@ location for the buid process. In this build folder, CMake should be
 invoked. The input for CMake will be the src folder in the source tree.
 The exact steps to do all these will depend on the operating system.</para>
 
-<para>As an example, to compile and build SpeedCrunch on &Linux; using GCC,
+<para>As an example, to compile and build BitLoupe on &Linux; using GCC,
 use the following commands:</para>
 
 <screen>
-tar zxvf speedcrunch-0.11.tar.gz
-cd speedcrunch-0.11
+tar zxvf bitloupe-0.11.tar.gz
+cd bitloupe-0.11
 mkdir build
 cd build
 cmake ../src

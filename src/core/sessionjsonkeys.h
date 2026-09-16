@@ -1,12 +1,12 @@
-// SPDX-FileCopyrightText: 2026 SpeedCrunch developers
+// SPDX-FileCopyrightText: 2026 BitLoupe developers
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 
 /*
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://speedcrunch.org/schemas/session-v1.schema.json",
-  "title": "SpeedCrunch Session",
+  "$id": "https://bitloupe.org/schemas/session-v1.schema.json",
+  "title": "BitLoupe Session",
   "type": "object",
   "required": ["$schema", "$id", "session", "limit", "history", "variables", "functions", "units", "globals"],
   "additionalProperties": false,
@@ -16,7 +16,7 @@
       "description": "JSON Schema dialect identifier"
     },
     "$id": {
-      "const": "https://speedcrunch.org/schemas/session-v1.schema.json",
+      "const": "https://bitloupe.org/schemas/session-v1.schema.json",
       "description": "Session schema identifier"
     },
     "session": { "type": "string", "minLength": 1 },
@@ -219,7 +219,7 @@ namespace SessionJsonKeys {
 inline constexpr const char* Schema = "$schema";
 inline constexpr const char* SchemaDialect = "https://json-schema.org/draft/2020-12/schema";
 inline constexpr const char* Id = "$id";
-inline constexpr const char* SchemaId = "https://speedcrunch.org/schemas/session-v1.schema.json";
+inline constexpr const char* SchemaId = "https://bitloupe.org/schemas/session-v1.schema.json";
 inline constexpr const char* Session = "session";
 inline constexpr const char* SessionValueMain = "main";
 inline constexpr const char* Limit = "limit";

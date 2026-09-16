@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2006-2010, 2013-2019, 2022, 2026 SpeedCrunch developers
+// SPDX-FileCopyrightText: 2006-2010, 2013-2019, 2022, 2026 BitLoupe developers
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 
@@ -7001,7 +7001,7 @@ void test_session_deserialize_rejects_invalid_schema_without_mutating()
     invalid[QLatin1String(SessionJsonKeys::Schema)] =
         QLatin1String(SessionJsonKeys::SchemaDialect);
     invalid[QLatin1String(SessionJsonKeys::Id)] =
-        QStringLiteral("https://speedcrunch.org/schemas/session-v2.schema.json");
+        QStringLiteral("https://bitloupe.org/schemas/session-v2.schema.json");
     invalid[QLatin1String(SessionJsonKeys::History)] = QJsonArray();
     invalid[QLatin1String(SessionJsonKeys::Variables)] = QJsonArray();
 

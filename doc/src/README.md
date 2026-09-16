@@ -1,11 +1,11 @@
 # HTML Manual
-The SpeedCrunch manual and website is made using [Sphinx](http://sphinx-doc.org). It can be built either as a manual bundled
+The BitLoupe manual and website is made using [Sphinx](http://sphinx-doc.org). It can be built either as a manual bundled
 with the application, using a stripped-down theme for use with QtHelp and QTextBrowser, or as the full website with a more
 complete theme.
 
 ## Important Tasks
 * `build-bundled` - build all language versions of the bundled manual in the `_build-bundled` directory. This build can
-  be used when building SpeedCrunch by setting the `HTML_DOCS_DIR` CMake variable to the build directory.
+  be used when building BitLoupe by setting the `HTML_DOCS_DIR` CMake variable to the build directory.
 * `build-html` - build all language versions of the website in the `_build-html` directory.
 * `update-prebuilt-manual` - update the prebuilt manual in the `build_html_embedded` directory. This is intended to be
   committed to Git and is used for default source builds.
@@ -18,7 +18,7 @@ Building the docs requires additional dependencies:
 
 Building the bundled docs requires:
 - the Quark theme (already bundled as an extension for convenience)
-- [qhelpgenerator](https://doc.qt.io/qt-6/qthelp-framework.html) matching the Qt version used to build SpeedCrunch
+- [qhelpgenerator](https://doc.qt.io/qt-6/qthelp-framework.html) matching the Qt version used to build BitLoupe
 
 Building the website requires:
 - [the sphinx-bootstrap theme](https://pypi.org/project/sphinx-bootstrap-theme/)

@@ -1,9 +1,9 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "$id": "https://speedcrunch.org/schemas/theme-v1.schema.json",
+    "$id": "https://bitloupe.org/schemas/theme-v1.schema.json",
     "name": "Nordfox",
-    "author": "SpeedCrunch",
-    "homepage": "http://speedcrunch.org",
+    "author": "BitLoupe",
+    "homepage": "http://bitloupe.org",
     "version": "1",
 
     "list": "#cdcecf",

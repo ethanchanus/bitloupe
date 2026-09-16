@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2007-2010, 2013-2014, 2016, 2026 SpeedCrunch developers
+// SPDX-FileCopyrightText: 2007-2010, 2013-2014, 2016, 2026 BitLoupe developers
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 
@@ -35,7 +35,7 @@
 
 #ifdef Q_OS_WIN
 #include <windows.h>
-#ifdef SPEEDCRUNCH_SOCREGS_DIAGNOSTICS
+#ifdef BITLOUPE_SOCREGS_DIAGNOSTICS
 #include <DbgHelp.h>
 #pragma comment(lib, "Dbghelp.lib")
 #endif
@@ -51,7 +51,7 @@
 #ifdef Q_OS_WIN
 QString focusHotkeyConfigurationPath()
 {
-    const QString overridePath = qEnvironmentVariable("SPEEDCRUNCH_SHORTCUT_CONFIG").trimmed();
+    const QString overridePath = qEnvironmentVariable("BITLOUPE_SHORTCUT_CONFIG").trimmed();
     if (!overridePath.isEmpty())
         return QFileInfo(overridePath).absoluteFilePath();
 
@@ -154,14 +154,14 @@ private:
 
 namespace {
 
-#ifdef SPEEDCRUNCH_SOCREGS_DIAGNOSTICS
+#ifdef BITLOUPE_SOCREGS_DIAGNOSTICS
 // TEMPORARY (SoC Regs silicon-combo crash investigation): this is a WIN32-
 // subsystem app, so qDebug/qWarning have no visible console even when
 // launched from a terminal. Route them to a file instead so the reporter can
 // reproduce and collect a log. Remove once the crash is diagnosed and fixed.
 void socRegsFileMessageHandler(QtMsgType type, const QMessageLogContext&, const QString& message)
 {
-    static QFile logFile(QDir::temp().filePath(QStringLiteral("speedcrunch_socregs_debug.log")));
+    static QFile logFile(QDir::temp().filePath(QStringLiteral("bitloupe_socregs_debug.log")));
     static const bool opened = logFile.open(QIODevice::WriteOnly | QIODevice::Append | QIODevice::Text);
     if (!opened)
         return;
@@ -181,8 +181,8 @@ void socRegsFileMessageHandler(QtMsgType type, const QMessageLogContext&, const 
 
 #ifdef Q_OS_WIN
 // TEMPORARY (SoC Regs crash investigation): writes a symbolicated call stack
-// to %TEMP%\speedcrunch_crash.log plus a full minidump to
-// %TEMP%\speedcrunch_crash.dmp on any unhandled exception. Deliberately uses
+// to %TEMP%\bitloupe_crash.log plus a full minidump to
+// %TEMP%\bitloupe_crash.dmp on any unhandled exception. Deliberately uses
 // only plain Win32 file I/O (no Qt) since the process may already be in a
 // corrupted state by the time this runs. Remove once the crash is fixed.
 LONG WINAPI socRegsCrashHandler(EXCEPTION_POINTERS* exceptionInfo)
@@ -191,7 +191,7 @@ LONG WINAPI socRegsCrashHandler(EXCEPTION_POINTERS* exceptionInfo)
     GetTempPathW(MAX_PATH, tempDir);
 
     wchar_t logPath[MAX_PATH];
-    swprintf_s(logPath, L"%s%s", tempDir, L"speedcrunch_crash.log");
+    swprintf_s(logPath, L"%s%s", tempDir, L"bitloupe_crash.log");
     HANDLE file = CreateFileW(logPath, GENERIC_WRITE, FILE_SHARE_READ, nullptr,
                               CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, nullptr);
     if (file != INVALID_HANDLE_VALUE) {
@@ -274,7 +274,7 @@ LONG WINAPI socRegsCrashHandler(EXCEPTION_POINTERS* exceptionInfo)
     }
 
     wchar_t dumpPath[MAX_PATH];
-    swprintf_s(dumpPath, L"%s%s", tempDir, L"speedcrunch_crash.dmp");
+    swprintf_s(dumpPath, L"%s%s", tempDir, L"bitloupe_crash.dmp");
     HANDLE dumpFile = CreateFileW(dumpPath, GENERIC_WRITE, 0, nullptr,
                                   CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, nullptr);
     if (dumpFile != INVALID_HANDLE_VALUE) {
@@ -290,11 +290,11 @@ LONG WINAPI socRegsCrashHandler(EXCEPTION_POINTERS* exceptionInfo)
     return EXCEPTION_EXECUTE_HANDLER;
 }
 #endif
-#endif // SPEEDCRUNCH_SOCREGS_DIAGNOSTICS
+#endif // BITLOUPE_SOCREGS_DIAGNOSTICS
 
 // Dynamic property name mirrored by MainWindow. It lets the GUI layer observe
 // shutdown state even when quit starts from the application/singleton layer.
-constexpr const char* kShutdownInProgressProperty = "speedcrunchShutdownInProgress";
+constexpr const char* kShutdownInProgressProperty = "bitloupeShutdownInProgress";
 
 QString singletonServerName()
 {
@@ -302,7 +302,7 @@ QString singletonServerName()
         + QLatin1Char('|')
         + Settings::getConfigPath();
     const QByteArray hash = QCryptographicHash::hash(scope.toUtf8(), QCryptographicHash::Sha1).toHex();
-    return QStringLiteral("speedcrunch-single-instance-%1").arg(QString::fromLatin1(hash.left(24)));
+    return QStringLiteral("bitloupe-single-instance-%1").arg(QString::fromLatin1(hash.left(24)));
 }
 
 void activateMainWindow(MainWindow* window)
@@ -486,7 +486,7 @@ BOOL WINAPI handleWindowsConsoleControl(DWORD controlType)
 
 int main(int argc, char* argv[])
 {
-#ifdef SPEEDCRUNCH_SOCREGS_DIAGNOSTICS
+#ifdef BITLOUPE_SOCREGS_DIAGNOSTICS
 #ifdef Q_OS_WIN
     SetUnhandledExceptionFilter(socRegsCrashHandler);
 #endif
@@ -498,16 +498,16 @@ int main(int argc, char* argv[])
     QSurfaceFormat::setDefaultFormat(surfaceFormat);
 
     QApplication application(argc, argv);
-#ifdef SPEEDCRUNCH_SOCREGS_DIAGNOSTICS
-    qWarning() << "==== SpeedCrunch starting -- SoC Regs debug log active at"
-               << QDir::temp().filePath(QStringLiteral("speedcrunch_socregs_debug.log")) << "====";
+#ifdef BITLOUPE_SOCREGS_DIAGNOSTICS
+    qWarning() << "==== BitLoupe starting -- SoC Regs debug log active at"
+               << QDir::temp().filePath(QStringLiteral("bitloupe_socregs_debug.log")) << "====";
 #endif
     ShutdownEventFilter shutdownEventFilter(&application);
     application.installEventFilter(&shutdownEventFilter);
 
-    QCoreApplication::setApplicationName("SpeedCrunch");
-    QCoreApplication::setOrganizationDomain("speedcrunch.org");
-    QGuiApplication::setDesktopFileName("org.speedcrunch.SpeedCrunch");
+    QCoreApplication::setApplicationName("BitLoupe");
+    QCoreApplication::setOrganizationDomain("bitloupe.org");
+    QGuiApplication::setDesktopFileName("org.bitloupe.BitLoupe");
 
     Settings::instance();
     QLocalServer singletonServer;

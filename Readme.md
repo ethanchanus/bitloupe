@@ -1,5 +1,5 @@
-# SpeedCrunch
-SpeedCrunch is a high-precision scientific calculator.
+# BitLoupe
+BitLoupe is a high-precision scientific calculator.
 Current stable version: 1.0.
 It features a syntax-highlighted scrollable display and is designed to be fully used via keyboard. Some distinctive
 features are auto-completion of functions and variables, a formula book, and quick
@@ -9,13 +9,13 @@ and Linux in a number of languages.
 ![capture.png](https://bitbucket.org/repo/dR7BnG/images/3654665019-capture.png)
 
 ## Building
-To build SpeedCrunch, you need:
+To build BitLoupe, you need:
 
 - A C++17-capable compiler
 - [Qt](http://qt.io) 6.x (Core, Widgets, Help, Network)
 - [CMake](http://cmake.org) 3.16 or later
 
-To build SpeedCrunch in a dedicated build directory and install it, run the following
+To build BitLoupe in a dedicated build directory and install it, run the following
 commands from the root of the source directory:
 
     mkdir build
@@ -38,28 +38,28 @@ Example (Homebrew on macOS):
 You can customize the build using the following variables. These are specified when
 running CMake, in the form `cmake ../src -Dvariable=value`.
 
-- **PORTABLE_SPEEDCRUNCH**: Set this to `on` to have the application settings stored
+- **PORTABLE_BITLOUPE**: Set this to `on` to have the application settings stored
   in the same location as the executable, e.g. for running from a USB drive without
   requiring installation.
-- **CMAKE_INSTALL_PREFIX**: Change the installation prefix for SpeedCrunch.
+- **CMAKE_INSTALL_PREFIX**: Change the installation prefix for BitLoupe.
 - **HTML_DOCS_DIR**: Change the path to the HTML manual that's embedded in the binary
   by the build. By default, a bundled prebuilt copy is used to minimize dependencies.
 
 ## SoC register catalog
 
 The **View > SoC Regs** panel reads `socregs.conf` from the directory containing
-the SpeedCrunch executable. Set `SPEEDCRUNCH_SOC_CONFIG` to use another catalog file.
+the BitLoupe executable. Set `BITLOUPE_SOC_CONFIG` to use another catalog file.
 Register file paths may be absolute or relative to the catalog file.
 For compatibility with existing catalogs, a single SoC object and comma-separated
 derivative strings such as `"cyt4bb, cyt4bf"` are also accepted.
 
-At startup, SpeedCrunch compiles the catalog and its register JSON files into
+At startup, BitLoupe compiles the catalog and its register JSON files into
 `socregs.db` in the `data/` folder beside the executable (`conf/` is reserved for
 user-editable configuration). The database stores an MD5
 fingerprint of the catalog and every referenced register file. It is regenerated
 when any source changes. SoC, derivative, register search, and register-detail
 lookups use only the cached SQLite database after initialization. Set
-`SPEEDCRUNCH_SOC_CACHE` to override the database path.
+`BITLOUPE_SOC_CACHE` to override the database path.
 
 ```json
 {
@@ -102,21 +102,21 @@ Pressing `Escape` anywhere inside the Registers panel returns focus to the calcu
 input without closing or resetting the selected register details.
 The Derivative field is a read-only display listing every derivative configured for
 the selected SoC (e.g. `cyt4bb, cyt4bf`); registers are filtered by SoC only.
-SpeedCrunch restores the most recently selected SoC, search expression,
+BitLoupe restores the most recently selected SoC, search expression,
 register, bitfield/sub-bitfield row, and Panel #1/Panel #2 splitter position at the
 next startup. Panel #2 begins with Reg, Addr, and Ref page fields; SoC selection and
 the derivative display remain in Panel #1.
 
 ## Building the manual
 Building the HTML manual is normally not necessary because a prebuilt copy is included
-with the SpeedCrunch source. For more information, see the [manual's README](doc/src/README.md).
+with the BitLoupe source. For more information, see the [manual's README](doc/src/README.md).
 
 ## Contributing
 - Report bugs or request features in the
-  [issue tracker](https://bitbucket.org/heldercorreia/speedcrunch/issues).
-- Add or improve a [translation](https://www.transifex.com/projects/p/speedcrunch/).
-- Send a message to the [forum](https://groups.google.com/group/speedcrunch).
-- Follow the news on the [blog](http://speedcrunch.blogspot.com).
+  [issue tracker](https://bitbucket.org/heldercorreia/bitloupe/issues).
+- Add or improve a [translation](https://www.transifex.com/projects/p/bitloupe/).
+- Send a message to the [forum](https://groups.google.com/group/bitloupe).
+- Follow the news on the [blog](http://bitloupe.blogspot.com).
 
 ## License
 This program is free software; you can redistribute it and/or modify it

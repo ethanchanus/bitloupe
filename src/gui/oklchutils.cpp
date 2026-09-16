@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2026 SpeedCrunch developers
+// SPDX-FileCopyrightText: 2026 BitLoupe developers
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 
@@ -782,7 +782,7 @@ QString writeOklchGenerationHtmlReport(const QColor& base,
         return QString();
 
     const QString reportPath = QDir(QDir::tempPath()).absoluteFilePath(
-        QStringLiteral("speedcrunch-oklch-theme-report.html"));
+        QStringLiteral("bitloupe-oklch-theme-report.html"));
     QFile file(reportPath);
     if (!file.open(QIODevice::WriteOnly | QIODevice::Text | QIODevice::Truncate))
         return QString();
@@ -849,7 +849,7 @@ input[type="color"] { flex: 0 0 3rem; height: 2.75rem; padding: 0.22rem; backgro
     </style>
     <script>
 "use strict";
-window.speedCrunchOklchReport = Object.freeze({
+window.bitLoupeOklchReport = Object.freeze({
 )HTML";
     out << "  baseColor: \"" << debugColorHex(base) << "\",\n"
         << "  executablePath: \"" << executablePath.toHtmlEscaped() << "\",\n"

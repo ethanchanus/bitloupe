@@ -2,7 +2,7 @@ SCRIPTDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ROOTDIR="$(dirname "$SCRIPTDIR")"
 SOURCEDIR="$ROOTDIR/src"
 LOCALEDIR="$SOURCEDIR/resources/locale"
-PROJECTFILE="$SOURCEDIR/speedcrunch.pro"
+PROJECTFILE="$SOURCEDIR/bitloupe.pro"
 APPDATADIR="$ROOTDIR/pkg/desktop-appdata"
 
 # UI strings.

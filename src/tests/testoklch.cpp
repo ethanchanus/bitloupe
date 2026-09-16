@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2026 SpeedCrunch developers
+// SPDX-FileCopyrightText: 2026 BitLoupe developers
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 
@@ -484,14 +484,14 @@ void TestOklchUtils::html_report_contains_generation_inputs_and_outputs()
 
     QVERIFY(!path.isEmpty());
     QVERIFY(path.startsWith(QDir::tempPath()));
-    QVERIFY(path.endsWith(QStringLiteral("/speedcrunch-oklch-theme-report.html")));
+    QVERIFY(path.endsWith(QStringLiteral("/bitloupe-oklch-theme-report.html")));
 
     QFile report(path);
     QVERIFY(report.open(QIODevice::ReadOnly | QIODevice::Text));
     const QString html = QString::fromUtf8(report.readAll());
     QVERIFY(html.contains(QStringLiteral("<style>")));
     QVERIFY(html.contains(QStringLiteral("<script>")));
-    QVERIFY(html.contains(QStringLiteral("window.speedCrunchOklchReport")));
+    QVERIFY(html.contains(QStringLiteral("window.bitLoupeOklchReport")));
     QVERIFY(!html.contains(QStringLiteral("href=\"styles.css\"")));
     QVERIFY(!html.contains(QStringLiteral("src=\"app.js\"")));
     QVERIFY(html.contains(QStringLiteral("OKLCH shade stripes")));

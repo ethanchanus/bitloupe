@@ -15,35 +15,35 @@ msgstr ""
 "Generated-By: pygettext.py 1.5\n"
 
 
-#: extensions/speedcrunch_domain.py:86
+#: extensions/bitloupe_domain.py:86
 msgid "Parameters"
 msgstr ""
 
-#: extensions/speedcrunch_domain.py:89
+#: extensions/bitloupe_domain.py:89
 msgid "Returns"
 msgstr ""
 
-#: extensions/speedcrunch_domain.py:149
+#: extensions/bitloupe_domain.py:149
 msgid "%s() (function)"
 msgstr ""
 
-#: extensions/speedcrunch_domain.py:157
+#: extensions/bitloupe_domain.py:157
 msgid "%s (constant)"
 msgstr ""
 
-#: extensions/speedcrunch_domain.py:165
+#: extensions/bitloupe_domain.py:165
 msgid "Function Index"
 msgstr ""
 
-#: extensions/speedcrunch_domain.py:167
+#: extensions/bitloupe_domain.py:167
 msgid "functions"
 msgstr ""
 
-#: extensions/speedcrunch_domain.py:190
+#: extensions/bitloupe_domain.py:190
 msgid "function"
 msgstr ""
 
-#: extensions/speedcrunch_domain.py:192
+#: extensions/bitloupe_domain.py:192
 msgid "constant"
 msgstr ""
 

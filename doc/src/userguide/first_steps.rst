@@ -1,9 +1,9 @@
 First Steps
 ===========
 
-SpeedCrunch is designed to be used via the keyboard. While an :ref:`on-screen keypad <keypad>` is available,
+BitLoupe is designed to be used via the keyboard. While an :ref:`on-screen keypad <keypad>` is available,
 it defaults to the **Basic** layout. The powerful keyboard interface is the recommended way to
-use SpeedCrunch to get the most out of it. The keypad layout can be configured from:
+use BitLoupe to get the most out of it. The keypad layout can be configured from:
 :menuselection:`View --> Keypad`.
 
 .. This note included since the code samples aren't translatable; people in comma locales
@@ -12,12 +12,12 @@ use SpeedCrunch to get the most out of it. The keypad layout can be configured f
 .. note::
 
    All examples in this manual use a period (``.``) as the decimal separator. By default,
-   SpeedCrunch will use your system's default decimal separator for output and will
+   BitLoupe will use your system's default decimal separator for output and will
    accept both a period and a comma (``,``) for input (:ref:`more details <radix_character>`).
    Depending on your settings, it may be necessary to replace the periods with the
-   appropriate decimal separator when entering these examples into SpeedCrunch.
+   appropriate decimal separator when entering these examples into BitLoupe.
 
-When starting SpeedCrunch for the first time, the interface may thus seem a little plain. Don't be fooled, it can easily be customized. At the bottom edge of the window, you see the the **input bar**, also called the **editor**, with a blinking cursor showing that it is ready to accept keystrokes. To try out SpeedCrunch, type::
+When starting BitLoupe for the first time, the interface may thus seem a little plain. Don't be fooled, it can easily be customized. At the bottom edge of the window, you see the the **input bar**, also called the **editor**, with a blinking cursor showing that it is ready to accept keystrokes. To try out BitLoupe, type::
 
     1.234 + 7.89
 
@@ -56,8 +56,8 @@ You can also write comment-only entries. Any line whose first non-space characte
       ? this comment is also valid
 
 As you can see, ``ans`` provides a quick and easy way to access the previous result. Sometimes,
-SpeedCrunch can even insert ``ans`` for you: When you start a new expression with an operator (e.g. ``+``, ``-``, ``*``, ``/``, ``^``), ``ans`` will be prepended automatically. [#f1]_ To try it out, type ``7`` :kbd:`Enter` ``+3`` :kbd:`Enter`.
-SpeedCrunch expands this as follows::
+BitLoupe can even insert ``ans`` for you: When you start a new expression with an operator (e.g. ``+``, ``-``, ``*``, ``/``, ``^``), ``ans`` will be prepended automatically. [#f1]_ To try it out, type ``7`` :kbd:`Enter` ``+3`` :kbd:`Enter`.
+BitLoupe expands this as follows::
 
     7
     = 7
@@ -65,7 +65,7 @@ SpeedCrunch expands this as follows::
     ans+3
     = 10
 
-SpeedCrunch comes with a number of :ref:`mathematical constants <constants>` like π that are available by typing their name::
+BitLoupe comes with a number of :ref:`mathematical constants <constants>` like π that are available by typing their name::
 
     pi
     = 3.14159265358979323846
@@ -73,24 +73,24 @@ SpeedCrunch comes with a number of :ref:`mathematical constants <constants>` lik
     pi*1.2^2
     = 4.52389342116930226339
 
-Let us finish this short introduction with a word about functions. SpeedCrunch comes with an extensive list of built-in mathematical functions which can be accessed by simply typing their name in the editor followed by any parameters (also called arguments) in parentheses::
+Let us finish this short introduction with a word about functions. BitLoupe comes with an extensive list of built-in mathematical functions which can be accessed by simply typing their name in the editor followed by any parameters (also called arguments) in parentheses::
 
     sqrt(144)
     = 12
 
 The function :func:`sqrt` calculates the square root of its argument. Some functions require or accept more than one argument. In that case, separate them with a semicolon (``;``).
-If you leave a trailing semicolon while typing, SpeedCrunch treats it as an incomplete final argument and still evaluates the expression (for example ``average(2;3;4;)`` and ``average(2;3;4;``).
+If you leave a trailing semicolon while typing, BitLoupe treats it as an incomplete final argument and still evaluates the expression (for example ``average(2;3;4;)`` and ``average(2;3;4;``).
 
 .. warning::
 
-   To repeat: In contrast to many programming languages, parameters in SpeedCrunch are separated by a **semicolon**!
+   To repeat: In contrast to many programming languages, parameters in BitLoupe are separated by a **semicolon**!
 
 An example is the :func:`average` function::
 
     average(12;34;56)
     = 34
 
-This is already enough to use SpeedCrunch effectively. Try it out for yourself! Alternatively,
+This is already enough to use BitLoupe effectively. Try it out for yourself! Alternatively,
 read on to learn about its more advanced features.
 
 

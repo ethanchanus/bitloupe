@@ -1,7 +1,7 @@
 Units and Canonicalization
 ==========================
 
-SpeedCrunch supports unit-aware arithmetic and conversions. Results are
+BitLoupe supports unit-aware arithmetic and conversions. Results are
 dimensionally consistent and then formatted with readability-oriented
 canonicalization rules.
 
@@ -24,13 +24,13 @@ When a result is already expressed in a useful derived form, it is preserved:
 * ``1[Btu]`` stays ``1[Btu]`` instead of being converted to joules
 * ``1[in]`` stays ``1[in]`` instead of being converted to metres
 
-SpeedCrunch also avoids forcing a semantic choice when dimensions are
+BitLoupe also avoids forcing a semantic choice when dimensions are
 equivalent but context differs. A common example is ``N⋅m``: it can represent
 torque, while ``J`` typically represents energy. Without an explicit conversion
-request, SpeedCrunch preserves authored intent rather than silently replacing one
+request, BitLoupe preserves authored intent rather than silently replacing one
 with the other.
 
-When negative exponents appear together with positive ones, SpeedCrunch may
+When negative exponents appear together with positive ones, BitLoupe may
 render denominator form for readability:
 
 * ``C⁴⋅m⁴⋅J⁻³`` may display as ``C⁴⋅m⁴ / J³``
@@ -38,7 +38,7 @@ render denominator form for readability:
 Unit Notation
 -------------
 
-In :menuselection:`Settings --> Results`, SpeedCrunch provides a
+In :menuselection:`Settings --> Results`, BitLoupe provides a
 ``Unit Notation`` submenu with two display styles:
 
 * ``Exponential (m·s⁻¹)`` (default): keeps products with signed exponents,
@@ -52,7 +52,7 @@ This is a display preference only; numeric values and dimensions are unchanged.
 Authored Units
 --------------
 
-SpeedCrunch preserves authored units that carry practical or domain meaning.
+BitLoupe preserves authored units that carry practical or domain meaning.
 This includes accepted metric units and many non-SI units, such as ``tonne``,
 ``hectare``, ``inch``, ``foot``, ``Btu``, ``eV``, ``Eh``, ``bar``, ``atm``,
 ``psi``, ``Torr``, ``mmHg``, ``hp``, ``kWh``, ``bit``, and ``byte``.
@@ -75,7 +75,7 @@ Time units are handled specially because they also participate in
 sexagesimal/time display. Use an explicit conversion target when you want a
 particular time unit display.
 
-When adding or subtracting compatible units, SpeedCrunch may choose a more
+When adding or subtracting compatible units, BitLoupe may choose a more
 readable display unit for the result instead of blindly keeping the first
 operand's unit. For example, a tiny tonne value added to kilogram and gram
 values can display in kilograms:
@@ -91,7 +91,7 @@ of at least one hour display in hours; results below one hour but at least one
 minute display in minutes; smaller results display in seconds. Sexagesimal
 expressions keep their dedicated sexagesimal display behavior.
 
-For units that support SI prefixes, SpeedCrunch also uses a best-fit
+For units that support SI prefixes, BitLoupe also uses a best-fit
 engineering prefix when the unprefixed unit would make the displayed number
 unnecessarily large or small. The chosen prefix aims to keep the numeric part
 in a readable range, typically from ``1`` up to but not including ``1000``:
@@ -115,9 +115,9 @@ SI-prefixable units across dimensions, while still respecting special display
 rules such as hours/minutes/seconds for ordinary time sums and explicit
 conversion targets requested with ``->`` or ``in``. The small SI prefixes
 ``d``, ``c``, ``da`` and ``h`` are accepted for input where supported, but
-SpeedCrunch does not choose them automatically for result display.
+BitLoupe does not choose them automatically for result display.
 
-In scientific notation mode, SpeedCrunch keeps the power of ten in the numeric
+In scientific notation mode, BitLoupe keeps the power of ten in the numeric
 part and displays a single SI-prefixable unit with its unprefixed base symbol:
 
 * ``0.0000000001234234235234[m]`` displays as
@@ -131,7 +131,7 @@ exponent can be reused in unit expressions. For example,
 Composed Units
 --------------
 
-For products and quotients, SpeedCrunch keeps authored composite structure where
+For products and quotients, BitLoupe keeps authored composite structure where
 possible, unless a clear canonical derived target is recognized.
 
 Examples that canonicalize:
@@ -154,7 +154,7 @@ Examples that preserve composite intent:
   usage; preserving ``h`` keeps the practical meaning users typically intend.
 * ``km/h`` displays as ``kph`` and ``mi/h`` displays as
   ``mph`` instead of being expanded to ``m⋅s⁻¹``. Speed units are
-  usually chosen for domain readability, so SpeedCrunch preserves common
+  usually chosen for domain readability, so BitLoupe preserves common
   authored speed forms when they match a supported named unit.
 * ``nmi/h`` displays as ``knot`` for the same reason.
 
@@ -176,10 +176,10 @@ Use explicit conversion to request a specific target unit expression:
 * ``10[m] in [cm]``
 * ``10[m] -- [cm]``
 
-SpeedCrunch supports three equivalent conversion operators:
+BitLoupe supports three equivalent conversion operators:
 ``->``, ``in`` (keyword alias), and ``--`` (shortcut alias).
 
-If no explicit conversion target is requested, SpeedCrunch applies the
+If no explicit conversion target is requested, BitLoupe applies the
 canonicalization/display policy above.
 
 Built-in Units Table

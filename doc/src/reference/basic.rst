@@ -54,7 +54,7 @@ General
 
     Compute the natural logarithm.
 
-    Any non-zero number may be given. The result will be the principal value. The branch cut runs across the negative real axis. Nevertheless, in SpeedCrunch :func:`ln` is defined for negative real numbers as *ln(-x) = ln(\|x\|)) + πj*, extending the branch from the *upper* half-plane.
+    Any non-zero number may be given. The result will be the principal value. The branch cut runs across the negative real axis. Nevertheless, in BitLoupe :func:`ln` is defined for negative real numbers as *ln(-x) = ln(\|x\|)) + πj*, extending the branch from the *upper* half-plane.
 
 .. function:: lb(x)
 
@@ -177,7 +177,7 @@ General
 
     This function is equivalent to: ``n / V``.
 
-    If ``n`` or ``V`` is dimensionless, SpeedCrunch interprets them as ``mol``
+    If ``n`` or ``V`` is dimensionless, BitLoupe interprets them as ``mol``
     and ``L``, respectively.
 
     Example::
@@ -365,7 +365,7 @@ current angle mode.
 
     When *radians* are set as the angle mode, :func:`sin` will be 2π-periodic. The argument may be complex.
 
-    For real arguments beyond approx. \|x\|>10\ :sup:`77`, SpeedCrunch no longer recognizes the periodicity of the function and issues an error.
+    For real arguments beyond approx. \|x\|>10\ :sup:`77`, BitLoupe no longer recognizes the periodicity of the function and issues an error.
 
     The argument of :func:`sin` must be dimensionless.
 
@@ -385,7 +385,7 @@ current angle mode.
 
     When *radians* are set as the angle mode, :func:`cos` will be 2π-periodic. The argument may be complex.
 
-    For real arguments beyond approx. \|x\|>10\ :sup:`77`, SpeedCrunch no longer recognizes the periodicity of the function and issues an error.
+    For real arguments beyond approx. \|x\|>10\ :sup:`77`, BitLoupe no longer recognizes the periodicity of the function and issues an error.
 
     The argument of :func:`cos` must be dimensionless.
 
@@ -454,7 +454,7 @@ current angle mode.
 
     When *radians* are set as the angle mode, :func:`sec` will be 2π-periodic. The argument may be complex.
 
-    For real arguments beyond approx. \|x\|>10\ :sup:`77`, SpeedCrunch no longer recognizes the periodicity of the function and issues an error.
+    For real arguments beyond approx. \|x\|>10\ :sup:`77`, BitLoupe no longer recognizes the periodicity of the function and issues an error.
 
     The argument of :func:`sec` must be dimensionless.
 
@@ -466,7 +466,7 @@ current angle mode.
 
     When *radians* are set as the angle mode, :func:`csc` will be 2π-periodic. The argument may be complex.
 
-    For real arguments beyond approx. \|x\|>10\ :sup:`77`, SpeedCrunch no longer recognizes the periodicity of the function and issues an error.
+    For real arguments beyond approx. \|x\|>10\ :sup:`77`, BitLoupe no longer recognizes the periodicity of the function and issues an error.
 
     The argument of :func:`csc` must be dimensionless.
 
@@ -597,7 +597,7 @@ Special
 
     Note that currently only real arguments are allowed. Furthermore, the function only accepts dimensionless arguments.
 
-    The computation of the factorial operation is in fact implemented via :func:`gamma`. This means that in SpeedCrunch, factorials of non-integer numbers are allowed.
+    The computation of the factorial operation is in fact implemented via :func:`gamma`. This means that in BitLoupe, factorials of non-integer numbers are allowed.
 
 .. function:: lngamma(x)
 

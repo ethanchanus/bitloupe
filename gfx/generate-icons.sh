@@ -2,14 +2,14 @@
 set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-SVG_FILE="$ROOT_DIR/gfx/speedcrunch.svg"
+SVG_FILE="$ROOT_DIR/gfx/bitloupe.svg"
 RES_DIR="$ROOT_DIR/src/resources"
 DOC_DIR="$ROOT_DIR/doc/src"
 
-PNG_OUT="$RES_DIR/speedcrunch.png"
+PNG_OUT="$RES_DIR/bitloupe.png"
 DOC_LOGO_OUT="$DOC_DIR/logo.png"
-ICO_OUT="$RES_DIR/speedcrunch.ico"
-ICNS_OUT="$RES_DIR/speedcrunch.icns"
+ICO_OUT="$RES_DIR/bitloupe.ico"
+ICNS_OUT="$RES_DIR/bitloupe.icns"
 
 require_cmd() {
   if ! command -v "$1" >/dev/null 2>&1; then
@@ -31,7 +31,7 @@ fi
 TMP_DIR="$(mktemp -d)"
 trap 'rm -rf "$TMP_DIR"' EXIT
 
-MASTER_PNG="$TMP_DIR/speedcrunch-1024.png"
+MASTER_PNG="$TMP_DIR/bitloupe-1024.png"
 
 echo "Rendering SVG -> 1024x1024 PNG..."
 rsvg-convert -w 1024 -h 1024 "$SVG_FILE" -o "$MASTER_PNG"

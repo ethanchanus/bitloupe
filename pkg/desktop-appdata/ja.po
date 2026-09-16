@@ -5,13 +5,13 @@
 # Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: SpeedCrunch\n"
+"Project-Id-Version: BitLoupe\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-10 15:46+0000\n"
 "PO-Revision-Date: 2016-07-18 23:45+0000\n"
 "Last-Translator: Felix Krull <f_krull@gmx.de>\n"
 "Language-Team: Japanese (Japan) (http://www.transifex.com/heldercorreia/"
-"speedcrunch/language/ja_JP/)\n"
+"bitloupe/language/ja_JP/)\n"
 "Language: ja_JP\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,32 +19,32 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. TRANSLATORS: Name of the application, usually shouldn't be translated.
-#: tmp/org.speedcrunch.SpeedCrunch.desktop.in.h:1
-#: tmp/org.speedcrunch.SpeedCrunch.metainfo.xml.in.h:2
-msgid "SpeedCrunch"
-msgstr "SpeedCrunch"
+#: tmp/org.bitloupe.BitLoupe.desktop.in.h:1
+#: tmp/org.bitloupe.BitLoupe.metainfo.xml.in.h:2
+msgid "BitLoupe"
+msgstr "BitLoupe"
 
 #. TRANSLATORS: Short one-line description.
-#: tmp/org.speedcrunch.SpeedCrunch.desktop.in.h:2
-#: tmp/org.speedcrunch.SpeedCrunch.metainfo.xml.in.h:4
+#: tmp/org.bitloupe.BitLoupe.desktop.in.h:2
+#: tmp/org.bitloupe.BitLoupe.metainfo.xml.in.h:4
 msgid "A high-precision scientific calculator"
 msgstr "高精度の科学計算機"
 
 #. TRANSLATORS: Extra keywords for finding the application in the desktop environment. The trailing ';' is important!
-#: tmp/org.speedcrunch.SpeedCrunch.desktop.in.h:4
+#: tmp/org.bitloupe.BitLoupe.desktop.in.h:4
 msgid "arithmetic;calculation;math;scientific;"
 msgstr "算術;計算;数学;科学;"
 
-#: tmp/org.speedcrunch.SpeedCrunch.metainfo.xml.in.h:5
+#: tmp/org.bitloupe.BitLoupe.metainfo.xml.in.h:5
 msgid ""
-"SpeedCrunch is a fast, high-precision scientific calculator. It features a "
+"BitLoupe is a fast, high-precision scientific calculator. It features a "
 "syntax-highlighted scrollable display and is designed to be fully used via "
 "keyboard."
 msgstr ""
-"SpeedCrunch は高速で高精度な科学計算機です。構文強調表示付きのスクロール可能な"
+"BitLoupe は高速で高精度な科学計算機です。構文強調表示付きのスクロール可能な"
 "表示を備え、キーボードだけで完全に操作できるよう設計されています。"
 
-#: tmp/org.speedcrunch.SpeedCrunch.metainfo.xml.in.h:6
+#: tmp/org.bitloupe.BitLoupe.metainfo.xml.in.h:6
 msgid ""
 "It includes many built-in maths functions and supports advanced features "
 "like user-defined functions, complex numbers, and unit conversions. This is "
@@ -55,23 +55,23 @@ msgstr ""
 "機能をサポートします。さらに、結果のリアルタイムプレビュー、構文強調表示、自動"
 "補完を備えたシンプルかつ強力なユーザーインターフェースと組み合わされています。"
 
-#: tmp/org.speedcrunch.SpeedCrunch.metainfo.xml.in.h:7
+#: tmp/org.bitloupe.BitLoupe.metainfo.xml.in.h:7
 msgid ""
-"SpeedCrunch is available for several platforms in a number of languages."
-msgstr "SpeedCrunch は複数のプラットフォームで、多言語に対応しています。"
+"BitLoupe is available for several platforms in a number of languages."
+msgstr "BitLoupe は複数のプラットフォームで、多言語に対応しています。"
 
-#: tmp/org.speedcrunch.SpeedCrunch.metainfo.xml.in.h:8
+#: tmp/org.bitloupe.BitLoupe.metainfo.xml.in.h:8
 msgid "Main window with optional keypad"
 msgstr "オプションのテンキー付きメインウィンドウ"
 
-#: tmp/org.speedcrunch.SpeedCrunch.metainfo.xml.in.h:9
+#: tmp/org.bitloupe.BitLoupe.metainfo.xml.in.h:9
 msgid "The constants list and formula book"
 msgstr "定数リストと数式集"
 
-#: tmp/org.speedcrunch.SpeedCrunch.metainfo.xml.in.h:10
+#: tmp/org.bitloupe.BitLoupe.metainfo.xml.in.h:10
 msgid "Customizable user interface"
 msgstr "カスタマイズ可能なユーザーインターフェース"
 
-#: tmp/org.speedcrunch.SpeedCrunch.metainfo.xml.in.h:11
+#: tmp/org.bitloupe.BitLoupe.metainfo.xml.in.h:11
 msgid "The built-in user manual"
 msgstr "内蔵ユーザーマニュアル"

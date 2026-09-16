@@ -3,7 +3,7 @@
 Constants
 =========
 
-SpeedCrunch provides a large collection of built-in scientific constants.
+BitLoupe provides a large collection of built-in scientific constants.
 In the Constants widget, each entry has:
 
 * a translated display ``Name``
@@ -24,11 +24,11 @@ Constants in the widget can be filtered by category and subcategory.
    .. versionadded:: 1.0
 
    The mathematical constant π. Since π is an irrational number, the value is an
-   approximation with as much precision as SpeedCrunch allows. This constant may be
+   approximation with as much precision as BitLoupe allows. This constant may be
    referred to either as ``pi`` or as ``π`` (Unicode U+03C0 GREEK SMALL LETTER PI).
    The following Unicode variants are also accepted and normalized to ``π``:
    ``𝜋`` (U+1D70B), ``𝝅`` (U+1D745), ``𝞹`` (U+1D7B9), ``𝛑`` (U+1D6D1).
-   In displayed expressions/results, SpeedCrunch renders these forms as ``π`` and
+   In displayed expressions/results, BitLoupe renders these forms as ``π`` and
    also displays standalone ``pi`` as ``π``.
 
 
@@ -36,7 +36,7 @@ Constants in the widget can be filtered by category and subcategory.
 .. constant:: ℯ
 
    The mathematical constant *e*. The value is an approximation with as much precision
-   as SpeedCrunch supports. This constant may be referred to either as ``e`` or as
+   as BitLoupe supports. This constant may be referred to either as ``e`` or as
    ``ℯ`` (Unicode U+212F SCRIPT SMALL E).
 
 

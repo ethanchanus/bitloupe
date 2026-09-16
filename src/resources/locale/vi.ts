@@ -6,8 +6,8 @@
     <message>
         <location filename="../../gui/aboutbox.cpp" line="19"/>
         <location filename="../../gui/aboutbox.cpp" line="141"/>
-        <source>About SpeedCrunch</source>
-        <translation>Giới thiệu SpeedCrunch</translation>
+        <source>About BitLoupe</source>
+        <translation>Giới thiệu BitLoupe</translation>
     </message>
     <message>
         <location filename="../../gui/aboutbox.cpp" line="32"/>
@@ -41,8 +41,8 @@
     </message>
     <message>
         <location filename="../../gui/aboutbox.cpp" line="110"/>
-        <source>Copyright (C) 2004-2026 The SpeedCrunch developers</source>
-        <translation>Bản quyền (C) 2004-2026 Các nhà phát triển SpeedCrunch</translation>
+        <source>Copyright (C) 2004-2026 The BitLoupe developers</source>
+        <translation>Bản quyền (C) 2004-2026 Các nhà phát triển BitLoupe</translation>
     </message>
     <message>
         <location filename="../../gui/aboutbox.cpp" line="114"/>
@@ -3331,14 +3331,14 @@
     <message>
         <location filename="../../core/evaluator.cpp" line="742"/>
         <location filename="../../core/evaluator.cpp" line="813"/>
-        <source>underflow - tiny result is out of SpeedCrunch&apos;s number range</source>
-        <translation>tràn dưới - kết quả quá nhỏ nằm ngoài phạm vi số của SpeedCrunch</translation>
+        <source>underflow - tiny result is out of BitLoupe&apos;s number range</source>
+        <translation>tràn dưới - kết quả quá nhỏ nằm ngoài phạm vi số của BitLoupe</translation>
     </message>
     <message>
         <location filename="../../core/evaluator.cpp" line="746"/>
         <location filename="../../core/evaluator.cpp" line="809"/>
-        <source>overflow - huge result is out of SpeedCrunch&apos;s number range</source>
-        <translation>tràn trên - kết quả quá lớn nằm ngoài phạm vi số của SpeedCrunch</translation>
+        <source>overflow - huge result is out of BitLoupe&apos;s number range</source>
+        <translation>tràn trên - kết quả quá lớn nằm ngoài phạm vi số của BitLoupe</translation>
     </message>
     <message>
         <location filename="../../core/evaluator.cpp" line="754"/>
@@ -4927,8 +4927,8 @@
     </message>
     <message>
         <location filename="../../gui/mainwindow.cpp" line="3640"/>
-        <source>About &amp;SpeedCrunch</source>
-        <translation>Giới thiệu &amp;SpeedCrunch</translation>
+        <source>About &amp;BitLoupe</source>
+        <translation>Giới thiệu &amp;BitLoupe</translation>
     </message>
     <message>
         <location filename="../../gui/mainwindow.cpp" line="3966"/>
@@ -5103,8 +5103,8 @@
     <message>
         <location filename="../../gui/mainwindow.cpp" line="3554"/>
         <location filename="../../gui/mainwindow.cpp" line="3555"/>
-        <source>If a new expression starts with +, -, *, or /, SpeedCrunch inserts &quot;ans&quot; first.</source>
-        <translation>Nếu biểu thức mới bắt đầu bằng +, -, * hoặc /, SpeedCrunch sẽ chèn &quot;ans&quot; trước.</translation>
+        <source>If a new expression starts with +, -, *, or /, BitLoupe inserts &quot;ans&quot; first.</source>
+        <translation>Nếu biểu thức mới bắt đầu bằng +, -, * hoặc /, BitLoupe sẽ chèn &quot;ans&quot; trước.</translation>
     </message>
     <message>
         <location filename="../../gui/mainwindow.cpp" line="3557"/>
@@ -5421,13 +5421,13 @@
     </message>
     <message>
         <location filename="../../gui/mainwindow.cpp" line="9389"/>
-        <source>The selected file is not a SpeedCrunch session JSON file.</source>
-        <translation>Tệp đã chọn không phải là tệp JSON phiên SpeedCrunch.</translation>
+        <source>The selected file is not a BitLoupe session JSON file.</source>
+        <translation>Tệp đã chọn không phải là tệp JSON phiên BitLoupe.</translation>
     </message>
     <message>
         <location filename="../../gui/mainwindow.cpp" line="9397"/>
-        <source>This file uses an obsolete SpeedCrunch session format and cannot be imported.</source>
-        <translation>Tệp này dùng định dạng phiên SpeedCrunch lỗi thời và không thể nhập.</translation>
+        <source>This file uses an obsolete BitLoupe session format and cannot be imported.</source>
+        <translation>Tệp này dùng định dạng phiên BitLoupe lỗi thời và không thể nhập.</translation>
     </message>
     <message>
         <location filename="../../gui/mainwindow.cpp" line="9405"/>
@@ -5441,13 +5441,13 @@
     </message>
     <message>
         <location filename="../../gui/mainwindow.cpp" line="9419"/>
-        <source>The selected JSON file is missing the SpeedCrunch session schema identifier ($id).</source>
-        <translation>Tệp JSON đã chọn thiếu định danh lược đồ phiên SpeedCrunch ($id).</translation>
+        <source>The selected JSON file is missing the BitLoupe session schema identifier ($id).</source>
+        <translation>Tệp JSON đã chọn thiếu định danh lược đồ phiên BitLoupe ($id).</translation>
     </message>
     <message>
         <location filename="../../gui/mainwindow.cpp" line="9425"/>
-        <source>The selected JSON file uses an unsupported SpeedCrunch session format: %1</source>
-        <translation>Tệp JSON đã chọn dùng định dạng phiên SpeedCrunch không được hỗ trợ: %1</translation>
+        <source>The selected JSON file uses an unsupported BitLoupe session format: %1</source>
+        <translation>Tệp JSON đã chọn dùng định dạng phiên BitLoupe không được hỗ trợ: %1</translation>
     </message>
     <message>
         <location filename="../../gui/mainwindow.cpp" line="9433"/>
@@ -5461,8 +5461,8 @@
     </message>
     <message>
         <location filename="../../gui/mainwindow.cpp" line="9447"/>
-        <source>The selected JSON file has invalid or incomplete SpeedCrunch session data.</source>
-        <translation>Tệp JSON đã chọn có dữ liệu phiên SpeedCrunch không hợp lệ hoặc không đầy đủ.</translation>
+        <source>The selected JSON file has invalid or incomplete BitLoupe session data.</source>
+        <translation>Tệp JSON đã chọn có dữ liệu phiên BitLoupe không hợp lệ hoặc không đầy đủ.</translation>
     </message>
     <message>
         <location filename="../../gui/mainwindow.cpp" line="9458"/>
@@ -5844,13 +5844,13 @@
     <name>ManualWindow</name>
     <message>
         <location filename="../../gui/manualwindow.cpp" line="49"/>
-        <source>SpeedCrunch Manual</source>
-        <translation>Hướng dẫn sử dụng SpeedCrunch</translation>
+        <source>BitLoupe Manual</source>
+        <translation>Hướng dẫn sử dụng BitLoupe</translation>
     </message>
     <message>
         <location filename="../../gui/manualwindow.cpp" line="51"/>
-        <source>%1 - SpeedCrunch Manual</source>
-        <translation>%1 - Hướng dẫn sử dụng SpeedCrunch</translation>
+        <source>%1 - BitLoupe Manual</source>
+        <translation>%1 - Hướng dẫn sử dụng BitLoupe</translation>
     </message>
 </context>
 <context>
@@ -5967,8 +5967,8 @@
     </message>
     <message>
         <location filename="../../gui/versioncheck.cpp" line="227"/>
-        <source>SpeedCrunch %1 is up to date.</source>
-        <translation>SpeedCrunch %1 đã là phiên bản mới nhất.</translation>
+        <source>BitLoupe %1 is up to date.</source>
+        <translation>BitLoupe %1 đã là phiên bản mới nhất.</translation>
     </message>
     <message>
         <location filename="../../gui/versioncheck.cpp" line="246"/>

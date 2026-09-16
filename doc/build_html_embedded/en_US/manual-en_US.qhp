@@ -2,7 +2,7 @@
 <QtHelpProject version="1.0">
     <namespace>org.sphinx.manual-enus.1.0</namespace>
     <virtualFolder>doc</virtualFolder>
-    <customFilter name="SpeedCrunch 1.0">
+    <customFilter name="BitLoupe 1.0">
         <filterAttribute>manual-en_US</filterAttribute>
         <filterAttribute>1.0</filterAttribute>
     </customFilter>
@@ -10,7 +10,7 @@
         <filterAttribute>manual-en_US</filterAttribute>
         <filterAttribute>1.0</filterAttribute>
         <toc>
-            <section title="SpeedCrunch 1.0 documentation" ref="contents.html">
+            <section title="BitLoupe 1.0 documentation" ref="contents.html">
                 <section title="Introduction" ref="introduction.html"/>
                 <section title="User Guide" ref="userguide/index.html">
                     <section title="Installation" ref="userguide/installation.html">
@@ -266,7 +266,7 @@
             <keyword name="shr() (function)" id="function.shr" ref="reference/integer.html#sc.shr"/>
             <keyword name="sin() (function)" id="function.sin" ref="reference/basic.html#sc.sin"/>
             <keyword name="sinh() (function)" id="function.sinh" ref="reference/basic.html#sc.sinh"/>
-            <keyword name="SpeedCrunch" ref="introduction.html#index-0"/>
+            <keyword name="BitLoupe" ref="introduction.html#index-0"/>
             <keyword name="sqrt() (function)" id="function.sqrt" ref="reference/basic.html#sc.sqrt"/>
             <keyword name="stddev() (function)" id="function.stddev" ref="reference/statistical.html#sc.stddev"/>
             <keyword name="sum() (function)" id="function.sum" ref="reference/statistical.html#sc.sum"/>

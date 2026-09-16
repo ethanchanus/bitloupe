@@ -5,7 +5,7 @@ Only occasional maintenance and extension changes have been performed by other a
 
 ## Purpose
 
-`floatnum` is SpeedCrunch's decimal floating-point backend for high-precision and numerically stable
+`floatnum` is BitLoupe's decimal floating-point backend for high-precision and numerically stable
 evaluation. The code in this directory provides:
 
 - core number representation and primitive operations

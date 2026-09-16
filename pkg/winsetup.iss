@@ -1,8 +1,8 @@
-#define APPTITLE "SpeedCrunch"
-#define SPEEDCRUNCHEXE "..\src\release\" + APPTITLE + ".exe"
-#define NUMERICVERSION GetFileVersion(SPEEDCRUNCHEXE)
-#define VERSION "1.0" ; GetFileVersionString(SPEEDCRUNCHEXE)
-#define URL "http://speedcrunch.org"
+#define APPTITLE "BitLoupe"
+#define BITLOUPEEXE "..\src\release\" + APPTITLE + ".exe"
+#define NUMERICVERSION GetFileVersion(BITLOUPEEXE)
+#define VERSION "1.0" ; GetFileVersionString(BITLOUPEEXE)
+#define URL "http://bitloupe.org"
 #define COPYRIGHT "2004-2013 " + URL
 
 [Setup]
@@ -59,7 +59,7 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 Name: "quicklaunchicon"; Description: "{cm:CreateQuickLaunchIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: {#SPEEDCRUNCHEXE}; DestDir: "{app}"; Flags: ignoreversion
+Source: {#BITLOUPEEXE}; DestDir: "{app}"; Flags: ignoreversion
 
 [Icons]
 Name: "{group}\{#APPTITLE}"; Filename: "{app}\{#APPTITLE}.exe"

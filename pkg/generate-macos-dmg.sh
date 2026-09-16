@@ -33,11 +33,11 @@ cmake -S "$SRC_DIR" -B "$BUILD_DIR" \
   -DCMAKE_OSX_ARCHITECTURES="arm64" \
   -DCMAKE_BUILD_TYPE=Release
 
-echo "Building SpeedCrunch (arm64, parallel jobs: $JOBS)..."
-cmake --build "$BUILD_DIR" --config Release --target SpeedCrunch --parallel "$JOBS"
+echo "Building BitLoupe (arm64, parallel jobs: $JOBS)..."
+cmake --build "$BUILD_DIR" --config Release --target BitLoupe --parallel "$JOBS"
 
-APP_BIN="$BUILD_DIR/SpeedCrunch.app/Contents/MacOS/SpeedCrunch"
-APP_BUNDLE="$BUILD_DIR/SpeedCrunch.app"
+APP_BIN="$BUILD_DIR/BitLoupe.app/Contents/MacOS/BitLoupe"
+APP_BUNDLE="$BUILD_DIR/BitLoupe.app"
 APP_FRAMEWORKS_DIR="$APP_BUNDLE/Contents/Frameworks"
 APP_PLIST="$APP_BUNDLE/Contents/Info.plist"
 if [[ ! -f "$APP_BIN" ]]; then
@@ -74,13 +74,13 @@ echo "Generating DMG with CPack (DragNDrop)..."
   cpack -G DragNDrop
 )
 
-DMG_PATH="$BUILD_DIR/SpeedCrunch.dmg"
+DMG_PATH="$BUILD_DIR/BitLoupe.dmg"
 APP_VERSION="$(/usr/libexec/PlistBuddy -c 'Print :CFBundleShortVersionString' "$APP_PLIST" 2>/dev/null || true)"
 if [[ -z "$APP_VERSION" ]]; then
   echo "Unable to determine app version from $APP_PLIST." >&2
   exit 1
 fi
-OUT_PATH="$OUT_DIR/SpeedCrunch-${APP_VERSION}-arm64.dmg"
+OUT_PATH="$OUT_DIR/BitLoupe-${APP_VERSION}-arm64.dmg"
 if [[ ! -f "$DMG_PATH" ]]; then
   echo "DMG generation failed (missing $DMG_PATH)." >&2
   exit 1

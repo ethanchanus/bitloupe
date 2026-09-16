@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2015-2017, 2020, 2026 SpeedCrunch developers
+// SPDX-FileCopyrightText: 2015-2017, 2020, 2026 BitLoupe developers
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 

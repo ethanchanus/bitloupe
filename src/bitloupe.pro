@@ -19,13 +19,13 @@ else {
 
 win32-g++:QMAKE_LFLAGS += -static
 
-DEFINES += SPEEDCRUNCH_VERSION=\\\"1.0\\\"
+DEFINES += BITLOUPE_VERSION=\\\"1.0\\\"
 DEFINES += QT_USE_QSTRINGBUILDER
 win32:DEFINES += _USE_MATH_DEFINES
 win32:DEFINES += _CRT_SECURE_NO_WARNINGS _CRT_NONSTDC_NO_WARNINGS _SCL_SECURE_NO_WARNINGS
 
 TEMPLATE = app
-TARGET = speedcrunch
+TARGET = bitloupe
 QT += help
 
 DISTFILES += conf/settings.conf conf/socregs.conf
@@ -39,7 +39,7 @@ DEPENDPATH += . \
 
 INCLUDEPATH += . math core gui
 
-win32:RC_FILE = resources/speedcrunch.rc
+win32:RC_FILE = resources/bitloupe.rc
 win32-msvc*:LIBS += User32.lib
 !macx {
     !win32 {
@@ -49,17 +49,17 @@ win32-msvc*:LIBS += User32.lib
         menu.path = "/share/applications"
         appdata.path = "/share/appdata"
         icon.path = "/share/pixmaps"
-        icon.files += resources/speedcrunch.png
-        menu.files += ../pkg/speedcrunch.desktop
-        appdata.files += ../pkg/speedcrunch.appdata.xml
+        icon.files += resources/bitloupe.png
+        menu.files += ../pkg/bitloupe.desktop
+        appdata.files += ../pkg/bitloupe.appdata.xml
         INSTALLS += target icon menu appdata
     }
 }
 
 macx {
-    ICON = resources/speedcrunch.icns
+    ICON = resources/bitloupe.icns
     QMAKE_INFO_PLIST = ../pkg/Info.plist
-    TARGET = SpeedCrunch
+    TARGET = BitLoupe
     QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.8
     QMAKE_CXXFLAGS += -std=c++17
 }
@@ -211,7 +211,7 @@ SOURCES += main.cpp \
            core/units.cpp \
            core/unitdisplayformat.cpp
 
-RESOURCES += resources/speedcrunch.qrc ../doc/build_html_embedded/manual.qrc
+RESOURCES += resources/bitloupe.qrc ../doc/build_html_embedded/manual.qrc
 TRANSLATIONS += resources/locale/ar.ts \
                 resources/locale/bg.ts \
                 resources/locale/bn.ts \

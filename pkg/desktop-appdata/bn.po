@@ -17,33 +17,33 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. TRANSLATORS: Name of the application, usually shouldn't be translated.
-#: tmp/org.speedcrunch.SpeedCrunch.desktop.in.h:1
-#: tmp/org.speedcrunch.SpeedCrunch.metainfo.xml.in.h:2
-msgid "SpeedCrunch"
-msgstr "SpeedCrunch"
+#: tmp/org.bitloupe.BitLoupe.desktop.in.h:1
+#: tmp/org.bitloupe.BitLoupe.metainfo.xml.in.h:2
+msgid "BitLoupe"
+msgstr "BitLoupe"
 
 #. TRANSLATORS: Short one-line description.
-#: tmp/org.speedcrunch.SpeedCrunch.desktop.in.h:2
-#: tmp/org.speedcrunch.SpeedCrunch.metainfo.xml.in.h:4
+#: tmp/org.bitloupe.BitLoupe.desktop.in.h:2
+#: tmp/org.bitloupe.BitLoupe.metainfo.xml.in.h:4
 msgid "A high-precision scientific calculator"
 msgstr "উচ্চ-নির্ভুল বৈজ্ঞানিক ক্যালকুলেটর"
 
 #. TRANSLATORS: Extra keywords for finding the application in the desktop environment. The trailing ';' is important!
-#: tmp/org.speedcrunch.SpeedCrunch.desktop.in.h:4
+#: tmp/org.bitloupe.BitLoupe.desktop.in.h:4
 msgid "arithmetic;calculation;math;scientific;"
 msgstr "পাটিগণিত;গণনা;গণিত;বৈজ্ঞানিক;"
 
-#: tmp/org.speedcrunch.SpeedCrunch.metainfo.xml.in.h:5
+#: tmp/org.bitloupe.BitLoupe.metainfo.xml.in.h:5
 msgid ""
-"SpeedCrunch is a fast, high-precision scientific calculator. It features a "
+"BitLoupe is a fast, high-precision scientific calculator. It features a "
 "syntax-highlighted scrollable display and is designed to be fully used via "
 "keyboard."
 msgstr ""
-"SpeedCrunch একটি দ্রুত, উচ্চ-নির্ভুল বৈজ্ঞানিক ক্যালকুলেটর। এতে "
+"BitLoupe একটি দ্রুত, উচ্চ-নির্ভুল বৈজ্ঞানিক ক্যালকুলেটর। এতে "
 "সিনট্যাক্স-হাইলাইট করা স্ক্রলযোগ্য প্রদর্শন আছে এবং এটি সম্পূর্ণভাবে "
 "কীবোর্ড দিয়ে ব্যবহার করার জন্য নকশা করা হয়েছে।"
 
-#: tmp/org.speedcrunch.SpeedCrunch.metainfo.xml.in.h:6
+#: tmp/org.bitloupe.BitLoupe.metainfo.xml.in.h:6
 msgid ""
 "It includes many built-in maths functions and supports advanced features "
 "like user-defined functions, complex numbers, and unit conversions. This is "
@@ -55,23 +55,23 @@ msgstr ""
 "সঙ্গে আছে সরল কিন্তু শক্তিশালী ব্যবহারকারী ইন্টারফেস, যেখানে তাৎক্ষণিক "
 "ফলাফলের পূর্বরূপ, সিনট্যাক্স হাইলাইটিং এবং স্বয়ংসম্পূর্ণতা রয়েছে।"
 
-#: tmp/org.speedcrunch.SpeedCrunch.metainfo.xml.in.h:7
+#: tmp/org.bitloupe.BitLoupe.metainfo.xml.in.h:7
 msgid ""
-"SpeedCrunch is available for several platforms in a number of languages."
-msgstr "SpeedCrunch একাধিক প্ল্যাটফর্মে এবং বিভিন্ন ভাষায় উপলব্ধ।"
+"BitLoupe is available for several platforms in a number of languages."
+msgstr "BitLoupe একাধিক প্ল্যাটফর্মে এবং বিভিন্ন ভাষায় উপলব্ধ।"
 
-#: tmp/org.speedcrunch.SpeedCrunch.metainfo.xml.in.h:8
+#: tmp/org.bitloupe.BitLoupe.metainfo.xml.in.h:8
 msgid "Main window with optional keypad"
 msgstr "ঐচ্ছিক কীপ্যাডসহ প্রধান উইন্ডো"
 
-#: tmp/org.speedcrunch.SpeedCrunch.metainfo.xml.in.h:9
+#: tmp/org.bitloupe.BitLoupe.metainfo.xml.in.h:9
 msgid "The constants list and formula book"
 msgstr "ধ্রুবকের তালিকা ও সূত্রপুস্তক"
 
-#: tmp/org.speedcrunch.SpeedCrunch.metainfo.xml.in.h:10
+#: tmp/org.bitloupe.BitLoupe.metainfo.xml.in.h:10
 msgid "Customizable user interface"
 msgstr "স্বনির্ধারণযোগ্য ব্যবহারকারী ইন্টারফেস"
 
-#: tmp/org.speedcrunch.SpeedCrunch.metainfo.xml.in.h:11
+#: tmp/org.bitloupe.BitLoupe.metainfo.xml.in.h:11
 msgid "The built-in user manual"
 msgstr "অন্তর্নির্মিত ব্যবহারকারী নির্দেশিকা"

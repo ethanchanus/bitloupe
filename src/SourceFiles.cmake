@@ -1,8 +1,8 @@
-SET(speedcrunch_RESOURCES
-resources/speedcrunch.qrc
+SET(bitloupe_RESOURCES
+resources/bitloupe.qrc
 )
 
-set(speedcrunch_HEADERS
+set(bitloupe_HEADERS
 core/anglemode.h
 core/book.h
 core/complexform.h
@@ -80,7 +80,7 @@ core/units.h
 core/unitdisplayformat.h
 )
 
-set(speedcrunch_SOURCES
+set(bitloupe_SOURCES
 main.cpp
 core/book.cpp
 core/constants.cpp
@@ -493,7 +493,7 @@ math/rational.cpp
 math/quantity.cpp
 core/units.cpp
 core/unitdisplayformat.cpp
-resources/speedcrunch.qrc
+resources/bitloupe.qrc
 tests/testdisplayui.cpp
 )
 

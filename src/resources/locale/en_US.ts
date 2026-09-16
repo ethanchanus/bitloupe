@@ -6,7 +6,7 @@
     <message>
         <location filename="../../gui/aboutbox.cpp" line="19"/>
         <location filename="../../gui/aboutbox.cpp" line="141"/>
-        <source>About SpeedCrunch</source>
+        <source>About BitLoupe</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -36,7 +36,7 @@
     </message>
     <message>
         <location filename="../../gui/aboutbox.cpp" line="110"/>
-        <source>Copyright (C) 2004-2026 The SpeedCrunch developers</source>
+        <source>Copyright (C) 2004-2026 The BitLoupe developers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3219,13 +3219,13 @@
     <message>
         <location filename="../../core/evaluator.cpp" line="742"/>
         <location filename="../../core/evaluator.cpp" line="813"/>
-        <source>underflow - tiny result is out of SpeedCrunch&apos;s number range</source>
+        <source>underflow - tiny result is out of BitLoupe&apos;s number range</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../core/evaluator.cpp" line="746"/>
         <location filename="../../core/evaluator.cpp" line="809"/>
-        <source>overflow - huge result is out of SpeedCrunch&apos;s number range</source>
+        <source>overflow - huge result is out of BitLoupe&apos;s number range</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4876,7 +4876,7 @@
     </message>
     <message>
         <location filename="../../gui/mainwindow.cpp" line="3550"/>
-        <source>About &amp;SpeedCrunch</source>
+        <source>About &amp;BitLoupe</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4947,7 +4947,7 @@
     <message>
         <location filename="../../gui/mainwindow.cpp" line="8705"/>
         <location filename="../../gui/mainwindow.cpp" line="8789"/>
-        <source>SpeedCrunch Sessions (*.json);;All Files (*)</source>
+        <source>BitLoupe Sessions (*.json);;All Files (*)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -5126,7 +5126,7 @@ If no, current variables and display will be cleared.</source>
     <message>
         <location filename="../../gui/mainwindow.cpp" line="3464"/>
         <location filename="../../gui/mainwindow.cpp" line="3465"/>
-        <source>If a new expression starts with +, -, *, or /, SpeedCrunch inserts &quot;ans&quot; first.</source>
+        <source>If a new expression starts with +, -, *, or /, BitLoupe inserts &quot;ans&quot; first.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -5782,12 +5782,12 @@ If no, current variables and display will be cleared.</source>
     <name>ManualWindow</name>
     <message>
         <location filename="../../gui/manualwindow.cpp" line="49"/>
-        <source>SpeedCrunch Manual</source>
+        <source>BitLoupe Manual</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../gui/manualwindow.cpp" line="51"/>
-        <source>%1 - SpeedCrunch Manual</source>
+        <source>%1 - BitLoupe Manual</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -5905,7 +5905,7 @@ If no, current variables and display will be cleared.</source>
     </message>
     <message>
         <location filename="../../gui/versioncheck.cpp" line="227"/>
-        <source>SpeedCrunch %1 is up to date.</source>
+        <source>BitLoupe %1 is up to date.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2026 SpeedCrunch developers
+// SPDX-FileCopyrightText: 2026 BitLoupe developers
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 
@@ -21,13 +21,13 @@
 
 namespace {
 
-static const char WEBSITE_URL[] = "https://speedcrunch.org";
-static const char VERSION_URL[] = "https://speedcrunch.org/version";
+static const char WEBSITE_URL[] = "https://bitloupe.org";
+static const char VERSION_URL[] = "https://bitloupe.org/version";
 static const char LAST_CHECK_KEY[] = "updates/lastVersionCheckUtcMsecs";
 static const char LAST_FETCHED_VERSION_KEY[] = "updates/lastFetchedVersion";
 static const char LAST_NOTIFIED_VERSION_KEY[] = "updates/lastNotifiedVersion";
 const qint64 CHECK_INTERVAL_MSECS = 24LL * 60LL * 60LL * 1000LL;
-Q_LOGGING_CATEGORY(lcVersionCheck, "speedcrunch.updatecheck")
+Q_LOGGING_CATEGORY(lcVersionCheck, "bitloupe.updatecheck")
 
 static QDebug versionCheckDebug()
 {
@@ -47,7 +47,7 @@ VersionCheck::VersionCheck(QWidget* parentWindow, QObject* parent)
 
 void VersionCheck::checkForUpdateIfDue()
 {
-    if (qEnvironmentVariableIsSet("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK"))
+    if (qEnvironmentVariableIsSet("BITLOUPE_TEST_SKIP_UPDATE_CHECK"))
         return;
 
     if (m_pendingReply) {
@@ -102,7 +102,7 @@ void VersionCheck::handleReplyFinished()
     }
 
     const QString latestVersion = QString::fromUtf8(payload).trimmed().section('\n', 0, 0).trimmed();
-    const QString currentVersion = QString::fromLatin1(SPEEDCRUNCH_VERSION);
+    const QString currentVersion = QString::fromLatin1(BITLOUPE_VERSION);
     int comparison = 0;
     const bool comparable = compareVersions(latestVersion, currentVersion, &comparison);
     storeFetchedVersion(latestVersion);
@@ -224,7 +224,7 @@ void VersionCheck::showUpToDateDialog(QWidget* parent, const QString& currentVer
 
     QVBoxLayout* layout = new QVBoxLayout(&dialog);
     QLabel* text = new QLabel(
-        QObject::tr("SpeedCrunch %1 is up to date.").arg(currentVersion),
+        QObject::tr("BitLoupe %1 is up to date.").arg(currentVersion),
         &dialog);
     text->setWordWrap(true);
     layout->addWidget(text);

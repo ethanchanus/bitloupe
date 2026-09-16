@@ -6,8 +6,8 @@
     <message>
         <location filename="../../gui/aboutbox.cpp" line="19"/>
         <location filename="../../gui/aboutbox.cpp" line="141"/>
-        <source>About SpeedCrunch</source>
-        <translation>关于 SpeedCrunch</translation>
+        <source>About BitLoupe</source>
+        <translation>关于 BitLoupe</translation>
     </message>
     <message>
         <location filename="../../gui/aboutbox.cpp" line="32"/>
@@ -41,8 +41,8 @@
     </message>
     <message>
         <location filename="../../gui/aboutbox.cpp" line="110"/>
-        <source>Copyright (C) 2004-2026 The SpeedCrunch developers</source>
-        <translation>版权所有 (C) 2004-2026 SpeedCrunch 开发团队</translation>
+        <source>Copyright (C) 2004-2026 The BitLoupe developers</source>
+        <translation>版权所有 (C) 2004-2026 BitLoupe 开发团队</translation>
     </message>
     <message>
         <location filename="../../gui/aboutbox.cpp" line="114"/>
@@ -3331,14 +3331,14 @@
     <message>
         <location filename="../../core/evaluator.cpp" line="742"/>
         <location filename="../../core/evaluator.cpp" line="813"/>
-        <source>underflow - tiny result is out of SpeedCrunch&apos;s number range</source>
-        <translation>下溢出 - 太小的结果超出了 SpeedCrunch 的数值范围</translation>
+        <source>underflow - tiny result is out of BitLoupe&apos;s number range</source>
+        <translation>下溢出 - 太小的结果超出了 BitLoupe 的数值范围</translation>
     </message>
     <message>
         <location filename="../../core/evaluator.cpp" line="746"/>
         <location filename="../../core/evaluator.cpp" line="809"/>
-        <source>overflow - huge result is out of SpeedCrunch&apos;s number range</source>
-        <translation>上溢出 - 太大的结果超出了 SpeedCrunch 的数值范围</translation>
+        <source>overflow - huge result is out of BitLoupe&apos;s number range</source>
+        <translation>上溢出 - 太大的结果超出了 BitLoupe 的数值范围</translation>
     </message>
     <message>
         <location filename="../../core/evaluator.cpp" line="754"/>
@@ -4927,8 +4927,8 @@
     </message>
     <message>
         <location filename="../../gui/mainwindow.cpp" line="3640"/>
-        <source>About &amp;SpeedCrunch</source>
-        <translation>关于 &amp;SpeedCrunch</translation>
+        <source>About &amp;BitLoupe</source>
+        <translation>关于 &amp;BitLoupe</translation>
     </message>
     <message>
         <location filename="../../gui/mainwindow.cpp" line="3966"/>
@@ -5103,8 +5103,8 @@
     <message>
         <location filename="../../gui/mainwindow.cpp" line="3554"/>
         <location filename="../../gui/mainwindow.cpp" line="3555"/>
-        <source>If a new expression starts with +, -, *, or /, SpeedCrunch inserts &quot;ans&quot; first.</source>
-        <translation>如果新表达式以 +、-、* 或 / 开头，SpeedCrunch 会先插入 &quot;ans&quot;。</translation>
+        <source>If a new expression starts with +, -, *, or /, BitLoupe inserts &quot;ans&quot; first.</source>
+        <translation>如果新表达式以 +、-、* 或 / 开头，BitLoupe 会先插入 &quot;ans&quot;。</translation>
     </message>
     <message>
         <location filename="../../gui/mainwindow.cpp" line="3557"/>
@@ -5421,13 +5421,13 @@
     </message>
     <message>
         <location filename="../../gui/mainwindow.cpp" line="9389"/>
-        <source>The selected file is not a SpeedCrunch session JSON file.</source>
-        <translation>所选文件不是 SpeedCrunch 会话 JSON 文件。</translation>
+        <source>The selected file is not a BitLoupe session JSON file.</source>
+        <translation>所选文件不是 BitLoupe 会话 JSON 文件。</translation>
     </message>
     <message>
         <location filename="../../gui/mainwindow.cpp" line="9397"/>
-        <source>This file uses an obsolete SpeedCrunch session format and cannot be imported.</source>
-        <translation>此文件使用已过时的 SpeedCrunch 会话格式，无法导入。</translation>
+        <source>This file uses an obsolete BitLoupe session format and cannot be imported.</source>
+        <translation>此文件使用已过时的 BitLoupe 会话格式，无法导入。</translation>
     </message>
     <message>
         <location filename="../../gui/mainwindow.cpp" line="9405"/>
@@ -5441,13 +5441,13 @@
     </message>
     <message>
         <location filename="../../gui/mainwindow.cpp" line="9419"/>
-        <source>The selected JSON file is missing the SpeedCrunch session schema identifier ($id).</source>
-        <translation>所选 JSON 文件缺少 SpeedCrunch 会话架构标识符 ($id)。</translation>
+        <source>The selected JSON file is missing the BitLoupe session schema identifier ($id).</source>
+        <translation>所选 JSON 文件缺少 BitLoupe 会话架构标识符 ($id)。</translation>
     </message>
     <message>
         <location filename="../../gui/mainwindow.cpp" line="9425"/>
-        <source>The selected JSON file uses an unsupported SpeedCrunch session format: %1</source>
-        <translation>所选 JSON 文件使用不受支持的 SpeedCrunch 会话格式：%1</translation>
+        <source>The selected JSON file uses an unsupported BitLoupe session format: %1</source>
+        <translation>所选 JSON 文件使用不受支持的 BitLoupe 会话格式：%1</translation>
     </message>
     <message>
         <location filename="../../gui/mainwindow.cpp" line="9433"/>
@@ -5461,8 +5461,8 @@
     </message>
     <message>
         <location filename="../../gui/mainwindow.cpp" line="9447"/>
-        <source>The selected JSON file has invalid or incomplete SpeedCrunch session data.</source>
-        <translation>所选 JSON 文件包含无效或不完整的 SpeedCrunch 会话数据。</translation>
+        <source>The selected JSON file has invalid or incomplete BitLoupe session data.</source>
+        <translation>所选 JSON 文件包含无效或不完整的 BitLoupe 会话数据。</translation>
     </message>
     <message>
         <location filename="../../gui/mainwindow.cpp" line="9458"/>
@@ -5844,13 +5844,13 @@
     <name>ManualWindow</name>
     <message>
         <location filename="../../gui/manualwindow.cpp" line="49"/>
-        <source>SpeedCrunch Manual</source>
-        <translation>SpeedCrunch 手册</translation>
+        <source>BitLoupe Manual</source>
+        <translation>BitLoupe 手册</translation>
     </message>
     <message>
         <location filename="../../gui/manualwindow.cpp" line="51"/>
-        <source>%1 - SpeedCrunch Manual</source>
-        <translation>%1 - SpeedCrunch 手册</translation>
+        <source>%1 - BitLoupe Manual</source>
+        <translation>%1 - BitLoupe 手册</translation>
     </message>
 </context>
 <context>
@@ -5967,8 +5967,8 @@
     </message>
     <message>
         <location filename="../../gui/versioncheck.cpp" line="227"/>
-        <source>SpeedCrunch %1 is up to date.</source>
-        <translation>SpeedCrunch %1 已是最新版本。</translation>
+        <source>BitLoupe %1 is up to date.</source>
+        <translation>BitLoupe %1 已是最新版本。</translation>
     </message>
     <message>
         <location filename="../../gui/versioncheck.cpp" line="246"/>

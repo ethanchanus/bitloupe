@@ -6,8 +6,8 @@
     <message>
         <location filename="../../gui/aboutbox.cpp" line="19"/>
         <location filename="../../gui/aboutbox.cpp" line="141"/>
-        <source>About SpeedCrunch</source>
-        <translation>Over SpeedCrunch</translation>
+        <source>About BitLoupe</source>
+        <translation>Over BitLoupe</translation>
     </message>
     <message>
         <location filename="../../gui/aboutbox.cpp" line="32"/>
@@ -41,8 +41,8 @@
     </message>
     <message>
         <location filename="../../gui/aboutbox.cpp" line="110"/>
-        <source>Copyright (C) 2004-2026 The SpeedCrunch developers</source>
-        <translation>Copyright (C) 2004-2026 De ontwikkelaars van SpeedCrunch</translation>
+        <source>Copyright (C) 2004-2026 The BitLoupe developers</source>
+        <translation>Copyright (C) 2004-2026 De ontwikkelaars van BitLoupe</translation>
     </message>
     <message>
         <location filename="../../gui/aboutbox.cpp" line="114"/>
@@ -3331,14 +3331,14 @@
     <message>
         <location filename="../../core/evaluator.cpp" line="742"/>
         <location filename="../../core/evaluator.cpp" line="813"/>
-        <source>underflow - tiny result is out of SpeedCrunch&apos;s number range</source>
-        <translation>underflow - klein resultaat valt buiten het numerieke bereik van SpeedCrunch</translation>
+        <source>underflow - tiny result is out of BitLoupe&apos;s number range</source>
+        <translation>underflow - klein resultaat valt buiten het numerieke bereik van BitLoupe</translation>
     </message>
     <message>
         <location filename="../../core/evaluator.cpp" line="746"/>
         <location filename="../../core/evaluator.cpp" line="809"/>
-        <source>overflow - huge result is out of SpeedCrunch&apos;s number range</source>
-        <translation>overflow - enorm resultaat valt buiten het numerieke bereik van SpeedCrunch</translation>
+        <source>overflow - huge result is out of BitLoupe&apos;s number range</source>
+        <translation>overflow - enorm resultaat valt buiten het numerieke bereik van BitLoupe</translation>
     </message>
     <message>
         <location filename="../../core/evaluator.cpp" line="754"/>
@@ -4927,8 +4927,8 @@
     </message>
     <message>
         <location filename="../../gui/mainwindow.cpp" line="3640"/>
-        <source>About &amp;SpeedCrunch</source>
-        <translation>Over &amp;SpeedCrunch</translation>
+        <source>About &amp;BitLoupe</source>
+        <translation>Over &amp;BitLoupe</translation>
     </message>
     <message>
         <location filename="../../gui/mainwindow.cpp" line="3966"/>
@@ -5103,8 +5103,8 @@
     <message>
         <location filename="../../gui/mainwindow.cpp" line="3554"/>
         <location filename="../../gui/mainwindow.cpp" line="3555"/>
-        <source>If a new expression starts with +, -, *, or /, SpeedCrunch inserts &quot;ans&quot; first.</source>
-        <translation>Als een nieuwe expressie begint met +, -, *, of /, voegt SpeedCrunch eerst &quot;ans&quot; in.</translation>
+        <source>If a new expression starts with +, -, *, or /, BitLoupe inserts &quot;ans&quot; first.</source>
+        <translation>Als een nieuwe expressie begint met +, -, *, of /, voegt BitLoupe eerst &quot;ans&quot; in.</translation>
     </message>
     <message>
         <location filename="../../gui/mainwindow.cpp" line="3557"/>
@@ -5421,13 +5421,13 @@
     </message>
     <message>
         <location filename="../../gui/mainwindow.cpp" line="9389"/>
-        <source>The selected file is not a SpeedCrunch session JSON file.</source>
-        <translation>Het geselecteerde bestand is geen JSON-bestand van een SpeedCrunch-sessie.</translation>
+        <source>The selected file is not a BitLoupe session JSON file.</source>
+        <translation>Het geselecteerde bestand is geen JSON-bestand van een BitLoupe-sessie.</translation>
     </message>
     <message>
         <location filename="../../gui/mainwindow.cpp" line="9397"/>
-        <source>This file uses an obsolete SpeedCrunch session format and cannot be imported.</source>
-        <translation>Dit bestand gebruikt een verouderde SpeedCrunch-sessie-indeling en kan niet worden geïmporteerd.</translation>
+        <source>This file uses an obsolete BitLoupe session format and cannot be imported.</source>
+        <translation>Dit bestand gebruikt een verouderde BitLoupe-sessie-indeling en kan niet worden geïmporteerd.</translation>
     </message>
     <message>
         <location filename="../../gui/mainwindow.cpp" line="9405"/>
@@ -5441,13 +5441,13 @@
     </message>
     <message>
         <location filename="../../gui/mainwindow.cpp" line="9419"/>
-        <source>The selected JSON file is missing the SpeedCrunch session schema identifier ($id).</source>
-        <translation>In het geselecteerde JSON-bestand ontbreekt de schema-identificatie van de SpeedCrunch-sessie ($id).</translation>
+        <source>The selected JSON file is missing the BitLoupe session schema identifier ($id).</source>
+        <translation>In het geselecteerde JSON-bestand ontbreekt de schema-identificatie van de BitLoupe-sessie ($id).</translation>
     </message>
     <message>
         <location filename="../../gui/mainwindow.cpp" line="9425"/>
-        <source>The selected JSON file uses an unsupported SpeedCrunch session format: %1</source>
-        <translation>Het geselecteerde JSON-bestand gebruikt een niet-ondersteunde SpeedCrunch-sessie-indeling: %1</translation>
+        <source>The selected JSON file uses an unsupported BitLoupe session format: %1</source>
+        <translation>Het geselecteerde JSON-bestand gebruikt een niet-ondersteunde BitLoupe-sessie-indeling: %1</translation>
     </message>
     <message>
         <location filename="../../gui/mainwindow.cpp" line="9433"/>
@@ -5461,8 +5461,8 @@
     </message>
     <message>
         <location filename="../../gui/mainwindow.cpp" line="9447"/>
-        <source>The selected JSON file has invalid or incomplete SpeedCrunch session data.</source>
-        <translation>Het geselecteerde JSON-bestand bevat ongeldige of onvolledige SpeedCrunch-sessiegegevens.</translation>
+        <source>The selected JSON file has invalid or incomplete BitLoupe session data.</source>
+        <translation>Het geselecteerde JSON-bestand bevat ongeldige of onvolledige BitLoupe-sessiegegevens.</translation>
     </message>
     <message>
         <location filename="../../gui/mainwindow.cpp" line="9458"/>
@@ -5844,13 +5844,13 @@
     <name>ManualWindow</name>
     <message>
         <location filename="../../gui/manualwindow.cpp" line="49"/>
-        <source>SpeedCrunch Manual</source>
-        <translation>Handleiding SpeedCrunch</translation>
+        <source>BitLoupe Manual</source>
+        <translation>Handleiding BitLoupe</translation>
     </message>
     <message>
         <location filename="../../gui/manualwindow.cpp" line="51"/>
-        <source>%1 - SpeedCrunch Manual</source>
-        <translation>%1 - Handleiding SpeedCrunch</translation>
+        <source>%1 - BitLoupe Manual</source>
+        <translation>%1 - Handleiding BitLoupe</translation>
     </message>
 </context>
 <context>
@@ -5967,8 +5967,8 @@
     </message>
     <message>
         <location filename="../../gui/versioncheck.cpp" line="227"/>
-        <source>SpeedCrunch %1 is up to date.</source>
-        <translation>SpeedCrunch %1 is up-to-date.</translation>
+        <source>BitLoupe %1 is up to date.</source>
+        <translation>BitLoupe %1 is up-to-date.</translation>
     </message>
     <message>
         <location filename="../../gui/versioncheck.cpp" line="246"/>

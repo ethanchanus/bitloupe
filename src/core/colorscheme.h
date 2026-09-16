@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2009-2010, 2013-2016, 2026 SpeedCrunch developers
+// SPDX-FileCopyrightText: 2009-2010, 2013-2016, 2026 BitLoupe developers
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 
@@ -32,7 +32,7 @@ public:
     };
 
     static constexpr const char* SchemaDraft = "https://json-schema.org/draft/2020-12/schema";
-    static constexpr const char* SchemaId = "https://speedcrunch.org/schemas/theme-v1.schema.json";
+    static constexpr const char* SchemaId = "https://bitloupe.org/schemas/theme-v1.schema.json";
 
     ColorScheme() : m_valid(false) { }
     ColorScheme(const QJsonDocument& doc);

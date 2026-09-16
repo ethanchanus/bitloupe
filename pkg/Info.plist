@@ -7,15 +7,15 @@
 	<key>NSHighResolutionCapable</key>
 	<string>True</string>
 	<key>CFBundleIconFile</key>
-	<string>speedcrunch.icns</string>
+	<string>bitloupe.icns</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleExecutable</key>
-	<string>SpeedCrunch</string>
+	<string>BitLoupe</string>
 	<key>CFBundleIdentifier</key>
-	<string>org.speedcrunch</string>
+	<string>org.bitloupe</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 </dict>

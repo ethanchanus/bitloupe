@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2009 SpeedCrunch developers
+// SPDX-FileCopyrightText: 2009 BitLoupe developers
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #include "floatincgamma.h"

@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2007-2010, 2013-2016, 2018, 2024, 2026 SpeedCrunch developers
+// SPDX-FileCopyrightText: 2007-2010, 2013-2016, 2018, 2024, 2026 BitLoupe developers
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 
@@ -132,15 +132,15 @@ bool shouldUseNonAtomicSettingsSync(const QString& fileName)
 
 QString Settings::getConfigPath()
 {
-#ifdef SPEEDCRUNCH_PORTABLE
+#ifdef BITLOUPE_PORTABLE
     return QApplication::applicationDirPath();
 #elif defined(Q_OS_WIN)
-    // On Windows, use AppData/Roaming/SpeedCrunch, the same path as getDataPath.
+    // On Windows, use AppData/Roaming/BitLoupe, the same path as getDataPath.
     return getDataPath();
 #else
-    // Everywhere else, use `QStandardPaths::ConfigLocation`/SpeedCrunch:
-    // * OSX: ~/Library/Preferences/SpeedCrunch
-    // * Linux: ~/.config/SpeedCrunch
+    // Everywhere else, use `QStandardPaths::ConfigLocation`/BitLoupe:
+    // * OSX: ~/Library/Preferences/BitLoupe
+    // * Linux: ~/.config/BitLoupe
     return QString("%1/%2").arg(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation),
                                 QCoreApplication::applicationName());
 #endif
@@ -148,7 +148,7 @@ QString Settings::getConfigPath()
 
 QString Settings::getDataPath()
 {
-#ifdef SPEEDCRUNCH_PORTABLE
+#ifdef BITLOUPE_PORTABLE
     return QApplication::applicationDirPath();
 #elif QT_VERSION >= QT_VERSION_CHECK(5, 4, 0)
     return QStandardPaths::writableLocation(QStandardPaths::AppDataLocation);
@@ -178,7 +178,7 @@ QString Settings::getDataPath()
 
 QString Settings::getCachePath()
 {
-#ifdef SPEEDCRUNCH_PORTABLE
+#ifdef BITLOUPE_PORTABLE
     return QApplication::applicationDirPath();
 #else
     return QStandardPaths::writableLocation(QStandardPaths::CacheLocation);
@@ -295,7 +295,7 @@ Settings::Settings()
 
 void Settings::load()
 {
-    const char* KEY = "SpeedCrunch";
+    const char* KEY = "BitLoupe";
 
     QSettings* settings = createQSettings(KEY);
     if (!settings)
@@ -593,7 +593,7 @@ void Settings::load()
 
 void Settings::save()
 {
-    const QString KEY = QString::fromLatin1("SpeedCrunch");
+    const QString KEY = QString::fromLatin1("BitLoupe");
 
     QSettings* settings = createQSettings(KEY);
     if (!settings)
@@ -718,7 +718,7 @@ void Settings::save()
 
 void Settings::saveSessionLayoutJson()
 {
-    const QString KEY = QString::fromLatin1("SpeedCrunch");
+    const QString KEY = QString::fromLatin1("BitLoupe");
     QSettings* settings = createQSettings(KEY);
     if (!settings)
         return;
@@ -874,7 +874,7 @@ QString Settings::digitGroupingSeparator() const
 // Settings migration from legacy (0.11 and before) to 0.12 (ConfigVersion 1200).
 static void migrateSettings_legacyTo1200(QSettings* settings, const QString& KEY)
 {
-#ifdef SPEEDCRUNCH_PORTABLE
+#ifdef BITLOUPE_PORTABLE
     // This is the same as the new path, but let's cut down
     QSettings* legacy = new QSettings(Settings::getConfigPath() + "/" + KEY + ".ini", QSettings::IniFormat);
 #else
@@ -914,7 +914,7 @@ static void migrateSettings_legacyTo1200(QSettings* settings, const QString& KEY
 
     // ColorScheme -> ColorSchemeName
     QString colorSchemeName;
-    switch (settings->value("SpeedCrunch/Display/ColorScheme", -1).toInt()) {
+    switch (settings->value("BitLoupe/Display/ColorScheme", -1).toInt()) {
     case 0:
         colorSchemeName = "Terminal";
         break;
@@ -928,12 +928,12 @@ static void migrateSettings_legacyTo1200(QSettings* settings, const QString& KEY
         colorSchemeName = DefaultColorScheme;
         break;
     }
-    settings->setValue("SpeedCrunch/Display/ColorSchemeName", colorSchemeName);
-    settings->remove("SpeedCrunch/Display/ColorScheme");
+    settings->setValue("BitLoupe/Display/ColorSchemeName", colorSchemeName);
+    settings->remove("BitLoupe/Display/ColorScheme");
 
     // DigitGrouping (bool) -> DigitGrouping (int)
-    bool groupDigits = settings->value("SpeedCrunch/General/DigitGrouping", false).toBool();
-    settings->setValue("SpeedCrunch/General/DigitGrouping", groupDigits ? 1 : 0);
+    bool groupDigits = settings->value("BitLoupe/General/DigitGrouping", false).toBool();
+    settings->setValue("BitLoupe/General/DigitGrouping", groupDigits ? 1 : 0);
 }
 
 

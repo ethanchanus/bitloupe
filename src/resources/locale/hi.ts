@@ -6,8 +6,8 @@
     <message>
         <location filename="../../gui/aboutbox.cpp" line="19"/>
         <location filename="../../gui/aboutbox.cpp" line="141"/>
-        <source>About SpeedCrunch</source>
-        <translation>SpeedCrunch के बारे में</translation>
+        <source>About BitLoupe</source>
+        <translation>BitLoupe के बारे में</translation>
     </message>
     <message>
         <location filename="../../gui/aboutbox.cpp" line="30"/>
@@ -36,8 +36,8 @@
     </message>
     <message>
         <location filename="../../gui/aboutbox.cpp" line="110"/>
-        <source>Copyright (C) 2004-2026 The SpeedCrunch developers</source>
-        <translation>कॉपीराइट (C) 2004-2026 SpeedCrunch डेवलपर</translation>
+        <source>Copyright (C) 2004-2026 The BitLoupe developers</source>
+        <translation>कॉपीराइट (C) 2004-2026 BitLoupe डेवलपर</translation>
     </message>
     <message>
         <location filename="../../gui/aboutbox.cpp" line="114"/>
@@ -3241,14 +3241,14 @@
     <message>
         <location filename="../../core/evaluator.cpp" line="742"/>
         <location filename="../../core/evaluator.cpp" line="813"/>
-        <source>underflow - tiny result is out of SpeedCrunch&apos;s number range</source>
-        <translation>अंडरफ़्लो - बहुत छोटा परिणाम SpeedCrunch की संख्या सीमा से बाहर है</translation>
+        <source>underflow - tiny result is out of BitLoupe&apos;s number range</source>
+        <translation>अंडरफ़्लो - बहुत छोटा परिणाम BitLoupe की संख्या सीमा से बाहर है</translation>
     </message>
     <message>
         <location filename="../../core/evaluator.cpp" line="746"/>
         <location filename="../../core/evaluator.cpp" line="809"/>
-        <source>overflow - huge result is out of SpeedCrunch&apos;s number range</source>
-        <translation>ओवरफ़्लो - बहुत बड़ा परिणाम SpeedCrunch की संख्या सीमा से बाहर है</translation>
+        <source>overflow - huge result is out of BitLoupe&apos;s number range</source>
+        <translation>ओवरफ़्लो - बहुत बड़ा परिणाम BitLoupe की संख्या सीमा से बाहर है</translation>
     </message>
     <message>
         <location filename="../../core/evaluator.cpp" line="750"/>
@@ -4888,8 +4888,8 @@
     </message>
     <message>
         <location filename="../../gui/mainwindow.cpp" line="3640"/>
-        <source>About &amp;SpeedCrunch</source>
-        <translation>SpeedCrunch के &amp;बारे में</translation>
+        <source>About &amp;BitLoupe</source>
+        <translation>BitLoupe के &amp;बारे में</translation>
     </message>
     <message>
         <location filename="../../gui/mainwindow.cpp" line="3943"/>
@@ -5137,8 +5137,8 @@
     <message>
         <location filename="../../gui/mainwindow.cpp" line="3554"/>
         <location filename="../../gui/mainwindow.cpp" line="3555"/>
-        <source>If a new expression starts with +, -, *, or /, SpeedCrunch inserts &quot;ans&quot; first.</source>
-        <translation>यदि नया व्यंजक +, -, * या / से शुरू होता है, तो SpeedCrunch पहले &quot;ans&quot; डालता है।</translation>
+        <source>If a new expression starts with +, -, *, or /, BitLoupe inserts &quot;ans&quot; first.</source>
+        <translation>यदि नया व्यंजक +, -, * या / से शुरू होता है, तो BitLoupe पहले &quot;ans&quot; डालता है।</translation>
     </message>
     <message>
         <location filename="../../gui/mainwindow.cpp" line="3557"/>
@@ -5455,13 +5455,13 @@
     </message>
     <message>
         <location filename="../../gui/mainwindow.cpp" line="9389"/>
-        <source>The selected file is not a SpeedCrunch session JSON file.</source>
-        <translation>चयनित फ़ाइल SpeedCrunch सत्र की JSON फ़ाइल नहीं है।</translation>
+        <source>The selected file is not a BitLoupe session JSON file.</source>
+        <translation>चयनित फ़ाइल BitLoupe सत्र की JSON फ़ाइल नहीं है।</translation>
     </message>
     <message>
         <location filename="../../gui/mainwindow.cpp" line="9397"/>
-        <source>This file uses an obsolete SpeedCrunch session format and cannot be imported.</source>
-        <translation>यह फ़ाइल पुराने SpeedCrunch सत्र प्रारूप का उपयोग करती है और आयात नहीं की जा सकती।</translation>
+        <source>This file uses an obsolete BitLoupe session format and cannot be imported.</source>
+        <translation>यह फ़ाइल पुराने BitLoupe सत्र प्रारूप का उपयोग करती है और आयात नहीं की जा सकती।</translation>
     </message>
     <message>
         <location filename="../../gui/mainwindow.cpp" line="9405"/>
@@ -5475,13 +5475,13 @@
     </message>
     <message>
         <location filename="../../gui/mainwindow.cpp" line="9419"/>
-        <source>The selected JSON file is missing the SpeedCrunch session schema identifier ($id).</source>
-        <translation>चयनित JSON फ़ाइल में SpeedCrunch सत्र स्कीमा पहचानकर्ता ($id) नहीं है।</translation>
+        <source>The selected JSON file is missing the BitLoupe session schema identifier ($id).</source>
+        <translation>चयनित JSON फ़ाइल में BitLoupe सत्र स्कीमा पहचानकर्ता ($id) नहीं है।</translation>
     </message>
     <message>
         <location filename="../../gui/mainwindow.cpp" line="9425"/>
-        <source>The selected JSON file uses an unsupported SpeedCrunch session format: %1</source>
-        <translation>चयनित JSON फ़ाइल असमर्थित SpeedCrunch सत्र प्रारूप का उपयोग करती है: %1</translation>
+        <source>The selected JSON file uses an unsupported BitLoupe session format: %1</source>
+        <translation>चयनित JSON फ़ाइल असमर्थित BitLoupe सत्र प्रारूप का उपयोग करती है: %1</translation>
     </message>
     <message>
         <location filename="../../gui/mainwindow.cpp" line="9433"/>
@@ -5495,8 +5495,8 @@
     </message>
     <message>
         <location filename="../../gui/mainwindow.cpp" line="9447"/>
-        <source>The selected JSON file has invalid or incomplete SpeedCrunch session data.</source>
-        <translation>चयनित JSON फ़ाइल में अमान्य या अधूरा SpeedCrunch सत्र डेटा है।</translation>
+        <source>The selected JSON file has invalid or incomplete BitLoupe session data.</source>
+        <translation>चयनित JSON फ़ाइल में अमान्य या अधूरा BitLoupe सत्र डेटा है।</translation>
     </message>
     <message>
         <location filename="../../gui/mainwindow.cpp" line="9458"/>
@@ -5844,13 +5844,13 @@
     <name>ManualWindow</name>
     <message>
         <location filename="../../gui/manualwindow.cpp" line="49"/>
-        <source>SpeedCrunch Manual</source>
-        <translation>SpeedCrunch मैनुअल</translation>
+        <source>BitLoupe Manual</source>
+        <translation>BitLoupe मैनुअल</translation>
     </message>
     <message>
         <location filename="../../gui/manualwindow.cpp" line="51"/>
-        <source>%1 - SpeedCrunch Manual</source>
-        <translation>%1 - SpeedCrunch मैनुअल</translation>
+        <source>%1 - BitLoupe Manual</source>
+        <translation>%1 - BitLoupe मैनुअल</translation>
     </message>
 </context>
 <context>
@@ -5967,8 +5967,8 @@
     </message>
     <message>
         <location filename="../../gui/versioncheck.cpp" line="227"/>
-        <source>SpeedCrunch %1 is up to date.</source>
-        <translation>SpeedCrunch %1 अद्यतित है।</translation>
+        <source>BitLoupe %1 is up to date.</source>
+        <translation>BitLoupe %1 अद्यतित है।</translation>
     </message>
     <message>
         <location filename="../../gui/versioncheck.cpp" line="246"/>

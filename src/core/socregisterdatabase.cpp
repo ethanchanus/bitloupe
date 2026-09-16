@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2026 SpeedCrunch developers
+// SPDX-FileCopyrightText: 2026 BitLoupe developers
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #include "core/socregisterdatabase.h"
@@ -25,17 +25,17 @@ namespace {
 // TEMPORARY (SoC Regs crash investigation): qWarning() is stripped to a no-op
 // in this app's Release build (QT_NO_WARNING_OUTPUT), so call QMessageLogger
 // directly to bypass that and reach the installed file handler. Only emits
-// anything when SPEEDCRUNCH_SOCREGS_DIAGNOSTICS is enabled; otherwise a real
+// anything when BITLOUPE_SOCREGS_DIAGNOSTICS is enabled; otherwise a real
 // no-op (QMessageLogger::noDebug(), which returns QNoDebug) so it costs
 // nothing in normal builds.
-#ifdef SPEEDCRUNCH_SOCREGS_DIAGNOSTICS
+#ifdef BITLOUPE_SOCREGS_DIAGNOSTICS
 using SocRegsLogStream = QDebug;
 #else
 using SocRegsLogStream = QNoDebug;
 #endif
 SocRegsLogStream socRegsLog()
 {
-#ifdef SPEEDCRUNCH_SOCREGS_DIAGNOSTICS
+#ifdef BITLOUPE_SOCREGS_DIAGNOSTICS
     return QMessageLogger(QT_MESSAGELOG_FILE, QT_MESSAGELOG_LINE, QT_MESSAGELOG_FUNC).warning();
 #else
     return QMessageLogger().noDebug();
@@ -85,7 +85,7 @@ QStringList derivativeNames(const QString& value)
 
 QString catalogPath()
 {
-    const QString overridePath = qEnvironmentVariable("SPEEDCRUNCH_SOC_CONFIG").trimmed();
+    const QString overridePath = qEnvironmentVariable("BITLOUPE_SOC_CONFIG").trimmed();
     if (!overridePath.isEmpty())
         return QFileInfo(overridePath).absoluteFilePath();
 
@@ -109,7 +109,7 @@ QString catalogPath()
 
 QString cachePath()
 {
-    const QString overridePath = qEnvironmentVariable("SPEEDCRUNCH_SOC_CACHE").trimmed();
+    const QString overridePath = qEnvironmentVariable("BITLOUPE_SOC_CACHE").trimmed();
     if (!overridePath.isEmpty())
         return QFileInfo(overridePath).absoluteFilePath();
 

@@ -3,7 +3,7 @@ set -euo pipefail
 
 script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 src_dir="$(cd "${script_dir}/../.." && pwd)"
-pro_file="${src_dir}/speedcrunch.pro"
+pro_file="${src_dir}/bitloupe.pro"
 
 if [[ ! -f "${pro_file}" ]]; then
     echo "error: cannot find ${pro_file}" >&2
@@ -44,7 +44,7 @@ echo "Using lrelease: ${lrelease_bin}"
 echo "Project file: ${pro_file}"
 
 cd "${src_dir}"
-"${lupdate_bin}" -no-obsolete speedcrunch.pro
-"${lrelease_bin}" speedcrunch.pro
+"${lupdate_bin}" -no-obsolete bitloupe.pro
+"${lrelease_bin}" bitloupe.pro
 
 echo "Done: TS updated and QM rebuilt."

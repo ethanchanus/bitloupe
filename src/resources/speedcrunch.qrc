@@ -1,0 +1,95 @@
+<RCC>
+    <qresource prefix="/">
+        <file>speedcrunch.png</file>
+        <file>locale/ar.qm</file>
+        <file>locale/bg.qm</file>
+        <file>locale/bn.qm</file>
+        <file>locale/ca.qm</file>
+        <file>locale/cs.qm</file>
+        <file>locale/da.qm</file>
+        <file>locale/de.qm</file>
+        <file>locale/el.qm</file>
+        <file>locale/en_GB.qm</file>
+        <file>locale/en_US.qm</file>
+        <file>locale/es.qm</file>
+        <file>locale/es_ES.qm</file>
+        <file>locale/et.qm</file>
+        <file>locale/eu.qm</file>
+        <file>locale/fa.qm</file>
+        <file>locale/fi.qm</file>
+        <file>locale/fr.qm</file>
+        <file>locale/gl.qm</file>
+        <file>locale/he.qm</file>
+        <file>locale/hi.qm</file>
+        <file>locale/hu.qm</file>
+        <file>locale/id.qm</file>
+        <file>locale/it.qm</file>
+        <file>locale/ja.qm</file>
+        <file>locale/ko.qm</file>
+        <file>locale/lt.qm</file>
+        <file>locale/lv.qm</file>
+        <file>locale/ms.qm</file>
+        <file>locale/nb.qm</file>
+        <file>locale/nl.qm</file>
+        <file>locale/pl.qm</file>
+        <file>locale/pt_BR.qm</file>
+        <file>locale/pt_PT.qm</file>
+        <file>locale/ro.qm</file>
+        <file>locale/ru.qm</file>
+        <file>locale/sk.qm</file>
+        <file>locale/sl.qm</file>
+        <file>locale/sw.qm</file>
+        <file>locale/sv.qm</file>
+        <file>locale/th.qm</file>
+        <file>locale/ta.qm</file>
+        <file>locale/te.qm</file>
+        <file>locale/tr.qm</file>
+        <file>locale/uk.qm</file>
+        <file>locale/uz_Latn.qm</file>
+        <file>locale/vi.qm</file>
+        <file>locale/zh_CN.qm</file>
+        <file>locale/zh_TW.qm</file>
+        <file>color-schemes/Terminal.json</file>
+        <file>color-schemes/Tomorrow.json</file>
+        <file>color-schemes/Tomorrow Night.json</file>
+        <file>color-schemes/Tomorrow Night Eighties.json</file>
+        <file>color-schemes/Tomorrow Night Blue.json</file>
+        <file>color-schemes/Tomorrow Night Bright.json</file>
+        <file>color-schemes/Solarized Dark.json</file>
+        <file>color-schemes/Solarized Light.json</file>
+        <file>color-schemes/Standard.json</file>
+        <file>color-schemes/Sublime.json</file>
+        <file>color-schemes/Breeze.json</file>
+        <file>color-schemes/Breeze Dark.json</file>
+        <file>color-schemes/Black on White.json</file>
+        <file>color-schemes/White on Black.json</file>
+        <file>color-schemes/Nord Dark.json</file>
+        <file>color-schemes/Nord Light.json</file>
+        <file>color-schemes/Dracula.json</file>
+        <file>color-schemes/Catppuccin Latte.json</file>
+        <file>color-schemes/Catppuccin Macchiato.json</file>
+        <file>color-schemes/One Dark.json</file>
+        <file>color-schemes/Monokai.json</file>
+        <file>color-schemes/GitHub Dark.json</file>
+        <file>color-schemes/GitHub Light.json</file>
+        <file>color-schemes/Gruvbox Dark.json</file>
+        <file>color-schemes/Gruvbox Light.json</file>
+        <file>color-schemes/Tokyo Day.json</file>
+        <file>color-schemes/Tokyo Night.json</file>
+        <file>color-schemes/Rosé Pine Moon.json</file>
+        <file>color-schemes/Rosé Pine Dawn.json</file>
+        <file>color-schemes/Carbonfox.json</file>
+        <file>color-schemes/Dawnfox.json</file>
+        <file>color-schemes/Dayfox.json</file>
+        <file>color-schemes/Duskfox.json</file>
+        <file>color-schemes/Nightfox.json</file>
+        <file>color-schemes/Nordfox.json</file>
+        <file>color-schemes/Terafox.json</file>
+        <file>color-schemes/Sonokai Default.json</file>
+        <file>color-schemes/Sonokai Atlantis.json</file>
+        <file>color-schemes/Sonokai Andromeda.json</file>
+        <file>color-schemes/Sonokai Shusia.json</file>
+        <file>color-schemes/Sonokai Maia.json</file>
+        <file>color-schemes/Sonokai Espresso.json</file>
+    </qresource>
+</RCC>

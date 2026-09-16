@@ -1,0 +1,1036 @@
+
+<!DOCTYPE html>
+
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>User Interface</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/quark.css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="next" title="Reference" href="../reference/index.html" />
+    <link rel="prev" title="User-Defined Variables, Functions and Units" href="advanced.html" />
+    <link rel="stylesheet" href="../" type="text/css" />
+
+  </head><body>
+  <table class="navbar navbar-top">
+    
+  <tr>
+    <td width="50%">
+      <a class="nav-item nav-item-0"
+         href="../contents.html">SpeedCrunch 1.0 documentation</a> &#187; <a class="nav-item nav-item-1"
+             href="index.html">User Guide</a>
+          
+    </td>
+
+    <td align="right" width="50%">
+      <a class="rel-item rel-item-1"
+           href="advanced.html"
+           title="User-Defined Variables, Functions and Units"
+           accesskey="P">previous</a>
+         | 
+      <a class="rel-item rel-item-2"
+           href="../reference/index.html"
+           title="Reference"
+           accesskey="N">next</a>
+         | 
+      <a class="rel-item rel-item-3"
+           href="../sc-functionindex.html"
+           title="Function Index"
+           >functions</a>
+         | 
+      <a class="rel-item rel-item-4"
+           href="../genindex.html"
+           title="General Index"
+           accesskey="I">index</a>
+        
+      
+    </td>
+
+  </tr>
+
+  </table>
+
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <section id="user-interface">
+<h1>User Interface</h1>
+<section id="widgets">
+<h2>Widgets</h2>
+<p>Apart from the main display, SpeedCrunch offers a number of extra panels, referred to as <em>widgets</em> here.
+They can be enabled and disabled via the <span class="menuselection">View</span> menu.</p>
+<ul>
+<li><dl>
+<dt>Formula Book</dt><dd><p>The formula book provides access to commonly used formulas and calculations. Simply insert
+a formula into the expression editor by clicking on it.</p>
+<p>You can help expanding the formula book by posting your requests to the <a class="reference external" href="https://bitbucket.org/heldercorreia/speedcrunch/issues">issue tracker</a>.</p>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>Constants</dt><dd><p>The constants widget shows a large list of scientific constants (including CODATA-based entries),
+grouped by category and subcategory.</p>
+<p>The list columns are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Name</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Symbol</span></code> (when available)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Value</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Unit</span></code> (when available)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Identifier</span></code> (built-in constant key, typically <code class="docutils literal notranslate"><span class="pre">k_*</span></code>)</p></li>
+</ul>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">Category</span></code> and <code class="docutils literal notranslate"><span class="pre">Subcategory</span></code> selectors to narrow the list.
+The search field matches by name, symbol, and identifier.</p>
+<p>Double-clicking an entry inserts its <code class="docutils literal notranslate"><span class="pre">Identifier</span></code> into the editor.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>User Variables</dt><dd><p>The variables widget lists all <a class="reference internal" href="advanced.html#variables"><span class="std std-ref">user-defined variables</span></a>. Any of them can be inserted into the editor by double-clicking it.
+Additionally, it is possible to delete a variable by selecting it and pressing the <kbd class="kbd docutils literal notranslate">Delete</kbd> key on your keyboard.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Functions and User Functions</dt><dd><p>Similar to the variables widget, these show built-in and <a class="reference internal" href="advanced.html#user-functions"><span class="std std-ref">user-defined functions</span></a> respectively.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>User Units</dt><dd><p>Similar to the user functions widget, this lists <a class="reference internal" href="advanced.html#user-units"><span class="std std-ref">user-defined units</span></a>.
+Double-click inserts <code class="docutils literal notranslate"><span class="pre">[name]</span></code> in the editor, and the context menu supports edit/delete operations.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Bit Field</dt><dd><p>The bit field widget is designed to make working with binary numbers easier. It shows a field of 64 squares,
+each representing a bit in the current result. Any bit can be toggled by clicking its square; the resulting
+number is automatically inserted into the editor. Additional buttons allow you to shift, invert and reset all the bits at once.
+While the mouse cursor is hovering over the bit field, scrolling the mouse wheel will also shift the bits.</p>
+</dd>
+</dl>
+</li>
+<li id="keypad"><dl>
+<dt>Keypad</dt><dd><p>The on-screen keypad provides clickable input for common operations and symbols. It supports multiple presets
+and a custom layout, so you can adapt it to your workflow. You can also adjust the keypad zoom level for better
+readability or touch area on touchscreens. For fast and full-featured input, SpeedCrunch’s keyboard interface is still recommended.</p>
+<p>Available entries in <span class="menuselection">View ‣ Keypad</span> are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Basic</span></code> (<strong>default</strong>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Scientific</span> <span class="pre">(wide)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Scientific</span> <span class="pre">(narrow)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Custom...</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Disable</span></code> (shown as <code class="docutils literal notranslate"><span class="pre">Disabled</span></code> when selected)</p></li>
+</ul>
+<p>Available entries in <span class="menuselection">View ‣ Keypad ‣ Zoom</span> are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">100%</span></code> (<strong>default</strong>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">150%</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">200%</span></code></p></li>
+</ul>
+<p>The zoom level scales the keypad buttons, including their text.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Custom...</span></code> opens a dialog where you can define the keypad matrix size (rows and columns)
+and configure each button individually. For each position in the matrix, you can set:</p>
+<ul class="simple">
+<li><p>The button label shown in the keypad</p></li>
+<li><p>The button behavior: <code class="docutils literal notranslate"><span class="pre">Insert</span> <span class="pre">text</span></code>, <code class="docutils literal notranslate"><span class="pre">Backspace</span></code>, <code class="docutils literal notranslate"><span class="pre">Clear</span> <span class="pre">expression</span></code>, or <code class="docutils literal notranslate"><span class="pre">Evaluate</span> <span class="pre">expression</span></code></p></li>
+<li><p>The text to insert (for <code class="docutils literal notranslate"><span class="pre">Insert</span> <span class="pre">text</span></code> behavior)</p></li>
+</ul>
+<p>The dialog also includes a <code class="docutils literal notranslate"><span class="pre">Copy</span> <span class="pre">preset</span></code> selector with an <span class="guilabel">Apply</span> button,
+so you can start from the <code class="docutils literal notranslate"><span class="pre">Basic</span></code>, <code class="docutils literal notranslate"><span class="pre">Scientific</span> <span class="pre">(wide)</span></code>, or
+<code class="docutils literal notranslate"><span class="pre">Scientific</span> <span class="pre">(narrow)</span></code> layout and then customize it.</p>
+<p>Custom keypad settings are saved and restored automatically.</p>
+<p>You can also right-click directly on the keypad to open the same menu as
+<span class="menuselection">View ‣ Keypad</span>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.0.</span></p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.11: </span>The keypad was removed in SpeedCrunch 0.11; however, it was added back in 0.12.</p>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>History</dt><dd><p>The history widget lists all previous inputs. Double-click a line to recall it. Note that the main result display also provides this functionality.</p>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>Main Menu</dt><dd><p>Toggle the main menu bar visibility via <span class="menuselection">View ‣ Main Menu</span>.
+This option is available on Windows and Linux.
+On macOS, this option is not available because the application menu is managed by the system menu bar (outside the window), so SpeedCrunch cannot hide it like on Windows and Linux.
+On Windows and Linux, a navigable Main Menu (mirroring the top menu structure) is also available
+from the right-click context menu on the result-display. This is useful when you prefer to keep
+the top main menu hidden but still want quick access to menu actions.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.0.</span></p>
+</div>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="expression-editor-features">
+<h2>Expression Editor Features</h2>
+<p>The expression editor provides some advanced features:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Autocompletion</dt><dd><p>If you start typing a name (e.g. of a variable, function, or unit), a pop-up with matching names will appear. Press <kbd class="kbd docutils literal notranslate">Tab</kbd> to insert the current
+suggestion. Pressing <kbd class="kbd docutils literal notranslate">Enter</kbd> evaluates the expression by default. If you explicitly navigate the popup with arrow/page/home/end keys or click a
+suggestion with the mouse, then <kbd class="kbd docutils literal notranslate">Enter</kbd> accepts that selected suggestion. Pressing <kbd class="kbd docutils literal notranslate">Escape</kbd> dismisses the autocomplete popup.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Function signature tooltip</dt><dd><p>While typing a function call, the live result area can show the function signature (parameter list). The parameter currently being edited is highlighted.
+This also works for user-defined functions. Pressing <kbd class="kbd docutils literal notranslate">Escape</kbd> will dismiss the tooltip.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Quick constant insertion</dt><dd><p>Press <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Control</kbd>+<kbd class="kbd docutils literal notranslate">Space</kbd></kbd> to open a list of constants that allows quick access to the same constants as the constants widget (see above).
+Use the arrow keys to navigate the list. Pressing <kbd class="kbd docutils literal notranslate">Escape</kbd> will dismiss this popup.
+Selecting an entry inserts its identifier (for example <code class="docutils literal notranslate"><span class="pre">k_speed_of_light_in_vacuum</span></code>).</p>
+</dd>
+</dl>
+</li>
+<li id="context-help"><dl class="simple">
+<dt>Context help</dt><dd><p>Pressing <kbd class="kbd docutils literal notranslate">F1</kbd> will show the manual page for the function under the cursor, providing quick access to detailed
+usage information for a function. Pressing <kbd class="kbd docutils literal notranslate">Escape</kbd> will dismiss the manual window again.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Selection results</dt><dd><p>If <span class="menuselection">Settings ‣ Results ‣ Show Live Result Preview</span> is enabled, selecting a partial expression in the expression editor or in the result display will show you the result of the selected expression.
+You can dismiss this preview by pressing <kbd class="kbd docutils literal notranslate">Escape</kbd> or by clicking the <span class="guilabel">×</span> button at the top-right corner of the preview.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="import-export">
+<h2>Import/Export</h2>
+<p>SpeedCrunch can save/export your session in a number of ways. The <span class="menuselection">Session ‣ Save</span> and <span class="menuselection">Session ‣ Load</span> menu entries
+allow you to easily save and restore your entire SpeedCrunch session. The data is stored in a SpeedCrunch-specific file format. <a class="footnote-reference brackets" href="#f1" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>
+While the session files are human-readable, they are designed for use by SpeedCrunch. If you want to export your
+calculations to work on them in another program or hand them to a colleague, the other export options are preferable.</p>
+<p>You can save the session as HTML (<span class="menuselection">Session ‣ Export ‣ HTML</span>). The resulting file will consist of the contents of the result
+display and can be viewed in any web browser. This feature can also be used to print a SpeedCrunch session by printing the exported
+HTML document. Since the syntax highlighting and color scheme are maintained in the HTML output, it is recommended to select a color scheme
+with a white background (e.g. <em>Standard</em>) prior to exporting if you intend to print the document.</p>
+<p>The final, most basic option is to export your session as a plain text file (<span class="menuselection">Session ‣ Export ‣ Plain text</span>).
+In contrast to the HTML export option, the syntax highlighting will be lost.</p>
+<p>SpeedCrunch also offers capabilities to <em>import</em> a session from a text file (<span class="menuselection">Session ‣ Import</span>).
+Select any plain text file and SpeedCrunch will try to evaluate each line of the file as if the user entered it directly.</p>
+<section id="startup-definitions">
+<h3>Startup Definitions</h3>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.0.</span></p>
+</div>
+<p>To define user variables, user functions and user units that are loaded automatically at startup, use
+<span class="menuselection">Session ‣ Startup Definitions…</span>.</p>
+<p>This dialog provides:</p>
+<ul class="simple">
+<li><p>A multi-line editor (one definition per line), with syntax highlighting and line numbers.</p></li>
+<li><p>Merge/overwrite behavior selection for name collisions.</p></li>
+<li><p>A warning banner when overwrite mode is selected.</p></li>
+<li><p><span class="guilabel">Apply Now</span> to apply definitions immediately.</p></li>
+<li><p><span class="guilabel">Test Now</span> to validate and preview results without applying.</p></li>
+<li><p><span class="guilabel">Import…</span> / <span class="guilabel">Export…</span> to share startup definitions as plain text (<code class="docutils literal notranslate"><span class="pre">.txt</span></code>).</p></li>
+<li><p>An advanced option to apply definitions before session restore (instead of after restore).</p></li>
+</ul>
+<p>When applying or testing, SpeedCrunch reports:</p>
+<ul class="simple">
+<li><p>Imported variable count</p></li>
+<li><p>Imported function count</p></li>
+<li><p>Line numbers with errors</p></li>
+</ul>
+<p>Invalid definitions are ignored. Variable definitions that evaluate to <code class="docutils literal notranslate"><span class="pre">NaN</span></code> are also ignored.</p>
+</section>
+</section>
+<section id="settings">
+<h2>Settings</h2>
+<p>SpeedCrunch’s behavior can be customized to a large degree using the configuration options in the
+<span class="menuselection">Settings</span> menu. This section explains the settings that are available.</p>
+<section id="result-display-interactions">
+<h3>Result Display Interactions</h3>
+<p>The result display supports mouse-driven interactions for navigation and editing.</p>
+<ul>
+<li><dl>
+<dt>Right-click context menu</dt><dd><p>Right-clicking an expression/calculation block in the result display opens a context menu
+for that specific block.
+This menu includes an entry to toggle the main menu bar visibility.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.0.</span></p>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>Hover highlighting of calculation blocks</dt><dd><p>When <span class="menuselection">Settings ‣ Appearance ‣ Hover Highlighting</span> is enabled, moving the mouse over
+the result display highlights the calculation block under the cursor.
+The highlighted block also shows quick-action icons for deleting, editing, and copying.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.0.</span></p>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>History rewriting from highlighted blocks</dt><dd><p>From the hovered/highlighted calculation block, you can re-edit an earlier expression and apply it
+as a history rewrite. SpeedCrunch then recalculates all expressions below that edited entry.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.0.</span></p>
+</div>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="notation">
+<span id="result-format"></span><h3>Notation</h3>
+<p>This section allows selecting the result notation to use (for example in
+<span class="menuselection">Settings ‣ Results ‣ Notation &amp; Precision…</span> or from the
+status-bar notation selector). You can select one of the following options.
+On first launch, the default is <span class="menuselection">Automatic decimal</span>.</p>
+<ul>
+<li><dl class="simple">
+<dt><span class="menuselection">Automatic decimal</span></dt><dd><p>Use fixed-point decimal form for most results; values with exponent larger than 14 or smaller than -9 are shown in
+scientific notation. With a finite precision setting, very small values may switch to scientific notation earlier.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><span class="menuselection">Fixed-point decimal</span></dt><dd><p>Display results in fixed-point decimal form. For excessively
+large or small numbers, this format may still fall back to scientific notation.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><span class="menuselection">Engineering decimal</span></dt><dd><p>Display results in engineering notation. This is a variant of <a class="reference internal" href="syntax.html#scientific-notation"><span class="std std-ref">scientific notation</span></a> in which
+the exponent is divisible by three.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><span class="menuselection">Scientific decimal</span></dt><dd><p>Display results in <a class="reference internal" href="syntax.html#scientific-notation"><span class="std std-ref">normalized scientific notation</span></a>.</p>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt><span class="menuselection">Rational</span></dt><dd><p>Try to display real results as fractions (for example, <code class="docutils literal notranslate"><span class="pre">1/3</span></code>) using continued-fraction approximation with bounded denominator. If no close match is found, results are displayed in decimal form.
+For common trigonometric and inverse-trigonometric results, SpeedCrunch prefers
+symbolic exact forms such as <code class="docutils literal notranslate"><span class="pre">pi/2</span></code>, <code class="docutils literal notranslate"><span class="pre">7⋅pi/6</span></code>, <code class="docutils literal notranslate"><span class="pre">1/2</span></code>, <code class="docutils literal notranslate"><span class="pre">sqrt(2)/2</span></code>,
+and <code class="docutils literal notranslate"><span class="pre">sqrt(3)/3</span></code>.
+Example:</p>
+<table class="-x-quark-literal-block"><tbody><tr><td width="100%" class="-x-quark-literal-block-td"><div class="highlight-speedcrunch notranslate"><div class="highlight"><pre><span></span><span class="n">arcsin</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="ge">= pi/2</span>
+
+<span class="n">sin</span><span class="p">(</span><span class="mi">45</span><span class="p">)</span>    <span class="p">(</span><span class="n">angle</span> <span class="n">mode</span> <span class="o">=</span> <span class="n">degree</span><span class="p">)</span>
+<span class="ge">= √(2)/2</span>
+
+<span class="n">arcsin</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">/</span><span class="mi">22</span><span class="p">)</span>
+<span class="ge">= 0.07881114207211010205</span>
+</pre></div>
+</div>
+</td></tr></tbody></table><div class="versionadded">
+<p><span class="versionmodified added">New in version 1.0.</span></p>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><span class="menuselection">Binary</span></dt><dd><p>Display results as binary numbers, i.e. in base-2.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><span class="menuselection">Octal</span></dt><dd><p>Display all results as octal numbers, i.e. in base-8.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><span class="menuselection">Hexadecimal</span></dt><dd><p>Display all results as hexadecimal numbers, i.e. in base-16.</p>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt><span class="menuselection">Sexagesimal</span></dt><dd><p>Display dimensionless and time results as <a class="reference internal" href="syntax.html#sexagesimal-values"><span class="std std-ref">sexagesimal values</span></a>, i.e. with minutes and seconds. All other results are displayed in fixed-point decimal form.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.0.</span></p>
+</div>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="angle-mode">
+<h3>Angle Mode</h3>
+<p>Select the angular unit to be used in calculations. For functions that operate on angles, notably the
+<a class="reference internal" href="../reference/basic.html#trigonometric"><span class="std std-ref">trigonometric functions</span></a> like <a class="reference internal" href="../reference/basic.html#sc.sin" title="sin"><code class="xref sc sc-func docutils literal notranslate"><span class="pre">sin()</span></code></a> or <a class="reference internal" href="../reference/basic.html#sc.cos" title="cos"><code class="xref sc sc-func docutils literal notranslate"><span class="pre">cos()</span></code></a>, this setting
+determines the angle format of the arguments.</p>
+<ul>
+<li><dl class="simple">
+<dt><span class="menuselection">Radian</span></dt><dd><p>Use radians for angles. A full circle corresponds to an angle of 2π radians.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><span class="menuselection">Degree</span></dt><dd><p>Use degrees for angles. A full circle corresponds to an angle of 360°.</p>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt><span class="menuselection">Gradian</span></dt><dd><p>Use gradians for angles. A full circle corresponds to an angle of 400 gradians.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.0.</span></p>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><span class="menuselection">Turn</span></dt><dd><p>Use turns for angles. A full circle corresponds to an angle of 1 turn.</p>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt><span class="menuselection">Revolution</span></dt><dd><p>Use revolutions for angles. A full circle corresponds to an angle of
+1 revolution.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.0.</span></p>
+</div>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="complex-numbers">
+<h3>Complex Numbers</h3>
+<p>Configure global complex-number behavior via
+<span class="menuselection">Settings ‣ Complex Numbers</span>.
+On first launch, complex numbers are disabled by default.</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><span class="menuselection">Disable</span> (shown as <code class="docutils literal notranslate"><span class="pre">Disabled</span></code> when selected)</dt><dd><p>Disable complex-number output globally.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><span class="menuselection">Imaginary Unit i</span></dt><dd><p>Use <code class="docutils literal notranslate"><span class="pre">i</span></code> as the imaginary unit symbol.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><span class="menuselection">Imaginary Unit j</span></dt><dd><p>Use <code class="docutils literal notranslate"><span class="pre">j</span></code> as the imaginary unit symbol.</p>
+</dd>
+</dl>
+</li>
+</ul>
+<p>Complex output form (Rectangular/Polar) is selected per result line in
+<span class="menuselection">Settings ‣ Results ‣ Notation &amp; Precision…</span>.</p>
+</section>
+<section id="number-format">
+<span id="radix-character"></span><h3>Number Format</h3>
+<p>Choose how decimal numbers are displayed and interpreted via
+<span class="menuselection">Settings ‣ Results ‣ Number Format…</span>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.0.</span></p>
+</div>
+<p>This dialog replaces the older separate Radix Character and Digit Grouping
+menus with a single combined Number Format selection.</p>
+<p>The default option is no digit grouping with dot decimal separator
+(<code class="docutils literal notranslate"><span class="pre">1234567.12345</span></code>).</p>
+<p>Additional options let you choose:</p>
+<ul class="simple">
+<li><p>no digit grouping with dot or comma decimal separator</p></li>
+<li><p>SI grouping with space separators (integer and fractional grouped in 3s)</p></li>
+<li><p>3-digit grouping with comma, dot, space, or underscore</p></li>
+<li><p>Indian/South Asian 3-2-2 grouping with comma separators</p></li>
+</ul>
+<p>Some options include grouped fractional digits; those are separate explicit
+choices.</p>
+<p>The apostrophe (<code class="docutils literal notranslate"><span class="pre">'</span></code>), commonly used as a thousands separator in some
+locales and contexts (for example Switzerland, Liechtenstein, and some
+technical writing in Austria/Germany), is intentionally not offered because
+SpeedCrunch reserves it for <a class="reference internal" href="syntax.html#sexagesimal-values"><span class="std std-ref">sexagesimal notation</span></a>.</p>
+<p>For input, SpeedCrunch remains permissive across styles to support
+copy/paste from other applications. In clear mixed-separator cases, it
+accepts the number and normalizes it by ignoring non-digit grouping
+characters as needed.</p>
+</section>
+<section id="history">
+<h3>History</h3>
+<p>This section contains settings that control how calculation history is stored.</p>
+<ul>
+<li><dl class="simple">
+<dt><span class="menuselection">History Saving ‣ Never</span></dt><dd><p>Do not persist the calculation history between runs.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><span class="menuselection">History Saving ‣ On Exit</span></dt><dd><p>Save the calculation history when SpeedCrunch exits and restore it on the next launch.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><span class="menuselection">History Saving ‣ Continuously</span></dt><dd><p>Save calculation history after each new calculation and restore it on the next launch.</p>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt><span class="menuselection">History Saving</span></dt><dd><p>This preference only affects calculation history. User-defined functions and user-defined
+variables are always persisted.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.0.</span></p>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt><span class="menuselection">History Size Limit…</span></dt><dd><p>Sets the maximum number of stored history entries. By default, SpeedCrunch keeps
+up to 100 entries and automatically removes the oldest ones when this limit is
+exceeded. Set the value to <code class="docutils literal notranslate"><span class="pre">0</span></code> to disable the limit.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.0.</span></p>
+</div>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="window">
+<h3>Window</h3>
+<p>This section contains settings that control the main window behavior.</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><span class="menuselection">Save Window Position on Exit</span></dt><dd><p>Controls if the window position is saved and restored.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><span class="menuselection">Single Instance</span></dt><dd><p>When enabled (default), launching SpeedCrunch while it is already running focuses
+the existing window instead of starting a second instance.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><span class="menuselection">Always on Top</span></dt><dd><p>Keep the SpeedCrunch window on top of other windows. This option is hidden on
+Wayland (non-X11 Linux desktop sessions), because many Wayland compositors do
+not honor it reliably. It remains available on Windows, macOS, and Linux X11
+sessions.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="results">
+<h3>Results</h3>
+<p>This section contains settings that control result output and post-evaluation behavior.</p>
+<ul>
+<li><dl class="simple">
+<dt><span class="menuselection">Show Live Result Preview</span></dt><dd><p>If set, SpeedCrunch will display partial results as you type your expression as well
+as results when selecting a partial expression in the editor.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><span class="menuselection">Number Format…</span></dt><dd><p>Open the number-format dialog and pick one combined setting for decimal
+separator and digit grouping. See <a class="reference internal" href="#radix-character"><span class="std std-ref">Number Format</span></a>.</p>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt><span class="menuselection">Notation &amp; Precision…</span></dt><dd><p>Open a unified dialog to configure notation, precision, and complex form.
+The precision row label changes by notation: <code class="docutils literal notranslate"><span class="pre">Decimal</span> <span class="pre">places</span></code> for
+decimal notations, otherwise <code class="docutils literal notranslate"><span class="pre">Fractional</span> <span class="pre">digits</span></code>.
+By default, the dialog shows only <code class="docutils literal notranslate"><span class="pre">Main</span> <span class="pre">Line</span></code> settings. Enable
+<code class="docutils literal notranslate"><span class="pre">Advanced</span> <span class="pre">mode:</span> <span class="pre">show</span> <span class="pre">multiple</span> <span class="pre">result</span> <span class="pre">lines</span></code> to configure
+<code class="docutils literal notranslate"><span class="pre">Extra</span> <span class="pre">Line</span> <span class="pre">#1</span></code> through <code class="docutils literal notranslate"><span class="pre">Extra</span> <span class="pre">Line</span> <span class="pre">#4</span></code>.</p>
+<p>When advanced mode is disabled, configured extra lines are preserved but
+ignored in output.</p>
+<p>Applying changes from this dialog updates only the current editor previews
+immediately (live/selection) without rewriting already displayed
+calculation history.</p>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt><span class="menuselection">Rounding Mode</span></dt><dd><p>Choose how displayed results are rounded when formatting to a finite number
+of digits. The default is <span class="menuselection">Half Away from Zero (Arithmetic)</span>.
+Available modes are:
+<span class="menuselection">Half Even (Banker’s)</span>,
+<span class="menuselection">Half Away from Zero (Arithmetic)</span>,
+<span class="menuselection">Up (Ceil)</span>,
+<span class="menuselection">Down (Floor)</span>,
+<span class="menuselection">Toward Zero (Truncation)</span>.</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><span class="menuselection">Half Even (Banker’s)</span></dt><dd><p>Round to nearest; ties go to the nearest even last kept digit.
+Example at 1 fractional digit: <code class="docutils literal notranslate"><span class="pre">2.250</span> <span class="pre">-&gt;</span> <span class="pre">2.2</span></code>,
+<code class="docutils literal notranslate"><span class="pre">2.350</span> <span class="pre">-&gt;</span> <span class="pre">2.4</span></code>, <code class="docutils literal notranslate"><span class="pre">-2.250</span> <span class="pre">-&gt;</span> <span class="pre">-2.2</span></code>.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><span class="menuselection">Half Away from Zero (Arithmetic)</span></dt><dd><p>Round to nearest; ties increase magnitude.
+Example at 1 fractional digit: <code class="docutils literal notranslate"><span class="pre">2.250</span> <span class="pre">-&gt;</span> <span class="pre">2.3</span></code>,
+<code class="docutils literal notranslate"><span class="pre">-2.250</span> <span class="pre">-&gt;</span> <span class="pre">-2.3</span></code>.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><span class="menuselection">Toward Zero</span></dt><dd><p>Discard extra digits without rounding up.
+Example at 1 fractional digit: <code class="docutils literal notranslate"><span class="pre">2.290</span> <span class="pre">-&gt;</span> <span class="pre">2.2</span></code>,
+<code class="docutils literal notranslate"><span class="pre">-2.290</span> <span class="pre">-&gt;</span> <span class="pre">-2.2</span></code>.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><span class="menuselection">Toward +Infinity</span></dt><dd><p>Always round upward.
+Example at 1 fractional digit: <code class="docutils literal notranslate"><span class="pre">2.210</span> <span class="pre">-&gt;</span> <span class="pre">2.3</span></code>,
+<code class="docutils literal notranslate"><span class="pre">-2.210</span> <span class="pre">-&gt;</span> <span class="pre">-2.2</span></code>.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><span class="menuselection">Toward -Infinity</span></dt><dd><p>Always round downward.
+Example at 1 fractional digit: <code class="docutils literal notranslate"><span class="pre">2.290</span> <span class="pre">-&gt;</span> <span class="pre">2.2</span></code>,
+<code class="docutils literal notranslate"><span class="pre">-2.210</span> <span class="pre">-&gt;</span> <span class="pre">-2.3</span></code>.</p>
+</dd>
+</dl>
+</li>
+</ul>
+<p>This setting affects result formatting (including live previews). It does
+not change the behavior of the <a class="reference internal" href="../reference/integer.html#sc.round" title="round"><code class="xref sc sc-func docutils literal notranslate"><span class="pre">round()</span></code></a> and <a class="reference internal" href="../reference/integer.html#sc.trunc" title="trunc"><code class="xref sc sc-func docutils literal notranslate"><span class="pre">trunc()</span></code></a> functions.
+Like other result-format settings, changes apply to subsequent calculations
+and previews; already stored history entries keep their original display.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><span class="menuselection">Automatically Copy New Results to Clipboard</span></dt><dd><p>Automatically copy each newly evaluated result to the clipboard.</p>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt><span class="menuselection">Simplify Displayed Expressions</span></dt><dd><p>When enabled (default), SpeedCrunch adds an extra symbolic line before
+numeric results, simplifying the interpreted expression for readability
+(for example, combining repeated factors into powers and folding simple
+constant terms). This interpreted line also makes implicit-multiplication
+association explicit. Disable this option to keep only the unsimplified
+interpreted expression and numeric results.</p>
+<p>Entering the expression <code class="docutils literal notranslate"><span class="pre">2.1</span> <span class="pre">−</span> <span class="pre">1</span> <span class="pre">cos(pi)^2</span> <span class="pre">cos(pi)</span> <span class="pre">5</span> <span class="pre">cos</span> <span class="pre">pi</span>&#160; <span class="pre">/</span> <span class="pre">−cos^2(pi)</span> <span class="pre">+</span> <span class="pre">3.4</span></code>
+gives the following interpretation and simplification:</p>
+<table class="-x-quark-literal-block"><tbody><tr><td width="100%" class="-x-quark-literal-block-td"><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>2.1 − 1 ⋅ cos²(π) ⋅ cos(π) ⋅ 5 ⋅ cos(π) / (−cos²(π)) + 3.4
+= 5 ⋅ cos²(π) + 5.5
+= 10.5
+</pre></div>
+</div>
+</td></tr></tbody></table><div class="versionadded">
+<p><span class="versionmodified added">New in version 1.0.</span></p>
+</div>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="editing">
+<h3>Editing</h3>
+<ul>
+<li><dl>
+<dt><span class="menuselection">Autocomplete</span></dt><dd><p>Controls which entities are included in editor autocompletion.
+All options are enabled by default.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Built-in</span> <span class="pre">functions</span></code> includes built-in function names.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Built-in</span> <span class="pre">variables</span></code> includes built-in constant names.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Units</span></code> includes spelled-out unit names (for example, <code class="docutils literal notranslate"><span class="pre">meter</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">User</span> <span class="pre">functions</span></code> includes user-defined function names.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">User</span> <span class="pre">variables</span></code> includes user-defined variable names.</p></li>
+</ul>
+<p>The autocomplete popup also shows category icons for suggestions.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.0.</span></p>
+</div>
+</dd>
+</dl>
+</li>
+</ul>
+<ul id="automatic-result-reuse">
+<li><dl class="simple">
+<dt><span class="menuselection">Auto-Insert “ans” When Starting with an Operator</span></dt><dd><p>If a new expression starts with <code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">-</span></code>, <code class="docutils literal notranslate"><span class="pre">*</span></code>, or <code class="docutils literal notranslate"><span class="pre">/</span></code>, SpeedCrunch inserts <code class="docutils literal notranslate"><span class="pre">ans</span></code> first.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><span class="menuselection">Show Empty History Hint</span></dt><dd><p>Show or hide the <code class="docutils literal notranslate"><span class="pre">Type</span> <span class="pre">an</span> <span class="pre">expression</span> <span class="pre">here</span></code> hint when there are no calculations in history.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><span class="menuselection">Keep Entered Expression After Evaluate</span></dt><dd><p>If selected, the entered expression remains in the editor after evaluating it.</p>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt><span class="menuselection">Up/Down Arrow History</span></dt><dd><p>Controls whether <kbd class="kbd docutils literal notranslate">Up</kbd> and <kbd class="kbd docutils literal notranslate">Down</kbd> in the editor navigate history:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Never</span></code> always moves the cursor inside the editor.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Always</span></code> (default) always navigates history.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Only</span> <span class="pre">for</span> <span class="pre">Single-Line</span> <span class="pre">Expressions</span></code> navigates history only when the
+expression fits in one visual line; otherwise, it moves the cursor.</p></li>
+</ul>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.0.</span></p>
+</div>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="user-interface-settings">
+<h3>User Interface Settings</h3>
+<ul>
+<li><dl>
+<dt><span class="menuselection">Settings ‣ Appearance ‣ Theme</span></dt><dd><p>Select a theme. Built-in themes are listed first, followed by
+<span class="menuselection">Custom…</span>.</p>
+<p>The <span class="menuselection">Custom…</span> entry opens the custom theme editor, where each
+supported color role can be adjusted and previewed. The preview box is read-only
+and includes representative expressions (numbers, exponents, functions, variables,
+units, comments, and result lines) so changes are visible immediately.</p>
+<p>The custom editor includes:</p>
+<ul class="simple">
+<li><p>per-role color selection buttons showing both the <code class="docutils literal notranslate"><span class="pre">#RRGGBB</span></code> value and the
+actual color;</p></li>
+<li><p><span class="guilabel">Import…</span> to load a theme from a JSON file;</p></li>
+<li><p><span class="guilabel">Export…</span> to save the current custom theme as JSON.</p></li>
+</ul>
+<p>When the dialog opens, it initializes from the currently selected theme.</p>
+<p>SpeedCrunch also supports loading additional theme files from the following
+directory:</p>
+<ul class="simple">
+<li><p>Windows: <code class="file docutils literal notranslate"><span class="pre">C:/Users/&lt;USERNAME&gt;/AppData/Roaming/SpeedCrunch/color-schemes/</span></code></p></li>
+<li><p>Linux/Unix: <code class="file docutils literal notranslate"><span class="pre">~/.local/share/SpeedCrunch/color-schemes/</span></code></p></li>
+<li><p>Linux (Flatpak): <code class="file docutils literal notranslate"><span class="pre">~/.var/app/org.speedcrunch.SpeedCrunch/data/SpeedCrunch/color-schemes/</span></code></p></li>
+<li><p>OS X: <code class="file docutils literal notranslate"><span class="pre">~/Library/Application</span> <span class="pre">Support/SpeedCrunch/color-schemes/</span></code></p></li>
+<li><p>Portable version (any OS): <code class="file docutils literal notranslate"><span class="pre">color-schemes</span></code> subdirectory in the
+application directory.</p></li>
+</ul>
+<p>Theme files use JSON and map role names to color values. Supported role names are:
+<code class="docutils literal notranslate"><span class="pre">cursor</span></code>, <code class="docutils literal notranslate"><span class="pre">number</span></code>, <code class="docutils literal notranslate"><span class="pre">parens</span></code>, <code class="docutils literal notranslate"><span class="pre">result</span></code>, <code class="docutils literal notranslate"><span class="pre">comment</span></code>, <code class="docutils literal notranslate"><span class="pre">matched</span></code>,
+<code class="docutils literal notranslate"><span class="pre">function</span></code>, <code class="docutils literal notranslate"><span class="pre">operator</span></code>, <code class="docutils literal notranslate"><span class="pre">variable</span></code>, <code class="docutils literal notranslate"><span class="pre">scrollbar</span></code>, <code class="docutils literal notranslate"><span class="pre">separator</span></code>,
+<code class="docutils literal notranslate"><span class="pre">background</span></code>, <code class="docutils literal notranslate"><span class="pre">editorbackground</span></code>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.0: </span>The <span class="menuselection">Custom…</span> theme editor, including live preview and JSON import/export.</p>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><span class="menuselection">Settings ‣ Appearance ‣ Font</span></dt><dd><p>Select the font to use for the expression editor and result display.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><span class="menuselection">Settings ‣ Appearance ‣ Syntax Highlighting</span></dt><dd><p>Enable or disable syntax highlighting.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><span class="menuselection">Settings ‣ Appearance ‣ Hover Highlighting</span></dt><dd><p>Enable or disable hover highlighting.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><span class="menuselection">Settings ‣ Language</span></dt><dd><p>Select the user interface language.</p>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt><span class="menuselection">Settings ‣ Check for Updates</span></dt><dd><p>Trigger an update check and show information when a newer version is available.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.0.</span></p>
+</div>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+</section>
+<section id="keyboard-shortcuts">
+<h2>Keyboard Shortcuts</h2>
+<section id="id2">
+<h3>Editing</h3>
+<ul class="simple">
+<li><dl class="simple">
+<dt><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Control</kbd>+<kbd class="kbd docutils literal notranslate">L</kbd></kbd></dt><dd><p>Load session.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Control</kbd>+<kbd class="kbd docutils literal notranslate">S</kbd></kbd></dt><dd><p>Save session.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Control</kbd>+<kbd class="kbd docutils literal notranslate">Q</kbd></kbd></dt><dd><p>Quit SpeedCrunch.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Control</kbd>+<kbd class="kbd docutils literal notranslate">N</kbd></kbd></dt><dd><p>Clear history.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Control</kbd>+<kbd class="kbd docutils literal notranslate">C</kbd></kbd></dt><dd><p>Copy selected text to clipboard.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Control</kbd>+<kbd class="kbd docutils literal notranslate">R</kbd></kbd></dt><dd><p>Copy last result to clipboard.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Control</kbd>+<kbd class="kbd docutils literal notranslate">V</kbd></kbd></dt><dd><p>Paste from clipboard.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Control</kbd>+<kbd class="kbd docutils literal notranslate">A</kbd></kbd></dt><dd><p>Select entire expression.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Control</kbd>+<kbd class="kbd docutils literal notranslate">(</kbd></kbd> or <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Control</kbd>+<kbd class="kbd docutils literal notranslate">)</kbd></kbd></dt><dd><p>Wrap the current selection in parentheses. If no text is selected, the entire expression is wrapped.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="widgets-and-docks">
+<h3>Widgets and Docks</h3>
+<ul class="simple">
+<li><dl class="simple">
+<dt><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Control</kbd>+<kbd class="kbd docutils literal notranslate">1</kbd></kbd></dt><dd><p>Show/hide formula book.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Control</kbd>+<kbd class="kbd docutils literal notranslate">2</kbd></kbd></dt><dd><p>Show/hide constants widget.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Control</kbd>+<kbd class="kbd docutils literal notranslate">3</kbd></kbd></dt><dd><p>Show/hide functions widgets.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Control</kbd>+<kbd class="kbd docutils literal notranslate">4</kbd></kbd></dt><dd><p>Show/hide variables widget.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Control</kbd>+<kbd class="kbd docutils literal notranslate">5</kbd></kbd></dt><dd><p>Show/hide user functions widget.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Control</kbd>+<kbd class="kbd docutils literal notranslate">6</kbd></kbd></dt><dd><p>Show/hide bit field widget.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Control</kbd>+<kbd class="kbd docutils literal notranslate">7</kbd></kbd></dt><dd><p>Show/hide history widget.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Control</kbd>+<kbd class="kbd docutils literal notranslate">8</kbd></kbd></dt><dd><p>Show/hide user units widget.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Control</kbd>+<kbd class="kbd docutils literal notranslate">B</kbd></kbd></dt><dd><p>Show/hide the status bar.
+The status bar provides quick selectors for <span class="menuselection">Angle Mode</span>
+and <span class="menuselection">Results ‣ Notation</span>. When
+<span class="menuselection">Settings ‣ Complex Numbers</span> is enabled, it also shows
+a <span class="menuselection">Complex Form</span> selector with the same options as
+<span class="menuselection">Notation &amp; Precision…</span>. On narrow windows, selectors
+that do not fully fit are hidden automatically.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="scrolling">
+<h3>Scrolling</h3>
+<ul class="simple">
+<li><dl class="simple">
+<dt><kbd class="kbd docutils literal notranslate">Page Up</kbd> and <kbd class="kbd docutils literal notranslate">Page Down</kbd></dt><dd><p>Scroll the result window page-wise.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">Page Up</kbd></kbd> and <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">Page Down</kbd></kbd></dt><dd><p>Scroll the result window line-wise.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Control</kbd>+<kbd class="kbd docutils literal notranslate">Page Up</kbd></kbd> and <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Control</kbd>+<kbd class="kbd docutils literal notranslate">Page Down</kbd></kbd></dt><dd><p>Scroll to the top or bottom of the result window.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="id3">
+<h3>Notation</h3>
+<ul>
+<li><dl class="simple">
+<dt><kbd class="kbd docutils literal notranslate">F2</kbd></dt><dd><p>Set result notation to automatic decimal.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><kbd class="kbd docutils literal notranslate">F3</kbd></dt><dd><p>Set result notation to fixed-point decimal.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><kbd class="kbd docutils literal notranslate">F4</kbd></dt><dd><p>Set result notation to engineering decimal.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><kbd class="kbd docutils literal notranslate">F5</kbd></dt><dd><p>Set result notation to scientific decimal.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><kbd class="kbd docutils literal notranslate">F6</kbd></dt><dd><p>Set result notation to binary.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><kbd class="kbd docutils literal notranslate">F7</kbd></dt><dd><p>Set result notation to octal.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><kbd class="kbd docutils literal notranslate">F8</kbd></dt><dd><p>Set result notation to hexadecimal.</p>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt><kbd class="kbd docutils literal notranslate">F9</kbd></dt><dd><p>Set result notation to sexagesimal.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.0.</span></p>
+</div>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="various">
+<h3>Various</h3>
+<ul>
+<li><dl>
+<dt><kbd class="kbd docutils literal notranslate">F1</kbd></dt><dd><p>Show context help (dismiss with <kbd class="kbd docutils literal notranslate">Escape</kbd>).</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.12.</span></p>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><kbd class="kbd docutils literal notranslate">F11</kbd></dt><dd><p>Toggle full screen.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><kbd class="kbd docutils literal notranslate">Control</kbd> + mouse wheel, <kbd class="kbd docutils literal notranslate">Shift</kbd> + mouse wheel, or <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">Up</kbd></kbd> and <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">Down</kbd></kbd></dt><dd><p>Change the font size.</p>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Control</kbd>+<kbd class="kbd docutils literal notranslate">Shift</kbd></kbd> + mouse wheel</dt><dd><p>Change the window opacity.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.12.</span></p>
+</div>
+</dd>
+</dl>
+</li>
+</ul>
+<p class="rubric">Footnotes</p>
+<div id="f1" class="-x-quark-footnote-wrapper"><aside class="footnote-list brackets">
+<aside class="footnote brackets" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Starting with SpeedCrunch 0.12, the session format is based on <a class="reference external" href="http://json.org/">JSON</a>. Previous
+versions used a simple custom text format.</p>
+</aside>
+</aside>
+</div></section>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  <table class="navbar navbar-bottom">
+    
+  <tr>
+    <td width="50%">
+      <a class="nav-item nav-item-0"
+         href="../contents.html">SpeedCrunch 1.0 documentation</a> &#187; <a class="nav-item nav-item-1"
+             href="index.html">User Guide</a>
+          
+    </td>
+
+    <td align="right" width="50%">
+      <a class="rel-item rel-item-1"
+           href="advanced.html"
+           title="User-Defined Variables, Functions and Units"
+           >previous</a>
+         | 
+      <a class="rel-item rel-item-2"
+           href="../reference/index.html"
+           title="Reference"
+           >next</a>
+         | 
+      <a class="rel-item rel-item-3"
+           href="../sc-functionindex.html"
+           title="Function Index"
+           >functions</a>
+         | 
+      <a class="rel-item rel-item-4"
+           href="../genindex.html"
+           title="General Index"
+           >index</a>
+        
+      
+    </td>
+
+  </tr>
+
+    <tr>
+      <td colspan="2" align="center">
+        
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2026, The SpeedCrunch Developers.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.1.
+    </div>
+      </td>
+    </tr>
+  </table>
+
+  </body>
+</html>

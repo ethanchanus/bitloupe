@@ -18,6 +18,7 @@
 #include "core/userunit.h"
 
 #include <QApplication>
+#include <QClipboard>
 #include <QInputMethodEvent>
 #include <QJsonDocument>
 #include <QJsonObject>
@@ -163,6 +164,11 @@ private slots:
     void adding_second_wrapped_character_keeps_first_line_visible();
     void editor_fill_color_is_15_percent_lighter_for_dark_background_role();
     void editor_fill_color_is_15_percent_darker_for_light_background_role();
+    void ctrl_x_cuts_selection_instead_of_inserting_control_character();
+    void ctrl_z_undoes_last_insertion_instead_of_inserting_control_character();
+    void ctrl_v_pastes_clipboard_instead_of_inserting_control_character();
+    void ctrl_v_pastes_clipboard_into_blank_editor();
+    void ctrl_y_redoes_last_undone_insertion_instead_of_inserting_control_character();
 };
 
 static QTreeWidget* s_completionPopupTree()
@@ -4305,6 +4311,94 @@ void TestEditorUi::editor_fill_color_is_15_percent_darker_for_light_background_r
 
     settings->colorScheme = oldColorScheme;
     settings->customColorSchemeJson = oldCustomColorSchemeJson;
+}
+
+void TestEditorUi::ctrl_x_cuts_selection_instead_of_inserting_control_character()
+{
+    Editor editor;
+    editor.show();
+    QVERIFY(QTest::qWaitForWindowExposed(&editor));
+    editor.setFocus();
+
+    editor.setText(QStringLiteral("123"));
+    editor.selectAll();
+
+    QApplication::clipboard()->clear();
+    QTest::keyClick(&editor, Qt::Key_X, Qt::ControlModifier);
+
+    QCOMPARE(editor.text(), QString());
+    QCOMPARE(QApplication::clipboard()->text(), QStringLiteral("123"));
+}
+
+void TestEditorUi::ctrl_z_undoes_last_insertion_instead_of_inserting_control_character()
+{
+    Editor editor;
+    editor.show();
+    QVERIFY(QTest::qWaitForWindowExposed(&editor));
+    editor.setFocus();
+
+    editor.setText(QStringLiteral("1"));
+    editor.setCursorPosition(editor.text().size());
+    QTest::keyClick(&editor, Qt::Key_2, Qt::NoModifier);
+    QCOMPARE(editor.text(), QStringLiteral("12"));
+
+    QTest::keyClick(&editor, Qt::Key_Z, Qt::ControlModifier);
+
+    QCOMPARE(editor.text(), QStringLiteral("1"));
+}
+
+void TestEditorUi::ctrl_v_pastes_clipboard_instead_of_inserting_control_character()
+{
+    Editor editor;
+    editor.show();
+    QVERIFY(QTest::qWaitForWindowExposed(&editor));
+    editor.setFocus();
+
+    QApplication::clipboard()->setText(QStringLiteral("9"));
+    editor.setText(QStringLiteral("1"));
+    editor.setCursorPosition(editor.text().size());
+
+    QTest::keyClick(&editor, Qt::Key_V, Qt::ControlModifier);
+
+    QCOMPARE(editor.text(), QStringLiteral("19"));
+}
+
+void TestEditorUi::ctrl_v_pastes_clipboard_into_blank_editor()
+{
+    // Regression test: the expression-start character-allowlist gate ran before the
+    // clipboard-shortcut check, so pasting into an empty editor (cursor at position 0,
+    // "only whitespace to the left") was rejected there instead of pasting.
+    Editor editor;
+    editor.show();
+    QVERIFY(QTest::qWaitForWindowExposed(&editor));
+    editor.setFocus();
+
+    QApplication::clipboard()->setText(QStringLiteral("42"));
+    editor.setText(QString());
+
+    QTest::keyClick(&editor, Qt::Key_V, Qt::ControlModifier);
+
+    QCOMPARE(editor.text(), QStringLiteral("42"));
+}
+
+void TestEditorUi::ctrl_y_redoes_last_undone_insertion_instead_of_inserting_control_character()
+{
+    Editor editor;
+    editor.show();
+    QVERIFY(QTest::qWaitForWindowExposed(&editor));
+    editor.setFocus();
+
+    editor.setText(QStringLiteral("1"));
+    editor.setCursorPosition(editor.text().size());
+    QTest::keyClick(&editor, Qt::Key_2, Qt::NoModifier);
+    QCOMPARE(editor.text(), QStringLiteral("12"));
+
+    QTest::keyClick(&editor, Qt::Key_Z, Qt::ControlModifier);
+    QCOMPARE(editor.text(), QStringLiteral("1"));
+
+    QTest::keyClick(&editor, Qt::Key_Y, Qt::ControlModifier);
+
+    QCOMPARE(editor.text(), QStringLiteral("12"));
 }
 
 QTEST_MAIN(TestEditorUi)

@@ -42,6 +42,7 @@
 #include "core/manualserver.h"
 #include "gui/resultdisplay.h"
 #include "gui/resultlineformatutils.h"
+#include "gui/socregisterswidget.h"
 #include "gui/syntaxhighlighter.h"
 #include "gui/themedlineedit.h"
 #include "gui/tooltipstyleutils.h"
@@ -133,7 +134,9 @@
 #include <QWidgetAction>
 #include <QJsonArray>
 #include <QJsonDocument>
+#include <QJsonObject>
 #include <QJsonParseError>
+#include <QJsonValue>
 #include <QUuid>
 
 #include <algorithm>
@@ -141,11 +144,145 @@
 #include <limits>
 #include <memory>
 #ifdef Q_OS_WIN32
+#ifndef NOMINMAX
+#define NOMINMAX
+#endif
 #include "windows.h"
 #include <shlobj.h>
 #endif // Q_OS_WIN32
 
 namespace {
+
+// TEMPORARY (SoC Regs crash investigation): qWarning() is stripped to a no-op
+// in this app's Release build (QT_NO_WARNING_OUTPUT), so call QMessageLogger
+// directly to bypass that and reach the installed file handler.
+QDebug socRegsLog()
+{
+    return QMessageLogger(QT_MESSAGELOG_FILE, QT_MESSAGELOG_LINE, QT_MESSAGELOG_FUNC).warning();
+}
+
+struct ShortcutConfiguration {
+    QJsonObject root;
+    QString filePath;
+};
+
+QString shortcutConfigurationPath()
+{
+    const QString overridePath = qEnvironmentVariable("SPEEDCRUNCH_SHORTCUT_CONFIG").trimmed();
+    if (!overridePath.isEmpty())
+        return QFileInfo(overridePath).absoluteFilePath();
+
+    const QDir applicationDirectory(QCoreApplication::applicationDirPath());
+
+    // Canonical deployed location: the conf/ folder beside the executable.
+    const QString confPath = applicationDirectory.filePath(QStringLiteral("conf/settings.conf"));
+    if (QFileInfo::exists(confPath))
+        return QFileInfo(confPath).absoluteFilePath();
+
+    const QString applicationPath = applicationDirectory.filePath(QStringLiteral("settings.conf"));
+    if (QFileInfo::exists(applicationPath))
+        return applicationPath;
+
+    // Multi-config generators place executables in build/Debug or build/Release,
+    // while CMake also copies the editable configuration to the build root.
+    const QString parentPath = applicationDirectory.filePath(QStringLiteral("../settings.conf"));
+    if (QFileInfo::exists(parentPath))
+        return QFileInfo(parentPath).absoluteFilePath();
+
+    return confPath;
+}
+
+ShortcutConfiguration loadShortcutConfiguration()
+{
+    ShortcutConfiguration configuration;
+    configuration.filePath = shortcutConfigurationPath();
+
+    QFile file(configuration.filePath);
+    if (!file.open(QIODevice::ReadOnly)) {
+        qWarning() << "Could not open shortcut configuration" << configuration.filePath
+                   << ':' << file.errorString();
+        return configuration;
+    }
+
+    QJsonParseError parseError;
+    const QJsonDocument document = QJsonDocument::fromJson(file.readAll(), &parseError);
+    if (parseError.error != QJsonParseError::NoError || !document.isObject()) {
+        qWarning() << "Invalid shortcut configuration" << configuration.filePath
+                   << ':' << parseError.errorString();
+        return configuration;
+    }
+
+    configuration.root = document.object();
+    return configuration;
+}
+
+const ShortcutConfiguration& shortcutConfiguration()
+{
+    static const ShortcutConfiguration configuration = loadShortcutConfiguration();
+    return configuration;
+}
+
+QJsonValue shortcutValue(const QString& path)
+{
+    const QJsonObject root = shortcutConfiguration().root;
+    if (root.contains(path))
+        return root.value(path);
+
+    const QString hotkeyPath = path + QStringLiteral(".Hotkey");
+
+    // Prefer one flat dotted property per shortcut, while accepting the legacy nested form.
+    if (root.contains(hotkeyPath))
+        return root.value(hotkeyPath);
+
+    QJsonValue value(root);
+    const QStringList components = hotkeyPath.split(QLatin1Char('.'), Qt::SkipEmptyParts);
+    for (const QString& component : components) {
+        if (!value.isObject())
+            return QJsonValue();
+        value = value.toObject().value(component);
+    }
+    return value;
+}
+
+QList<QKeySequence> configuredShortcuts(const QString& path)
+{
+    const QJsonValue value = shortcutValue(path);
+    QStringList shortcutTexts;
+    if (value.isString()) {
+        shortcutTexts.append(value.toString());
+    } else if (value.isArray()) {
+        const QJsonArray values = value.toArray();
+        for (const QJsonValue& item : values) {
+            if (item.isString())
+                shortcutTexts.append(item.toString());
+            else
+                qWarning() << "Ignoring non-string shortcut in" << path;
+        }
+    } else if (!value.isUndefined() && !value.isNull()) {
+        qWarning() << "Shortcut must be a string or array in" << path;
+    }
+
+    QList<QKeySequence> sequences;
+    for (const QString& shortcutText : shortcutTexts) {
+        const QString trimmedText = shortcutText.trimmed();
+        if (trimmedText.isEmpty())
+            continue;
+        const QKeySequence sequence = QKeySequence::fromString(trimmedText, QKeySequence::PortableText);
+        if (sequence.isEmpty()) {
+            qWarning() << "Ignoring invalid shortcut" << shortcutText << "in" << path;
+            continue;
+        }
+        if (!sequences.contains(sequence))
+            sequences.append(sequence);
+    }
+    return sequences;
+}
+
+void applyConfiguredShortcuts(QAction* action, const QString& path)
+{
+    if (action != nullptr)
+        action->setShortcuts(configuredShortcuts(path));
+}
 constexpr const char* kFeedbackUrl = "https://www.speedcrunch.org/issues.html";
 constexpr const char* kCommunityUrl = "https://groups.google.com/group/speedcrunch/";
 constexpr const char* kFacebookGroupUrl = "https://www.facebook.com/groups/1783793218546797";
@@ -3338,8 +3475,8 @@ void MainWindow::createUi()
 {
     createActions();
     createActionGroups();
-    createActionShortcuts();
     createMenus();
+    createActionShortcuts();
     createFixedWidgets();
     createFixedConnections();
 
@@ -3371,6 +3508,7 @@ void MainWindow::createActions()
     m_actions.viewConstants = new QAction(this);
     m_actions.viewFullScreenMode = new QAction(this);
     m_actions.viewFunctions = new QAction(this);
+    m_actions.viewSocRegisters = new QAction(this);
     m_actions.viewHistory = new QAction(this);
     m_actions.viewKeypadDisabled = new QAction(this);
     m_actions.viewKeypadBasicWide = new QAction(this);
@@ -3551,6 +3689,7 @@ void MainWindow::createActions()
     m_actions.viewConstants->setCheckable(true);
     m_actions.viewFullScreenMode->setCheckable(true);
     m_actions.viewFunctions->setCheckable(true);
+    m_actions.viewSocRegisters->setCheckable(true);
     m_actions.viewHistory->setCheckable(true);
     m_actions.viewKeypadDisabled->setCheckable(true);
     m_actions.viewKeypadDisabled->setData(Settings::KeypadModeDisabled);
@@ -3747,6 +3886,7 @@ void MainWindow::setActionsText()
     m_actions.viewConstants->setText(MainWindow::tr("&Constants"));
     m_actions.viewFullScreenMode->setText(MainWindow::tr("F&ull Screen Mode"));
     m_actions.viewFunctions->setText(MainWindow::tr("&Functions"));
+    m_actions.viewSocRegisters->setText(MainWindow::tr("SoC &Regs"));
     m_actions.viewHistory->setText(MainWindow::tr("&History"));
     updateKeypadDisabledActionText();
     m_actions.viewKeypadBasicWide->setText(MainWindow::tr("&Basic"));
@@ -3952,35 +4092,42 @@ void MainWindow::createActionGroups()
 
 void MainWindow::createActionShortcuts()
 {
-    m_actions.sessionNewTab->setShortcuts(QKeySequence::AddTab);
-    m_actions.sessionQuit->setShortcut(Qt::CTRL | Qt::Key_Q);
-    m_actions.editCopyLastResult->setShortcut(Qt::CTRL | Qt::Key_R);
-    m_actions.editCopy->setShortcut(Qt::CTRL | Qt::Key_C);
-    m_actions.editPaste->setShortcut(Qt::CTRL | Qt::Key_V);
-    m_actions.editSelectExpression->setShortcut(Qt::CTRL | Qt::Key_A);
-    m_actions.editWrapSelection->setShortcuts({
-        QKeySequence(Qt::CTRL | Qt::Key_ParenLeft),
-        QKeySequence(Qt::CTRL | Qt::Key_ParenRight)
-    });
-    m_actions.viewBitfield->setShortcut(Qt::CTRL | Qt::Key_8);
-    m_actions.viewConstants->setShortcut(Qt::CTRL | Qt::Key_2);
-    m_actions.viewFullScreenMode->setShortcut(Qt::Key_F11);
-    m_actions.viewFunctions->setShortcut(Qt::CTRL | Qt::Key_3);
-    m_actions.viewHistory->setShortcut(Qt::CTRL | Qt::Key_7);
-    m_actions.viewFormulaBook->setShortcut(Qt::CTRL | Qt::Key_1);
-    m_actions.viewStatusBar->setShortcut(Qt::CTRL | Qt::Key_B);
-    m_actions.viewVariables->setShortcut(Qt::CTRL | Qt::Key_4);
-    m_actions.viewUserFunctions->setShortcut(Qt::CTRL | Qt::Key_5);
-    m_actions.viewUserUnits->setShortcut(Qt::CTRL | Qt::Key_6);
-    m_actions.settingsResultFormatGeneral->setShortcut(Qt::Key_F2);
-    m_actions.settingsResultFormatFixed->setShortcut(Qt::Key_F3);
-    m_actions.settingsResultFormatEngineering->setShortcut(Qt::Key_F4);
-    m_actions.settingsResultFormatScientific->setShortcut(Qt::Key_F5);
-    m_actions.settingsResultFormatOctal->setShortcut(Qt::Key_F7);
-    m_actions.settingsResultFormatHexadecimal->setShortcut(Qt::Key_F8);
-    m_actions.settingsResultFormatSexagesimal->setShortcut(Qt::Key_F9);
-    m_actions.settingsResultFormatBinary->setShortcut(Qt::Key_F10);
-    m_actions.contextHelp->setShortcut(Qt::Key_F1);
+    applyConfiguredShortcuts(m_actions.sessionNewTab, QStringLiteral("Session.NewTab"));
+    applyConfiguredShortcuts(m_actions.sessionOpen, QStringLiteral("Session.Open"));
+    applyConfiguredShortcuts(m_actions.sessionQuit, QStringLiteral("Session.Quit"));
+    applyConfiguredShortcuts(m_actions.editCopyLastResult, QStringLiteral("Edit.CopyLastResult"));
+    applyConfiguredShortcuts(m_actions.editCopy, QStringLiteral("Edit.Copy"));
+    applyConfiguredShortcuts(m_actions.editPaste, QStringLiteral("Edit.Paste"));
+    applyConfiguredShortcuts(m_actions.editSelectExpression, QStringLiteral("Edit.SelectExpression"));
+    applyConfiguredShortcuts(m_actions.editWrapSelection, QStringLiteral("Edit.WrapSelection"));
+    applyConfiguredShortcuts(m_actions.viewBitfield, QStringLiteral("View.Bitfield"));
+    applyConfiguredShortcuts(m_actions.viewConstants, QStringLiteral("View.Constants"));
+    applyConfiguredShortcuts(m_actions.viewFullScreenMode, QStringLiteral("View.FullScreenMode"));
+    applyConfiguredShortcuts(m_actions.viewFunctions, QStringLiteral("View.Functions"));
+    applyConfiguredShortcuts(m_actions.viewSocRegisters, QStringLiteral("View.SoCRegs"));
+    applyConfiguredShortcuts(m_actions.viewHistory, QStringLiteral("View.History"));
+    applyConfiguredShortcuts(m_actions.viewFormulaBook, QStringLiteral("View.FormulaBook"));
+    applyConfiguredShortcuts(m_actions.viewStatusBar, QStringLiteral("View.StatusBar"));
+    applyConfiguredShortcuts(m_actions.viewVariables, QStringLiteral("View.Variables"));
+    applyConfiguredShortcuts(m_actions.viewUserFunctions, QStringLiteral("View.UserFunctions"));
+    applyConfiguredShortcuts(m_actions.viewUserUnits, QStringLiteral("View.UserUnits"));
+    applyConfiguredShortcuts(m_actions.settingsResultFormatGeneral,
+                             QStringLiteral("Settings.ResultFormat.Decimal.General"));
+    applyConfiguredShortcuts(m_actions.settingsResultFormatFixed,
+                             QStringLiteral("Settings.ResultFormat.Decimal.Fixed"));
+    applyConfiguredShortcuts(m_actions.settingsResultFormatEngineering,
+                             QStringLiteral("Settings.ResultFormat.Decimal.Engineering"));
+    applyConfiguredShortcuts(m_actions.settingsResultFormatScientific,
+                             QStringLiteral("Settings.ResultFormat.Decimal.Scientific"));
+    applyConfiguredShortcuts(m_actions.settingsResultFormatOctal,
+                             QStringLiteral("Settings.ResultFormat.Octal"));
+    applyConfiguredShortcuts(m_actions.settingsResultFormatHexadecimal,
+                             QStringLiteral("Settings.ResultFormat.Hexadecimal"));
+    applyConfiguredShortcuts(m_actions.settingsResultFormatSexagesimal,
+                             QStringLiteral("Settings.ResultFormat.Sexagesimal"));
+    applyConfiguredShortcuts(m_actions.settingsResultFormatBinary,
+                             QStringLiteral("Settings.ResultFormat.Binary"));
+    applyConfiguredShortcuts(m_actions.contextHelp, QStringLiteral("Help.ContextHelp"));
 }
 
 void MainWindow::createMenus()
@@ -4030,6 +4177,7 @@ void MainWindow::createMenus()
     m_menus.view->addAction(m_actions.viewFormulaBook);
     m_menus.view->addAction(m_actions.viewConstants);
     m_menus.view->addAction(m_actions.viewFunctions);
+    m_menus.view->addAction(m_actions.viewSocRegisters);
     m_menus.view->addSeparator();
     m_menus.view->addAction(m_actions.viewVariables);
     m_menus.view->addAction(m_actions.viewUserFunctions);
@@ -4093,9 +4241,7 @@ void MainWindow::createMenus()
         m_actions.settingsUnitNegativeExponentFraction);
     m_menus.results->addSeparator();
 
-    // Deprecated direct menus kept as internal context menus only; users should
-    // configure these via "Notation & Precision...".
-    m_menus.resultFormat = new QMenu("", this);
+    m_menus.resultFormat = m_menus.results->addMenu("");
     m_menus.decimal = m_menus.resultFormat->addMenu("");
     m_menus.decimal->addAction(m_actions.settingsResultFormatGeneral);
     m_menus.decimal->addAction(m_actions.settingsResultFormatFixed);
@@ -4772,6 +4918,20 @@ QDockWidget* MainWindow::dockWidgetForDescendant(QWidget* widget) const
 {
     if (widget == nullptr)
         return nullptr;
+
+    // A combo box's dropdown list is a transient Qt::Popup window that Qt still
+    // parents (QObject::parent()) under the combo box for ownership purposes, so
+    // the ancestor walk below would otherwise treat clicks inside ANY dock
+    // combo's popup as dock-content-selection intent. That forces focus directly
+    // onto Qt's own internal popup list view, fighting the popup's own
+    // show/hide state machine -- reopening the combo afterward can then crash.
+    // A transient popup is never itself dock content, regardless of ownership.
+    // Qt::WindowType values are bit-combinations (e.g. Qt::Tool == Qt::Popup |
+    // Qt::Dialog), so a plain bitwise AND would also misfire for floating docks
+    // (Qt::Tool) -- mask down to the exact window type before comparing.
+    if ((widget->window()->windowFlags() & Qt::WindowType_Mask) == Qt::Popup)
+        return nullptr;
+
     for (QObject* ancestor = widget; ancestor != nullptr; ancestor = ancestor->parent()) {
         QDockWidget* dock = qobject_cast<QDockWidget*>(ancestor);
         if (dock != nullptr && m_allDocks.contains(dock))
@@ -5018,11 +5178,22 @@ void MainWindow::configureEditorDisplayPane(ResultDisplay* display, Editor* edit
         handleEditorSelectionChange();
     });
     connect(editor, &Editor::autoCalcDisabled, this, [this, editor]() {
-        if (editor == m_widgets.editor)
+        if (editor == m_widgets.editor) {
             hideStateLabel();
+            refreshSocRegistersActualValue();
+        }
     });
     connect(editor, &Editor::autoCalcMessageAvailable, this, &MainWindow::handleAutoCalcMessageAvailable);
     connect(editor, &Editor::autoCalcQuantityAvailable, this, &MainWindow::handleAutoCalcQuantityAvailable);
+    connect(editor, &Editor::actualQuantityAvailable, this,
+            [this, editor](const Quantity& quantity) {
+                if (editor == m_widgets.editor && m_docks.socRegisters)
+                    m_docks.socRegisters->widget()->setActualValue(quantity);
+            });
+    connect(editor, &Editor::actualQuantityUnavailable, this, [this, editor]() {
+        if (editor == m_widgets.editor)
+            refreshSocRegistersActualValue();
+    });
     connect(editor, &Editor::shiftDownPressed, this, &MainWindow::decreaseDisplayFontPointSize);
     connect(editor, &Editor::shiftUpPressed, this, &MainWindow::increaseDisplayFontPointSize);
     connect(editor, &Editor::controlPageUpPressed, display, &ResultDisplay::scrollToTop);
@@ -5036,6 +5207,8 @@ void MainWindow::configureEditorDisplayPane(ResultDisplay* display, Editor* edit
             || editor->hasFocus()
             || editor->viewport()->hasFocus()) {
             handleEditorTextChange();
+            if (editor->text().trimmed().isEmpty())
+                refreshSocRegistersActualValue();
         }
     });
     connect(editor, &Editor::copyAvailable, this, &MainWindow::handleCopyAvailable);
@@ -5090,7 +5263,7 @@ void MainWindow::configureEditorDisplayPane(ResultDisplay* display, Editor* edit
     connect(this, &MainWindow::angleUnitChanged, editor, &Editor::refreshAutoCalc);
     connect(this, &MainWindow::complexNumbersChanged, display, &ResultDisplay::refreshLastHistoryEntry);
     connect(this, &MainWindow::complexNumbersChanged, editor, &Editor::refreshAutoCalc);
-    connect(this, &MainWindow::resultFormatChanged, display, &ResultDisplay::refreshLastHistoryEntry);
+    connect(this, &MainWindow::resultFormatChanged, display, &ResultDisplay::refresh);
     connect(this, &MainWindow::resultFormatChanged, editor, &Editor::refreshAutoCalc);
     connect(this, &MainWindow::resultPrecisionChanged, display, &ResultDisplay::refreshLastHistoryEntry);
     connect(this, &MainWindow::resultPrecisionChanged, editor, &Editor::refreshAutoCalc);
@@ -5333,6 +5506,11 @@ void MainWindow::copyWindowLayoutFrom(const MainWindow* source)
     if (dockIsVisible(m_docks.functions) != functionsVisible)
         setFunctionsDockVisible(functionsVisible, false);
     m_actions.viewFunctions->setChecked(functionsVisible);
+
+    const bool socRegistersVisible = dockIsVisible(source->m_docks.socRegisters);
+    if (dockIsVisible(m_docks.socRegisters) != socRegistersVisible)
+        setSocRegistersDockVisible(socRegistersVisible, false);
+    m_actions.viewSocRegisters->setChecked(socRegistersVisible);
 
     const bool historyVisible = dockIsVisible(source->m_docks.history);
     if (dockIsVisible(m_docks.history) != historyVisible)
@@ -6859,6 +7037,42 @@ void MainWindow::createFunctionsDock(bool takeFocus)
     m_settings->functionsDockVisible = true;
 }
 
+void MainWindow::createSocRegistersDock(bool takeFocus)
+{
+    if (m_docks.socRegisters) {
+        m_docks.socRegisters->show();
+        m_docks.socRegisters->raise();
+        if (takeFocus)
+            m_docks.socRegisters->setFocus();
+        m_settings->socRegistersDockVisible = true;
+        return;
+    }
+
+    m_docks.socRegisters =
+        new GenericDock<SocRegistersWidget>("MainWindow", QT_TR_NOOP("Registers"), this);
+    m_docks.socRegisters->setObjectName("SocRegistersDock");
+    m_docks.socRegisters->setMinimumWidth(520);
+    m_docks.socRegisters->installEventFilter(this);
+    m_docks.socRegisters->setAllowedAreas(Qt::AllDockWidgetAreas);
+    connect(m_docks.socRegisters->widget(), &SocRegistersWidget::focusEditorRequested,
+            this, [this]() {
+                if (m_widgets.editor)
+                    m_widgets.editor->setFocus(Qt::ShortcutFocusReason);
+            });
+
+    addTabifiedDock(m_docks.socRegisters, takeFocus);
+    m_docks.socRegisters->widget()->restoreState(
+        m_settings->socRegistersDockSocName,
+        m_settings->socRegistersDockDerivative,
+        m_settings->socRegistersDockSearchText,
+        m_settings->socRegistersDockRegisterName,
+        m_settings->socRegistersDockBitfieldName,
+        m_settings->socRegistersDockSubBitfieldName,
+        m_settings->socRegistersDockSplitterState);
+    refreshSocRegistersActualValue();
+    m_settings->socRegistersDockVisible = true;
+}
+
 void MainWindow::createHistoryDock(bool)
 {
     if (m_docks.history) {
@@ -7167,6 +7381,9 @@ void MainWindow::createFixedConnections()
         m_actions.viewFunctions,
         [](MainWindow* window, bool visible) { window->setFunctionsDockVisible(visible); });
     connectViewToggleToActiveWindow(
+        m_actions.viewSocRegisters,
+        [](MainWindow* window, bool visible) { window->setSocRegistersDockVisible(visible); });
+    connectViewToggleToActiveWindow(
         m_actions.viewHistory,
         [](MainWindow* window, bool visible) { window->setHistoryDockVisible(visible); });
     connectViewToggleToActiveWindow(
@@ -7271,11 +7488,20 @@ void MainWindow::createFixedConnections()
     connect(m_actions.helpAbout, SIGNAL(triggered()), SLOT(showAboutDialog()));
 
     connect(m_widgets.editor, &Editor::autoCalcDisabled, this, [this]() {
-        if (sender() == m_widgets.editor)
+        if (sender() == m_widgets.editor) {
             hideStateLabel();
+            refreshSocRegistersActualValue();
+        }
     });
     connect(m_widgets.editor, SIGNAL(autoCalcMessageAvailable(const QString&)), SLOT(handleAutoCalcMessageAvailable(const QString&)));
     connect(m_widgets.editor, SIGNAL(autoCalcQuantityAvailable(const Quantity&)), SLOT(handleAutoCalcQuantityAvailable(const Quantity&)));
+        connect(m_widgets.editor, &Editor::actualQuantityAvailable, this,
+            [this](const Quantity& quantity) {
+            if (m_docks.socRegisters)
+                m_docks.socRegisters->widget()->setActualValue(quantity);
+            });
+        connect(m_widgets.editor, &Editor::actualQuantityUnavailable,
+            this, &MainWindow::refreshSocRegistersActualValue);
     connect(m_widgets.editor, SIGNAL(returnPressed()), SLOT(evaluateEditorExpression()));
     connect(m_widgets.editor, SIGNAL(escapePressed()), SLOT(handleEditorEscapePressed()));
     connect(m_widgets.editor, SIGNAL(shiftDownPressed()), SLOT(decreaseDisplayFontPointSize()));
@@ -7291,12 +7517,16 @@ void MainWindow::createFixedConnections()
             || initialEditor->hasFocus()
             || initialEditor->viewport()->hasFocus()) {
             handleEditorTextChange();
+            if (initialEditor->text().trimmed().isEmpty())
+                refreshSocRegistersActualValue();
         }
     });
     connect(m_widgets.editor, SIGNAL(copyAvailable(bool)), SLOT(handleCopyAvailable(bool)));
     connect(m_widgets.editor, SIGNAL(copySequencePressed()), SLOT(copy()));
     connect(m_widgets.editor, SIGNAL(selectionChanged()), SLOT(handleEditorSelectionChange()));
     connect(this, SIGNAL(historyChanged()), m_widgets.editor, SLOT(updateHistory()));
+        connect(this, &MainWindow::historyChanged,
+            this, &MainWindow::refreshSocRegistersActualValue);
 
     connect(m_widgets.display, SIGNAL(copyAvailable(bool)), SLOT(handleCopyAvailable(bool)));
     connect(m_widgets.display, SIGNAL(clicked()), SLOT(hideStateLabel()));
@@ -7338,7 +7568,7 @@ void MainWindow::createFixedConnections()
     connect(this, SIGNAL(angleUnitChanged()), m_widgets.editor, SLOT(refreshAutoCalc()));
     connect(this, SIGNAL(complexNumbersChanged()), m_widgets.display, SLOT(refreshLastHistoryEntry()));
     connect(this, SIGNAL(complexNumbersChanged()), m_widgets.editor, SLOT(refreshAutoCalc()));
-    connect(this, SIGNAL(resultFormatChanged()), m_widgets.display, SLOT(refreshLastHistoryEntry()));
+    connect(this, SIGNAL(resultFormatChanged()), m_widgets.display, SLOT(refresh()));
     connect(this, SIGNAL(resultFormatChanged()), m_widgets.editor, SLOT(refreshAutoCalc()));
     connect(this, SIGNAL(resultPrecisionChanged()), m_widgets.display, SLOT(refreshLastHistoryEntry()));
     connect(this, SIGNAL(resultPrecisionChanged()), m_widgets.editor, SLOT(refreshAutoCalc()));
@@ -7354,61 +7584,55 @@ void MainWindow::createFixedConnections()
 
     connect(this, SIGNAL(languageChanged()), SLOT(retranslateText()));
 
-    const auto bindStandardKey = [this](QKeySequence::StandardKey key, const std::function<void()>& handler) {
-        const QList<QKeySequence> bindings = QKeySequence::keyBindings(key);
-        for (const QKeySequence& sequence : bindings) {
+    const auto bindConfiguredShortcut = [this](const QString& path,
+                                               Qt::ShortcutContext context,
+                                               const std::function<void()>& handler) {
+        const QList<QKeySequence> sequences = configuredShortcuts(path);
+        for (const QKeySequence& sequence : sequences) {
             QShortcut* shortcut = new QShortcut(sequence, this);
+            shortcut->setContext(context);
             connect(shortcut, &QShortcut::activated, this, handler);
         }
     };
-    const auto bindApplicationShortcut = [this](const QKeySequence& sequence,
-                                                const std::function<void()>& handler) {
-        QShortcut* shortcut = new QShortcut(sequence, this);
-        shortcut->setContext(Qt::ApplicationShortcut);
-        connect(shortcut, &QShortcut::activated, this, handler);
-    };
-    bindStandardKey(QKeySequence::New, [this]() { showNewSessionDialog(); });
-    bindStandardKey(QKeySequence::Open, [this]() { showOpenSessionDialog(); });
-    bindStandardKey(QKeySequence::Close, [this]() { closeCurrentSession(); });
-    bindStandardKey(QKeySequence::Quit, []() { qApp->quit(); });
+    bindConfiguredShortcut(QStringLiteral("Session.New"), Qt::WindowShortcut,
+                           [this]() { showNewSessionDialog(); });
+    bindConfiguredShortcut(QStringLiteral("Session.Close"), Qt::WindowShortcut,
+                           [this]() { closeCurrentSession(); });
 
 #if defined(Q_OS_MACOS)
-    bindApplicationShortcut(QKeySequence(Qt::CTRL | Qt::ALT | Qt::Key_Right),
-                            [this]() { activateNextChild(); });
-    bindApplicationShortcut(QKeySequence(Qt::CTRL | Qt::ALT | Qt::Key_Left),
-                            [this]() { activatePreviousChild(); });
+    bindConfiguredShortcut(QStringLiteral("Session.NextTabMacOS"), Qt::ApplicationShortcut,
+                           [this]() { activateNextChild(); });
+    bindConfiguredShortcut(QStringLiteral("Session.PreviousTabMacOS"), Qt::ApplicationShortcut,
+                           [this]() { activatePreviousChild(); });
 #else
-    bindApplicationShortcut(QKeySequence(Qt::CTRL | Qt::Key_PageDown),
-                            [this]() { activateNextChild(); });
-    bindApplicationShortcut(QKeySequence(Qt::CTRL | Qt::Key_PageUp),
-                            [this]() { activatePreviousChild(); });
+    bindConfiguredShortcut(QStringLiteral("Session.NextTab"), Qt::ApplicationShortcut,
+                           [this]() { activateNextChild(); });
+    bindConfiguredShortcut(QStringLiteral("Session.PreviousTab"), Qt::ApplicationShortcut,
+                           [this]() { activatePreviousChild(); });
 #endif
 
-    QShortcut* restoreClosedSessionTabShortcut =
-        new QShortcut(QKeySequence(Qt::CTRL | Qt::SHIFT | Qt::Key_T), this);
-    restoreClosedSessionTabShortcut->setContext(Qt::ApplicationShortcut);
-    connect(restoreClosedSessionTabShortcut, &QShortcut::activated,
-            this, &MainWindow::restoreClosedSessionTab);
-
-    QShortcut* cycleFocusForwardShortcut = new QShortcut(QKeySequence(Qt::Key_F6), this);
-    cycleFocusForwardShortcut->setContext(Qt::ApplicationShortcut);
-    connect(cycleFocusForwardShortcut, &QShortcut::activated,
-            this, &MainWindow::cycleFocusForward);
-
-    QShortcut* cycleFocusBackwardShortcut =
-        new QShortcut(QKeySequence(Qt::SHIFT | Qt::Key_F6), this);
-    cycleFocusBackwardShortcut->setContext(Qt::ApplicationShortcut);
-    connect(cycleFocusBackwardShortcut, &QShortcut::activated,
-            this, &MainWindow::cycleFocusBackward);
-
-    QShortcut* splitRightShortcut = new QShortcut(QKeySequence(QStringLiteral("Ctrl+\\")), this);
-    connect(splitRightShortcut, &QShortcut::activated, this, &MainWindow::splitActivePaneRight);
-    QShortcut* splitDownShortcut = new QShortcut(QKeySequence(QStringLiteral("Ctrl+Shift+\\")), this);
-    connect(splitDownShortcut, &QShortcut::activated, this, &MainWindow::splitActivePaneDown);
+    bindConfiguredShortcut(QStringLiteral("Session.RestoreClosedTab"), Qt::ApplicationShortcut,
+                           [this]() { restoreClosedSessionTab(); });
+    bindConfiguredShortcut(QStringLiteral("View.CycleFocusForward"), Qt::ApplicationShortcut,
+                           [this]() { cycleFocusForward(); });
+    bindConfiguredShortcut(QStringLiteral("View.CycleFocusBackward"), Qt::ApplicationShortcut,
+                           [this]() { cycleFocusBackward(); });
+    bindConfiguredShortcut(QStringLiteral("View.Keypad"), Qt::WindowShortcut,
+                           [this]() { setKeypadVisible(m_widgets.keypad == nullptr); });
+    bindConfiguredShortcut(QStringLiteral("View.SoCRegs.Hotkey.Search"), Qt::WindowShortcut,
+                           [this]() {
+                               setSocRegistersDockVisible(true, false);
+                               m_docks.socRegisters->widget()->focusSearch();
+                           });
+    bindConfiguredShortcut(QStringLiteral("View.SplitRight"), Qt::WindowShortcut,
+                           [this]() { splitActivePaneRight(); });
+    bindConfiguredShortcut(QStringLiteral("View.SplitDown"), Qt::WindowShortcut,
+                           [this]() { splitActivePaneDown(); });
 }
 
 void MainWindow::applySettings()
 {
+    socRegsLog() << "[SocRegs] applySettings() ENTERED, this=" << this;
     emit languageChanged();
     m_status.selectedAngleUnit = m_settings->angleUnit;
     m_status.selectedResultFormat = m_settings->resultFormat;
@@ -7420,6 +7644,7 @@ void MainWindow::applySettings()
     const bool formulaBookDockVisible = m_settings->formulaBookDockVisible;
     const bool constantsDockVisible = m_settings->constantsDockVisible;
     const bool functionsDockVisible = m_settings->functionsDockVisible;
+    const bool socRegistersDockVisible = m_settings->socRegistersDockVisible;
     const bool historyDockVisible = m_settings->historyDockVisible;
     const bool variablesDockVisible = m_settings->variablesDockVisible;
     const bool userFunctionsDockVisible = m_settings->userFunctionsDockVisible;
@@ -7437,6 +7662,12 @@ void MainWindow::applySettings()
     createFunctionsDock(false);
     setFunctionsDockVisible(functionsDockVisible, false);
     m_actions.viewFunctions->setChecked(functionsDockVisible);
+
+    socRegsLog() << "[SocRegs] applySettings: about to call createSocRegistersDock(false)";
+    createSocRegistersDock(false);
+    socRegsLog() << "[SocRegs] applySettings: createSocRegistersDock(false) returned";
+    setSocRegistersDockVisible(socRegistersDockVisible, false);
+    m_actions.viewSocRegisters->setChecked(socRegistersDockVisible);
 
     createHistoryDock(false);
     setHistoryDockVisible(historyDockVisible, false);
@@ -7751,6 +7982,15 @@ void MainWindow::saveSettings()
     if (m_docks.functions) {
         m_settings->functionsDockDomain = m_docks.functions->widget()->selectedDomain();
         m_settings->functionsDockSearchText = m_docks.functions->widget()->searchText();
+    }
+    if (m_docks.socRegisters) {
+        m_settings->socRegistersDockSocName = m_docks.socRegisters->widget()->selectedSocName();
+        m_settings->socRegistersDockDerivative = m_docks.socRegisters->widget()->selectedDerivative();
+        m_settings->socRegistersDockSearchText = m_docks.socRegisters->widget()->searchText();
+        m_settings->socRegistersDockRegisterName = m_docks.socRegisters->widget()->selectedRegisterName();
+        m_settings->socRegistersDockBitfieldName = m_docks.socRegisters->widget()->selectedBitfieldName();
+        m_settings->socRegistersDockSubBitfieldName = m_docks.socRegisters->widget()->selectedSubBitfieldName();
+        m_settings->socRegistersDockSplitterState = m_docks.socRegisters->widget()->splitterState();
     }
     if (m_docks.userFunctions)
         m_settings->userFunctionsDockSearchText = m_docks.userFunctions->widget()->searchText();
@@ -8176,6 +8416,7 @@ MainWindow::MainWindow(bool restorePreviousSession)
     : QMainWindow()
     , m_restorePreviousSessionOnStartup(restorePreviousSession)
 {
+    socRegsLog() << "[SocRegs] MainWindow ctor ENTERED, restorePreviousSession=" << restorePreviousSession;
     qApp->setQuitOnLastWindowClosed(false);
     setAttribute(Qt::WA_Hover, true);
     setMouseTracking(true);
@@ -8211,6 +8452,7 @@ MainWindow::MainWindow(bool restorePreviousSession)
     m_docks.history = 0;
     m_docks.constants = 0;
     m_docks.functions = 0;
+    m_docks.socRegisters = 0;
     m_docks.variables = 0;
     m_docks.userFunctions = 0;
     m_docks.userUnits = 0;
@@ -8246,6 +8488,7 @@ MainWindow::MainWindow(bool restorePreviousSession)
     qApp->installEventFilter(this);
 
     createUi();
+    socRegsLog() << "[SocRegs] MainWindow ctor: createUi() returned, about to call applySettings()";
     applySettings();
     applyThemeSurfacePalette();
     refreshPaneThemes();
@@ -8282,10 +8525,22 @@ MainWindow::~MainWindow()
         deleteUserUnitsDock();
     if (m_docks.functions)
         deleteFunctionsDock();
+    if (m_docks.socRegisters)
+        deleteSocRegistersDock();
     if (m_docks.history)
         deleteHistoryDock();
     qDeleteAll(m_loadedSessions);
     m_session = nullptr;
+}
+
+void MainWindow::activateAndFocusInput()
+{
+    if (isMinimized())
+        showNormal();
+    show();
+    raise();
+    activateWindow();
+    m_widgets.editor->setFocus(Qt::OtherFocusReason);
 }
 
 void MainWindow::showAboutDialog()
@@ -10460,6 +10715,7 @@ void MainWindow::syncViewMenuActionState()
     const bool formulaBookVisible = dockIsVisible(m_docks.book);
     const bool constantsVisible = dockIsVisible(m_docks.constants);
     const bool functionsVisible = dockIsVisible(m_docks.functions);
+    const bool socRegistersVisible = dockIsVisible(m_docks.socRegisters);
     const bool historyVisible = dockIsVisible(m_docks.history);
     const bool variablesVisible = dockIsVisible(m_docks.variables);
     const bool userFunctionsVisible = dockIsVisible(m_docks.userFunctions);
@@ -10489,6 +10745,7 @@ void MainWindow::syncViewMenuActionState()
         setChecked(window->m_actions.viewFormulaBook, formulaBookVisible);
         setChecked(window->m_actions.viewConstants, constantsVisible);
         setChecked(window->m_actions.viewFunctions, functionsVisible);
+        setChecked(window->m_actions.viewSocRegisters, socRegistersVisible);
         setChecked(window->m_actions.viewHistory, historyVisible);
         setChecked(window->m_actions.viewVariables, variablesVisible);
         setChecked(window->m_actions.viewUserFunctions, userFunctionsVisible);
@@ -10698,6 +10955,26 @@ void MainWindow::handleAutoCalcQuantityAvailable(const Quantity& quantity)
         m_widgets.bitField->updateBits(quantity);
 }
 
+void MainWindow::refreshSocRegistersActualValue()
+{
+    if (!m_docks.socRegisters || !m_widgets.editor || !m_session)
+        return;
+
+    if (!m_widgets.editor->text().trimmed().isEmpty()) {
+        m_docks.socRegisters->widget()->clearActualValue();
+        return;
+    }
+
+    for (int index = m_session->historySize() - 1; index >= 0; --index) {
+        const Quantity result = m_session->historyEntryAtRef(index).result();
+        if (!result.isNan()) {
+            m_docks.socRegisters->widget()->setActualValue(result);
+            return;
+        }
+    }
+    m_docks.socRegisters->widget()->clearActualValue();
+}
+
 void MainWindow::setFullScreenEnabled(bool b)
 {
     m_settings->windowOnfullScreen = b;
@@ -10735,21 +11012,6 @@ bool MainWindow::event(QEvent* e)
     if (e != nullptr
         && (e->type() == QEvent::KeyPress || e->type() == QEvent::ShortcutOverride)) {
         QKeyEvent* keyEvent = static_cast<QKeyEvent*>(e);
-        const Qt::KeyboardModifiers shortcutModifiers =
-            keyEvent->modifiers() & ~(Qt::KeypadModifier);
-        if (e->type() == QEvent::KeyPress
-            && keyEvent->key() == Qt::Key_F6
-            && (shortcutModifiers == Qt::NoModifier
-                || shortcutModifiers == Qt::ShiftModifier)
-            && qApp->activeModalWidget() == nullptr
-            && qApp->activePopupWidget() == nullptr) {
-            if (shortcutModifiers == Qt::ShiftModifier)
-                cycleFocusBackward();
-            else
-                cycleFocusForward();
-            keyEvent->accept();
-            return true;
-        }
         if (keyEvent->key() == Qt::Key_Escape
             && m_widgets.state != nullptr
             && m_widgets.state->isVisible()
@@ -10844,27 +11106,6 @@ bool MainWindow::event(QEvent* e)
 
 bool MainWindow::eventFilter(QObject* o, QEvent* e)
 {
-    if (e != nullptr && e->type() == QEvent::KeyPress) {
-        if (QWidget* widget = qobject_cast<QWidget*>(o);
-            widget != nullptr && widget->window() == this) {
-            QKeyEvent* keyEvent = static_cast<QKeyEvent*>(e);
-            const Qt::KeyboardModifiers shortcutModifiers =
-                keyEvent->modifiers() & ~(Qt::KeypadModifier);
-            if (keyEvent->key() == Qt::Key_F6
-                && (shortcutModifiers == Qt::NoModifier
-                    || shortcutModifiers == Qt::ShiftModifier)
-                && qApp->activeModalWidget() == nullptr
-                && qApp->activePopupWidget() == nullptr) {
-                if (shortcutModifiers == Qt::ShiftModifier)
-                    cycleFocusBackward();
-                else
-                    cycleFocusForward();
-                keyEvent->accept();
-                return true;
-            }
-        }
-    }
-
     if (qobject_cast<QSplitterHandle*>(o) != nullptr) {
         if (e->type() == QEvent::MouseButtonPress) {
             const QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(e);
@@ -11155,6 +11396,14 @@ bool MainWindow::eventFilter(QObject* o, QEvent* e)
         return false;
     }
 
+    if (o == m_docks.socRegisters) {
+        if (e->type() == QEvent::Close) {
+            deleteSocRegistersDock();
+            return true;
+        }
+        return false;
+    }
+
     if (o == m_docks.history) {
         if (e->type() == QEvent::Close) {
             deleteHistoryDock();
@@ -11293,6 +11542,16 @@ void MainWindow::deleteFunctionsDock()
     m_settings->functionsDockVisible = false;
 }
 
+void MainWindow::deleteSocRegistersDock()
+{
+    if (!m_docks.socRegisters)
+        return;
+
+    deleteDock(m_docks.socRegisters);
+    m_actions.viewSocRegisters->setChecked(false);
+    m_settings->socRegistersDockVisible = false;
+}
+
 void MainWindow::deleteHistoryDock()
 {
     if (!m_docks.history)
@@ -11339,6 +11598,14 @@ void MainWindow::setFunctionsDockVisible(bool b, bool takeFocus)
         createFunctionsDock(takeFocus);
     else
         deleteFunctionsDock();
+}
+
+void MainWindow::setSocRegistersDockVisible(bool b, bool takeFocus)
+{
+    if (b)
+        createSocRegistersDock(takeFocus);
+    else
+        deleteSocRegistersDock();
 }
 
 void MainWindow::setFormulaBookDockVisible(bool b, bool takeFocus)
@@ -13147,9 +13414,29 @@ void MainWindow::setResultFormat(char c)
 
     m_settings->resultFormat = c;
     m_status.selectedResultFormat = c;
+
+    QSet<Session*> updatedSessions;
+    for (const QPointer<MainWindow>& ptr : allMainWindows()) {
+        MainWindow* window = ptr.data();
+        if (window == nullptr)
+            continue;
+        for (Session* session : window->m_loadedSessions) {
+            if (session != nullptr && !updatedSessions.contains(session)) {
+                session->setHistoryResultFormat(c);
+                updatedSessions.insert(session);
+            }
+        }
+    }
+
     setStatusBarText();
     syncStatusBarSelectionMenuActionState();
-    emit resultFormatChanged();
+    for (const QPointer<MainWindow>& ptr : allMainWindows()) {
+        MainWindow* window = ptr.data();
+        if (window != nullptr) {
+            emit window->resultFormatChanged();
+            window->saveSessionToDefaultPath();
+        }
+    }
 }
 
 void MainWindow::setUnitNegativeExponentStyle(QAction* action)

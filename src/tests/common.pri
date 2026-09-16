@@ -3,7 +3,7 @@ DEFINES += SPEEDCRUNCH_VERSION=\\\"1.0\\\"
 win32:DEFINES += _USE_MATH_DEFINES
 win32:DEFINES += _CRT_SECURE_NO_WARNINGS _CRT_NONSTDC_NO_WARNINGS _SCL_SECURE_NO_WARNINGS
 
-QT += widgets help
+QT += widgets help sql
 CONFIG += c++11
 
 DEPENDPATH += . \
@@ -29,6 +29,7 @@ HEADERS += ../core/book.h \
            ../core/settings.h \
            ../core/opcode.h \
            ../core/sessionhistory.h \
+           ../core/socregisterdatabase.h \
            ../core/variable.h \
            ../core/userfunction.h \
            ../core/userunit.h \
@@ -74,6 +75,7 @@ SOURCES += ../core/book.cpp \
            ../core/settings.cpp \
            ../core/session.cpp \
            ../core/sessionhistory.cpp \
+           ../core/socregisterdatabase.cpp \
            ../core/variable.cpp \
            ../core/userfunction.cpp \
            ../core/userunit.cpp \

@@ -138,14 +138,7 @@ void FunctionsWidget::updateList()
             || str.at(1).contains(term, Qt::CaseInsensitive))
         {
             if (domainMatches) {
-                QTreeWidgetItem* item = new QTreeWidgetItem(m_functions, str);
-                if (layoutDirection() == Qt::LeftToRight) {
-                    item->setTextAlignment(0, Qt::AlignLeft);
-                    item->setTextAlignment(1, Qt::AlignLeft);
-                } else {
-                    item->setTextAlignment(0, Qt::AlignRight);
-                    item->setTextAlignment(1, Qt::AlignLeft);
-                }
+                new QTreeWidgetItem(m_functions, str);
             }
         }
     }

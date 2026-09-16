@@ -17,6 +17,7 @@ SOURCES += ../core/userdefinitions.cpp \
            ../gui/notationandprecisiondialog.cpp \
            ../gui/oklchutils.cpp \
            ../gui/resultdisplay.cpp \
+           ../gui/socregisterswidget.cpp \
            ../gui/splittertreeutils.cpp \
            ../gui/syntaxhighlighter.cpp \
            ../gui/themedlineedit.cpp \
@@ -42,6 +43,7 @@ HEADERS += ../core/userdefinitions.h \
            ../gui/notationandprecisiondialog.h \
            ../gui/oklchutils.h \
            ../gui/resultdisplay.h \
+           ../gui/socregisterswidget.h \
            ../gui/splittertreeutils.h \
            ../gui/syntaxhighlighter.h \
            ../gui/themedlineedit.h \

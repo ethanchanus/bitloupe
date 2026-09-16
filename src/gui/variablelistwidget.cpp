@@ -151,8 +151,6 @@ void VariableListWidget::updateList()
             item->setText(0, namesAndValues.at(0));
             item->setText(1, namesAndValues.at(1));
             item->setText(2, namesAndValues.at(2));
-            item->setTextAlignment(0, Qt::AlignLeft | Qt::AlignVCenter);
-            item->setTextAlignment(1, Qt::AlignLeft | Qt::AlignVCenter);
             item->setTextAlignment(2, Qt::AlignLeft | Qt::AlignVCenter);
         }
     }

@@ -18,7 +18,7 @@ if(NOT CMAKE_BUILD_TYPE)
 endif()
 message("Build type: ${CMAKE_BUILD_TYPE}")
 
-find_package(Qt6 COMPONENTS Core Widgets Help Network Test QUIET)
+find_package(Qt6 COMPONENTS Core Widgets Help Network Sql Test QUIET)
 if(Qt6_FOUND)
     message(STATUS "Found Qt version: ${Qt6_VERSION}")
 endif()
@@ -49,6 +49,16 @@ ADD_DEFINITIONS("-DSPEEDCRUNCH_VERSION=\"${speedcrunch_VERSION}\"")
 ADD_DEFINITIONS(-DQT_USE_QSTRINGBUILDER)
 
 include(SourceFiles.cmake)
+
+# Keep the externally editable configuration and bundled register data beside build
+# artifacts as whole folders, so any file later added under conf/ or data/ is deployed
+# automatically without further CMakeLists.txt changes.
+file(REMOVE "${CMAKE_CURRENT_BINARY_DIR}/settings.conf")
+file(REMOVE "${CMAKE_CURRENT_BINARY_DIR}/socregs.conf")
+file(REMOVE "${CMAKE_CURRENT_BINARY_DIR}/sc.json")
+file(REMOVE "${CMAKE_CURRENT_BINARY_DIR}/SupportedSoC.json")
+file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/conf" DESTINATION "${CMAKE_CURRENT_BINARY_DIR}")
+file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/data" DESTINATION "${CMAKE_CURRENT_BINARY_DIR}")
 
 if(CMAKE_CXX_COMPILER_ID MATCHES "Clang|GNU")
 # Legacy GNU bc number implementation uses K&R-style definitions.
@@ -102,7 +112,53 @@ else()
     add_executable(${APPLICATION_NAME} ${speedcrunch_SOURCES} ${speedcrunch_RESOURCES})
 endif()
 
+add_custom_command(TARGET ${APPLICATION_NAME} POST_BUILD
+    COMMAND "${CMAKE_COMMAND}" -E rm -f
+            "$<TARGET_FILE_DIR:${APPLICATION_NAME}>/settings.conf"
+            "$<TARGET_FILE_DIR:${APPLICATION_NAME}>/socregs.conf"
+            "$<TARGET_FILE_DIR:${APPLICATION_NAME}>/sc.json"
+            "$<TARGET_FILE_DIR:${APPLICATION_NAME}>/SupportedSoC.json"
+    COMMAND "${CMAKE_COMMAND}" -E copy_directory
+                "${CMAKE_CURRENT_SOURCE_DIR}/conf"
+                "$<TARGET_FILE_DIR:${APPLICATION_NAME}>/conf"
+            COMMENT "Copying conf/ configuration folder")
+
+add_custom_command(TARGET ${APPLICATION_NAME} POST_BUILD
+    COMMAND "${CMAKE_COMMAND}" -E copy_directory
+            "${CMAKE_CURRENT_SOURCE_DIR}/data"
+            "$<TARGET_FILE_DIR:${APPLICATION_NAME}>/data"
+        COMMENT "Copying data/ register catalog folder")
+
+if(WIN32)
+    get_target_property(QT_QMAKE_EXECUTABLE Qt6::qmake IMPORTED_LOCATION)
+    get_filename_component(QT_BIN_DIR "${QT_QMAKE_EXECUTABLE}" DIRECTORY)
+    find_program(WINDEPLOYQT_EXECUTABLE windeployqt HINTS "${QT_BIN_DIR}" REQUIRED)
+    add_custom_command(TARGET ${APPLICATION_NAME} POST_BUILD
+    COMMAND "${WINDEPLOYQT_EXECUTABLE}"
+        --no-translations
+        --dir "$<TARGET_FILE_DIR:${APPLICATION_NAME}>"
+        "$<TARGET_FILE:${APPLICATION_NAME}>"
+    COMMENT "Deploying Qt runtime dependencies")
+endif()
+
 set_property(TARGET ${APPLICATION_NAME} PROPERTY CXX_STANDARD 11)
+
+# Temporary SoC Regs crash-investigation logging (file-based qWarning/qDebug
+# sink) and crash-dump/call-stack capture. Off by default -- re-enable with
+# -DSPEEDCRUNCH_SOCREGS_DIAGNOSTICS=ON if the issue needs to be chased again.
+option(SPEEDCRUNCH_SOCREGS_DIAGNOSTICS "Enable SoC Regs debug log + crash dump/call stack capture" OFF)
+if(SPEEDCRUNCH_SOCREGS_DIAGNOSTICS)
+    target_compile_definitions(${APPLICATION_NAME} PRIVATE SPEEDCRUNCH_SOCREGS_DIAGNOSTICS)
+    if(MSVC)
+        # A stack trace would otherwise show raw addresses only: /Zi keeps
+        # matching debug info in the object files; /DEBUG tells the linker to
+        # still emit a full speedcrunch.pdb next to the .exe in Release too.
+        target_compile_options(${APPLICATION_NAME} PRIVATE $<$<CONFIG:Release>:/Zi>)
+        target_link_options(${APPLICATION_NAME} PRIVATE
+            $<$<CONFIG:Release>:/DEBUG> $<$<CONFIG:Release>:/OPT:REF> $<$<CONFIG:Release>:/OPT:ICF>)
+        target_link_libraries(${APPLICATION_NAME} Dbghelp)
+    endif()
+endif()
 
 target_compile_definitions(${APPLICATION_NAME}
     PRIVATE
@@ -113,7 +169,7 @@ target_compile_definitions(${APPLICATION_NAME}
 
 add_custom_target(confclean COMMAND rm -rf Makefile CMakeFiles/ CMakeCache.txt cmake_install.cmake DartTestfile.txt install_manifest.txt)
 
-set(QT_LIBRARIES Qt6::Widgets Qt6::Help Qt6::Network Qt6::Core)
+set(QT_LIBRARIES Qt6::Widgets Qt6::Help Qt6::Network Qt6::Sql Qt6::Core)
 target_link_libraries(${APPLICATION_NAME} ${QT_LIBRARIES})
 
 enable_testing()
@@ -188,6 +244,8 @@ if(PORTABLE_SPEEDCRUNCH)
 endif(PORTABLE_SPEEDCRUNCH)
 
 install(TARGETS ${APPLICATION_NAME} DESTINATION ${BIN_INSTALL_DIR})
+install(DIRECTORY conf/ DESTINATION ${BIN_INSTALL_DIR}/conf)
+install(DIRECTORY data/ DESTINATION ${BIN_INSTALL_DIR}/data)
 
 if(UNIX AND NOT APPLE AND NOT HAIKU)
     install(FILES ../pkg/org.speedcrunch.SpeedCrunch.desktop DESTINATION ${MENU_DIR})
@@ -198,9 +256,18 @@ elseif(WIN32)
 endif()
 
 if(WIN32)
-    include(QtWin32Deploy)
-    qtwin32_deploy_modules(${BIN_INSTALL_DIR} qtwin32_Qt6Widgets qtwin32_Qt6Help qtwin32_Qt6Network)
-    qtwin32_deploy_default_qt_conf(${BIN_INSTALL_DIR})
+    set(QTWIN32_DEPLOY_SCRIPT "${CMAKE_CURRENT_SOURCE_DIR}/cmake/QtWin32Deploy.cmake")
+    if(EXISTS "${QTWIN32_DEPLOY_SCRIPT}")
+        include("${QTWIN32_DEPLOY_SCRIPT}")
+        if(COMMAND qtwin32_deploy_modules)
+            qtwin32_deploy_modules(${BIN_INSTALL_DIR} qtwin32_Qt6Widgets qtwin32_Qt6Help qtwin32_Qt6Network)
+        endif()
+        if(COMMAND qtwin32_deploy_default_qt_conf)
+            qtwin32_deploy_default_qt_conf(${BIN_INSTALL_DIR})
+        endif()
+    else()
+        message(WARNING "QtWin32Deploy.cmake not found at ${QTWIN32_DEPLOY_SCRIPT}; skipping Windows deployment helper.")
+    endif()
 elseif(APPLE)
     include(MacdeployQt)
     macdeployqt(${APPLICATION_NAME}.app ${APPLICATION_NAME})

@@ -553,6 +553,7 @@ void Settings::load()
     statusBarVisible = settings->value(key + QLatin1String("StatusBarVisible"), false).toBool();
     menuBarVisible = settings->value(key + QLatin1String("MenuBarVisible"), true).toBool();
     functionsDockVisible = settings->value(key + QLatin1String("FunctionsDockVisible"), false).toBool();
+    socRegistersDockVisible = settings->value(key + QLatin1String("SocRegistersDockVisible"), false).toBool();
     variablesDockVisible = settings->value(key + QLatin1String("VariablesDockVisible"), false).toBool();
     userFunctionsDockVisible = settings->value(key + QLatin1String("UserFunctionsDockVisible"), false).toBool();
     userUnitsDockVisible = settings->value(key + QLatin1String("UserUnitsDockVisible"), false).toBool();
@@ -565,6 +566,13 @@ void Settings::load()
     constantsDockSearchText = settings->value(key + QLatin1String("ConstantsDockSearchText"), QString()).toString();
     functionsDockDomain = settings->value(key + QLatin1String("FunctionsDockDomain"), QString()).toString();
     functionsDockSearchText = settings->value(key + QLatin1String("FunctionsDockSearchText"), QString()).toString();
+    socRegistersDockSocName = settings->value(key + QLatin1String("SocRegistersDockSocName"), QString()).toString();
+    socRegistersDockDerivative = settings->value(key + QLatin1String("SocRegistersDockDerivative"), QString()).toString();
+    socRegistersDockSearchText = settings->value(key + QLatin1String("SocRegistersDockSearchText"), QString()).toString();
+    socRegistersDockRegisterName = settings->value(key + QLatin1String("SocRegistersDockRegisterName"), QString()).toString();
+    socRegistersDockBitfieldName = settings->value(key + QLatin1String("SocRegistersDockBitfieldName"), QString()).toString();
+    socRegistersDockSubBitfieldName = settings->value(key + QLatin1String("SocRegistersDockSubBitfieldName"), QString()).toString();
+    socRegistersDockSplitterState = settings->value(key + QLatin1String("SocRegistersDockSplitterState")).toByteArray();
     userFunctionsDockSearchText = settings->value(key + QLatin1String("UserFunctionsDockSearchText"), QString()).toString();
     userUnitsDockSearchText = settings->value(key + QLatin1String("UserUnitsDockSearchText"), QString()).toString();
     variablesDockSearchText = settings->value(key + QLatin1String("VariablesDockSearchText"), QString()).toString();
@@ -658,6 +666,7 @@ void Settings::save()
     settings->setValue(key + QLatin1String("FormulaBookDockVisible"), formulaBookDockVisible);
     settings->setValue(key + QLatin1String("ConstantsDockVisible"), constantsDockVisible);
     settings->setValue(key + QLatin1String("FunctionsDockVisible"), functionsDockVisible);
+    settings->setValue(key + QLatin1String("SocRegistersDockVisible"), socRegistersDockVisible);
     settings->setValue(key + QLatin1String("HistoryDockVisible"), historyDockVisible);
     settings->setValue(key + QLatin1String("KeypadMode"), static_cast<int>(keypadMode));
     settings->setValue(key + QLatin1String("WindowOnFullScreen"), windowOnfullScreen);
@@ -685,6 +694,13 @@ void Settings::save()
     settings->setValue(key + QLatin1String("ConstantsDockSearchText"), constantsDockSearchText);
     settings->setValue(key + QLatin1String("FunctionsDockDomain"), functionsDockDomain);
     settings->setValue(key + QLatin1String("FunctionsDockSearchText"), functionsDockSearchText);
+    settings->setValue(key + QLatin1String("SocRegistersDockSocName"), socRegistersDockSocName);
+    settings->setValue(key + QLatin1String("SocRegistersDockDerivative"), socRegistersDockDerivative);
+    settings->setValue(key + QLatin1String("SocRegistersDockSearchText"), socRegistersDockSearchText);
+    settings->setValue(key + QLatin1String("SocRegistersDockRegisterName"), socRegistersDockRegisterName);
+    settings->setValue(key + QLatin1String("SocRegistersDockBitfieldName"), socRegistersDockBitfieldName);
+    settings->setValue(key + QLatin1String("SocRegistersDockSubBitfieldName"), socRegistersDockSubBitfieldName);
+    settings->setValue(key + QLatin1String("SocRegistersDockSplitterState"), socRegistersDockSplitterState);
     settings->setValue(key + QLatin1String("UserFunctionsDockSearchText"), userFunctionsDockSearchText);
     settings->setValue(key + QLatin1String("UserUnitsDockSearchText"), userUnitsDockSearchText);
     settings->setValue(key + QLatin1String("VariablesDockSearchText"), variablesDockSearchText);

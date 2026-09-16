@@ -6,11 +6,13 @@
 
 class QAbstractItemView;
 class QLabel;
+class QRegularExpression;
 
 namespace DockListStyle {
 
 void apply(QAbstractItemView* view);
 void showCenteredNoMatchLabel(QAbstractItemView* view, QLabel* label);
+void setHighlightPattern(QAbstractItemView* view, const QRegularExpression& pattern);
 
 } // namespace DockListStyle
 

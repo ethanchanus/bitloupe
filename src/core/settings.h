@@ -162,6 +162,7 @@ public:
 
     bool constantsDockVisible;
     bool functionsDockVisible;
+    bool socRegistersDockVisible;
     bool historyDockVisible;
     bool keypadVisible;
     KeypadMode keypadMode;
@@ -180,6 +181,13 @@ public:
     QString constantsDockSearchText;
     QString functionsDockDomain;
     QString functionsDockSearchText;
+    QString socRegistersDockSocName;
+    QString socRegistersDockDerivative;
+    QString socRegistersDockSearchText;
+    QString socRegistersDockRegisterName;
+    QString socRegistersDockBitfieldName;
+    QString socRegistersDockSubBitfieldName;
+    QByteArray socRegistersDockSplitterState;
     QString userFunctionsDockSearchText;
     QString userUnitsDockSearchText;
     QString variablesDockSearchText;

@@ -16,6 +16,7 @@
 #include "gui/notationandprecisiondialog.h"
 #include "gui/oklchutils.h"
 #include "gui/resultdisplay.h"
+#include "gui/socregisterswidget.h"
 #include "gui/themedlineedit.h"
 #include "gui/uiconfig.h"
 #include "math/quantity.h"
@@ -58,7 +59,9 @@
 #include <QPointer>
 #include <QPixmap>
 #include <QPushButton>
+#include <QRegularExpression>
 #include <QScrollBar>
+#include <QShortcut>
 #include <QScopeGuard>
 #include <QSignalSpy>
 #include <QSplitter>
@@ -517,6 +520,7 @@ struct MainWindowStateGuard {
     QByteArray oldWindowGeometry = settings->windowGeometry;
     bool oldConstantsDockVisible = settings->constantsDockVisible;
     bool oldFunctionsDockVisible = settings->functionsDockVisible;
+    bool oldSocRegistersDockVisible = settings->socRegistersDockVisible;
     bool oldHistoryDockVisible = settings->historyDockVisible;
     bool oldKeypadVisible = settings->keypadVisible;
     bool oldFormulaBookDockVisible = settings->formulaBookDockVisible;
@@ -528,9 +532,18 @@ struct MainWindowStateGuard {
     int oldKeypadZoomPercent = settings->keypadZoomPercent;
     bool oldWindowPositionSave = settings->windowPositionSave;
     bool oldStatusBarVisible = settings->statusBarVisible;
+    bool oldAutoCalc = settings->autoCalc;
+    bool oldLeaveLastExpression = settings->leaveLastExpression;
     char oldAngleUnit = settings->angleUnit;
     char oldResultFormat = settings->resultFormat;
     int oldResultPrecision = settings->resultPrecision;
+    QString oldSocRegistersDockSocName = settings->socRegistersDockSocName;
+    QString oldSocRegistersDockDerivative = settings->socRegistersDockDerivative;
+    QString oldSocRegistersDockSearchText = settings->socRegistersDockSearchText;
+    QString oldSocRegistersDockRegisterName = settings->socRegistersDockRegisterName;
+    QString oldSocRegistersDockBitfieldName = settings->socRegistersDockBitfieldName;
+    QString oldSocRegistersDockSubBitfieldName = settings->socRegistersDockSubBitfieldName;
+    QByteArray oldSocRegistersDockSplitterState = settings->socRegistersDockSplitterState;
     bool oldHasNumberFormatStyleSetting = settings->hasNumberFormatStyleSetting;
     QByteArray oldSkipUpdateCheck = qgetenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK");
     bool hadSkipUpdateCheck = qEnvironmentVariableIsSet("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK");
@@ -553,6 +566,7 @@ struct MainWindowStateGuard {
         settings->windowGeometry = oldWindowGeometry;
         settings->constantsDockVisible = oldConstantsDockVisible;
         settings->functionsDockVisible = oldFunctionsDockVisible;
+        settings->socRegistersDockVisible = oldSocRegistersDockVisible;
         settings->historyDockVisible = oldHistoryDockVisible;
         settings->keypadVisible = oldKeypadVisible;
         settings->formulaBookDockVisible = oldFormulaBookDockVisible;
@@ -564,9 +578,18 @@ struct MainWindowStateGuard {
         settings->keypadZoomPercent = oldKeypadZoomPercent;
         settings->windowPositionSave = oldWindowPositionSave;
         settings->statusBarVisible = oldStatusBarVisible;
+        settings->autoCalc = oldAutoCalc;
+        settings->leaveLastExpression = oldLeaveLastExpression;
         settings->angleUnit = oldAngleUnit;
         settings->resultFormat = oldResultFormat;
         settings->resultPrecision = oldResultPrecision;
+        settings->socRegistersDockSocName = oldSocRegistersDockSocName;
+        settings->socRegistersDockDerivative = oldSocRegistersDockDerivative;
+        settings->socRegistersDockSearchText = oldSocRegistersDockSearchText;
+        settings->socRegistersDockRegisterName = oldSocRegistersDockRegisterName;
+        settings->socRegistersDockBitfieldName = oldSocRegistersDockBitfieldName;
+        settings->socRegistersDockSubBitfieldName = oldSocRegistersDockSubBitfieldName;
+        settings->socRegistersDockSplitterState = oldSocRegistersDockSplitterState;
         settings->hasNumberFormatStyleSetting = oldHasNumberFormatStyleSetting;
         if (hadSkipUpdateCheck)
             qputenv("SPEEDCRUNCH_TEST_SKIP_UPDATE_CHECK", oldSkipUpdateCheck);
@@ -656,6 +679,10 @@ private slots:
     void current_result_tooltip_stays_hidden_after_escape_and_mouse_caret_move();
     void current_result_tooltip_hides_when_dragging_splitters();
     void calculation_settings_dialog_matches_notation_precision_layout();
+    void settings_results_menu_exposes_hexadecimal_notation();
+    void result_format_change_reformats_all_history_entries();
+    void soc_registers_dock_loads_catalog_and_filters_rows();
+    void soc_registers_silicon_combo_survives_double_click();
     void main_window_uses_generated_theme_surface_for_chrome_and_editor();
     void restored_session_layout_reapplies_generated_theme_surfaces();
     void saved_window_ui_state_overrides_defaults_before_show();
@@ -1824,6 +1851,643 @@ void TestDisplayUi::calculation_settings_dialog_matches_notation_precision_layou
     QCOMPARE(updated.extras.size(), 1);
     QCOMPARE(updated.extras.at(0).fmt, 'e');
     QCOMPARE(updated.extras.at(0).prec, 5);
+}
+
+void TestDisplayUi::settings_results_menu_exposes_hexadecimal_notation()
+{
+    Settings* settings = Settings::instance();
+    const bool oldHasNumberFormatStyleSetting = settings->hasNumberFormatStyleSetting;
+    settings->hasNumberFormatStyleSetting = true;
+
+    MainWindow window(false);
+    QMenu* settingsMenu = menuWithTitle(window.menuBar(), QStringLiteral("Se&ttings"));
+    QVERIFY(settingsMenu != nullptr);
+    QMenu* resultsMenu = directSubmenuWithTitle(settingsMenu, QStringLiteral("&Results"));
+    QVERIFY(resultsMenu != nullptr);
+    QMenu* notationMenu = directSubmenuWithTitle(resultsMenu, QStringLiteral("&Notation"));
+    QVERIFY(notationMenu != nullptr);
+    QAction* hexadecimalAction =
+        directMenuActionWithText(notationMenu, QStringLiteral("&Hexadecimal"));
+    QVERIFY(hexadecimalAction != nullptr);
+    QCOMPARE(hexadecimalAction->shortcut(), QKeySequence(Qt::Key_F8));
+
+    settings->hasNumberFormatStyleSetting = oldHasNumberFormatStyleSetting;
+}
+
+void TestDisplayUi::result_format_change_reformats_all_history_entries()
+{
+    MainWindowStateGuard guard;
+    guard.settings->sessionLayoutJson.clear();
+    guard.settings->resultFormat = 'f';
+    guard.settings->resultPrecision = 2;
+    guard.settings->hasNumberFormatStyleSetting = true;
+
+    MainWindow window(false);
+    ResultDisplay* display = window.findChild<ResultDisplay*>();
+    Editor* editor = window.findChild<Editor*>();
+    QVERIFY(display != nullptr);
+    QVERIFY(editor != nullptr);
+
+    editor->setText(QStringLiteral("10"));
+    QVERIFY(QMetaObject::invokeMethod(&window, "evaluateEditorExpression", Qt::DirectConnection));
+    editor->setText(QStringLiteral("15"));
+    QVERIFY(QMetaObject::invokeMethod(&window, "evaluateEditorExpression", Qt::DirectConnection));
+    QCOMPARE(display->session()->historySize(), 2);
+    QVERIFY(display->session()->historyEntryAtRef(0).hasRenderedLines());
+    QVERIFY(display->session()->historyEntryAtRef(1).hasRenderedLines());
+
+    QVERIFY(QMetaObject::invokeMethod(&window, "setResultFormatHexadecimal", Qt::DirectConnection));
+    QCoreApplication::processEvents();
+
+    QCOMPARE(display->session()->historyEntryAtRef(0).contextRef().main.fmt, 'h');
+    QCOMPARE(display->session()->historyEntryAtRef(1).contextRef().main.fmt, 'h');
+    QVERIFY(!display->session()->historyEntryAtRef(0).hasRenderedLines());
+    QVERIFY(!display->session()->historyEntryAtRef(1).hasRenderedLines());
+    QVERIFY(display->toPlainText().contains(QStringLiteral("0xA")));
+    QVERIFY(display->toPlainText().contains(QStringLiteral("0xF")));
+}
+
+void TestDisplayUi::soc_registers_dock_loads_catalog_and_filters_rows()
+{
+    MainWindowStateGuard guard;
+    QTemporaryDir directory;
+    QVERIFY(directory.isValid());
+
+    const QString registersPath = directory.filePath(QStringLiteral("registers.json"));
+    writeFile(registersPath, R"json({
+            "registers": [{
+                "register_name": "BACKUP_CTL",
+                "ref": {"page": "10"},
+                "address": "0x40270000",
+                "comment": "These bits are in vddbak domain.",
+                "bitfields": [{
+                    "name": "WCO_EN",
+                    "bits": "3",
+                    "sw_type": "RW",
+                    "hw_type": "RW",
+                    "default": 0,
+                    "description": "Watch-crystal oscillator enable. If there is a write in progress when this bit is cleared, the oscillator remains enabled until the write completes. Software must wait for the ready status before using dependent clocks."
+                }, {
+                    "name": "CLK_SEL",
+                    "bits": "8:9",
+                    "sw_type": "RW",
+                    "hw_type": "RW",
+                    "default": 0,
+                    "description": "Clock selection",
+                    "sub_bitfields": [{
+                        "name": "WCO",
+                        "value": 0,
+                        "description": "Watch-crystal oscillator input"
+                    }, {
+                        "name": "ILO",
+                        "value": 2,
+                        "description": "Internal Low frequency Oscillator"
+                    }]
+                }]
+            }]
+    })json");
+    const QString catalogPath = directory.filePath(QStringLiteral("socregs.conf"));
+    writeFile(catalogPath, QStringLiteral(R"json({
+        "Support Silicon Name": "Infineon Traveo2",
+        "Support Deraviative": "cyt4bb, cyt4bf",
+        "Registers Information": "registers.json"
+    })json").toUtf8());
+
+    const QByteArray oldCatalogPath = qgetenv("SPEEDCRUNCH_SOC_CONFIG");
+    const bool hadCatalogPath = qEnvironmentVariableIsSet("SPEEDCRUNCH_SOC_CONFIG");
+    const QByteArray oldCachePath = qgetenv("SPEEDCRUNCH_SOC_CACHE");
+    const bool hadCachePath = qEnvironmentVariableIsSet("SPEEDCRUNCH_SOC_CACHE");
+    const QString cachePath = directory.filePath(QStringLiteral("socregs.db"));
+    qputenv("SPEEDCRUNCH_SOC_CONFIG", catalogPath.toUtf8());
+    qputenv("SPEEDCRUNCH_SOC_CACHE", cachePath.toUtf8());
+    guard.settings->sessionLayoutJson.clear();
+    guard.settings->socRegistersDockVisible = false;
+    guard.settings->autoCalc = true;
+    guard.settings->leaveLastExpression = false;
+    guard.settings->hasNumberFormatStyleSetting = true;
+
+    {
+        MainWindow window(false);
+        window.resize(1000, 700);
+        window.show();
+        QVERIFY(QTest::qWaitForWindowExposed(&window));
+        QMenu* viewMenu = menuWithTitle(window.menuBar(), QStringLiteral("&View"));
+        QVERIFY(viewMenu != nullptr);
+        QAction* socRegsAction = directMenuActionWithText(viewMenu, QStringLiteral("SoC &Regs"));
+        QVERIFY(socRegsAction != nullptr);
+        QCOMPARE(socRegsAction->shortcut(), QKeySequence(Qt::Key_F9));
+        socRegsAction->trigger();
+
+        SocRegistersWidget* widget = window.findChild<SocRegistersWidget*>();
+        QVERIFY(widget != nullptr);
+        QVERIFY(QFileInfo::exists(cachePath));
+        QCOMPARE(widget->selectedSocName(), QStringLiteral("Infineon Traveo2"));
+        QCOMPARE(widget->selectedDerivative(), QStringLiteral("cyt4bb, cyt4bf"));
+        QLabel* derivative = widget->findChild<QLabel*>(QStringLiteral("socDerivativeDisplay"));
+        QTreeWidget* registerList = widget->findChild<QTreeWidget*>(QStringLiteral("socRegisterList"));
+        QTreeWidget* bitfieldTable = widget->findChild<QTreeWidget*>(QStringLiteral("socBitfieldTable"));
+        QLineEdit* search = widget->findChild<QLineEdit*>(QStringLiteral("socRegisterSearch"));
+        Editor* editor = window.findChild<Editor*>();
+        QWidget* masterPanel = widget->findChild<QWidget*>(QStringLiteral("socRegisterMasterPanel"));
+        QWidget* detailPanel = widget->findChild<QWidget*>(QStringLiteral("socRegisterDetailPanel"));
+        QVERIFY(derivative != nullptr);
+        QVERIFY(registerList != nullptr);
+        QVERIFY(bitfieldTable != nullptr);
+        QVERIFY(search != nullptr);
+        QVERIFY(editor != nullptr);
+        QVERIFY(masterPanel != nullptr);
+        QVERIFY(detailPanel != nullptr);
+        QCOMPARE(registerList->parentWidget(), masterPanel);
+        QCOMPARE(detailPanel->parentWidget(), widget->findChild<QSplitter*>());
+        QCOMPARE(derivative->text(), QStringLiteral("cyt4bb, cyt4bf"));
+        QCOMPARE(registerList->columnCount(), 1);
+        QCOMPARE(registerList->topLevelItemCount(), 1);
+        QCOMPARE(registerList->topLevelItem(0)->text(0), QStringLiteral("BACKUP_CTL"));
+        QVERIFY(!detailPanel->isVisible());
+
+        registerList->setCurrentItem(registerList->topLevelItem(0));
+        QCOMPARE(widget->findChild<QLabel*>(QStringLiteral("socDetailSilicon"))->text(),
+                 QStringLiteral("Infineon Traveo2"));
+        QCOMPARE(widget->findChild<QLabel*>(QStringLiteral("socDetailDerivative"))->text(),
+                 QStringLiteral("cyt4bb"));
+        QCOMPARE(widget->findChild<QLabel*>(QStringLiteral("socDetailRegister"))->text(),
+                 QStringLiteral("BACKUP_CTL"));
+        QCOMPARE(widget->findChild<QLabel*>(QStringLiteral("socDetailReference"))->text(),
+             QStringLiteral("10"));
+        QCOMPARE(widget->findChild<QLabel*>(QStringLiteral("socDetailAddress"))->text(),
+             QStringLiteral("0x40270000"));
+        // "Desc: <register.comment>" line, selectable/copyable and word-wrapped (never
+        // elided, unlike the Reg/Addr/Ref header) since a comment can run several
+        // sentences long.
+        QLabel* commentLabel = widget->findChild<QLabel*>(QStringLiteral("socDetailComment"));
+        QVERIFY(commentLabel != nullptr);
+        QCOMPARE(commentLabel->text(), QStringLiteral("Desc: These bits are in vddbak domain."));
+        QVERIFY(commentLabel->isVisible());
+        QVERIFY(commentLabel->wordWrap());
+        QVERIFY(commentLabel->textInteractionFlags().testFlag(Qt::TextSelectableByMouse));
+        // Regression check: these data-holder labels are never added to a layout, so if
+        // left visible Qt renders them as unmanaged overlays at (0,0) on top of (and
+        // obscuring) the real "Reg: ..." header text below.
+        QVERIFY(!widget->findChild<QLabel*>(QStringLiteral("socDetailSilicon"))->isVisible());
+        QVERIFY(!widget->findChild<QLabel*>(QStringLiteral("socDetailDerivative"))->isVisible());
+        QVERIFY(!widget->findChild<QLabel*>(QStringLiteral("socDetailRegister"))->isVisible());
+        QVERIFY(!widget->findChild<QLabel*>(QStringLiteral("socDetailReference"))->isVisible());
+        QVERIFY(!widget->findChild<QLabel*>(QStringLiteral("socDetailAddress"))->isVisible());
+        QVERIFY(widget->findChild<QLabel*>(QStringLiteral("socDetailIdentity")) == nullptr);
+        QVERIFY(widget->findChild<QLabel*>(QStringLiteral("socDetailDerivativeHeader")) == nullptr);
+        QLabel* registerHeader = widget->findChild<QLabel*>(QStringLiteral("socDetailLocation"));
+        QVERIFY(registerHeader != nullptr);
+        QCOMPARE(registerHeader->toolTip(),
+                 QStringLiteral("Reg: BACKUP_CTL ; Addr: 0x40270000 ; Ref page #: 10"));
+        QVERIFY(registerHeader->isVisible());
+        // Regression check: the register name (right after "Reg: ") must never be broken
+        // mid-word or hidden. Word-wrap used to do exactly that for long names in a narrow
+        // dock; the label now elides (never wraps) so the start of the text -- which holds
+        // the register name -- always stays intact and visible.
+        QVERIFY(!registerHeader->text().isEmpty());
+        // Regression check: the displayed text must be a genuine prefix (starting at
+        // index 0) of the full tooltip text -- i.e. it must start with "Reg: " and the
+        // register name, never a mid-string fragment like the old word-wrap bug produced.
+        static const QChar ellipsisChar(0x2026);
+        QString displayedPrefix = registerHeader->text();
+        if (displayedPrefix.endsWith(ellipsisChar))
+            displayedPrefix.chop(1);
+        QVERIFY(registerHeader->toolTip().startsWith(displayedPrefix));
+        QVERIFY(displayedPrefix.startsWith(QStringLiteral("Reg:")));
+        // Regression check: rule out the text being rendered in a color that is
+        // indistinguishable from its own background (would otherwise still "pass"
+        // every geometry check above while being invisible to the user).
+        const QPixmap headerPixmap = registerHeader->grab();
+        QVERIFY(!headerPixmap.isNull());
+        const QImage headerImage = headerPixmap.toImage();
+        const QColor backgroundColor = registerHeader->palette().color(registerHeader->backgroundRole());
+        bool foundContrastingPixel = false;
+        for (int y = 0; y < headerImage.height() && !foundContrastingPixel; ++y) {
+            for (int x = 0; x < headerImage.width(); ++x) {
+                const QColor pixel = headerImage.pixelColor(x, y);
+                const int diff = qAbs(pixel.red() - backgroundColor.red())
+                    + qAbs(pixel.green() - backgroundColor.green())
+                    + qAbs(pixel.blue() - backgroundColor.blue());
+                if (diff > 30) {
+                    foundContrastingPixel = true;
+                    break;
+                }
+            }
+        }
+        QVERIFY(foundContrastingPixel);
+        QLabel* evaluateLabel = widget->findChild<QLabel*>(QStringLiteral("socDetailEvaluate"));
+        QVERIFY(evaluateLabel != nullptr);
+        QCOMPARE(evaluateLabel->text(), QStringLiteral("--"));
+        QCOMPARE(bitfieldTable->columnCount(), 8);
+        QCOMPARE(bitfieldTable->topLevelItemCount(), 4);
+        QCOMPARE(bitfieldTable->topLevelItem(0)->text(0), QStringLiteral("3"));
+        QCOMPARE(bitfieldTable->topLevelItem(0)->text(1), QStringLiteral("WCO_EN"));
+        QCOMPARE(bitfieldTable->topLevelItem(1)->text(0), QStringLiteral("8:9"));
+        QCOMPARE(bitfieldTable->topLevelItem(1)->text(1), QStringLiteral("CLK_SEL"));
+        QCOMPARE(bitfieldTable->topLevelItem(2)->text(2), QStringLiteral("WCO"));
+        QCOMPARE(bitfieldTable->topLevelItem(2)->text(5), QStringLiteral("0"));
+        QCOMPARE(bitfieldTable->topLevelItem(3)->text(2), QStringLiteral("ILO"));
+        QCOMPARE(bitfieldTable->topLevelItem(3)->text(5), QStringLiteral("2"));
+
+        QShortcut* searchShortcut = nullptr;
+        QShortcut* escapeShortcut = nullptr;
+        for (QShortcut* shortcut : window.findChildren<QShortcut*>()) {
+            if (shortcut->key() == QKeySequence(QStringLiteral("Ctrl+Shift+F"))) {
+                searchShortcut = shortcut;
+            }
+            if (shortcut->objectName() == QLatin1String("socRegistersEscapeShortcut"))
+                escapeShortcut = shortcut;
+        }
+        QVERIFY(searchShortcut != nullptr);
+        QVERIFY(escapeShortcut != nullptr);
+        search->blockSignals(true);
+        search->setText(QStringLiteral("CLK"));
+        search->blockSignals(false);
+        QVERIFY(QMetaObject::invokeMethod(searchShortcut, "activated", Qt::DirectConnection));
+        QCOMPARE(search->selectedText(), QStringLiteral("CLK"));
+        search->blockSignals(true);
+        search->clear();
+        search->blockSignals(false);
+        search->setFocus();
+        QVERIFY(QMetaObject::invokeMethod(escapeShortcut, "activated", Qt::DirectConnection));
+        QTRY_COMPARE(QApplication::focusWidget(), static_cast<QWidget*>(editor));
+        QVERIFY(detailPanel->isVisible());
+        widget->resize(1000, 600);
+        QCoreApplication::processEvents();
+
+        const Quantity actualTen(10);
+        QVERIFY(actualTen.isReal());
+        QVERIFY(actualTen.isDimensionless());
+        const Quantity shiftedTen = DMath::integer(actualTen) >> Quantity(3);
+        QVERIFY(!shiftedTen.isNan());
+        const Quantity maskedTen = DMath::mask(shiftedTen, Quantity(1));
+        QVERIFY(!maskedTen.isNan());
+        QTreeWidgetItem* preservedItem = bitfieldTable->topLevelItem(2);
+        bitfieldTable->setCurrentItem(preservedItem);
+        QSplitter* registerSplitter = widget->findChild<QSplitter*>();
+        QVERIFY(registerSplitter != nullptr);
+        const QList<int> preservedSplitterSizes = registerSplitter->sizes();
+        widget->setActualValue(actualTen);
+        QCOMPARE(bitfieldTable->topLevelItem(2), preservedItem);
+        QCOMPARE(bitfieldTable->currentItem(), preservedItem);
+        QCOMPARE(registerSplitter->sizes(), preservedSplitterSizes);
+        QCOMPARE(evaluateLabel->text(), QStringLiteral("0xA"));
+        QVERIFY(evaluateLabel->styleSheet().contains(QStringLiteral("#18864b")));
+        QCOMPARE(bitfieldTable->topLevelItem(0)->text(6), QStringLiteral("1"));
+        QVERIFY(bitfieldTable->topLevelItem(0)->foreground(6).color().green()
+            > bitfieldTable->topLevelItem(0)->foreground(6).color().red());
+        // Tooltip is wrapped in a fixed-width <div> so long descriptions word-wrap
+        // instead of relying on Qt's default (screen-width) wrapping; it must still
+        // carry the full description text.
+        QVERIFY(bitfieldTable->topLevelItem(0)->toolTip(7)
+            .contains(bitfieldTable->topLevelItem(0)->text(7)));
+        QVERIFY(bitfieldTable->columnWidth(7)
+            >= qRound(bitfieldTable->viewport()->width() * 0.4));
+        QVERIFY(bitfieldTable->topLevelItem(0)->sizeHint(7).height()
+            > bitfieldTable->fontMetrics().height() + 8);
+        QCOMPARE(bitfieldTable->topLevelItem(1)->text(6), QStringLiteral("0"));
+        QCOMPARE(bitfieldTable->topLevelItem(2)->text(6), QStringLiteral("--"));
+        QCOMPARE(bitfieldTable->topLevelItem(3)->text(6), QStringLiteral("--"));
+        QVERIFY(bitfieldTable->topLevelItem(2)->foreground(2).color().green()
+            > bitfieldTable->topLevelItem(2)->foreground(2).color().red());
+        QVERIFY(bitfieldTable->topLevelItem(2)->foreground(7).color().green()
+            > bitfieldTable->topLevelItem(2)->foreground(7).color().red());
+        QVERIFY(bitfieldTable->topLevelItem(3)->foreground(2).style() == Qt::NoBrush);
+
+        widget->setActualValue(Quantity(512));
+        QCOMPARE(bitfieldTable->topLevelItem(2), preservedItem);
+        QCOMPARE(bitfieldTable->currentItem(), preservedItem);
+        QCOMPARE(registerSplitter->sizes(), preservedSplitterSizes);
+        QCOMPARE(bitfieldTable->topLevelItem(1)->text(6), QStringLiteral("2"));
+        QVERIFY(bitfieldTable->topLevelItem(2)->foreground(2).style() == Qt::NoBrush);
+        QVERIFY(bitfieldTable->topLevelItem(3)->foreground(2).color().green()
+            > bitfieldTable->topLevelItem(3)->foreground(2).color().red());
+        QVERIFY(bitfieldTable->topLevelItem(3)->foreground(7).color().green()
+            > bitfieldTable->topLevelItem(3)->foreground(7).color().red());
+
+        const QByteArray savedSplitterState = widget->splitterState();
+        QCOMPARE(widget->selectedRegisterName(), QStringLiteral("BACKUP_CTL"));
+        QCOMPARE(widget->selectedBitfieldName(), QStringLiteral("--"));
+        QCOMPARE(widget->selectedSubBitfieldName(), QStringLiteral("WCO"));
+        SocRegistersWidget restoredWidget;
+        restoredWidget.resize(1000, 600);
+        restoredWidget.restoreState(
+            QStringLiteral("Infineon Traveo2"),
+            QStringLiteral("cyt4bb"),
+            QString(),
+            widget->selectedRegisterName(),
+            widget->selectedBitfieldName(),
+            widget->selectedSubBitfieldName(),
+            savedSplitterState);
+        QCOMPARE(restoredWidget.selectedSocName(), QStringLiteral("Infineon Traveo2"));
+        QCOMPARE(restoredWidget.selectedDerivative(), QStringLiteral("cyt4bb, cyt4bf"));
+        QCOMPARE(restoredWidget.selectedRegisterName(), QStringLiteral("BACKUP_CTL"));
+        QCOMPARE(restoredWidget.selectedBitfieldName(), QStringLiteral("--"));
+        QCOMPARE(restoredWidget.selectedSubBitfieldName(), QStringLiteral("WCO"));
+        QCOMPARE(restoredWidget.splitterState(), savedSplitterState);
+        widget->setActualValue(Quantity(0));
+        QCOMPARE(bitfieldTable->topLevelItem(0)->text(6), QStringLiteral("0"));
+
+        editor->setText(QStringLiteral("8"));
+        QTRY_COMPARE(bitfieldTable->topLevelItem(0)->text(6), QStringLiteral("1"));
+        editor->setText(QStringLiteral("0"));
+        QTRY_COMPARE(bitfieldTable->topLevelItem(0)->text(6), QStringLiteral("0"));
+        editor->setAutoCalcEnabled(false);
+        editor->setText(QStringLiteral("8"));
+        QTRY_COMPARE(bitfieldTable->topLevelItem(0)->text(6), QStringLiteral("1"));
+        editor->setAutoCalcEnabled(true);
+        editor->setText(QStringLiteral("10"));
+        QVERIFY(QMetaObject::invokeMethod(&window, "evaluateEditorExpression", Qt::DirectConnection));
+        QTRY_VERIFY(editor->text().trimmed().isEmpty());
+        QTRY_COMPARE(bitfieldTable->topLevelItem(0)->text(6), QStringLiteral("1"));
+
+        search->setText(QStringLiteral("internal.*oscillator"));
+        QTest::qWait(350);
+        QCOMPARE(registerList->topLevelItemCount(), 1);
+        // Regression check: typing in Search sets a live highlight pattern on both
+        // tables (used by DockListItemDelegate to recolor matched substrings), and
+        // clearing the search removes it again.
+        QRegularExpression registerListPattern =
+            registerList->property("dockListHighlightPattern").value<QRegularExpression>();
+        QVERIFY(registerListPattern.isValid());
+        QCOMPARE(registerListPattern.pattern(), QStringLiteral("internal.*oscillator"));
+        QRegularExpression bitfieldTablePattern =
+            bitfieldTable->property("dockListHighlightPattern").value<QRegularExpression>();
+        QVERIFY(bitfieldTablePattern.isValid());
+        QCOMPARE(bitfieldTablePattern.pattern(), QStringLiteral("internal.*oscillator"));
+
+        search->setText(QStringLiteral("does-not-match"));
+        QTest::qWait(350);
+        QCOMPARE(registerList->topLevelItemCount(), 0);
+
+        search->clear();
+        QTest::qWait(350);
+        QVERIFY(registerList->property("dockListHighlightPattern")
+            .value<QRegularExpression>().pattern().isEmpty());
+    }
+
+    {
+        // Regression test: MainWindow calls restoreState() to re-select the previously
+        // saved register while its docks (and this widget) are still hidden inside the
+        // constructor, already at their final real size. The header label must not stay
+        // permanently blank/mis-elided once later actually shown (see
+        // SocRegistersWidget::showEvent()).
+        QWidget hiddenContainer;
+        hiddenContainer.resize(1000, 700); // final size established up front, before show()
+        QVBoxLayout* containerLayout = new QVBoxLayout(&hiddenContainer);
+        SocRegistersWidget* hiddenWidget = new SocRegistersWidget(&hiddenContainer);
+        containerLayout->addWidget(hiddenWidget);
+        hiddenContainer.hide();
+
+        hiddenWidget->restoreState(
+            QStringLiteral("Infineon Traveo2"), QStringLiteral("cyt4bb"), QString(),
+            QStringLiteral("BACKUP_CTL"), QString(), QString(), QByteArray());
+        QCOMPARE(hiddenWidget->selectedRegisterName(), QStringLiteral("BACKUP_CTL"));
+
+        hiddenContainer.show();
+        QVERIFY(QTest::qWaitForWindowExposed(&hiddenContainer));
+
+        QLabel* header = hiddenWidget->findChild<QLabel*>(QStringLiteral("socDetailLocation"));
+        QVERIFY(header != nullptr);
+        QVERIFY(!header->text().isEmpty());
+        QVERIFY(header->toolTip().startsWith(QStringLiteral("Reg: BACKUP_CTL")));
+    }
+
+    writeFile(registersPath, R"json({
+      "registers": [{
+        "register_name": "WIDE_REG",
+        "address": "0x40270020",
+        "bitfields": [{
+          "name": "WIDE_FIELD",
+          "bits": "0:7",
+          "sw_type": "RW",
+          "hw_type": "RW",
+          "default": 0,
+          "description": "Wide field for hex-suffix regression test"
+        }]
+      }]
+    })json");
+    {
+        // Regression test: the Actual column must show "<decimal>\n(<hex>)" once the
+        // masked value exceeds 10, while the value used for sub-bitfield highlight
+        // matching stays a plain decimal string (see actualBitfieldDisplayValue()).
+        SocRegistersWidget wideFieldWidget;
+        QTreeWidget* registerList =
+            wideFieldWidget.findChild<QTreeWidget*>(QStringLiteral("socRegisterList"));
+        QVERIFY(registerList != nullptr);
+        QCOMPARE(registerList->topLevelItemCount(), 1);
+        registerList->setCurrentItem(registerList->topLevelItem(0));
+
+        QTreeWidget* wideBitfieldTable =
+            wideFieldWidget.findChild<QTreeWidget*>(QStringLiteral("socBitfieldTable"));
+        QVERIFY(wideBitfieldTable != nullptr);
+        QCOMPARE(wideBitfieldTable->topLevelItemCount(), 1);
+
+        wideFieldWidget.setActualValue(Quantity(200));
+        QCOMPARE(wideBitfieldTable->topLevelItem(0)->text(6), QStringLiteral("200\n(0xC8)"));
+
+        wideFieldWidget.setActualValue(Quantity(5));
+        QCOMPARE(wideBitfieldTable->topLevelItem(0)->text(6), QStringLiteral("5"));
+
+        // Regression check: every column centers except "Reg" in the register list
+        // and "Desc" in the bitfield table, which stay left-aligned.
+        QCOMPARE(registerList->topLevelItem(0)->textAlignment(0),
+                 static_cast<int>(Qt::AlignLeft | Qt::AlignVCenter));
+        QCOMPARE(wideBitfieldTable->topLevelItem(0)->textAlignment(7),
+                 static_cast<int>(Qt::AlignLeft | Qt::AlignVCenter));
+        QCOMPARE(wideBitfieldTable->header()->sectionResizeMode(6), QHeaderView::Interactive);
+        QCOMPARE(wideBitfieldTable->header()->sectionResizeMode(7), QHeaderView::Interactive);
+
+        // Regression test: DockListItemDelegate previously drew the model's original
+        // text underneath its own highlighted rich-text overlay (QStyledItemDelegate::
+        // paint() re-derives opt.text from the model regardless of prior edits to the
+        // option), producing visibly doubled/"bold"/ghosted text. Repeated repaints of
+        // an unchanged, highlighted cell must always render identically -- if the old
+        // text were still being drawn underneath on every paint, accumulated blending
+        // would make the two grabs differ.
+        QLineEdit* wideSearch =
+            wideFieldWidget.findChild<QLineEdit*>(QStringLiteral("socRegisterSearch"));
+        QVERIFY(wideSearch != nullptr);
+        wideFieldWidget.show();
+        QVERIFY(QTest::qWaitForWindowExposed(&wideFieldWidget));
+        wideSearch->setText(QStringLiteral("WIDE"));
+        QCoreApplication::processEvents();
+        wideBitfieldTable->viewport()->repaint();
+        const QImage firstPaint = wideBitfieldTable->viewport()->grab().toImage();
+        wideBitfieldTable->viewport()->repaint();
+        const QImage secondPaint = wideBitfieldTable->viewport()->grab().toImage();
+        QCOMPARE(secondPaint, firstPaint);
+    }
+
+    writeFile(registersPath, R"json({
+      "registers": [{"register_name":"BACKUP_CTL","bitfields":[]},
+                    {"register_name":"STATUS","address":"0x40270004","bitfields":[]}]
+    })json");
+    {
+        SocRegistersWidget regenerated;
+        QTreeWidget* registerList =
+            regenerated.findChild<QTreeWidget*>(QStringLiteral("socRegisterList"));
+        QVERIFY(registerList != nullptr);
+        QCOMPARE(registerList->topLevelItemCount(), 2);
+        QCOMPARE(registerList->topLevelItem(1)->text(0), QStringLiteral("STATUS"));
+    }
+
+    if (hadCatalogPath)
+        qputenv("SPEEDCRUNCH_SOC_CONFIG", oldCatalogPath);
+    else
+        qunsetenv("SPEEDCRUNCH_SOC_CONFIG");
+    if (hadCachePath)
+        qputenv("SPEEDCRUNCH_SOC_CACHE", oldCachePath);
+    else
+        qunsetenv("SPEEDCRUNCH_SOC_CACHE");
+}
+
+void TestDisplayUi::soc_registers_silicon_combo_survives_double_click()
+{
+    MainWindowStateGuard guard;
+    QTemporaryDir directory;
+    QVERIFY(directory.isValid());
+
+    const QString registersPath = directory.filePath(QStringLiteral("registers.json"));
+    writeFile(registersPath, R"json({
+            "registers": [{"register_name": "BACKUP_CTL", "bitfields": []}]
+    })json");
+    const QString catalogPath = directory.filePath(QStringLiteral("socregs.conf"));
+    writeFile(catalogPath, R"json({
+        "supported_socs": [
+            {"silicon_name": "Infineon Traveo2", "derivatives": ["cyt4bb"], "registers_file": "registers.json"},
+            {"silicon_name": "NXP Calypso", "derivatives": ["cyt4bb"], "registers_file": "registers.json"}
+        ]
+    })json");
+
+    const QByteArray oldCatalogPath = qgetenv("SPEEDCRUNCH_SOC_CONFIG");
+    const bool hadCatalogPath = qEnvironmentVariableIsSet("SPEEDCRUNCH_SOC_CONFIG");
+    const QByteArray oldCachePath = qgetenv("SPEEDCRUNCH_SOC_CACHE");
+    const bool hadCachePath = qEnvironmentVariableIsSet("SPEEDCRUNCH_SOC_CACHE");
+    const QString cachePath = directory.filePath(QStringLiteral("socregs.db"));
+    qputenv("SPEEDCRUNCH_SOC_CONFIG", catalogPath.toUtf8());
+    qputenv("SPEEDCRUNCH_SOC_CACHE", cachePath.toUtf8());
+    guard.settings->sessionLayoutJson.clear();
+    guard.settings->socRegistersDockVisible = false;
+
+    {
+        MainWindow window(false);
+        window.resize(1000, 700);
+        window.show();
+        QVERIFY(QTest::qWaitForWindowExposed(&window));
+        QMenu* viewMenu = menuWithTitle(window.menuBar(), QStringLiteral("&View"));
+        QVERIFY(viewMenu != nullptr);
+        QAction* socRegsAction = directMenuActionWithText(viewMenu, QStringLiteral("SoC &Regs"));
+        QVERIFY(socRegsAction != nullptr);
+        socRegsAction->trigger();
+
+        SocRegistersWidget* widget = window.findChild<SocRegistersWidget*>();
+        QVERIFY(widget != nullptr);
+        QComboBox* socCombo = widget->findChild<QComboBox*>(QStringLiteral("socNameCombo"));
+        QVERIFY(socCombo != nullptr);
+        QCOMPARE(socCombo->count(), 2);
+
+        // Regression check: selecting a SoC shows a busy indicator and disables
+        // the combo while the (synchronous) database lookup runs, then settles
+        // back to enabled/hidden -- a defensive measure against a rapid second
+        // selection re-entering the handler while a slow first lookup is
+        // in-flight.
+        QWidget* loadingIndicator =
+            widget->findChild<QWidget*>(QStringLiteral("socNameLoadingIndicator"));
+        QVERIFY(loadingIndicator != nullptr);
+        QVERIFY(!loadingIndicator->isVisible());
+        QVERIFY(socCombo->isEnabled());
+        socCombo->setCurrentIndex(socCombo->currentIndex() == 0 ? 1 : 0);
+        QCoreApplication::processEvents();
+        QVERIFY(!loadingIndicator->isVisible());
+        QVERIFY(socCombo->isEnabled());
+
+        // Regression check: double-clicking the SoC name combo used to crash the
+        // app (reported via the running SoC Regs dock).
+        const QPoint comboCenter(socCombo->width() / 2, socCombo->height() / 2);
+        QTest::mouseDClick(socCombo, Qt::LeftButton, Qt::NoModifier, comboCenter);
+        QCoreApplication::processEvents();
+        QTest::qWait(50);
+        QCoreApplication::processEvents();
+
+        QVERIFY(widget != nullptr);
+        QCOMPARE(socCombo->count(), 2);
+
+        // Also try double-clicking directly on a row inside the open popup, which is
+        // a more literal repro of "double click the combo and land on an item".
+        socCombo->showPopup();
+        QCoreApplication::processEvents();
+        QTest::qWait(50);
+        QAbstractItemView* popupView = socCombo->view();
+        QVERIFY(popupView != nullptr);
+        if (popupView->isVisible()) {
+            const QModelIndex secondRow = socCombo->model()->index(1, 0);
+            QVERIFY(secondRow.isValid());
+            const QRect rowRect = popupView->visualRect(secondRow);
+            QTest::mouseDClick(popupView->viewport(), Qt::LeftButton, Qt::NoModifier,
+                                rowRect.center());
+            QCoreApplication::processEvents();
+            QTest::qWait(50);
+            QCoreApplication::processEvents();
+        }
+        if (socCombo->view()->isVisible())
+            socCombo->hidePopup();
+
+        QVERIFY(widget != nullptr);
+        QCOMPARE(socCombo->count(), 2);
+
+        // Repeat a rapid open/select/open/select cycle a few times -- closer to a
+        // real hurried double-click than a single attempt.
+        for (int i = 0; i < 5; ++i) {
+            socCombo->showPopup();
+            QCoreApplication::processEvents();
+            QAbstractItemView* view = socCombo->view();
+            if (view == nullptr || !view->isVisible())
+                break;
+            const QModelIndex row = socCombo->model()->index(i % 2, 0);
+            const QRect rect = view->visualRect(row);
+            QTest::mouseDClick(view->viewport(), Qt::LeftButton, Qt::NoModifier, rect.center());
+            QCoreApplication::processEvents();
+        }
+        QVERIFY(widget != nullptr);
+
+        // Regression check: select a genuinely different item with a plain single
+        // click, let currentIndexChanged/updateRegisterList() fully settle, then
+        // click the (closed) combo again to reopen it.
+        socCombo->showPopup();
+        QCoreApplication::processEvents();
+        QTest::qWait(50);
+        QAbstractItemView* selectView = socCombo->view();
+        QVERIFY(selectView != nullptr);
+        QVERIFY(selectView->isVisible());
+        const QModelIndex otherRow = socCombo->model()->index(
+            socCombo->currentIndex() == 0 ? 1 : 0, 0);
+        QVERIFY(otherRow.isValid());
+        QTest::mouseClick(selectView->viewport(), Qt::LeftButton, Qt::NoModifier,
+                           selectView->visualRect(otherRow).center());
+        QCoreApplication::processEvents();
+        QTest::qWait(100);
+        QCoreApplication::processEvents();
+        QVERIFY(widget != nullptr);
+
+        QTest::mouseClick(socCombo, Qt::LeftButton, Qt::NoModifier, comboCenter);
+        QCoreApplication::processEvents();
+        QTest::qWait(100);
+        QCoreApplication::processEvents();
+        QVERIFY(widget != nullptr);
+        if (socCombo->view() != nullptr && socCombo->view()->isVisible())
+            socCombo->hidePopup();
+        QCoreApplication::processEvents();
+    }
+
+    if (hadCatalogPath)
+        qputenv("SPEEDCRUNCH_SOC_CONFIG", oldCatalogPath);
+    else
+        qunsetenv("SPEEDCRUNCH_SOC_CONFIG");
+    if (hadCachePath)
+        qputenv("SPEEDCRUNCH_SOC_CACHE", oldCachePath);
+    else
+        qunsetenv("SPEEDCRUNCH_SOC_CACHE");
 }
 
 void TestDisplayUi::main_window_uses_generated_theme_surface_for_chrome_and_editor()

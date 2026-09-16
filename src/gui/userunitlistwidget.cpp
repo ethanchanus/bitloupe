@@ -146,8 +146,6 @@ void UserUnitListWidget::updateList()
         {
             QTreeWidgetItem* item = new QTreeWidgetItem(m_userUnits, row);
             item->setData(1, Qt::UserRole, userUnit.expression());
-            item->setTextAlignment(0, Qt::AlignLeft | Qt::AlignVCenter);
-            item->setTextAlignment(1, Qt::AlignLeft | Qt::AlignVCenter);
             item->setTextAlignment(2, Qt::AlignLeft | Qt::AlignVCenter);
         }
     }

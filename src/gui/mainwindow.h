@@ -34,6 +34,7 @@ class ManualWindow;
 class ManualServer;
 class ResultDisplay;
 class Session;
+class SocRegistersWidget;
 class UserFunctionListWidget;
 class UserUnitListWidget;
 class Variable;
@@ -60,6 +61,7 @@ class MainWindow : public QMainWindow {
 public:
     explicit MainWindow(bool restorePreviousSession = true);
     ~MainWindow();
+    void activateAndFocusInput();
     void persistSessionAndSettingsForShutdown();
 
 signals:
@@ -172,6 +174,7 @@ private slots:
     void setFormulaBookDockVisible(bool, bool takeFocus = true);
     void setFullScreenEnabled(bool);
     void setFunctionsDockVisible(bool, bool takeFocus = true);
+    void setSocRegistersDockVisible(bool, bool takeFocus = true);
     void setHistoryDockVisible(bool, bool takeFocus = true);
     void setKeypadMode(QAction*);
     void setKeypadZoom(QAction*);
@@ -272,6 +275,7 @@ private:
     void createBookDock(bool takeFocus = true);
     void createConstantsDock(bool takeFocus = true);
     void createFunctionsDock(bool takeFocus = true);
+    void createSocRegistersDock(bool takeFocus = true);
     void createHistoryDock(bool takeFocus = true);
     void createVariablesDock(bool takeFocus = true);
     void createUserFunctionsDock(bool takeFocus = true);
@@ -292,6 +296,7 @@ private:
     void deleteBookDock();
     void deleteConstantsDock();
     void deleteFunctionsDock();
+    void deleteSocRegistersDock();
     void deleteHistoryDock();
     void deleteVariablesDock();
     void deleteUserFunctionsDock();
@@ -353,6 +358,7 @@ private:
     void writeThemeRuntimeDiagnosticsReport();
     void updateSplitterStyleSheet();
     void refreshPaneThemes();
+    void refreshSocRegistersActualValue();
     void captureVisibleSessionViewports();
     void restoreVisibleSessionViewports();
     void saveSessionLayout(bool captureCurrentViewport = true);
@@ -427,6 +433,7 @@ private:
         QAction* viewFormulaBook;
         QAction* viewConstants;
         QAction* viewFunctions;
+        QAction* viewSocRegisters;
         QAction* viewVariables;
         QAction* viewUserFunctions;
         QAction* viewUserUnits;
@@ -589,6 +596,7 @@ private:
         BookDock* book;
         GenericDock<ConstantsWidget>* constants;
         GenericDock<FunctionsWidget>* functions;
+        GenericDock<SocRegistersWidget>* socRegisters;
         GenericDock<HistoryWidget>* history;
         GenericDock<VariableListWidget>* variables;
         GenericDock<UserFunctionListWidget>* userFunctions;

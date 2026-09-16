@@ -145,8 +145,6 @@ void UserFunctionListWidget::updateList()
             namesAndValues[1] = formattedExpression;
             QTreeWidgetItem* item = new QTreeWidgetItem(m_userFunctions, namesAndValues);
             item->setData(1, Qt::UserRole, rawExpression);
-            item->setTextAlignment(0, Qt::AlignLeft | Qt::AlignVCenter);
-            item->setTextAlignment(1, Qt::AlignLeft | Qt::AlignVCenter);
             item->setTextAlignment(2, Qt::AlignLeft | Qt::AlignVCenter);
         }
     }

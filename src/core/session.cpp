@@ -515,6 +515,16 @@ QList<HistoryEntry> Session::historyToList() const
     return ordered;
 }
 
+void Session::setHistoryResultFormat(char format)
+{
+    for (HistoryEntry& entry : m_history) {
+        EvaluationContext context = entry.context();
+        context.main.fmt = format;
+        entry.setContext(context);
+        entry.setRenderedLines(QStringList());
+    }
+}
+
 void Session::applyHistoryLimit()
 {
     normalizeHistoryOrder();

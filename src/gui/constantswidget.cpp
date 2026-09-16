@@ -325,14 +325,6 @@ void ConstantsWidget::filter()
             item->setToolTip(0, tip);
             item->setToolTip(1, tip);
             item->setToolTip(2, tip);
-
-            if (layoutDirection() == Qt::RightToLeft) {
-                item->setTextAlignment(1, Qt::AlignRight);
-                item->setTextAlignment(2, Qt::AlignLeft);
-            } else {
-                item->setTextAlignment(1, Qt::AlignLeft);
-                item->setTextAlignment(2, Qt::AlignLeft);
-            }
         }
     }
 

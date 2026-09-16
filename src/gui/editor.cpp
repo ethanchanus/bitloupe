@@ -1577,8 +1577,27 @@ void Editor::checkAutoCalc()
     if (m_currentAutoCalcDismissed)
         return;
 
-    if (m_isAutoCalcEnabled)
+    if (m_isAutoCalcEnabled) {
         autoCalc();
+        return;
+    }
+
+    const QString expression = m_evaluator->autoFix(text());
+    if (expression.isEmpty()) {
+        emit actualQuantityUnavailable();
+        return;
+    }
+
+    m_evaluator->setExpression(expression);
+    const Quantity quantity = m_evaluator->evalNoAssign();
+    if (m_evaluator->error().isEmpty()
+        && !quantity.isNan()
+        && !m_evaluator->isUserFunctionAssign()
+        && !Evaluator::isCommentOnlyExpression(expression)) {
+        emit actualQuantityAvailable(quantity);
+    } else {
+        emit actualQuantityUnavailable();
+    }
 }
 
 void Editor::doMatchingPar()
@@ -2130,8 +2149,10 @@ void Editor::autoCalc()
         return;
 
     const auto str = m_evaluator->autoFix(text());
-    if (str.isEmpty())
+    if (str.isEmpty()) {
+        emit actualQuantityUnavailable();
         return;
+    }
 
     // Same reason as above, do not update "ans".
     m_evaluator->setExpression(str);
@@ -2150,6 +2171,7 @@ void Editor::autoCalc()
             // Result is not available for user function assignment and
             // comment-only expressions.
             emit autoCalcDisabled();
+            emit actualQuantityUnavailable();
         } else {
             const auto formatted =
                 formattedLiveResultWithAlternatives(
@@ -2157,10 +2179,12 @@ void Editor::autoCalc()
             auto message = tr("Current result:<br/>%1").arg(formatted);
             emit autoCalcMessageAvailable(message);
             emit autoCalcQuantityAvailable(quantity);
+            emit actualQuantityAvailable(quantity);
         }
     } else {
         if (isOperatorOnlyIncompleteInput(str)) {
             emit autoCalcDisabled();
+            emit actualQuantityUnavailable();
             return;
         }
 
@@ -2184,6 +2208,7 @@ void Editor::autoCalc()
                     if (baseQuantity.isNan() && (m_evaluator->isUserFunctionAssign()
                         || Evaluator::isCommentOnlyExpression(baseExpression))) {
                         emit autoCalcDisabled();
+                        emit actualQuantityUnavailable();
                     } else {
                         const auto formatted =
                             formattedLiveResultWithAlternatives(
@@ -2191,6 +2216,7 @@ void Editor::autoCalc()
                         auto message = tr("Current result:<br/>%1").arg(formatted);
                         emit autoCalcMessageAvailable(message);
                         emit autoCalcQuantityAvailable(baseQuantity);
+                        emit actualQuantityAvailable(baseQuantity);
                     }
                     return;
                 }
@@ -2199,6 +2225,7 @@ void Editor::autoCalc()
         emit autoCalcMessageAvailable(
             usageTooltip.isEmpty() ? m_evaluator->error() : usageTooltip
         );
+        emit actualQuantityUnavailable();
     }
 }
 
@@ -2717,6 +2744,26 @@ void Editor::keyPressEvent(QKeyEvent* event)
         else
             checkAutoCalc();
         event->accept();
+        return;
+    }
+
+    if (event->matches(QKeySequence::Copy)) {
+        emit copySequencePressed();
+        event->accept();
+        return;
+    }
+
+    // Standard clipboard/undo shortcuts must never be blocked by the expression-start
+    // and other typed-character context gates further below -- otherwise, e.g., Ctrl+V
+    // on a blank editor gets rejected there before reaching this check, and (before this
+    // check existed at all) falls through to the generic "insert typed text" path,
+    // inserting the raw control character (e.g. 0x16 for Ctrl+V) as literal text instead
+    // of cutting/pasting/undoing/redoing.
+    if (event->matches(QKeySequence::Cut)
+        || event->matches(QKeySequence::Paste)
+        || event->matches(QKeySequence::Undo)
+        || event->matches(QKeySequence::Redo)) {
+        QPlainTextEdit::keyPressEvent(event);
         return;
     }
 
@@ -3737,12 +3784,6 @@ void Editor::keyPressEvent(QKeyEvent* event)
     case Qt::Key_ParenLeft:
         break;
     default:;
-    }
-
-    if (event->matches(QKeySequence::Copy)) {
-        emit copySequencePressed();
-        event->accept();
-        return;
     }
 
     QString normalizedText = normalizedEventText;

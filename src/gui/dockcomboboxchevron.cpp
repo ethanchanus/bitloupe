@@ -9,14 +9,37 @@
 #include <QAbstractItemView>
 #include <QBitmap>
 #include <QComboBox>
+#include <QDebug>
 #include <QEasingCurve>
 #include <QEvent>
 #include <QFrame>
 #include <QPainter>
 #include <QPainterPath>
+#include <QPointer>
+#include <QTimer>
 #include <QVariantAnimation>
 
 namespace {
+
+// TEMPORARY (SoC Regs crash investigation): qWarning() is stripped to a no-op
+// in this app's Release build (QT_NO_WARNING_OUTPUT), so call QMessageLogger
+// directly to bypass that and reach the installed file handler. Only emits
+// anything when SPEEDCRUNCH_SOCREGS_DIAGNOSTICS is enabled; otherwise a real
+// no-op (QMessageLogger::noDebug(), which returns QNoDebug) so it costs
+// nothing in normal builds.
+#ifdef SPEEDCRUNCH_SOCREGS_DIAGNOSTICS
+using SocRegsLogStream = QDebug;
+#else
+using SocRegsLogStream = QNoDebug;
+#endif
+SocRegsLogStream socRegsLog()
+{
+#ifdef SPEEDCRUNCH_SOCREGS_DIAGNOSTICS
+    return QMessageLogger(QT_MESSAGELOG_FILE, QT_MESSAGELOG_LINE, QT_MESSAGELOG_FUNC).warning();
+#else
+    return QMessageLogger().noDebug();
+#endif
+}
 
 constexpr int kChevronAnimationMs = 150;
 constexpr qreal kChevronOpacity = 0.76;
@@ -139,12 +162,15 @@ bool DockComboBoxChevron::eventFilter(QObject* watched, QEvent* event)
         }
     } else if (watched == m_view || watched == m_popupWindow) {
         if (event->type() == QEvent::Show) {
-            stylePopupChrome();
+            socRegsLog() << "[SocRegsChevron]" << this << "popup SHOW watched=" << watched
+                       << "view=" << m_view.data() << "popupWindow=" << m_popupWindow.data();
             setPopupOpen(true);
+            deferStylePopupChrome();
         } else if (event->type() == QEvent::Hide) {
+            socRegsLog() << "[SocRegsChevron]" << this << "popup HIDE watched=" << watched;
             setPopupOpen(false);
         } else if (event->type() == QEvent::Resize) {
-            stylePopupChrome();
+            deferStylePopupChrome();
         }
     }
 
@@ -185,6 +211,8 @@ void DockComboBoxChevron::installPopupEventFilters()
 
     QAbstractItemView* view = m_comboBox->view();
     if (m_view != view) {
+        socRegsLog() << "[SocRegsChevron]" << this << "view identity changed, old=" << m_view.data()
+                   << "new=" << view;
         if (m_view != nullptr)
             m_view->removeEventFilter(this);
         m_view = view;
@@ -196,6 +224,8 @@ void DockComboBoxChevron::installPopupEventFilters()
     if (popupWindow == m_comboBox->window())
         popupWindow = nullptr;
     if (m_popupWindow != popupWindow) {
+        socRegsLog() << "[SocRegsChevron]" << this << "popupWindow identity changed, old="
+                   << m_popupWindow.data() << "new=" << popupWindow;
         if (m_popupWindow != nullptr)
             m_popupWindow->removeEventFilter(this);
         m_popupWindow = popupWindow;
@@ -224,32 +254,80 @@ void DockComboBoxChevron::reposition()
                 m_comboBox->height());
 }
 
+void DockComboBoxChevron::deferStylePopupChrome()
+{
+    // A double-click's second press can arrive while the popup Qt just opened is
+    // still settling (or can toggle it closed again immediately), so a quick
+    // open/close/open cycle can queue several native mask/frame updates in a row.
+    // Run the actual styling on the next event-loop turn, once things have
+    // settled, instead of synchronously inside the Show/Resize event; by the time
+    // it runs, stylePopupChrome() re-reads the current view/window and simply
+    // does nothing if the popup isn't visible anymore.
+    QPointer<DockComboBoxChevron> guard(this);
+    QTimer::singleShot(0, this, [guard]() {
+        if (guard != nullptr)
+            guard->stylePopupChrome();
+    });
+}
+
 void DockComboBoxChevron::stylePopupChrome()
 {
-    if (m_view == nullptr)
+    if (m_view == nullptr || !m_view->isVisible())
         return;
 
-    removeFrame(m_view);
-    m_view->setAutoFillBackground(false);
-    m_view->viewport()->setAutoFillBackground(false);
-    m_view->viewport()->setAttribute(Qt::WA_StyledBackground, true);
+    // The crash-dump call stack showed the actual fault inside Qt's OWN
+    // QComboBox::showPopup() -> QWidgetPrivate::showChildren() ->
+    // QObject::isWidgetType(), i.e. Qt iterating a corrupted/stale children
+    // list on a LATER reopen -- not inside our own code. Re-running
+    // setAutoFillBackground()/setAttribute()/setObjectName()/setStyleSheet()
+    // on the SAME popup widgets on every single show is what most plausibly
+    // corrupts that list (QStyleSheetStyle can create/tear down internal
+    // helper children when a stylesheet is (re-)applied). Only do this
+    // one-time setup once per distinct view/chrome identity, exactly like
+    // installPopupEventFilters() already does for the identity itself.
+    if (m_styledView != m_view) {
+        socRegsLog() << "[SocRegsChevron]" << this << "styling view (first time), view=" << m_view.data();
+        removeFrame(m_view);
+        m_view->setAutoFillBackground(false);
+        m_view->viewport()->setAutoFillBackground(false);
+        m_view->viewport()->setAttribute(Qt::WA_StyledBackground, true);
+        m_styledView = m_view;
+    }
 
     QWidget* popupChrome = popupChromeWidget();
-    if (popupChrome == nullptr)
+    // The container can still report itself in a not-yet-settled state right
+    // after a rapid reopen (deferStylePopupChrome() runs on the next event-loop
+    // turn, but the native window may not have finished showing by then) --
+    // masking it in that window has correlated with the app terminating right
+    // after, per crash-log evidence. Only proceed once it's actually visible.
+    if (popupChrome == nullptr || !popupChrome->isVisible())
         return;
 
-    removeFrame(popupChrome);
-    popupChrome->setAutoFillBackground(false);
-    popupChrome->setAttribute(Qt::WA_StyledBackground, true);
-    if (popupChrome != m_view) {
-        popupChrome->setObjectName(QStringLiteral("speedcrunchDockComboBoxPopupChrome"));
-        popupChrome->setStyleSheet(QStringLiteral(
-            "QWidget#speedcrunchDockComboBoxPopupChrome,"
-            "QFrame#speedcrunchDockComboBoxPopupChrome {"
-            " background: transparent; border: 0;"
-            "}"));
+    if (m_styledChrome != popupChrome) {
+        socRegsLog() << "[SocRegsChevron]" << this << "styling chrome (first time), chrome=" << popupChrome;
+        removeFrame(popupChrome);
+        popupChrome->setAutoFillBackground(false);
+        popupChrome->setAttribute(Qt::WA_StyledBackground, true);
+        if (popupChrome != m_view) {
+            popupChrome->setObjectName(QStringLiteral("speedcrunchDockComboBoxPopupChrome"));
+            popupChrome->setStyleSheet(QStringLiteral(
+                "QWidget#speedcrunchDockComboBoxPopupChrome,"
+                "QFrame#speedcrunchDockComboBoxPopupChrome {"
+                " background: transparent; border: 0;"
+                "}"));
+        }
+        m_styledChrome = popupChrome;
     }
+
+    // Re-masking a native top-level window on every single Show/Resize event is
+    // both wasteful (the same popup got masked 6 times for one open in the
+    // crash log) and risky -- skip when the widget/size haven't actually
+    // changed since the last successful mask.
+    if (m_maskedWidget == popupChrome && m_maskedSize == popupChrome->size())
+        return;
     applyRoundedMask(popupChrome);
+    m_maskedWidget = popupChrome;
+    m_maskedSize = popupChrome->size();
 }
 
 void DockComboBoxChevron::setPopupOpen(bool open)

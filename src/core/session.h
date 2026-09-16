@@ -69,6 +69,7 @@ public:
     const HistoryEntry& historyEntryAtRef(const int index) const;
     HistoryEntry historyEntryAt(const int index) const;
     QList<HistoryEntry> historyToList() const;
+    void setHistoryResultFormat(char format);
     void applyHistoryLimit();
     void clearHistory();
 

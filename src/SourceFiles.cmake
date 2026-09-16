@@ -18,6 +18,7 @@ core/pageserver.h
 core/settings.h
 core/opcode.h
 core/sessionhistory.h
+core/socregisterdatabase.h
 core/sessionjsonkeys.h
 core/symbolicnumberformat.h
 core/userdefinitions.h
@@ -44,6 +45,7 @@ gui/numberformatdialog.h
     gui/notationandprecisiondialog.h
 gui/oklchutils.h
 gui/resultdisplay.h
+gui/socregisterswidget.h
 gui/tooltipstyleutils.h
 gui/variablelistwidget.h
 gui/userfunctionlistwidget.h
@@ -92,6 +94,7 @@ core/pageserver.cpp
 core/settings.cpp
 core/session.cpp
 core/sessionhistory.cpp
+core/socregisterdatabase.cpp
 core/userdefinitions.cpp
 core/variable.cpp
 core/userfunction.cpp
@@ -118,6 +121,7 @@ gui/numberformatdialog.cpp
 gui/notationandprecisiondialog.cpp
 gui/oklchutils.cpp
 gui/resultdisplay.cpp
+gui/socregisterswidget.cpp
 gui/splittertreeutils.cpp
 gui/syntaxhighlighter.cpp
 gui/themedlineedit.cpp
@@ -434,6 +438,7 @@ core/userunit.cpp
 core/userdefinitions.cpp
 core/session.cpp
 core/sessionhistory.cpp
+core/socregisterdatabase.cpp
 core/variable.cpp
 core/numberformatter.cpp
 gui/aboutbox.cpp
@@ -454,6 +459,7 @@ gui/numberformatdialog.cpp
 gui/notationandprecisiondialog.cpp
 gui/oklchutils.cpp
 gui/resultdisplay.cpp
+gui/socregisterswidget.cpp
 gui/splittertreeutils.cpp
 gui/syntaxhighlighter.cpp
 gui/editor.cpp

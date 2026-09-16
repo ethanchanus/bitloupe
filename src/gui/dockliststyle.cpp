@@ -7,6 +7,7 @@
 
 #include <QAbstractItemView>
 #include <QAbstractItemModel>
+#include <QAbstractTextDocumentLayout>
 #include <QEvent>
 #include <QFrame>
 #include <QHeaderView>
@@ -17,9 +18,12 @@
 #include <QObject>
 #include <QPalette>
 #include <QPainter>
+#include <QRegularExpression>
 #include <QStyledItemDelegate>
 #include <QStyleOptionViewItem>
+#include <QTextDocument>
 #include <QTreeView>
+#include <QVariant>
 #include <QVector>
 #include <QWidget>
 
@@ -143,6 +147,66 @@ void fillRoundedRow(QPainter* painter, const QRect& rowRect, const QColor& color
     painter->restore();
 }
 
+QColor searchHighlightBackgroundColor()
+{
+    return QColor(QStringLiteral("#FFF59D")); // light yellow
+}
+
+QColor searchHighlightTextColor()
+{
+    return QColor(Qt::black); // kept dark so it stays legible on the light-yellow highlight
+}
+
+// Wraps every substring matching `pattern` in a highlighted <span>. Returns an empty
+// string if there is no match, so the caller can fall back to plain-text painting.
+QString highlightedHtmlForText(const QString& text, const QRegularExpression& pattern)
+{
+    QString html;
+    int lastEnd = 0;
+    bool matchedAny = false;
+    QRegularExpressionMatchIterator it = pattern.globalMatch(text);
+    while (it.hasNext()) {
+        const QRegularExpressionMatch match = it.next();
+        if (match.capturedLength() == 0)
+            continue;
+        matchedAny = true;
+        html += text.mid(lastEnd, match.capturedStart() - lastEnd).toHtmlEscaped();
+        html += QStringLiteral("<span style=\"background-color:%1; color:%2;\">%3</span>")
+            .arg(searchHighlightBackgroundColor().name(),
+                 searchHighlightTextColor().name(),
+                 text.mid(match.capturedStart(), match.capturedLength()).toHtmlEscaped());
+        lastEnd = match.capturedStart() + match.capturedLength();
+    }
+    if (!matchedAny)
+        return QString();
+    html += text.mid(lastEnd).toHtmlEscaped();
+    return html;
+}
+
+// Preserves the delegate's word-wrap/alignment while rendering pre-built rich text.
+void paintHighlightedHtml(QPainter* painter, const QStyleOptionViewItem& opt, const QString& html)
+{
+    QTextDocument document;
+    document.setDefaultFont(opt.font);
+    QTextOption textOption(document.defaultTextOption());
+    textOption.setWrapMode(QTextOption::WordWrap);
+    textOption.setAlignment(opt.displayAlignment);
+    document.setDefaultTextOption(textOption);
+    document.setHtml(html);
+    document.setTextWidth(opt.rect.width());
+
+    painter->save();
+    painter->setClipRect(opt.rect);
+    painter->translate(opt.rect.topLeft());
+    const qreal verticalOffset = qMax<qreal>(0, (opt.rect.height() - document.size().height()) / 2.0);
+    painter->translate(0, verticalOffset);
+    QAbstractTextDocumentLayout::PaintContext context;
+    context.palette = opt.palette;
+    context.palette.setColor(QPalette::Text, opt.palette.color(QPalette::Text));
+    document.documentLayout()->draw(painter, context);
+    painter->restore();
+}
+
 class DockListItemDelegate : public QStyledItemDelegate {
 public:
     explicit DockListItemDelegate(QAbstractItemView* view)
@@ -156,7 +220,14 @@ public:
     {
         QStyleOptionViewItem opt(option);
         initStyleOption(&opt, index);
+        // Columns center by default; a column that explicitly sets its own
+        // Qt::TextAlignmentRole (e.g. a "Desc"/"Description" column, or the "Reg"
+        // column in the SoC Regs register list) keeps that explicit alignment instead.
+        if (!index.data(Qt::TextAlignmentRole).isValid())
+            opt.displayAlignment = Qt::AlignCenter;
         const bool selected = opt.state & QStyle::State_Selected;
+        const bool hovered = !selected
+            && index.row() == m_view->property("dockListHoveredRow").toInt();
         if (selected) {
             painter->save();
             painter->fillRect(opt.rect, selectedColorForView(m_view));
@@ -167,13 +238,35 @@ public:
             opt.backgroundBrush = Qt::NoBrush;
             // The selected fill is painted above; suppress style hover/focus backgrounds.
             opt.state &= ~(QStyle::State_Selected | QStyle::State_MouseOver | QStyle::State_HasFocus);
-        } else if (index.row() == m_view->property("dockListHoveredRow").toInt()) {
+        } else if (hovered) {
             if (isFirstVisibleColumnForIndex(m_view, index))
                 fillRoundedRow(painter, rowRectForIndex(m_view, index), hoverColorForView(m_view));
             opt.palette.setColor(QPalette::Text, hoverTextColorForView(m_view));
             opt.palette.setColor(QPalette::WindowText, hoverTextColorForView(m_view));
             opt.backgroundBrush = Qt::NoBrush;
             opt.state &= ~QStyle::State_MouseOver;
+        }
+
+        const QRegularExpression highlightPattern =
+            m_view->property("dockListHighlightPattern").value<QRegularExpression>();
+        if (highlightPattern.isValid() && !highlightPattern.pattern().isEmpty() && !opt.text.isEmpty()) {
+            const QString html = highlightedHtmlForText(opt.text, highlightPattern);
+            if (!html.isEmpty()) {
+                // QStyledItemDelegate::paint() always re-derives opt.text from the model
+                // via its own initStyleOption() call, ignoring any changes made to the
+                // option we pass in -- so it cannot be used for a "background only" pass
+                // here. Using it that way used to draw the original, un-highlighted text
+                // underneath our rich-text overlay, causing visible ghosting/doubling.
+                // Erase this cell ourselves instead and draw only the highlighted text.
+                const QColor background = selected
+                    ? selectedColorForView(m_view)
+                    : (hovered ? hoverColorForView(m_view) : opt.palette.color(QPalette::Base));
+                painter->save();
+                painter->fillRect(opt.rect, background);
+                painter->restore();
+                paintHighlightedHtml(painter, opt, html);
+                return;
+            }
         }
         QStyledItemDelegate::paint(painter, opt, index);
     }
@@ -265,6 +358,8 @@ void apply(QAbstractItemView* view)
     view->setFrameShape(QFrame::NoFrame);
     view->setProperty("dockListHoveredRow", -1);
     view->setItemDelegate(new DockListItemDelegate(view));
+    if (QTreeView* treeView = qobject_cast<QTreeView*>(view))
+        treeView->header()->setDefaultAlignment(Qt::AlignCenter);
     DockListCursorFilter* cursorFilter = new DockListCursorFilter(view);
     view->installEventFilter(cursorFilter);
     view->viewport()->installEventFilter(cursorFilter);
@@ -286,6 +381,12 @@ void showCenteredNoMatchLabel(QAbstractItemView* view, QLabel* label)
     label->setGeometry(view->viewport()->rect());
     label->show();
     label->raise();
+}
+
+void setHighlightPattern(QAbstractItemView* view, const QRegularExpression& pattern)
+{
+    view->setProperty("dockListHighlightPattern", QVariant::fromValue(pattern));
+    view->viewport()->update();
 }
 
 } // namespace DockListStyle

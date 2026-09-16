@@ -117,6 +117,7 @@ CustomKeypadDialog::CustomKeypadDialog(const Settings::CustomKeypad& keypad, QWi
     m_table->setSelectionMode(QAbstractItemView::SingleSelection);
     m_table->verticalHeader()->setVisible(false);
     m_table->horizontalHeader()->setStretchLastSection(true);
+    m_table->horizontalHeader()->setDefaultAlignment(Qt::AlignCenter);
 
     QStringList labels;
     labels << tr("Row") << tr("Column") << tr("Label") << tr("Behavior") << tr("Text");
@@ -190,13 +191,17 @@ void CustomKeypadDialog::buildTableFromCells()
 
             auto* rowItem = new QTableWidgetItem(QString::number(row + 1));
             rowItem->setFlags(rowItem->flags() & ~Qt::ItemIsEditable);
+            rowItem->setTextAlignment(Qt::AlignCenter);
             m_table->setItem(index, ColumnIndexRow, rowItem);
 
             auto* columnItem = new QTableWidgetItem(QString::number(column + 1));
             columnItem->setFlags(columnItem->flags() & ~Qt::ItemIsEditable);
+            columnItem->setTextAlignment(Qt::AlignCenter);
             m_table->setItem(index, ColumnIndexColumn, columnItem);
 
-            m_table->setItem(index, ColumnIndexLabel, new QTableWidgetItem(cell.label));
+            auto* labelItem = new QTableWidgetItem(cell.label);
+            labelItem->setTextAlignment(Qt::AlignCenter);
+            m_table->setItem(index, ColumnIndexLabel, labelItem);
 
             QComboBox* actionCombo = new QComboBox(m_table);
             actionCombo->addItem(actionText(Settings::CustomKeypadActionInsertText), Settings::CustomKeypadActionInsertText);
@@ -210,6 +215,7 @@ void CustomKeypadDialog::buildTableFromCells()
             auto* textItem = new QTableWidgetItem(cell.text);
             if (cell.action != Settings::CustomKeypadActionInsertText)
                 textItem->setFlags(textItem->flags() & ~Qt::ItemIsEditable);
+            textItem->setTextAlignment(Qt::AlignCenter);
             m_table->setItem(index, ColumnIndexText, textItem);
 
             connect(actionCombo, qOverload<int>(&QComboBox::currentIndexChanged), this, [this, index, actionCombo]() {

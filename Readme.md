@@ -45,6 +45,68 @@ running CMake, in the form `cmake ../src -Dvariable=value`.
 - **HTML_DOCS_DIR**: Change the path to the HTML manual that's embedded in the binary
   by the build. By default, a bundled prebuilt copy is used to minimize dependencies.
 
+## SoC register catalog
+
+The **View > SoC Regs** panel reads `socregs.conf` from the directory containing
+the SpeedCrunch executable. Set `SPEEDCRUNCH_SOC_CONFIG` to use another catalog file.
+Register file paths may be absolute or relative to the catalog file.
+For compatibility with existing catalogs, a single SoC object and comma-separated
+derivative strings such as `"cyt4bb, cyt4bf"` are also accepted.
+
+At startup, SpeedCrunch compiles the catalog and its register JSON files into
+`socregs.db` in the `data/` folder beside the executable (`conf/` is reserved for
+user-editable configuration). The database stores an MD5
+fingerprint of the catalog and every referenced register file. It is regenerated
+when any source changes. SoC, derivative, register search, and register-detail
+lookups use only the cached SQLite database after initialization. Set
+`SPEEDCRUNCH_SOC_CACHE` to override the database path.
+
+```json
+{
+  "supported_socs": [
+    {
+      "silicon_name": "Infineon Traveo2",
+      "derivatives": ["cyt4bb", "cyt4bf"],
+      "registers_file": "registers/TVIIBH4M.json"
+    }
+  ]
+}
+```
+
+A derivative can override the SoC-level register file:
+
+```json
+{
+  "name": "cyt4bf",
+  "registers_file": "registers/cyt4bf.json"
+}
+```
+
+The register file contains a `registers` array. Each register may contain `bitfields`,
+and each bitfield may contain `sub_bitfields` or `enum_values`. The panel search field
+accepts a case-insensitive regular expression and searches names and descriptions at
+all three levels. Table #1 lists matching registers. Selecting a register opens Panel
+#2 with silicon, derivative, page, address, and bitfield/sub-bitfield details.
+The `Actual` column extracts each parent bitfield from the current editor value. It
+updates as the expression changes, even when live-result previews are disabled. When
+the editor is empty, it uses the latest calculated `ans`; sub-bitfield rows display
+`--` in this column. Panel #2 shows the complete evaluated value in hexadecimal and
+green, highlights parent-bitfield Actual values in green, wraps descriptions, reserves
+at least 40% of the table viewport for the description column, and exposes each complete
+description as a hover tooltip. When a parent Actual value equals a sub-bitfield or enum
+value, that child row's Sub-bitfield and Desc cells are highlighted in green.
+
+The default Registers shortcuts are configured in `settings.conf`: `F9` toggles the
+Registers panel and `Ctrl+Shift+F` opens the panel and focuses its Search field.
+Pressing `Escape` anywhere inside the Registers panel returns focus to the calculator
+input without closing or resetting the selected register details.
+The Derivative field is a read-only display listing every derivative configured for
+the selected SoC (e.g. `cyt4bb, cyt4bf`); registers are filtered by SoC only.
+SpeedCrunch restores the most recently selected SoC, search expression,
+register, bitfield/sub-bitfield row, and Panel #1/Panel #2 splitter position at the
+next startup. Panel #2 begins with Reg, Addr, and Ref page fields; SoC selection and
+the derivative display remain in Panel #1.
+
 ## Building the manual
 Building the HTML manual is normally not necessary because a prebuilt copy is included
 with the SpeedCrunch source. For more information, see the [manual's README](doc/src/README.md).

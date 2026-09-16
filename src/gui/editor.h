@@ -79,6 +79,8 @@ public:
     QString getKeyword() const;
 
 signals:
+    void actualQuantityAvailable(const Quantity&);
+    void actualQuantityUnavailable();
     void autoCalcMessageAvailable(const QString&);
     void autoCalcQuantityAvailable(const Quantity&);
     void autoCalcDisabled();

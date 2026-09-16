@@ -4,7 +4,7 @@ equals(QT_MAJOR_VERSION, 6) {
     }
 }
 
-QT += widgets network
+QT += widgets network sql
 CONFIG += c++17
 QMAKE_CXXFLAGS += "-Wall -pedantic"
 
@@ -27,6 +27,8 @@ win32:DEFINES += _CRT_SECURE_NO_WARNINGS _CRT_NONSTDC_NO_WARNINGS _SCL_SECURE_NO
 TEMPLATE = app
 TARGET = speedcrunch
 QT += help
+
+DISTFILES += conf/settings.conf conf/socregs.conf
 
 DEPENDPATH += . \
               core \
@@ -76,6 +78,7 @@ HEADERS += core/book.h \
            core/settings.h \
            core/opcode.h \
            core/sessionhistory.h \
+           core/socregisterdatabase.h \
            core/sessionjsonkeys.h \
            core/userdefinitions.h \
            core/variable.h \
@@ -90,6 +93,7 @@ HEADERS += core/book.h \
            gui/dockcomboboxchevron.h \
            gui/dockliststyle.h \
            gui/resultdisplay.h \
+           gui/socregisterswidget.h \
            gui/editor.h \
            gui/functiontooltiputils.h \
            gui/functionswidget.h \
@@ -148,6 +152,7 @@ SOURCES += main.cpp \
            core/settings.cpp \
            core/session.cpp \
            core/sessionhistory.cpp \
+           core/socregisterdatabase.cpp \
            core/userdefinitions.cpp \
            core/variable.cpp \
            core/userfunction.cpp \
@@ -162,6 +167,7 @@ SOURCES += main.cpp \
            gui/dockcomboboxchevron.cpp \
            gui/dockliststyle.cpp \
            gui/resultdisplay.cpp \
+           gui/socregisterswidget.cpp \
            gui/editor.cpp \
            gui/functiontooltiputils.cpp \
            gui/functionswidget.cpp \

@@ -6,6 +6,7 @@
 
 #include <QColor>
 #include <QPointer>
+#include <QSize>
 #include <QWidget>
 
 class QAbstractItemView;
@@ -34,11 +35,16 @@ private:
     QWidget* popupChromeWidget() const;
     void reposition();
     void stylePopupChrome();
+    void deferStylePopupChrome();
     void setPopupOpen(bool open);
 
     QPointer<QComboBox> m_comboBox;
     QPointer<QAbstractItemView> m_view;
     QPointer<QWidget> m_popupWindow;
+    QPointer<QAbstractItemView> m_styledView;
+    QPointer<QWidget> m_styledChrome;
+    QPointer<QWidget> m_maskedWidget;
+    QSize m_maskedSize;
     QVariantAnimation* m_animation;
     QColor m_chevronColor;
     QColor m_outlineColor;
